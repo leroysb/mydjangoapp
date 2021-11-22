@@ -1,0 +1,36 @@
+{% extends "core\core.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Gigs | Leroy Buliro</title>
+{% endblock title %}
+
+{% block navmenu %}
+    <!--a id="menuactive">HOME</a-->
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+    <a id="menuactive">GIGS</a>
+{% endblock navmenu %}
+
+{% block body %}
+
+<div class="pagetitle"><p>PAST GIGS<p/></div>
+
+<div class="eventpage">
+
+    <!-- event loop -->
+    
+    {% for event in object_list %}
+        <div class="container">
+            <img src="{{ event.poster.url }}" alt="{{ event.name }}" style="float: left;">
+            <div class="text-block">
+                <p>{{ event.date }}</p>
+                <p>{{ event.name }}</p>
+                <p>{{ event.location }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock body %}

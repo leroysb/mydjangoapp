@@ -1,0 +1,51 @@
+{% extends "core\core.html" %}
+{% load static %}
+
+{% block title %}
+<title>{{podcast.title}} | Leroy Buliro</title>
+{% endblock title %}
+
+{% block navmenu %}
+    <!--a id="menuactive">HOME</a-->
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a id="menuactive">PODCAST</a>
+    <a href="{% url 'core:events' %}">GIGS</a>
+{% endblock navmenu %}
+
+{% block body %}
+
+<div class="podpage"><!-- Podcast section -->
+
+
+    <div class="row">
+
+        <div class="main">
+            <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;">
+        </div>
+
+        <div class="side">
+            <h3>About</h3>
+            <div id="pod-deet">{{ podcast.description | safe}} </div>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 5%;">
+        <h4 style="color: white; text-decoration: underline; padding-bottom: 4%;">Episodes</h4>
+        <div class="container">
+            {% for episode in podcast.episodes.all %}
+            <div class="podcast-epi">
+                <a href="{% url 'core:episode' episode.id %}">
+                    <img src="{{ episode.image.url }}" alt="{{ episode.title }}" style="width: 100%; height: auto;">
+                    <div class="epi-id">#{{ episode.id }}</div>
+                    <div class="epi-deet">{{ episode.title }}</div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div><!-- / Podcast section -->
+
+{% endblock body %}

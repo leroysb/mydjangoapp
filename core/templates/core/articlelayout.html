@@ -1,0 +1,44 @@
+{% extends "core\core.html" %}
+{% load static %}
+
+{% block title %}
+<title>{{ article.title }} | Leroy Buliro</title>
+{% endblock title %}
+
+{% block navmenu %}
+    <!--a id="menuactive">HOME</a-->
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+    <a href="{% url 'core:events' %}">GIGS</a>
+{% endblock navmenu %}
+
+{% block body %}
+
+<div class="articlepage">
+
+    <section>
+        <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
+        <div class="meta">
+            <div id="category">{{ article.category }}</div>
+            <div id="title">{{ article.title }}</div>
+            <div id="pubDate">{{ article.publishdate }}</div>
+        </div>
+    </section>
+
+    <div class="articlecontent">
+        <p id="credit" style="color: gray;">{{ article.credit }}</p>
+        <br/>
+        <div class="maincontent">{{ article.content | safe }}</div>
+    </div>
+
+</div>
+
+<div>
+    <p class="entryend">END OF ENTRY</p>
+</div>
+    
+<a href="{% url 'core:blogpage' %}" class="articlepagemiddle">
+    <button class="articlepagebtn">READ MORE ENTRIES</button>
+</a>
+
+{% endblock body %}

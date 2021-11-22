@@ -1,0 +1,46 @@
+{% extends "core\core.html" %}
+{% load static %}
+
+{% block title %}
+    <title>A-Z Logs | Leroy Buliro</title>
+{% endblock title %}
+
+{% block navmenu %}
+    <!--a id="menuactive">HOME</a-->
+    <a id="menuactive">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+    <a href="{% url 'core:events' %}">GIGS</a>
+{% endblock navmenu %}
+
+{% block body %}
+
+<div class="pagetitle"><p>A-Z LOGS<p/></div>
+
+
+<div class="blogpage"><!-- blog section -->
+
+    <div id="blogs">
+        <!-- blog-post loop -->
+        {% for article in articles %}
+        <section style="border: 1px solid #ccc; border-radius: 2%;">
+            <div style="margin: 3%;">
+                <a href="{% url 'core:blogpost' article.id %}">
+                    <img  id="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                    <div id="blogmeta">
+                        <p style="color: gray; font-size: 10px; text-transform: uppercase;">{{ article.category }}</p>
+                        <h6 style="font-weight: bold; color: white;">{{ article.title }}</h6>
+                        <br>
+                        <p>{{ article.extract  }}</p>
+                        <p style="color: gray; font-size: 11px;">{{ article.publishdate  }}</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+
+    <!-- /. blog-post -->
+
+</div><!-- /.blog section -->
+    
+{% endblock body %}

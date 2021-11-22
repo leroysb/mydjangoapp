@@ -1,0 +1,276 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Privacy Policy | Leroy Buliro</title>
+    <link rel="icon" type="image/png" href="{% static 'core/icons/lb.jpg' %}">
+    <!-- Load css file -->
+    <link href="{% static 'core/index.css' %}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Load js file -->
+    <script src="{% static 'core/main.js' %}"></script>
+    
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: black;
+        width: 100%;
+    }
+
+    @font-face {
+        font-family: Josefin Sans;
+        src: url('/static/core/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+        font-weight: 400;
+    }
+
+    @font-face {
+        font-family: Indie;
+        src: url('/static/core/fonts/IndieFlower-Regular.ttf') format('truetype');
+        font-weight: 400;
+    }
+
+    @font-face {
+        font-family: Permanent Marker;
+        src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
+        font-weight: 400;
+    }
+
+    p, a, li {
+        font-family: Josefin Sans;
+        font-size: 15px;
+        color: white;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: Josefin Sans;
+        color: white;
+    }
+
+    /* Menu */
+
+    .topnav {
+        height: 42px;
+        border: none;
+        margin: 0;
+        top: 0%;
+        padding: 0;
+        background-color: rgba(51, 61, 61, 0.959);
+        width: 100%;
+        position: sticky;
+        z-index: 2;
+    }
+
+    #navlogo {
+        float:left;
+        display: grid;
+        place-items: center;
+        position: absolute;
+        top: 20%;
+        left: 2%;
+    }
+
+    #navsocial {
+        float: right;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 20%;
+        right: 2%;
+    }
+
+    #navsocial a {
+        margin-left: 10px;
+    }
+
+    .navmenu {
+        float: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .navmenu a {
+        padding: 5px 16px;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .navmenu a:hover {
+        background-color: #ddd;
+        color: black;
+        font-weight: bolder;
+    }
+
+    #menuactive {
+        font-weight: bolder;
+        cursor: pointer;
+        text-decoration: line-through;
+    }
+
+    #floatmenu {
+        position:fixed;
+        bottom: 12%;
+        right: 4%;
+        z-index: 3;
+        display: block;
+        cursor: pointer;
+    }
+
+    #menu {
+        position:fixed;
+        bottom: 12%;
+        right: 4%;
+        z-index: 3;
+        display: none;
+        background-color: rgb(50, 50, 221);
+        cursor: pointer;
+        /*animation-name: hide;
+        animation-duration: 60ms;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;*/
+    }
+
+    @media screen and (max-width: 4000px) {
+        .navmenu {
+            display: block;
+            display: inline;
+        }
+
+        #floatmenu {
+            display: none;
+        }
+
+        #menubtn {
+            display: none;
+        }
+
+        #menu {
+            display: none;
+        }
+
+    }
+
+    @media screen and (max-width: 980px) {
+        .navmenu {
+            display: none;
+        }
+
+        #floatmenu {
+            display: block;
+        }
+
+        #menubtn {
+            display: block;
+        }
+
+        #menu {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 740px) {
+        .topnav {
+            height: 30px;
+        }
+        #navlogo, #navsocial {
+            top: 10%;
+        }
+    }
+
+    /* Page Sec */
+    .pagesec {
+        padding: 4% 20%;
+    }
+
+    @media screen and (max-width: 740px) {
+        .pagesec {
+            padding: 4% 2%;
+        }
+    }
+
+    /* Footer */
+
+    footer {
+        font-size: 13px;
+        color: white;
+        position: static;
+        border-top: 1px solid silver;
+        bottom: 0%;
+        margin: 10% 5% 4% 5%;
+        padding: 4% 0% 0% 0%;
+    }
+
+    @media only screen and (max-width: 750px) {
+        footer {
+            margin: 10% 5% 8% 5%;
+        }
+    }
+    
+</style>
+
+    <body>
+
+        <nav class="topnav">
+            <a id="navlogo" href="{% url 'core:index' %}">
+                <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" width="200" height="auto">
+            </a>
+            <div class="navmenu">
+                <!--a id="menuactive">HOME</a-->
+                <a href="{% url 'core:blogpage' %}">BLOG</a>
+                <a href="{% url 'core:podcast' %}">PODCAST</a>
+                <a href="{% url 'core:events' %}">GIGS</a>
+            </div>
+            <div id="navsocial">
+                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT.png' %}" alt="twitter" width="20" height="20" ></a>
+                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG.png' %}" alt="instagram" width="20" height="20" ></a>
+            </div-->
+            
+            <!-- <div id="floatmenu">
+                <img id="menubtn" src="{% static 'core/icons/mobmenu.png' %}" alt="menu" class="center" width="40" length="40" style="float: left;">
+                <div id="menu" style="text-align: center; padding: 2% 5% 0% 5%;">
+                    <div style="margin-bottom: 40%;">
+                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:index' %}">HOME</a>
+                    </div>
+                    <div style="margin-bottom: 40%;">
+                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:blogpage' %}" >BLOG</a>
+                    </div>
+                    <div style="margin-bottom: 40%;">
+                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:podcast' %}" >PODCAST</a>
+                    </div>
+                    <div style="margin-bottom: 40%;">
+                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:events' %}">GIGS</a>
+                    </div style="margin-bottom: 20%;">
+                        <p id="menuclose"  style="font-size: x-large;"><strong>X</strong></p>
+                    </div>
+                </div>
+            </div> -->
+        </nav>
+
+        <div class="pagesec">
+            <h1 style="text-align: center;">PRIVACY POLICY</h1>
+            <br/><br/>
+            <h4>Effective Date: {{ privacy.date }}</h4>
+            <div> {{ privacy.content | safe }} </div>
+        </div>
+
+        <footer>
+            <a style="float: left; color: white; text-decoration: none; font-size: 11px;">© 2021 Leroy Buliro. All rights reserved.</a>
+            <a style="float: right; text-decoration: none; color: white; font-size: 11px;" href="{% url 'core:terms' %}">Terms</a>
+        </footer>
+    </body>  
+
+</html>
