@@ -23,18 +23,19 @@
         <!-- blog-post loop -->
         {% for article in articles %}
         <section style="border: 1px solid #ccc; border-radius: 2%;">
-            <div style="margin: 3%;">
-                <a href="{% url 'core:blogpost' article.id %}">
+            <a href="{% url 'core:blogpost' article.id %}">
+                <div style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px;">
                     <img  id="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
                     <div id="blogmeta">
                         <p style="color: gray; font-size: 10px; text-transform: uppercase;">{{ article.category }}</p>
                         <h6 style="font-weight: bold; color: white;">{{ article.title }}</h6>
                         <br>
                         <p>{{ article.extract  }}</p>
+                        <br>
                         <p style="color: gray; font-size: 11px;">{{ article.publishdate  }}</p>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </section>
         {% endfor %}
     </div>

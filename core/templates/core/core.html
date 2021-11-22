@@ -248,12 +248,20 @@
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-gap: 20px;
         }
+        #blogs a {
+            text-decoration: none;
+        }
+        #blogs a:hover {
+            text-decoration: none;
+        }
         #blogimage {
             width: 100%;
             height: auto;
+            margin-left: 0;
+            padding-left: 0;
         }
         #blogmeta {
-            padding: 2% 0% 0% 0%;
+            margin: 2% 0% 0% 0%;
         }
 
         @media only screen and (max-width: 1024px) {
@@ -266,13 +274,8 @@
         @media only screen and (max-width: 750px) {
             #blogs {
                 grid-template-columns: 1fr;
-                grid-gap: 20px;
+                grid-gap: 40px;
             }
-            /* #blogimage {
-                float: right;
-                width: 50%;
-                /* padding-left: 3%;
-            } */
         }
 
         /* Blog Page */
@@ -286,26 +289,6 @@
         .blogpage {
             padding: 0% 3% 4% 3%;
             background-color: black;
-        }
-        .blogpage .responsive-blog {
-            margin: 2% 1% 2% 0%;
-            float: left;
-            width: 23.99%;
-            border: 1px solid #ccc;
-            border-radius: 3%;
-        }
-
-        @media only screen and (max-width: 1000px) {
-            .blogpage .responsive-blog {
-                width: 48.99%;
-                margin: 2% 1% 2% 0%;
-            }
-        }
-        @media only screen and (max-width: 750px) {
-            .blogpage .responsive-blog {
-                width: 100%;
-
-            }
         }
 
         /* Article Page */
@@ -351,11 +334,12 @@
             font-weight: bolder;
             color: black;
             font-size: 24px;
+            text-transform: uppercase;
         }
         .articlepage #pubDate {
             font-family: Josefin Sans;
             color: black;
-            font-size: 12px;
+            font-size: 13px;
         }
         .articlecontent {
             padding: 4% 20%;
@@ -372,7 +356,7 @@
             font-family: 'IM Fell English', serif;
             padding: 0 .3rem;
             margin: 0 .3rem 0 0;
-            font-size: 9rem;
+            font-size: 7rem;
             float: left;
             line-height: 0.9;
         }
@@ -397,8 +381,11 @@
                 grid-template-columns:  1fr;
             }
             .articlepage section .meta {
-                padding: 3% 0%;
+                padding: 7% 0%;
                 grid-gap: 10px;
+            }
+            .articlepage #title {
+                font-size: 22px;
             }
             .articlecontent {
                 padding: 4% 2%;
@@ -408,7 +395,7 @@
                 font-size: 14px;
             }
             .articlecontent .maincontent p:first-child::first-letter {
-                font-size: 5rem;
+                font-size: 4rem;
                 line-height: 0.9;
             }
             .articlecontent .maincontent a {
