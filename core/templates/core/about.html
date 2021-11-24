@@ -1,0 +1,42 @@
+{% extends "core\core.html" %}
+{% load static %}
+
+{% block title %}
+    <title>About | Leroy Buliro</title>
+{% endblock title %}
+
+{% block navmenu %}
+    <!--a id="menuactive">HOME</a-->
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+    <a href="{% url 'core:events' %}">GIGS</a>
+    <a id="menuactive">ABOUT</a>
+{% endblock navmenu %}
+
+{% block body %}
+
+<div class="pagetitle"><p>ABOUT<p/></div>
+
+
+    <div class="aboutsec"><!-- about section -->
+        <!--div style="padding-bottom: 2%;">
+            <h4 style="color: gray; text-align: center;">ABOUT</h4>
+        </div>
+        < img src="{% static 'core/icons/sounds.jpg' %}" alt="lerboratorysessions" style="width: 100%; height: auto;"-->
+        <img src="{% static 'core/icons/about.jpg' %}" alt="leroy" style="border-radius: 50%; max-width: 10em; padding: 2em;">
+        <p>Hi there. They call me Leroy, Mr. Buliro, but I also go by LERB. I am a full time financial advisor, part-time deejay, and occasional...well, you guessed it, storytelling enthusiast. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.</p>
+        <br>
+        <p style="text-decoration: underline; font-size: large;">Story of LERB</p>
+        <p>LERB is a Nairobi-based DJ who first emerged from the limelight after winning the 2nd runners-up spot during Nairobi's Battle of the DJs, in 2016. His selection of music caught the ears of the panel of judges, notably, members of Bad Mambo, Umojah Sound System, & Sub Conscious, and ended up joining all three crews. Since then, he has serenaded the stages of various underground gigs and International music festivals, championing East Africa’s sound system culture, and serving bass grooves show after show.</P>
+        <br>
+        <p style="text-decoration: underline; font-size: large;">Financial Services</p>
+        <p>"I believe it is essential to take a holistic approach to financial planning, thus aim to manage all aspects of my clients' financial situation. I provide my clients with in-house experts for matters of tax planning, investment planning, retirement planning, insurance planning, education planning, and estate planning.</p>
+        <br/>
+        <p> I know financial planning is an ongoing, dynamic process, that is why I offer my clients periodic service meetings, and portfolio rebalancing. As your needs change our investment strategy will change to meet your current financial situation."</p>
+        <br>
+        <a href="https://calendly.com/lerbfinancial/consultation/" >
+            <button class="btn">BOOK A CONSULTATION</button>
+        </a>
+    </div>
+    
+{% endblock body %}

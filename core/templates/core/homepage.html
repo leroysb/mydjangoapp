@@ -9,6 +9,7 @@
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
     <a href="{% url 'core:events' %}">GIGS</a>
+    <a href="{% url 'core:about' %}">ABOUT</a>
 {% endblock navmenu %}
 
 {% block body %}
@@ -169,12 +170,12 @@
 
 <div class="aboutsec"><!-- about section -->
     <div style="padding-bottom: 2%;">
-        <h4 style="color: gray; text-align: center;">ABOUT</h4>
+        <h4 style="color: white; text-align: center;">ABOUT</h4>
     </div>
     <!-- img src="{% static 'core/icons/sounds.jpg' %}" alt="lerboratorysessions" style="width: 100%; height: auto;"-->
     <img src="{% static 'core/icons/about.jpg' %}" alt="leroy" style="border-radius: 50%; max-width: 10em; padding: 2em;">
-    <p>Hi there. They call me Leroy, Mr. Buliro, but I also go by LERB. I am a full time financial advisor, part-time deejay, and occasional...well, you guessed it, storytelling enthusiast. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.</p>
-    <br>
+    <p>Hi there. They call me Leroy, or Mr. Buliro, but I also go by LERB. I am a full time financial advisor, part-time deejay, and occasional...well, you guessed it, storytelling enthusiast. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.</p>
+    <!-- <br>
     <p style="text-decoration: underline; font-size: large;">Story of LERB</p>
     <p>LERB is a Nairobi-based DJ who first emerged from the limelight after winning the 2nd runners-up spot during Nairobi's Battle of the DJs, in 2016. His selection of music caught the ears of the panel of judges, notably, members of Bad Mambo, Umojah Sound System, & Sub Conscious, and ended up joining all three crews. Since then, he has serenaded the stages of various underground gigs and International music festivals, championing East Africa’s sound system culture, and serving bass grooves show after show.</P>
     <br>
@@ -185,7 +186,7 @@
     <br>
     <a href="https://calendly.com/lerbfinancial/consultation/" >
         <button class="btn">BOOK A CONSULTATION</button>
-    </a>
+    </a> -->
 </div><!-- /.about section -->
 
 {% endblock body %}

@@ -67,7 +67,7 @@ DATABASES = {
         'NAME': 'pwadb',
         'USER': os.environ.get('DBuser'),
         'PASSWORD': os.environ.get('DBpwd'),
-        'HOST': 'localhost',
+        'HOST': os.environ.get('DBhost'),
         'PORT': os.environ.get('MSport'),
     }
 }

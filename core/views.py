@@ -13,13 +13,16 @@ def page404 (request, exception):
 # def page500 (request, exception):
 #     return render(request, 'core/500.html')
 
+class AboutView(TemplateView):
+    template_name = 'core/about.html'
+
 class HomepageView(ListView):
     template_name = 'core/homepage.html'
     queryset = Article.objects.first()
 
     def get_context_data(self, **kwargs):
         context = super(HomepageView, self).get_context_data(**kwargs)
-        context['articles'] = Article.objects.order_by('-publishdate')
+        context['articles'] = Article.objects.order_by('-publishdate')[0:4]
         context['gigs'] = Event.objects.filter(date__gte = datetime.date.today()).order_by('-date')
         context['podcast'] = Podcast.objects.first()
         context['episodes'] = PodcastEpisode.objects.order_by('-pubDate')[0:2]
