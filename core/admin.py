@@ -6,7 +6,7 @@ class mailinglistAdmin(admin.ModelAdmin):
 admin.site.register(mailinglist, mailinglistAdmin)
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ("id", "title", "writer", "publishdate")
+    list_display = ("id", "title", "category", "publishdate")
 admin.site.register(Article, ArticleAdmin)
 
 # class ArticleCommentAdmin(admin.ModelAdmin):

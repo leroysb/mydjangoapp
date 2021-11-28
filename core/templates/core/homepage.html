@@ -9,7 +9,7 @@
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
     <a href="{% url 'core:events' %}">GIGS</a>
-    <a href="{% url 'core:about' %}">ABOUT</a>
+    <!-- <a href="{% url 'core:about' %}">ABOUT</a> -->
 {% endblock navmenu %}
 
 {% block body %}
@@ -17,8 +17,8 @@
 <div class="blogsec"><!-- Blog section -->
 
     <div style="margin-bottom: 2%;">
-        <div style=" float: left; width: 100%; position:relative;">
-            <h4>A-Z LOGS<br/><h6 style="color: gray;">A Leroy Buliro Blog</h6></h4>
+        <div style=" float: left; width: 100%; position:relative; ">
+            <h4>A-Z LOGS<br/><h6 style="color: rgb(128, 128, 128);">A Leroy Buliro Blog</h6></h4>
             <div style="float: right; position: absolute; top: 50%; right: 0%;">
                 <a href="{% url 'core:blogpage' %}" style="font-size: small;">View All Entries ❯❯</a>
             </div>
@@ -36,7 +36,7 @@
                         <p style="font-size: 12px; color: gray;">{{article.publishdate}}</p>
                         <p style="font-size: 12px; color: gray; text-transform: uppercase;">{{article.category}}</p>
                         <br/>
-                        <h5>{{article.title}}</h5>
+                        <h5 style="text-transform: uppercase;">{{article.title}}</h5>
                         <br/>
                         <p>{{article.extract}}</p>
                     </div>

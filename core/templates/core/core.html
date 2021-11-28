@@ -95,6 +95,7 @@
             background-color: rgba(51, 61, 61, 0.959);
             width: 100%;
             position: sticky;
+            position: -webkit-sticky;
             z-index: 1;
         }
         #navlogo {
@@ -207,7 +208,7 @@
             padding: 0;
         }
         h6 {
-            color: white;
+            color: rgb(255, 255, 255);
         }
         h1, h2, h3, h4, h5 {
             color: gray;
@@ -245,8 +246,9 @@
             width: 100%;
             padding: 2% 0% 0% 0%;
             display: grid;
+            display: -moz-grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-gap: 20px;
+            grid-gap: 40px 20px;
         }
         #blogs a {
             text-decoration: none;

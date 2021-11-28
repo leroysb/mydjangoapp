@@ -26,11 +26,11 @@
             <a href="{% url 'core:blogpost' article.id %}">
                 <div style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px;">
                     <img  id="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
-                    <div id="blogmeta">
+                    <div id="blogmeta" style="text-align: center;">
                         <p style="color: gray; font-size: 10px; text-transform: uppercase;">{{ article.category }}</p>
-                        <h6 style="font-weight: bold; color: white;">{{ article.title }}</h6>
                         <br>
-                        <p>{{ article.extract  }}</p>
+                        <h5 style="font-weight: bold; color: white; text-transform: uppercase;">{{ article.title }}</h5>
+                        <!-- <p>{{ article.extract  }}</p> -->
                         <br>
                         <p style="color: gray; font-size: 11px;">{{ article.publishdate  }}</p>
                     </div>
