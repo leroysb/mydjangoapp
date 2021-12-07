@@ -22,6 +22,12 @@
             <div id="category">{{ article.category }}</div>
             <div id="title">{{ article.title }}</div>
             <div id="pubDate">{{ article.publishdate }}</div>
+            <hr style="border-top: 1px #000 solid; padding: 0% 20%;">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
+                <img src="{% static 'core/icons/share_black.png' %}" alt="share article" width="20" height="20" >
+                <img src="{% static 'core/icons/comment_black.png' %}" alt="post comment" width="20" height="20" >
+                <img src="{% static 'core/icons/view_black.png' %}" alt="reads" width="20" height="20" >
+            </div>
         </div>
     </section>
 
@@ -40,13 +46,24 @@
 <div>
     <p class="entryend">END OF ENTRY</p>
 </div>
-
-<div style="margin: 0% 0% 10% 0%;">
-    <p style="text-align: center;">SHARE THIS STORY</p>
-</div>
     
 <a href="{% url 'core:blogpage' %}" class="articlepagemiddle">
     <button class="articlepagebtn">READ MORE ENTRIES</button>
 </a>
 
 {% endblock body %}
+
+{% block script %}
+<script>
+    const background = document.querySelector('.meta');
+
+    document.body.querySelector('.meta').addEventListener('load', getBGcolor());
+
+    function getBGcolor() {
+        const choices = ['orange', '#86baaf', '#ffca52']
+        const randomNumber = Math.floor(Math.random()*3);
+        const selection = choices[randomNumber];
+        background.style.backgroundColor = selection;
+    }
+</script>
+{% endblock script %}
