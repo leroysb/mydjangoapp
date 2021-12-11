@@ -2,191 +2,37 @@
 {% load static %}
 
 {% block title %}
-    <title>Home | Leroy Buliro</title>
+<title>Home | Leroy Buliro</title>
 {% endblock title %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'core/homepage.css' %}">
+{% endblock style %}
+
 {% block navmenu %}
-    <a href="{% url 'core:blogpage' %}">BLOG</a>
-    <a href="{% url 'core:podcast' %}">PODCAST</a>
-    <a href="{% url 'core:events' %}">GIGS</a>
-    <!-- <a href="{% url 'core:about' %}">ABOUT</a> -->
+<a href="{% url 'core:blogpage' %}">BLOG</a>
+<a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
 {% block body %}
 
-<div class="blogsec"><!-- Blog section -->
-
-    <div style="margin-bottom: 2%;">
-        <div style=" float: left; width: 100%; position:relative; ">
-            <h4>A-Z LOGS<br/><h6 style="color: rgb(128, 128, 128);">A Leroy Buliro Blog</h6></h4>
-            <div style="float: right; position: absolute; top: 50%; right: 0%;">
-                <a href="{% url 'core:blogpage' %}" style="font-size: small;">View All Entries ❯❯</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="blogs">
-        <!-- blog-post loop -->
-        {% for article in articles %}
-        <section style="border: 1px solid #ccc; border-radius: 2%;">
-            <a href="{% url 'core:blogpost' article.id %}">
-                <div style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px;">
-                    <img  id="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
-                    <div id="blogmeta">
-                        <p style="font-size: 12px; color: gray;">{{article.publishdate}}</p>
-                        <p style="font-size: 12px; color: gray; text-transform: uppercase;">{{article.category}}</p>
-                        <br/>
-                        <h5 style="text-transform: uppercase;">{{article.title}}</h5>
-                        <br/>
-                        <p>{{article.extract}}</p>
-                    </div>
-                </div>
+<div class="aboutsec">
+    <section>
+        <img src="{% static 'core/icons/about.jpg' %}" alt="leroy" style="border-radius: 50%; max-width: 10em; padding: 2em;">
+        <p>Hi there. They call me Leroy, Mr. Buliro, but I also go by LERB. I am a full time financial advisor, part-time deejay, and occasional...well, you guessed it, storytelling enthusiast. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.</p>
+        <div style="display:grid; grid-gap: 12px; grid-template-rows: 1fr; padding-top: 2rem;">
+            <a href="{% url 'core:blogpage' %}" >
+                <button class="btn">BLOG</button>
             </a>
-        </section>
-        {% endfor %}
-    </div>
-</div><!-- / Blog section -->
-
-<div class="sectionseparator"><!-- Section separator -->
-    <hr style="border-top: 1px dashed silver; margin: 1%;">
-    <hr style="border-top: 1px dotted silver; margin: 1%;">
-    <hr style="border-top: 1px dashed silver; margin: 1%;">
-</div><!-- / Section separator -->
-
-<div class="podsec"><!-- Podcast section -->
-
-    <div style="padding-bottom: 2%;">
-        <div style=" text-align: left;">
-            <h4>KUBONGA SHOW<br/><h6 style="color: gray;">Podcast</h6></h4>
-            <!-- <div style="float: right; position: absolute; top: 50%; right: 0%;">
-                <a href="{% url 'core:blogpage' %}" style="text-decoration: none; font-size: small;">View All Entries ❯❯</a>
-            </div> -->
+            <a href="{% url 'core:podcast' %}" >
+                <button class="btn">PODCAST</button>
+            </a>
+            <a href="https://calendly.com/lerbfinancial/consultation/" >
+                <button class="btn">BOOK A FINANCIAL CONSULTATION</button>
+            </a>
         </div>
-    </div>
+    </section>
 
-    <div>
-        <div class="row">
-        <div class="side">
-            <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 50%; height: auto;">
-            
-            <br/><br/>
-
-            <p style="font-weight: bold; font-size: 24px; padding-bottom: 1%;">About</p>
-            <p style="padding-bottom: 1%;">{{ podcast.description | safe}} </p>
-
-            <br/>
-
-            <div class="dropdown">
-                <a href="{% url 'core:podcast' %}">
-                    <button class="btn">VIEW PAGE</button>
-                </a>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">LISTEN ON AN APP | ▼</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="{{ podcast.appleurl }}" target="_blank">Apple Podcasts</a>
-                    <a href="{{ podcast.googleurl }}" target="_blank">Google Podcasts</a>
-                    <a href="{{ podcast.spotifyurl }}" target="_blank">Spotify</a>
-                </div>
-            </div>
-
-    </div>
-
-        <div class="main">
-            <h4 style="color: white; text-decoration: underline; padding-bottom: 4%;">Recent Episodes</h4>
-
-            {% for episode in episodes %}
-
-            <div class="responsive-epi">
-                <img src="{{ episode.image.url }}" alt="{{ episode.title }}" width="600" height="600" style="width: 20%; height: auto; float: left;">
-                <div style="overflow: hidden; padding-left: 2%;">
-                    <!-- <p style="padding-bottom: 3%;">{{ episode.pubDate }}</p> -->
-                    <a style="font-weight: bold;">#{{ episode.id }} {{ episode.title }}</a>
-                    <p style="padding-top: 3%;">{{ episode.summary }}</p>
-                    <br/>
-
-                    <!-- <audio id="episode" preload="true">
-                        <source src="{{ episode.audio.url }}">
-                    </audio> -->
-
-                    <a href="{% url 'core:episode' episode.id %}">
-                        <button id="playbtn" ><img src="{% static 'core/icons/baseline_play_arrow_white_48dp.png' %}" alt="play episode {{ episode.id }}" width="15" height="15" />PLAY</button>
-                    </a>
-
-                    <!-- <div class="player">
-                        <img  id="rev" src="{% static 'core/icons/outline_replay_10_white_48dp.png' %}" alt="replay 10 seconds" />
-                        <img  id="pButton" src="" alt="play or pause"/>
-                        <img id="fwd" src="{% static 'core/icons/outline_forward_30_white_48dp.png' %}" alt="forward 30 seconds" />
-                        <div id="timeline">
-                            <div id="playhead"></div>
-                        </div>
-                        <div class="timer">00:00</div>
-                    </div> -->
-
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <hr id="episeparator">
-            {% endfor %}
-        </div>
-    </div>
 </div>
-
-    
-</div><!-- / Podcast section -->
-
-<div class="sectionseparator" style="margin-bottom: 5%;"><!-- Section separator -->
-    <hr style="border-top: 1px dashed silver; margin: 1%;">
-    <hr style="border-top: 1px dotted silver; margin: 1%;">
-    <hr style="border-top: 1px dashed silver; margin: 1%;">
-</div><!-- / Section separator -->
-
-<div class="eventsec"><!-- Event section-->
-
-    <div class="middle">
-        <h4>UPCOMING GIGS</h4>
-    </div>
-    <div class="middle">
-
-        {% for gig in gigs %}
-
-        <div style="padding-top: 3%; text-align: center; color: white;">
-            <p>{{ gig.date }} | {{ gig.name }} | {{ gig.location }}</p>
-        </div>
-        {% empty %}
-        <div style="color: white;">no available dates</div>
-        {% endfor %}
-        
-    </div>
-
-</div><!-- / Event section-->
-
-<div class="sectionseparator"><!-- Section separator -->
-    <hr style="border-top: 1px dashed silver; margin: 1%;">
-    <hr style="border-top: 1px dotted silver; margin: 1%;">
-    <hr style="border-top: 1px dashed silver; margin: 1%;">
-</div><!-- / Section separator -->
-
-<div class="aboutsec"><!-- about section -->
-    <div style="padding-bottom: 2%;">
-        <h4 style="color: white; text-align: center;">ABOUT</h4>
-    </div>
-    <!-- img src="{% static 'core/icons/sounds.jpg' %}" alt="lerboratorysessions" style="width: 100%; height: auto;"-->
-    <img src="{% static 'core/icons/about.jpg' %}" alt="leroy" style="border-radius: 50%; max-width: 10em; padding: 2em;">
-    <p>Hi there. They call me Leroy, or Mr. Buliro, but I also go by LERB. I am a full time financial advisor, part-time deejay, and occasional...well, you guessed it, storytelling enthusiast. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.</p>
-    <!-- <br>
-    <p style="text-decoration: underline; font-size: large;">Story of LERB</p>
-    <p>LERB is a Nairobi-based DJ who first emerged from the limelight after winning the 2nd runners-up spot during Nairobi's Battle of the DJs, in 2016. His selection of music caught the ears of the panel of judges, notably, members of Bad Mambo, Umojah Sound System, & Sub Conscious, and ended up joining all three crews. Since then, he has serenaded the stages of various underground gigs and International music festivals, championing East Africa’s sound system culture, and serving bass grooves show after show.</P>
-    <br>
-    <p style="text-decoration: underline; font-size: large;">Financial Services</p>
-    <p>"I believe it is essential to take a holistic approach to financial planning, thus aim to manage all aspects of my clients' financial situation. I provide my clients with in-house experts for matters of tax planning, investment planning, retirement planning, insurance planning, education planning, and estate planning.</p>
-    <br/>
-    <p> I know financial planning is an ongoing, dynamic process, that is why I offer my clients periodic service meetings, and portfolio rebalancing. As your needs change our investment strategy will change to meet your current financial situation."</p>
-    <br>
-    <a href="https://calendly.com/lerbfinancial/consultation/" >
-        <button class="btn">BOOK A CONSULTATION</button>
-    </a> -->
-</div><!-- /.about section -->
 
 {% endblock body %}

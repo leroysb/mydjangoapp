@@ -5,10 +5,9 @@ app_name = "core"
 
 urlpatterns = [
     path("", HomepageView.as_view(), name="index"),
-    path("about/", AboutView.as_view(), name="about"),
     path("privacy-policy", PrivacyView.as_view(), name="privacy"),
     path("terms-of-use", TermsView.as_view(), name="terms"),
-    path('events', EventList.as_view(), name="events"),
+    # path('events', EventList.as_view(), name="events"),
     path('kubonga-show', PodcastView.as_view(), name="podcast"),
     path("a-z-logs", BlogView.as_view(), name="blogpage"),
     path("blog", BlogView.as_view(), name="blogpage"),

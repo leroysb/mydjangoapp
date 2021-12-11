@@ -13,20 +13,8 @@ def page404 (request, exception):
 # def page500 (request, exception):
 #     return render(request, 'core/500.html')
 
-class AboutView(TemplateView):
-    template_name = 'core/about.html'
-
-class HomepageView(ListView):
+class HomepageView(TemplateView):
     template_name = 'core/homepage.html'
-    queryset = Article.objects.first()
-
-    def get_context_data(self, **kwargs):
-        context = super(HomepageView, self).get_context_data(**kwargs)
-        context['articles'] = Article.objects.order_by('-publishdate')[0:4]
-        context['gigs'] = Event.objects.filter(date__gte = datetime.date.today()).order_by('-date')
-        context['podcast'] = Podcast.objects.first()
-        context['episodes'] = PodcastEpisode.objects.order_by('-pubDate')[0:2]
-        return context
 
 class BlogView(ListView):
     context_object_name = 'articles'
@@ -47,10 +35,15 @@ class EpisodeView(DetailView):
     context_object_name = 'episode'
     template_name = 'core/episode.html'
 
-class EventList(ListView):
-    context_object_name = 'event'
-    queryset = Event.objects.filter(date__lte = datetime.date.today()).order_by('-date')
-    template_name = 'core/events.html'
+# class EventList(ListView):
+#     context_object_name = 'events'
+#     queryset = Event.objects.filter(date__lte = datetime.date.today()).order_by('-date')
+#     template_name = 'core/events.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['gigs'] = Event.objects.filter(date__gte = datetime.date.today()).order_by('-date')
+#         return context
 
 class PrivacyView(ListView):
     context_object_name = 'privacy'

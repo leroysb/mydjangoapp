@@ -1,0 +1,128 @@
+/* Podcast Episode Page */
+a {
+    color: #fff;
+    font-weight: 400;
+}
+.episodepage p, span, h1, h2, h3, h4, h5, h6 {
+    font-family: Josefin Sans;
+    /*font-family: 'Josefin Sans', sans-serif;*/
+}
+.episodepage p, span {
+    font-size: 14px;
+    line-height: 1.7rem;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+.episodepage h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+}
+.episodepage {
+    padding: 3% 12% 8% 12%;
+    background-color: #000;
+}
+.episodepage #back {
+    padding: 0% 0% 4% 0%;
+    display: inline-flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+.episodepage .btn {
+    cursor: pointer;
+    background-color: #000;
+    color: #FFFFFF;
+    border-radius: 8px;
+    border: 2px solid #FFFFFF;
+    z-index: 1;
+    font-size: 11px;
+    padding: 10px 24px;
+}
+.episodepage .btn:hover{
+    color: #FFFFFF;
+}
+.episodepage .row {  
+    display: flex;
+    flex-wrap: wrap;
+}
+.episodepage .side {
+    flex: 40%;
+    padding-right: 3%;
+}
+.episodepage .main {
+    flex: 60%;
+}
+.episodepage .epi-content {
+    display: block;
+}
+
+@media screen and (max-width: 750px) {
+    .episodepage {
+        padding: 6% 2% 10% 2%;
+        background-color: #000;
+    }
+    .episodepage #back {
+        padding: 2% 0% 8% 0%;
+    }
+    .episodepage .row {   
+        flex-direction: column;
+    
+    }
+    .episodepage .side {
+        /* width: 100%; */
+        padding-bottom: 10%;
+    }
+    .episodepage .epi-content p {
+        font-size: 14px;
+    }
+}
+
+/* Podcast Episode Page Player */
+
+.episodepage .controls {
+    /* float: left; */
+    align-items: center;
+    display: flex;
+    margin: 0;
+    margin: 4% 0%;
+}
+.episodepage .controls .pButton {
+    cursor: pointer;
+    padding: 0;
+    margin-right: 7px;
+    width: 40px; 
+    height: 40px;
+}
+.episodepage #timeline {
+    width: 90%;
+    height: 2px;
+    margin: 4% 0%;
+    float: left;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background: rgba(252, 250, 250, 0.678);
+}
+.episodepage #playhead {
+    width: 8px;
+    height: 8px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin-top: -3px;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+.episodepage .timer {
+    font-family: monospace;
+    color: #FFFFFF;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 750px) {
+    .episodepage #timeline {
+        width: 100%;
+    }
+    .episodepage .timer {
+        font-size: 14px;
+    }
+}

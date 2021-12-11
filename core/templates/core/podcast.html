@@ -5,11 +5,18 @@
 <title>{{podcast.title}} | Leroy Buliro</title>
 {% endblock title %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'core/podcast.css' %}">
+{% endblock style %}
+
+{% block script %}
+<script src="{% static 'core/podcast.js' %}"></script>
+{% endblock script %}
+
 {% block navmenu %}
     <!--a id="menuactive">HOME</a-->
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a id="menuactive">PODCAST</a>
-    <a href="{% url 'core:events' %}">GIGS</a>
 {% endblock navmenu %}
 
 {% block body %}
@@ -19,19 +26,26 @@
 
     <div class="row">
 
-        <div class="main">
-            <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;">
-        </div>
+        <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;"/>
+        
+        <section class="side">
+            <h2>About</h2>
+            <div id="pod-deet">{{ podcast.description | safe}}</div>
 
-        <div class="side">
-            <h3>About</h3>
-            <div id="pod-deet">{{ podcast.description | safe}} </div>
-        </div>
+            <div class="dropdown">
+                <button class="dropbtn">LISTEN ON AN APP | ▼</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="{{ podcast.appleurl }}" target="_blank">Apple Podcasts</a>
+                    <a href="{{ podcast.googleurl }}" target="_blank">Google Podcasts</a>
+                    <a href="{{ podcast.spotifyurl }}" target="_blank">Spotify</a>
+                </div>
+            </div>
 
+        </section>
     </div>
 
-    <div style="margin-top: 5%;">
-        <h4 style="color: white; text-decoration: underline; padding-bottom: 4%;">Episodes</h4>
+    <div style="margin-top: 7rem;">
+        <h3 style="color: white; text-decoration: underline; padding-bottom: 4%;">Episodes</h3>
         <div class="container">
             {% for episode in podcast.episodes.all %}
             <div class="podcast-epi">
@@ -42,10 +56,10 @@
                 </a>
             </div>
             {% endfor %}
-
         </div>
     </div>
 
-</div><!-- / Podcast section -->
+</div>
+<!-- / Podcast section -->
 
 {% endblock body %}

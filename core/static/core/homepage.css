@@ -1,0 +1,36 @@
+.aboutsec {
+    background-color: #000;
+    padding: 2% 14% 3% 14%;
+    text-align: center;
+    /* display: grid;
+    width: 100%;
+    grid-gap: 30px;
+    grid-template-columns: 1fr; */
+}
+
+.aboutsec p, ol, ul, a, th, td {
+    font-size: 14px;
+    line-height: 1.7rem;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.btn {
+    font-family: Josefin Sans;
+    cursor: pointer;
+    background-color: #000;
+    color: #FFFFFF;
+    border-radius: 8px;
+    border: 2px solid #FFFFFF;
+    z-index: 1;
+    font-size: 11px;
+    padding: 10px 24px;
+}
+
+@media only screen and (max-width: 750px) {
+    .aboutsec {
+        background-color: #000;
+        padding: 0% 2% 8% 2%;
+    }
+}

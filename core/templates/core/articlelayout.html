@@ -5,11 +5,18 @@
 <title>{{ article.title }} | Leroy Buliro</title>
 {% endblock title %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'core/articlelayout.css' %}">
+{% endblock style %}
+
+{% block script %}
+<script src="{% static 'core/articlelayout.js' %}"></script>
+{% endblock script %}
+
 {% block navmenu %}
     <!--a id="menuactive">HOME</a-->
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
-    <a href="{% url 'core:events' %}">GIGS</a>
 {% endblock navmenu %}
 
 {% block body %}
@@ -22,7 +29,7 @@
             <div id="category">{{ article.category }}</div>
             <div id="title">{{ article.title }}</div>
             <div id="pubDate">{{ article.publishdate }}</div>
-            <hr style="border-top: 1px #000 solid; padding: 0% 20%;">
+            <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
             <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
                 <img src="{% static 'core/icons/share_black.png' %}" alt="share article" width="20" height="20" >
                 <img src="{% static 'core/icons/comment_black.png' %}" alt="post comment" width="20" height="20" >
@@ -41,29 +48,13 @@
         {% endif %}
     </div>
 
-</div>
+    <p id="entryend">END OF ENTRY</p>
 
-<div>
-    <p class="entryend">END OF ENTRY</p>
-</div>
-    
-<a href="{% url 'core:blogpage' %}" class="articlepagemiddle">
-    <button class="articlepagebtn">READ MORE ENTRIES</button>
-</a>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
+        <button>PREVIOUS</button>
+        <button>HOME</button>
+        <button>NEXT</button>
+    </div>
 
+</div>
 {% endblock body %}
-
-{% block script %}
-<script>
-    const background = document.querySelector('.meta');
-
-    document.body.querySelector('.meta').addEventListener('load', getBGcolor());
-
-    function getBGcolor() {
-        const choices = ['orange', '#86baaf', '#ffca52']
-        const randomNumber = Math.floor(Math.random()*3);
-        const selection = choices[randomNumber];
-        background.style.backgroundColor = selection;
-    }
-</script>
-{% endblock script %}

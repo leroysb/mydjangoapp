@@ -1,38 +1,38 @@
 {% extends "core\core.html" %}
+
 {% load static %}
 
 {% block title %}
     <title>A-Z Logs | Leroy Buliro</title>
 {% endblock title %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'core/blog.css' %}">
+{% endblock style %}
+
 {% block navmenu %}
     <!--a id="menuactive">HOME</a-->
     <a id="menuactive">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
-    <a href="{% url 'core:events' %}">GIGS</a>
 {% endblock navmenu %}
 
 {% block body %}
-
-<div class="pagetitle"><p>A-Z LOGS<p/></div>
-
-
-<div class="blogpage"><!-- blog section -->
-
+<!-- blog section -->
+<div class="blogpage">
+    <p class="pagetitle">A-Z LOGS</p>
+    
     <div id="blogs">
         <!-- blog-post loop -->
         {% for article in articles %}
         <section style="border: 1px solid #ccc; border-radius: 2%;">
             <a href="{% url 'core:blogpost' article.id %}">
                 <div style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px;">
-                    <img  id="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
-                    <div id="blogmeta" style="text-align: center;">
-                        <p style="color: gray; font-size: 10px; text-transform: uppercase;">{{ article.category }}</p>
-                        <br>
-                        <h5 style="font-weight: bold; color: white; text-transform: uppercase;">{{ article.title }}</h5>
-                        <!-- <p>{{ article.extract  }}</p> -->
-                        <br>
-                        <p style="color: gray; font-size: 11px;">{{ article.publishdate  }}</p>
+                    <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                    <div class="blogmeta">
+                        <p class="blogcategory">{{ article.category }}</p>
+                        <h3 class="blogtitle">{{ article.title }}</h3>
+                        <p class="blogextract">{{ article.extract  }}</p>
+                        <p class="blogdate">{{ article.publishdate }}</p>
                     </div>
                 </div>
             </a>
