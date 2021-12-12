@@ -3,15 +3,11 @@ a {
     color: #fff;
     font-weight: 400;
 }
-.podpage {
-    padding: 2% 15% 4% 15%;
-    background-color: #000;
-}
 .podpage p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     font-family: Josefin Sans;
     /*font-family: 'Josefin Sans', sans-serif;*/
 }
-.podpage p, ol, ul, a, th, td {
+.podpage p, a {
     font-size: 14px;
     line-height: 1.7rem;
     color: #FFFFFF;
@@ -21,21 +17,26 @@ a {
 .podpage h1, h2, h3, h4, h5, h6 {
     color: #FFFFFF;
 }
-.podpage .row {
+
+.podpage {
+    padding: 0;
+    background-color: #000;
+}
+.podpage .section1 {
     width: 100%;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 1fr 2fr;
-    /* padding: 2% 10%; */
+    padding: 4em 8em 2em 8em;
 }
 .podpage .side {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 0.2em;
     grid-template-columns: 1fr;
 }
 .podpage #pod-deet p {
-    padding-bottom: 1%;
     font-size: 20px;
+    line-height: 1.7rem;
 }
 .dropdown {
     position: relative;
@@ -43,6 +44,7 @@ a {
 }
 .dropbtn {
     cursor: pointer;
+    font-family: Josefin Sans;
     background-color: #000;
     color: #FFFFFF;
     border-radius: 8px;
@@ -75,6 +77,9 @@ a {
 .show {
     display: block;
 }
+.podpage .section2 {
+    padding: 4em 2em 4em 2em;
+}
 .podpage .container {
     display: grid;
     grid-template-columns: 22% 22% 22% 22%;
@@ -100,55 +105,92 @@ a {
     position: absolute;
     bottom: 0px;
     width: 100%;
-    font-size: 18px;
-    background-color: rgba(0, 0, 0, 0.521);
-    padding: 1%;
+    font-size: 17px;
+    background-color: #000000b7;
+    padding: 4px;
 }
 
-@media screen and (max-width: 1089px) {
-    .podpage .container {
-        grid-template-columns: 32% 32% 32%;
-        grid-template-rows: auto; 
-        column-gap: 1,5%;
-        row-gap: 2%;
-    }
-    .podpage .epi-id {
-        top: 12px;
-        left: 14px;
-        font-size: 20px;;
-    }
-    .podpage .epi-deet {
-        font-size: 18px;
-        padding: 1% 1% 0% 1%;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .podpage {
-        padding: 6% 1% 4% 1%;
-        background-color: #000;
-    }
-    .podpage .row {   
+@media screen and (max-width: 769px) {
+    .podpage .section1 {   
         grid-template-columns: 1fr;
-        padding: 0;
+        padding: 3em 0em 0em 0em;
+    }
+    .podpage .side {
+        grid-gap: 2em;
+        padding: 0em 1em 0em 1em;
     }
     .podpage #pod-deet p {
-        font-size: 18px;
+        font-size: 20px;
+        line-height: 1.4rem;
+    }
+    .dropdown-content {
+        min-width: 27%;
+    }
+    .podpage .section2 {
+        padding: 7em 1em 4em 1em;
     }
     .podpage .container {
-        grid-template-columns: 48% 48%;
-        grid-template-rows: auto; 
-        column-gap: 4%;
-        row-gap: 2%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        column-gap: 2em;
+        row-gap: 2em;
     }
     .podpage .epi-id {
-        top: 12px;
-        left: 12px;
-        font-size: 20px;
-        padding: 1% 4%;
+        top: 7px;
+        left: 7px;
+        font-size: 24px;
+        padding: 1px 4px;
     }
     .podpage .epi-deet {
-        font-size: 16px;
-        padding: 1% 1% 0% 1%;
+        bottom: 0px;
+        font-size: 17px;
+        padding: 4px 2px;
+        line-height: 1.4;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .podpage .section1 {   
+        grid-template-columns: 1fr;
+        padding: 0em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .podpage .section1 {   
+        grid-template-columns: 1fr;
+        padding: 1.8em 0em 0em 0em;
+    }
+    .podpage .side {
+        grid-gap: 2em;
+        padding: 0em 1em 0em 1em;
+    }
+    .podpage #pod-deet p {
+        font-size: 20px;
+        line-height: 1.4rem;
+    }
+    .dropdown-content {
+        min-width: 55%;
+    }
+    .podpage .section2 {
+        padding: 7em 1em 4em 1em;
+    }
+    .podpage .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        column-gap: 1em;
+        row-gap: 2em;
+    }
+    .podpage .epi-id {
+        top: 7px;
+        left: 7px;
+        font-size: 20px;
+        padding: 1px 4px;
+    }
+    .podpage .epi-deet {
+        bottom: 0px;
+        font-size: 13px;
+        padding: 4px 2px;
+        line-height: 1.4;
     }
 }

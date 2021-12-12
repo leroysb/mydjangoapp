@@ -21,11 +21,15 @@
 
 {% block body %}
 <!-- Podcast section -->
+
 <div class="episodepage">
-    <a href="{% url 'core:podcast' %}" id="back">
-        <img src="{% static 'core/icons/back_white.png' %}" alt="back" width="20" height="20" >
-        <p>MORE EPISODES</p>
-    </a>
+    
+    <div class="section1">
+        <a href="{% url 'core:podcast' %}" id="back">
+            <img src="{% static 'core/icons/back_white.png' %}" alt="back" width="20" height="20" >
+            <p>MORE EPISODES</p>
+        </a>
+    </div>
 
     <div class="row">
         <div class="side">

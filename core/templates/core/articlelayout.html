@@ -50,9 +50,19 @@
 
     <p id="entryend">END OF ENTRY</p>
 
+    <div class="aboutsec">
+        <img src="{% static 'core/icons/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;">
+        <br>
+        <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.</p>
+        <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+            <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT.png' %}" alt="twitter" width="20" height="20" ></a>
+            <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG.png' %}" alt="instagram" width="20" height="20" ></a>
+        </div>
+    </div>
+
     <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
-        <button>PREVIOUS</button>
-        <button>HOME</button>
+        <button>PREV</button>
+        <button><a href="{% url 'core:blogpage' %}" style="text-decoration: none; color: #000;">HOME</a></button>
         <button>NEXT</button>
     </div>
 

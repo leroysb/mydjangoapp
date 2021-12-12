@@ -24,12 +24,14 @@
 <div class="podpage"><!-- Podcast section -->
 
 
-    <div class="row">
+    <div class="section1">
 
-        <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;"/>
+        <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;">
         
         <section class="side">
+
             <h2>About</h2>
+
             <div id="pod-deet">{{ podcast.description | safe}}</div>
 
             <div class="dropdown">
@@ -42,17 +44,18 @@
             </div>
 
         </section>
+
     </div>
 
-    <div style="margin-top: 7rem;">
-        <h3 style="color: white; text-decoration: underline; padding-bottom: 4%;">Episodes</h3>
+    <div class="section2">
+        <h3 style="color: white; text-decoration: underline; padding: 0em 0em 2em 0em;">Episodes</h3>
         <div class="container">
             {% for episode in podcast.episodes.all %}
             <div class="podcast-epi">
                 <a href="{% url 'core:episode' episode.id %}">
                     <img src="{{ episode.image.url }}" alt="{{ episode.title }}" style="width: 100%; height: auto;">
-                    <div class="epi-id">#{{ episode.id }}</div>
-                    <div class="epi-deet">{{ episode.title }}</div>
+                    <p class="epi-id">#{{ episode.id }}</p>
+                    <p class="epi-deet">{{ episode.title }}</p>
                 </a>
             </div>
             {% endfor %}

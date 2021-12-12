@@ -8,7 +8,7 @@
     grid-template-columns: 1fr; */
 }
 
-.aboutsec p, ol, ul, a, th, td {
+.aboutsec p, a {
     font-size: 14px;
     line-height: 1.7rem;
     color: #FFFFFF;
@@ -30,7 +30,6 @@
 
 @media only screen and (max-width: 750px) {
     .aboutsec {
-        background-color: #000;
         padding: 0% 2% 8% 2%;
     }
 }

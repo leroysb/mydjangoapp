@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 body {
@@ -38,8 +40,8 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     padding: 0;
     background-color: rgba(51, 61, 61, 0.959);
     width: 100%;
-    position: sticky;
-    position: -webkit-sticky;
+    position: fixed;
+    /* position: -webkit-sticky; */
     z-index: 1;
 }
 #navlogo {

@@ -4,7 +4,15 @@ a {
 }
 .blogpage {
     padding: 0% 3% 4% 3%;
+    margin: 0% 0% 0% 0%;
     background-color: #000;
+    width: 100%;
+}
+.blogpage #pagetitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6% 0% 3% 0%;
 }
 #blogs {
     width: 100%;
@@ -56,13 +64,19 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
+    .blogpage #pagetitle {
+        padding: 10% 0% 3% 0%;
+    }
     #blogs {
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
     }
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 500px) {
+    .blogpage #pagetitle {
+        padding: 10% 0% 3% 0%;
+    }
     #blogs {
         grid-template-columns: 1fr;
         grid-gap: 40px;
