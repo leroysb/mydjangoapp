@@ -46,6 +46,18 @@
             <a>© 2021 Leroy Buliro. All rights reserved.</a>
             <a href="{% url 'core:privacy' %}">Legal</a>
         </footer>
+        
+        <script>
+            document.querySelector('body').addEventListener('load', getDim);
+            
+            function getDim() {
+                let height = screen.availHeight;
+                let width = screen.availWidth;
+                document.querySelector('body').style.height = height;
+                document.querySelector('body').style.width = width;
+            };
+        </script>
     </body>
+
 
 </html>

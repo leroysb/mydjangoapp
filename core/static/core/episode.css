@@ -18,18 +18,16 @@ a {
     color: #FFFFFF;
 }
 .episodepage {
-    width: 100%;
-    padding: 0% 20% 10% 20%;
+    padding: 0% 20% 9% 20%;
     background-color: #000;
 }
-.episodepage .section1 {
-    padding: 2em 0em 2em 0em;
-}
-.episodepage #back {
-    display: inline-flex;
+.episodepage .back_btn {
+    padding: 4em 0em 1.7em 0em;
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: left;
     text-decoration: none;
-    padding: 0em;
     margin: 0em;
 }
 .episodepage .row {  
@@ -93,12 +91,11 @@ a {
     .episodepage {
         padding: 0% 2% 10% 2%;
     }
-    .episodepage .section1 {
-        padding: 2em 0em 1em 0em;
+    .episodepage .back_btn {
+        padding: 3em 0em 1.4em 0em;
     }
     .episodepage .row {   
         flex-direction: column;
-    
     }
     .episodepage .side {
         /* width: 100%; */

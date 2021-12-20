@@ -24,11 +24,9 @@
 
 <div class="episodepage">
     
-    <div class="section1">
-        <a href="{% url 'core:podcast' %}" id="back">
-            <img src="{% static 'core/icons/back_white.png' %}" alt="back" width="20" height="20" >
-            <p>MORE EPISODES</p>
-        </a>
+    <div class="back_btn">
+        <img src="{% static 'core/icons/back_white.png' %}" alt="more episodes" width="27" height="27"/>
+        <a href="{% url 'core:podcast' %}" style="text-decoration: none; font-size: small;" >MORE EPISODES</a>
     </div>
 
     <div class="row">
