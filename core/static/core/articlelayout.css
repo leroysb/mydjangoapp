@@ -128,6 +128,17 @@ a {
 .articlepage .aboutsec a {
     padding: 0.4em 0.4em;
 }
+.articlepage .pagination {
+    /* padding: 20px 0px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.articlepage .pagination a {
+    text-decoration: none;
+    font-size: 18px;
+}
 
 @media screen and (max-width: 769px) {
     .articlepage section {

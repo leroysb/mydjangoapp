@@ -30,7 +30,7 @@ class Article(models.Model):
     content = RichTextField(config_name='full_editor', blank=True, null=True)
 
     def __str__(self):
-        return f"Adding {self.title} by {self.writer}"
+        return self.id
 
     class Meta:
         db_table = 'article'

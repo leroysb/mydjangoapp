@@ -60,11 +60,40 @@
         </div>
     </div>
 
-    <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
+    <!-- <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
         <button>PREV</button>
         <button><a href="{% url 'core:blogpage' %}" style="text-decoration: none; color: #000;">HOME</a></button>
         <button>NEXT</button>
+    </div> -->
+
+    {% if is_paginated %}
+
+    <div class="pagination">
+
+        <div>
+            {% if article.has_previous %}
+                <!-- <a href="?page=1">&laquo; First</a> -->
+                <a href="?page={{ article.previous_page_number }}">&laquo; Prev</a>
+            {% else %}
+                <a style="color: #b8b8b8; cursor: not-allowed;">&laquo; Prev</a>
+            {% endif %}
+        </div>
+
+        <div>
+            <a href="{% url 'core:blogpage' %}" >Home</a>
+        </div>
+
+        <div>
+            {% if article.has_next %}
+                <a href="?page={{ article.next_page_number }}">Next &raquo;</a>
+                <!-- <a href="?page={{ article.paginator.num_pages }}">Last &raquo;</a> -->
+            {% else %}
+                <a style="color: #b8b8b8; cursor: not-allowed;">Next&raquo;</a>
+            {% endif %}
+        </div>
+    
     </div>
+    {% endif %}
 
 </div>
 {% endblock body %}

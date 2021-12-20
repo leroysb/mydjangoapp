@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic.list import MultipleObjectMixin
+from django.core.paginator import Paginator, InvalidPage
 
 # from .forms import CommentForm
 from .models import *
@@ -22,8 +24,15 @@ class BlogView(ListView):
     template_name = 'core/blog.html'
 
 class ArticleView(DetailView):
+    context_object_name = 'article'
     model = Article
     template_name = 'core/articlelayout.html'
+    paginate_by = 1
+
+    # def get_context_data(self, **kwargs):
+    #     object_list = Article.objects.filter(id=self.get_object())
+    #     context = super(ArticleView, self).get_context_data(object_list=object_list, **kwargs)
+    #     return context
 
 class PodcastView(ListView):
     context_object_name = 'podcast'
