@@ -11,15 +11,12 @@ a {
     font-size: 14px;
     line-height: 1.7rem;
     color: #FFFFFF;
-    margin: 0;
-    padding: 0;
 }
 .podpage h1, h2, h3, h4, h5, h6 {
     color: #FFFFFF;
 }
 
 .podpage {
-    padding: 0;
     background-color: #000;
 }
 .podpage .section1 {
@@ -159,7 +156,7 @@ a {
 @media screen and (max-width: 600px) {
     .podpage .section1 {   
         grid-template-columns: 1fr;
-        padding: 1.8em 0em 0em 0em;
+        padding: 0;
     }
     .podpage .side {
         grid-gap: 2em;

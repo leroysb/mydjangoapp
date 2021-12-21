@@ -9,7 +9,7 @@ a {
 .blogpage #pagetitle {
     display: grid;
     place-items: center;
-    margin: 3% 0%;
+    padding: 3% 0%;
 }
 #blogs {
     width: 100%;
@@ -75,19 +75,13 @@ button {
 }
 
 @media only screen and (max-width: 1024px) {
-    .blogpage #pagetitle {
-        padding: 3% 0%;
-    }
-    #blogs {
+   #blogs {
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
     }
 }
 
 @media only screen and (max-width: 570px) {
-    .blogpage #pagetitle {
-        padding: 4% 0%;
-    }
     #blogs {
         grid-template-columns: 1fr;
         grid-gap: 40px;

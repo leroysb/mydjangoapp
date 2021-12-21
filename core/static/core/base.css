@@ -33,6 +33,7 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 
 .topnav {
     position: sticky;
+    position: -webkit-sticky;
     top: 0;
     height: 42px;
     width: 100%;
@@ -114,16 +115,6 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     #navlogo, #navsocial {
         top: 10%;
     }
-}
-
-/* Pages */
-.pagetitle {
-    color: #fff;
-    font-size: xx-large;
-    font-weight: bold;
-    text-align: center;
-    padding: 6% 0%;
-    margin: 0;
 }
 
 /* Comment Sec */
