@@ -1,6 +1,9 @@
-body {
-    background-color: #000;
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 @font-face {
     font-family: Josefin Sans;
@@ -17,32 +20,47 @@ body {
     src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
     font-weight: 700;
 }
+body {
+    background-color: #000000;
+}
 #content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    height: 100vh;
+}
+#imagediv {
+    position: absolute;
+    top: 18%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+#image {
+    border-radius: 50%;
+    border: 1px #c2c2c2b9 solid;
+    max-width: 7em;
+    padding: 0.3em;
 }
 #links {
+    position: absolute;
+    top: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    grid-gap: 2px;
+    text-align: center;
+    grid-gap: 10px;
 }
-body a {
+a {
     font-family: Indie;
     font-size: 17px;
-    line-height: 1.7rem;
+    /* font-weight: 900; */
+    line-height: 1rem;
     text-decoration: none;
     color: #ffd900;
     cursor: pointer;
 }
-body a:hover {
+a:hover {
     text-decoration: none;
-}
-
-@media only screen and (max-width: 750px) {
-    body {
-        padding: 3% 2% 8% 2%;
-    }
+    font-size: 20px;
 }

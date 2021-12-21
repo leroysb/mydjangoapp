@@ -3,10 +3,6 @@ a {
     color: #fff;
     font-weight: 400;
 }
-.articlepage {
-    background-color: #000;
-    padding: 0;
-}
 .articlepage p, a {
     font-family: Josefin Sans;
     line-height: 2rem;
@@ -31,7 +27,6 @@ a {
     margin: 0% 0% 3% 0%;
 }
 .articlepage section .meta {
-    margin: 0;
     padding: 0% 8%;
     /* background-color: orange; */
     display: grid;
@@ -63,10 +58,6 @@ a {
 }
 .articlecontent {
     padding: 4% 20% 0% 20%;
-}
-.articlecontent .maincontent {
-    margin: 0%;
-    padding: 0%;
 }
 .articlecontent .maincontent p {
     margin-bottom: 2%;
@@ -101,10 +92,8 @@ a {
     text-align: center;
     font-size: 30px;
     padding: 7rem 0rem;
-    margin: 0;
 }
 .articlepage .aboutsec {
-    background-color: #000;
     padding: 2% 14% 3% 14%;
     text-align: center;
     border-top: 1px silver solid;
@@ -122,8 +111,6 @@ a {
     font-size: 14px;
     line-height: 1.7rem;
     color: #FFFFFF;
-    margin: 0;
-    padding: 0;
 }
 .articlepage .aboutsec a {
     padding: 0.4em 0.4em;
@@ -150,7 +137,6 @@ a {
     }
     .articlepage #title {
         font-size: 30px;
-        margin: 0;
     }
     .articlecontent {
         padding: 4% 2% 0% 2%;

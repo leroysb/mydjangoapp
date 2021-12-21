@@ -4,19 +4,15 @@ a {
 }
 .blogpage {
     padding: 0% 3% 4% 3%;
-    margin: 0% 0% 0% 0%;
-    background-color: #000;
     width: 100%;
 }
 .blogpage #pagetitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 6% 0% 3% 0%;
+    display: grid;
+    place-items: center;
+    margin: 6% 0% 3% 0%;
 }
 #blogs {
     width: 100%;
-    padding: 2% 0% 0% 0%;
     display: grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -36,6 +32,9 @@ a {
 }
 #blogs .blogmeta {
     margin: 2% 0% 0% 0%;
+    display: grid;
+    grid-gap: 8px;
+    place-items: center;
     text-align: center;
 }
 #blogs .blogcategory {

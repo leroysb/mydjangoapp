@@ -1,4 +1,4 @@
-{% extends "core\core.html" %}
+{% extends "core\base.html" %}
 {% load static %}
 
 {% block title %}
@@ -14,7 +14,7 @@
 {% endblock script %}
 
 {% block navmenu %}
-    <!--a id="menuactive">HOME</a-->
+    <a href="{% url 'core:index' %}">HOME</a>
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
@@ -22,31 +22,32 @@
 {% block body %}
 
 <div class="articlepage">
-
-    <section>
-        <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
-        <div class="meta">
-            <div id="category">{{ article.category }}</div>
-            <div id="title">{{ article.title }}</div>
-            <div id="pubDate">{{ article.publishdate }}</div>
-            <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
-            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
-                <img src="{% static 'core/icons/share_black.png' %}" alt="share article" width="20" height="20" >
-                <img src="{% static 'core/icons/comment_black.png' %}" alt="post comment" width="20" height="20" >
-                <img src="{% static 'core/icons/view_black.png' %}" alt="reads" width="20" height="20" >
+    <article>
+        <section>
+            <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
+            <div class="meta">
+                <div id="category">{{ article.category }}</div>
+                <div id="title">{{ article.title }}</div>
+                <div id="pubDate">{{ article.publishdate }}</div>
+                <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
+                <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
+                    <img src="{% static 'core/icons/share_black.png' %}" alt="share article" width="20" height="20" >
+                    <img src="{% static 'core/icons/comment_black.png' %}" alt="post comment" width="20" height="20" >
+                    <img src="{% static 'core/icons/view_black.png' %}" alt="reads" width="20" height="20" >
+                </div>
             </div>
+        </section>
+    
+        <div class="articlecontent">
+            <div class="maincontent">{{ article.content | safe }}</div>
+            <br/>
+            {% if article.credit %}
+            <p id="credit" style="color: gray;">{{ article.credit }}</p>
+            {% else %}
+            <div style="display: none;"></div>
+            {% endif %}
         </div>
-    </section>
-
-    <div class="articlecontent">
-        <div class="maincontent">{{ article.content | safe }}</div>
-        <br/>
-        {% if article.credit %}
-        <p id="credit" style="color: gray;">{{ article.credit }}</p>
-        {% else %}
-        <div style="display: none;"></div>
-        {% endif %}
-    </div>
+    </article>
 
     <p id="entryend">END OF ENTRY</p>
 

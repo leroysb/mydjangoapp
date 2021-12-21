@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
 
-        <title>Home | Leroy Buliro</title>
+        <title>Leroy Buliro</title>
         
         <link rel="icon" type="image/png" href="{% static 'core/icons/lb.jpg' %}">
 
@@ -14,28 +14,29 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Load js file -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-
-                document.querySelector('body').addEventListener('load', ()=> {
-                    let height = screen.availHeight
-                    let width = screen.availWidth
-                    document.querySelector('#content').style.height = height;
-                    document.querySelector('#content').style.width = width;
-                });
-
-            });
-        </script>
     </head>
 
     <body>
-        <section id="content">
+        <div id="content">
+            <div id="imagediv">
+                <img id="image" src="{% static 'core/icons/about.jpg' %}" alt="leroy">
+            </div>
             <div id="links">
                 <a href="{% url 'core:blogpage' %}" >BLOG</a>
                 <a href="{% url 'core:podcast' %}" >PODCAST</a>
                 <a href="https://calendly.com/lerbfinancial/consultation/" >BOOK A FINANCIAL CONSULTATION</a>
+                <a href="#" >SIGN IN</a>
             </div>
-        </section>
+        </div>
+        <!-- <script>
+            document.querySelector('#content').addEventListener('load', GetDim());
+                
+                function GetDim(){
+                    let height = window.innerHeight
+                    let width = window.innerWidth
+                    document.querySelector('#content').style.height = height+'px'
+                    document.querySelector('#content').style.width = width+'px'
+                };
+        </script> -->
     </body>
 </html>
