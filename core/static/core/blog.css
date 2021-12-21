@@ -9,7 +9,7 @@ a {
 .blogpage #pagetitle {
     display: grid;
     place-items: center;
-    margin: 6% 0% 3% 0%;
+    margin: 3% 0%;
 }
 #blogs {
     width: 100%;
@@ -61,10 +61,22 @@ a {
     font-weight: 400;
     bottom: 0;
 }
+button {
+    font-family: Josefin Sans;
+    border: 1px gray solid;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 2% 4%;
+    display: none;
+}
 
 @media only screen and (max-width: 1024px) {
     .blogpage #pagetitle {
-        padding: 10% 0% 3% 0%;
+        padding: 3% 0%;
     }
     #blogs {
         grid-template-columns: 1fr 1fr;
@@ -72,9 +84,9 @@ a {
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 570px) {
     .blogpage #pagetitle {
-        padding: 10% 0% 3% 0%;
+        padding: 4% 0%;
     }
     #blogs {
         grid-template-columns: 1fr;
