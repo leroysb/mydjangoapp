@@ -1,69 +1,96 @@
 /* Article Page */
-a {
-    color: #fff;
+@font-face {
+    font-family: CrimsonPro;
+    src: url('/static/core/fonts/CrimsonPro-VariableFont.ttf') format('truetype');
     font-weight: 400;
 }
-.articlepage p, a {
+@font-face {
     font-family: Josefin Sans;
-    line-height: 2rem;
+    src: url('/static/core/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Indie;
+    src: url('/static/core/fonts/IndieFlower-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Permanent Marker;
+    src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: 700;
+}
+.articlepage {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 2rem;
+}
+.articlemeta {
     font-size: 15px;
-    color: #fff;
-}
-.articlepage ul, ol, li {
-    font-family: Josefin Sans;
-    line-height: 1rem;
-    font-size: 15px;
-    color: #fff;
-}
-.articlepage h1, h2, h3, h4, h5, h6 {
-    font-family: Josefin Sans;
-    line-height: 1.7rem;
-    color: #fff;
-}
-.articlepage section {
     display: grid;
     width: 100%;
     grid-template-columns:  1fr 1fr;
     margin: 0% 0% 3% 0%;
 }
-.articlepage section .meta {
+.articlemeta .meta {
     padding: 0% 8%;
-    /* background-color: orange; */
     display: grid;
     justify-items: center;
     align-content: center;
     text-align: center;
-    grid-gap: 14px;
+    grid-gap: 1em;
 }
-.articlepage #category {
-    font-family: Josefin Sans;
+.articlemeta .meta a, 
+.articlemeta .meta a:hover {
+    text-decoration: none;
+}
+.articlemeta #category {
+    font-family: CrimsonPro;
+    font-size: 1em;
     color: #000;
     background-color: transparent;
-    font-size: 13px;
     text-transform: uppercase;
 }
-.articlepage #title {
+.articlemeta #title {
     font-family: Josefin Sans;
+    font-size: 2em;
     font-weight: bolder;
     color: #000;
-    font-size: 30px;
-    /* line-height: 3rem; */
     text-transform: uppercase;
-    margin: 1rem 0rem;
+    margin: 1em 0em;
 }
-.articlepage #pubDate {
+.articlemeta #pubDate {
     font-family: Josefin Sans;
+    font-size: 0.8em;
     color: #000;
-    font-size: 12px;
 }
 .articlecontent {
-    padding: 4% 20% 0% 20%;
+    margin: 0% 20%;
 }
-.articlecontent .maincontent p {
-    margin-bottom: 2%;
-    font-size: 17px;
+.content > p, h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+    font-family: Josefin Sans;
+    font-size: 1em;
+    line-height: 2em;
 }
-.articlecontent .maincontent p:first-child::first-letter {
+.content a, a:hover {
+    color: #8b6bff;
+    font-family: Josefin Sans;
+    font-size: 1em;
+    line-height: 2em;
+    text-decoration: none;
+}
+.content ul, ol {
+    color: #FFFFFF;
+    font-family: Josefin Sans;
+    font-size: 1em;
+    line-height: 1.4em;
+    margin-bottom: 2em;
+    padding-left: 4%;
+}
+.content p {
+    margin-bottom: 2em;
+}
+.content p:first-child::first-letter {
     font-family: 'IM Fell English', serif;
     padding: 0 .3rem;
     margin: 0 .3rem 0 0;
@@ -71,100 +98,76 @@ a {
     float: left;
     line-height: 0.9;
 }
-.articlecontent .maincontent p strong {
-    margin-bottom: 4%;
-    font-weight: bold;
-}
-.articlecontent .maincontent a {
-    font-size: 17px;
-}
-.articlecontent .maincontent ul {
-    margin-bottom: 4%;
-    padding-left: 2%;
-}
-.articlecontent .maincontent ol {
-    margin-bottom: 4%;
-    padding-left: 2%;
-}
 #entryend {
-    /* font-family: 'Permanent Marker', cursive; */
     font-family: Permanent Marker;
     text-align: center;
-    font-size: 30px;
-    padding: 7rem 0rem;
+    font-size: 2em;
+    color: #FFFFFF;
 }
-.articlepage .aboutsec {
-    padding: 2% 14% 3% 14%;
+.aboutsec {
+    padding: 2rem 10rem ;
     text-align: center;
     border-top: 1px silver solid;
-    border-bottom: 1px silver solid;
-    /* display: grid;
-    grid-gap: 20px;
-    grid-template-rows: 1fr; */
+    /* border-bottom: 1px silver solid; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    grid-gap: 2em;
 }
 
-.articlepage .aboutsec p {
-    font-size: 14px;
-    line-height: 1.7rem;
+.aboutsec .header {
+    font-family: CrimsonPro;
+    font-size: 2rem;
+    line-height: 3rem;
     color: #FFFFFF;
 }
-.articlepage .aboutsec a {
-    padding: 0.4em 0.4em;
+.aboutsec p {
+    font-family: CrimsonPro;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: #FFFFFF;
 }
-.articlepage .pagination {
-    /* padding: 20px 0px; */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.aboutsec button {
+    font-family: CrimsonPro;
+    font-size: 0.9rem;
+    color: #ff0000;
+    background: #000;
+    border: #b8b8b8 1px solid;
+    border-radius: 4px;
+    padding: 0.7rem 3rem;
 }
-.articlepage .pagination a {
-    text-decoration: none;
-    font-size: 18px;
+.aboutsec .responses {
+    font-family: CrimsonPro;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: #FFFFFF;
+}
+
+.commentsec > p {
+    font-family: CrimsonPro;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #FFFFFF;
 }
 
 @media screen and (max-width: 769px) {
-    .articlepage section {
+    .articlemeta {
         grid-template-columns:  1fr;
     }
-    .articlepage section .meta {
+    .articlemeta .meta {
         padding: 7% 2%;
-        grid-gap: 10px;
     }
-    .articlepage #title {
-        font-size: 30px;
+    .articlemeta #title {
+        margin: 0em;
     }
     .articlecontent {
-        padding: 4% 2% 0% 2%;
-    }
-    .articlecontent .maincontent p {
-        margin-bottom: 4%;
-        font-size: 14px;
-    }
-    .articlecontent .maincontent p:first-child::first-letter {
-        font-size: 4rem;
-        line-height: 0.9;
-    }
-    .articlecontent .maincontent a {
-        font-size: 14px;
-    }
-    .articlecontent .maincontent ul {
-        margin-bottom: 6%;
-        padding-left: 4%;
-    }
-    .articlecontent .maincontent ol {
-        margin-bottom: 6%;
-        padding-left: 4%;
+        margin: 0% 2%;
     }
     #entryend {
-        font-size: 20px;
-        padding: 2rem 0rem;
+        font-size: 1.4em;
     }
-    .articlepage .aboutsec {
-        padding: 4% 2% 2% 2%;
+    .aboutsec {
+        padding: 2rem 1rem;
     }
 }

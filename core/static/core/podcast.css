@@ -1,26 +1,6 @@
 /* Podcast Page */
-a {
-    color: #fff;
-    font-weight: 400;
-}
-.podpage p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
-    font-family: Josefin Sans;
-    /*font-family: 'Josefin Sans', sans-serif;*/
-}
-.podpage p, a {
-    font-size: 14px;
-    line-height: 1.7rem;
-    color: #FFFFFF;
-}
-.podpage h1, h2, h3, h4, h5, h6 {
-    color: #FFFFFF;
-}
 
-.podpage {
-    background-color: #000;
-}
 .podpage .section1 {
-    width: 100%;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 1fr 2fr;
@@ -156,7 +136,7 @@ a {
 @media screen and (max-width: 600px) {
     .podpage .section1 {   
         grid-template-columns: 1fr;
-        padding: 0;
+        padding: 0em 0em 0em 0em;
     }
     .podpage .side {
         grid-gap: 2em;

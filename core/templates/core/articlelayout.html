@@ -5,6 +5,29 @@
 <title>{{ article.title }} | Leroy Buliro</title>
 {% endblock title %}
 
+{% block meta %}
+<meta name="description" content="{{ article.extract }}">
+<meta name="keyword" content="{{episode.tags}}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@leroybuliro">
+<meta name="twitter:creator" content="@leroybuliro">
+<meta name="twitter:title" content="{{ article.title }} | Leroy Buliro">
+<meta name="twitter:description" content="{{ article.extract }}">
+<meta name="twitter:image" content="">
+
+<!-- Facebook -->
+<meta property="og:url" content="https://leroybuliro.com/">
+<meta property="og:title" content="{{ article.title }} | Leroy Buliro">
+<meta property="og:description" content="{{ article.extract }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
+{% endblock meta %}
+
 {% block style %}
 <link rel="stylesheet" href="{% static 'core/articlelayout.css' %}">
 {% endblock style %}
@@ -19,11 +42,18 @@
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
+{% block mobmenu %}
+    <a href="{% url 'core:index' %}">HOME</a>
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+{% endblock mobmenu %}
+
 {% block body %}
 
 <div class="articlepage">
+
     <article>
-        <section>
+        <section class="articlemeta">
             <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
             <div class="meta">
                 <div id="category">{{ article.category }}</div>
@@ -32,14 +62,16 @@
                 <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
                 <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
                     <img src="{% static 'core/icons/share_black.png' %}" alt="share article" width="20" height="20" >
-                    <img src="{% static 'core/icons/comment_black.png' %}" alt="post comment" width="20" height="20" >
+                    <a href="#commentnow">
+                        <img src="{% static 'core/icons/comment_black.png' %}" alt="post comment" width="20" height="20" >
+                    </a>
                     <img src="{% static 'core/icons/view_black.png' %}" alt="reads" width="20" height="20" >
                 </div>
             </div>
         </section>
     
         <div class="articlecontent">
-            <div class="maincontent">{{ article.content | safe }}</div>
+            <div class="content">{{ article.content | safe }}</div>
             <br/>
             {% if article.credit %}
             <p id="credit" style="color: gray;">{{ article.credit }}</p>
@@ -49,52 +81,45 @@
         </div>
     </article>
 
-    <p id="entryend">END OF ENTRY</p>
+    <div>
+        <p id="entryend">END OF ENTRY</p>
+    </div>
 
-    <div class="aboutsec">
+    <div class="aboutsec" id="commentnow">
         <img src="{% static 'core/icons/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;">
-        <br>
-        <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.</p>
-        <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
-            <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT.png' %}" alt="twitter" width="20" height="20" ></a>
-            <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG.png' %}" alt="instagram" width="20" height="20" ></a>
+        <div>
+            <p class="header">Join the Discussion</h2>
+            <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.<br>Thank you for being part of the community.</p>
         </div>
+        {% if user.is_authenticated %}
+        <button>View comments</button>
+        <button>Add a comment</button>
+        {% else %}
+        <button>Please log in or sign up to comment</button>
+        <button>View comments</button>
+        {% endif %}
+        <p class="responses">{{ article.comments.count }} responses</h5>
     </div>
 
-    <!-- <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
-        <button>PREV</button>
-        <button><a href="{% url 'core:blogpage' %}" style="text-decoration: none; color: #000;">HOME</a></button>
-        <button>NEXT</button>
+    <!-- <div class="commentsec">
+
+        {% if article.comments %}
+
+            {% for comment in article.comments.all %}
+            <div>
+                <p>{{ comment.name }} on {{ comment.postdate }}</p>
+                <p>{{ comment.body | safe }}</p>
+            </div>
+            {% endfor %}
+
+        {% else %}
+
+            <div style="text-align: center;">
+                <p>Be the first to comment</p>
+            </div>
+
+        {% endif %}
     </div> -->
-
-    {% if is_paginated %}
-
-    <div class="pagination">
-
-        <div>
-            {% if article.has_previous %}
-                <!-- <a href="?page=1">&laquo; First</a> -->
-                <a href="?page={{ article.previous_page_number }}">&laquo; Prev</a>
-            {% else %}
-                <a style="color: #b8b8b8; cursor: not-allowed;">&laquo; Prev</a>
-            {% endif %}
-        </div>
-
-        <div>
-            <a href="{% url 'core:blogpage' %}" >Home</a>
-        </div>
-
-        <div>
-            {% if article.has_next %}
-                <a href="?page={{ article.next_page_number }}">Next &raquo;</a>
-                <!-- <a href="?page={{ article.paginator.num_pages }}">Last &raquo;</a> -->
-            {% else %}
-                <a style="color: #b8b8b8; cursor: not-allowed;">Next&raquo;</a>
-            {% endif %}
-        </div>
-    
-    </div>
-    {% endif %}
-
+        
 </div>
 {% endblock body %}

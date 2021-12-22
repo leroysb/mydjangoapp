@@ -4,22 +4,29 @@
 <html lang="en">
 
     <head>
-
-        {% block title %}
-        {% endblock title %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <link rel="icon" type="image/png" href="{% static 'core/icons/lb.jpg' %}">
+
+        <!-- meta author -->
+        <meta name="author" content="Leroy Buliro">
+
+        <!-- site meta tags-->
+        {% block meta %}
+        {% endblock meta %}
+
+        <meta name="docsearch:language" content="en">
+        <link rel="canonical" href="https://leroybuliro.com/">
 
         <!-- Load css file -->
         <link rel="stylesheet" href="{% static 'core/base.css' %}">
         {% block style %}
         {% endblock style %}
-        
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Load js file -->
+        <script src="{% static 'core/base.js' %}"></script>
         {% block script %}
         {% endblock script %}
     </head>
@@ -27,24 +34,40 @@
     <body>
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
-                <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" width="200" height="25">
+                <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" width="auto" height="25">
             </a>
             <div class="navmenu">
                 {% block navmenu %}
                 {% endblock navmenu %}
             </div>
-            <div id="navsocial">
-                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT.png' %}" alt="twitter" width="20" height="20" ></a>
-                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG.png' %}" alt="instagram" width="20" height="20" ></a>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
             </div>
         </nav>
+
+        <div class="mobile-menu">
+            {% block mobmenu %}
+            {% endblock mobmenu %}
+            {% if user.is_authenticated %}
+            <a href="#">ACCOUNT</a>
+            {% else %}
+            <a href="#">SIGN IN</a>
+            {% endif %}
+        </div>
 
         {% block body %}
         {% endblock body %}
     
         <footer>
+            <div id="footersocial">
+                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT.png' %}" alt="twitter" width="auto" height="22" ></a>
+                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG.png' %}" alt="instagram" width="auto" height="22" ></a>
+            </div>
             <a>© 2021 Leroy Buliro. All rights reserved.</a>
-            <a href="{% url 'core:privacy' %}">Legal</a>
+            <span>
+                <a href="{% url 'core:privacy' %}">Privacy Policy</a>
+                <a href="{% url 'core:terms' %}">Terms of Use</a>
+            </span>
         </footer>
     </body>
 

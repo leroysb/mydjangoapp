@@ -1,12 +1,3 @@
-/* Podcast Episode Page */
-a {
-    color: #fff;
-    font-weight: 400;
-}
-.episodepage p, span, h1, h2, h3, h4, h5, h6 {
-    font-family: Josefin Sans;
-    /*font-family: 'Josefin Sans', sans-serif;*/
-}
 .episodepage p, span {
     font-size: 14px;
     line-height: 1.7rem;

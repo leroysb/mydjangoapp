@@ -5,8 +5,9 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
-html {
+body {
     background-color: #000;
+    min-height: 100vh;
 }
 @font-face {
     font-family: Josefin Sans;
@@ -26,7 +27,6 @@ html {
 
 p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     font-family: Josefin Sans;
-    line-height: 14px;
 }
 
 /* Menu */
@@ -48,16 +48,6 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     display: grid;
     place-items: center;
 }
-#navsocial {
-    position: absolute;
-    top: 25%;
-    right: 2%;
-    display: flex;
-    align-items: center;
-}
-#navsocial a {
-    margin-left: 10px;
-}
 .navmenu {
     position: absolute;
     top: 50%;
@@ -68,6 +58,8 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     padding: 5px 16px;
     text-decoration: none;
     font-size: 12px;
+    color: #fff;
+    font-weight: 400;
 }
 .navmenu a:hover {
     background-color: #ddd;
@@ -80,31 +72,99 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     text-decoration: line-through;
     color: #000;
 }
-/* .floatmenu {
-    position:fixed;
-    bottom: 12%;
-    right: 4%;
-    z-index: 3;
-    display: block;
+
+/* Hamburger menu */
+
+.menu-btn {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
     cursor: pointer;
+    transition: all .4s ease-in-out;
 }
-.floatmenu #menu {
-    position:fixed;
-    bottom: 12%;
-    right: 4%;
-    z-index: 3;
-    display: block;
-    background-color: rgb(50, 50, 221);
-    cursor: pointer;
-    animation-name: hide;
-    animation-duration: 60ms;
-    animation-fill-mode: forwards;
-    animation-play-state: paused;
-} */
+.menu-btn__burger {
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    transition: all .4s ease-in-out;
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    transition: all .4s ease-in-out;
+}
+.menu-btn__burger::before {
+    transform: translateY(-8px);
+}
+.menu-btn__burger::after {
+    transform: translateY(8px);
+}
+.menu-btn.open .menu-btn__burger{
+    transform: translateX(-18px);
+    background: transparent;
+}
+.menu-btn.open .menu-btn__burger::before{
+    transform: rotate(45deg) translate(10px, -10px);
+}
+.menu-btn.open .menu-btn__burger::after{
+    transform: rotate(-45deg) translate(10px, 10px);
+}
+
+/* Mobile menu */
+
+.mobile-menu {
+    background-color: #242424;
+    position: fixed;
+    top: -27px;
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 1em;
+    padding: 1rem;
+    transition: .4s ease-in-out;
+}
+.mobile-menu.show {
+    top: 27px;
+    opacity: 1;
+}
+.mobile-menu a,
+.mobile-menu a:hover {
+    font-size: 1rem;
+    line-height: 2em;
+    color: #fff;
+    text-decoration: none;
+}
+.mobile-menu #menuactive,
+.mobile-menu #menuactive:hover {
+    font-size: 1rem;
+    line-height: 2em;
+    color: #000000;
+    text-decoration: none;
+}
 
 @media screen and (max-width: 980px) {
     .navmenu {
         display: none;
+    }
+    /* .mobile-menu {
+        display: flex;
+    } */
+    .menu-btn {
+        display: flex;
     }
 }
 @media screen and (max-width: 769px) {
@@ -113,23 +173,6 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     }
     #navlogo, #navsocial {
         top: 10%;
-    }
-}
-
-/* Comment Sec */
-
-.commentsec {
-    padding: 4% 20%;
-}
-.commenttext a {
-    font-size: 12px;
-    color: gray;
-    text-decoration: none;
-}
-
-@media screen and (max-width: 769px) {
-    .commentsec {
-        padding: 10% 2%;
     }
 }
 
@@ -144,16 +187,22 @@ footer {
     justify-content: space-between;
     padding: 1% 2%;
 }
-footer a {
+#footersocial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+}
+footer a,
+footer a:hover {
     color: #FFFFFF;
     font-size: 11px;
     text-decoration: none;
 }
-footer a:hover {
-    text-decoration: none;
-}
 @media screen and (max-width: 769px) {
     footer {
-        padding: 2% 1%;
+        padding: 3% 1%;
+        flex-direction: column;
+        grid-gap: 10px;
     }
 }

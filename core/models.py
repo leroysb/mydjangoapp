@@ -21,7 +21,7 @@ class Article(models.Model):
     id = models.BigAutoField(primary_key=True)
     featureimage = models.ImageField(upload_to='core/article/%Y/%m/')
     title = models.CharField(max_length = 500)
-    # tag = models.CharField(max_length=255, blank=True, null=True, default= 'untagged')
+    tags = models.CharField(max_length=500, default= 'untagged')
     category = models.ForeignKey(ArticleCategory, related_name="articles", on_delete=models.PROTECT,)
     writer = models.CharField(max_length=100, default = 'Leroy Buliro')
     credit = models.CharField(max_length = 700, blank=True, null=True)
@@ -83,6 +83,7 @@ class PodcastEpisode(models.Model):
     season = models.IntegerField()
     episode = models.IntegerField()
     title = models.CharField(max_length = 500)
+    tags = models.CharField(max_length=500, default= 'untagged')
     image = models.ImageField(upload_to='core/podcast/')
     summary = models.CharField(max_length = 500)
     description = RichTextField(config_name='full_editor', blank=True, null=True)
@@ -103,17 +104,12 @@ class Privacy(models.Model):
     date = models.DateField(auto_now_add=False)
     content = RichTextField(config_name='full_editor', blank=False, null=False)
 
-#class tagdb(models.Model):
-    #id = models.AutoField(primary_key=True)
-    #article = models.ForeignKey(blogdb, on_delete=models.CASCADE, related_name="tags", related_query_name="tag",)
-    #name = models.CharField(max_length=255)
+class ArticleComment(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    post = models.ForeignKey(Article, related_name="comments", on_delete=models.CASCADE)
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    postdate = models.DateTimeField(auto_now_add=True)
+    content = models.TextField(max_length=400, blank=False)
 
-# class ArticleComment(models.Model):
-#     id = models.BigAutoField(primary_key=True)
-#     post = models.ForeignKey(Article, related_name="comments", on_delete=models.CASCADE)
-#     name = models.ForeignKey(User, on_delete=models.CASCADE)
-#     postdate = models.DateTimeField(auto_now_add=True)
-#     body = models.TextField(max_length=400, blank=False)
-
-#     class Meta:
-#             db_table = 'article_comment'
+    class Meta:
+            db_table = 'article_comment'

@@ -5,6 +5,11 @@
     <title>{{episode.title}} | Leroy Buliro</title>
 {% endblock title %}
 
+{% block meta %}
+<meta name="description" content="{{episode.summary}}">
+<meta name="keyword" content="{{episode.tags}}">
+{% endblock meta %}
+
 {% block style %}
 <link rel="stylesheet" href="{% static 'core/episode.css' %}">
 {% endblock style %}
@@ -18,6 +23,12 @@
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
+
+{% block mobmenu %}
+    <a href="{% url 'core:index' %}">HOME</a>
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+{% endblock mobmenu %}
 
 {% block body %}
 <!-- Podcast section -->

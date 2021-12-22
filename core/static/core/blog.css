@@ -1,22 +1,17 @@
-a {
-    color: #fff;
-    font-weight: 400;
-}
 .blogpage {
-    padding: 0% 3% 4% 3%;
-    width: 100%;
+    padding: 0% 3%;
 }
 .blogpage #pagetitle {
     display: grid;
     place-items: center;
-    padding: 3% 0%;
+    margin: 2em;
 }
 #blogs {
     width: 100%;
     display: grid;
     display: -moz-grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 40px 20px;
+    grid-gap: 4% 2%;
 }
 #blogs a {
     text-decoration: none;
@@ -82,11 +77,21 @@ button {
 @media only screen and (max-width: 1024px) {
    #blogs {
         grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
+        grid-gap: 8%;
     }
 }
 
+@media only screen and (max-width: 724px) {
+    #blogs {
+         grid-template-columns: 1fr 1fr 1fr;
+         grid-gap: 4%;
+     }
+ }
+
 @media only screen and (max-width: 570px) {
+    .blogpage #pagetitle {
+        margin: 1em;
+    }
     .articlediv {
         filter: none;
     }
