@@ -31,20 +31,14 @@
 {% endblock mobmenu %}
 
 {% block body %}
-
-<div class="podpage"><!-- Podcast section -->
-
+<!-- Podcast section -->
+<div class="podpage">
 
     <div class="section1">
-
         <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;">
-        
         <section class="side">
-
             <h2>About</h2>
-
             <div id="pod-deet">{{ podcast.description | safe}}</div>
-
             <div class="dropdown">
                 <button class="dropbtn">LISTEN ON AN APP | ▼</button>
                 <div id="myDropdown" class="dropdown-content">
@@ -53,9 +47,7 @@
                     <a href="{{ podcast.spotifyurl }}" target="_blank">Spotify</a>
                 </div>
             </div>
-
         </section>
-
     </div>
 
     <div class="section2">

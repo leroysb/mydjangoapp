@@ -35,6 +35,32 @@
 
 {% block script %}
 <script src="{% static 'core/blog.js' %}"></script>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+            "@id": "#site",
+            "@type": "Website",
+            "name": "Leroy Buliro",
+            "author": "Leroy Buliro",
+            "description": "Leroy Buliro: deejay, financial advisor, writer, podcaster",
+            "url": "https://leroybuliro.com",
+            "schemaVersion": "10.0",
+            "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+        },
+        {
+            "@type": "Blog",
+            "isPartOf": "#site",
+            "name": "A-Z Logs, a blog by Leroy Buliro",
+            "description": "A-Z Logs, a blog by Leroy Buliro",
+            "url": "https://leroybuliro.com/a-z-logs",
+            "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+        }
+      ]
+    }
+</script>
 {% endblock script %}
 
 {% block navmenu %}

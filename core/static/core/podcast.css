@@ -1,5 +1,7 @@
 /* Podcast Page */
-
+.podpage h1, h2, h3 {
+    color: #FFFFFF;
+}
 .podpage .section1 {
     display: grid;
     grid-gap: 20px;
@@ -14,6 +16,7 @@
 .podpage #pod-deet p {
     font-size: 20px;
     line-height: 1.7rem;
+    color: #FFFFFF;
 }
 .dropdown {
     position: relative;
@@ -79,6 +82,7 @@
     padding: 1%;
 }
 .podpage .epi-deet {
+    color: #FFFFFF;
     position: absolute;
     bottom: 0px;
     width: 100%;
