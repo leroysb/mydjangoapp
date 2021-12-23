@@ -34,8 +34,7 @@
 {% endblock style %}
 
 {% block script %}
-<script src="{% static 'core/blog.js' %}"></script>
-
+<!-- <script src="{% static 'core/blog.js' %}"></script> -->
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -76,19 +75,17 @@
 {% endblock mobmenu %}
 
 {% block body %}
-<!-- blog section -->
 <div class="blogpage">
     
-    <div id="pagetitle">
+    <div class="centered">
         <p style="color: #fff; font-size: xx-large; font-weight: bold; text-align: center; line-height: 1rem; margin-top: 1rem;">A-Z LOGS</p>
         <p style="color: rgb(141, 141, 141); font-size: medium; font-weight: lighter; text-align: center; line-height: 1rem; margin-top: 8px;">A Leroy Buliro Blog</p>
     </div>
     
     <div id="blogs">
-        <!-- blog-post loop -->
         {% for article in articles %}
         <section class="articlediv" style="border: 1px solid #ccc; border-radius: 2%;">
-            <a href="{% url 'core:blogpost' article.id %}">
+            <a href="{% url 'core:blogpost' pk=article.id slug=article.slug %}">
                 <div style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px;">
                     <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
                     <div class="blogmeta">
@@ -102,12 +99,11 @@
         </section>
         {% endfor %}
     </div>
-    <!-- /. blog-post -->
 
-    <div style="display: flex; justify-content: center; margin: 10% 0% 8% 0%;">
+    <div class="centered">
         <button id="loadnext">SHOW MORE</button>
     </div>
 
-</div><!-- /.blog section -->
+</div>
     
 {% endblock body %}

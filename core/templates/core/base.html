@@ -34,7 +34,7 @@
     <body>
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
-                <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" width="auto" height="25">
+                <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" >
             </a>
             <div class="navmenu">
                 {% block navmenu %}
@@ -65,8 +65,8 @@
             </div>
             <a>© 2021 Leroy Buliro. All rights reserved.</a>
             <span>
-                <a href="{% url 'core:privacy' %}">Privacy Policy</a>
-                <a href="{% url 'core:terms' %}">Terms of Use</a>
+                <a href="{% url 'core:privacy' %}">Legal</a>
+                <!-- <a href="{% url 'core:terms' %}">Terms of Use</a> -->
             </span>
         </footer>
     </body>

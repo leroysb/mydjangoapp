@@ -1,33 +1,34 @@
 from django.contrib import admin
 from .models import *
 
-class mailinglistAdmin(admin.ModelAdmin):
-    list_display = ("name", "email")
-admin.site.register(mailinglist, mailinglistAdmin)
-
-class ArticleAdmin(admin.ModelAdmin):
-    list_display = ("id", "title", "category", "publishdate")
-admin.site.register(Article, ArticleAdmin)
-
-# class ArticleCommentAdmin(admin.ModelAdmin):
-#     list_display = ("id","post","body")
-# admin.site.register(ArticleComment, ArticleCommentAdmin)
-
 class ArticleCategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',),}
     list_display = ("id","name")
 admin.site.register(ArticleCategory, ArticleCategoryAdmin)
 
-class EventAdmin(admin.ModelAdmin):
-    list_display = ("id","name", "location")
-admin.site.register(Event, EventAdmin)
+class ArticleAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',),}
+    list_display = ("id", "title", "category", "publishdate")
+admin.site.register(Article, ArticleAdmin)
+
+class ArticleCommentAdmin(admin.ModelAdmin):
+    list_display = ("id","post","content")
+admin.site.register(ArticleComment, ArticleCommentAdmin)
 
 class PodcastAdmin(admin.ModelAdmin):
-    list_display = ("id","image","title", "description","appleurl", "googleurl","spotifyurl")
+    # prepopulated_fields = {'slug': ('title',),}
+    list_display = ("id","title",)
 admin.site.register(Podcast, PodcastAdmin)
 
 class PodcastEpisodeAdmin(admin.ModelAdmin):
-    list_display = ("podcast", "season", "episode", "title", "image", "summary", "description","audio", "pubDate")
+    prepopulated_fields = {'slug': ('title',),}
+    list_display = ("podcast", "season", "episode", "title",)
 admin.site.register(PodcastEpisode, PodcastEpisodeAdmin)
+
+class EventAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',),}
+    list_display = ("id","name", "location")
+admin.site.register(Event, EventAdmin)
 
 class TermsAdmin(admin.ModelAdmin):
     list_display = ("id","date", "content")

@@ -82,13 +82,12 @@
         </section>
     
         <div class="articlecontent">
-            <div class="content">{{ article.content | safe }}</div>
-            <br/>
             {% if article.credit %}
-            <p id="credit" style="color: gray;">{{ article.credit }}</p>
+            <p id="credit">{{ article.credit }}</p>
             {% else %}
             <div style="display: none;"></div>
             {% endif %}
+            <div class="content">{{ article.content | safe }}</div>
         </div>
     </article>
 

@@ -7,7 +7,6 @@
 }
 body {
     background-color: #000;
-    min-height: 100vh;
 }
 @font-face {
     font-family: Josefin Sans;
@@ -47,6 +46,10 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     left: 2%;
     display: grid;
     place-items: center;
+}
+#navlogo > img {
+    width: auto;
+    height: 27px;
 }
 .navmenu {
     position: absolute;
@@ -88,7 +91,7 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     transition: all .4s ease-in-out;
 }
 .menu-btn__burger {
-    width: 20px;
+    width: 14px;
     height: 2px;
     background: #fff;
     border-radius: 4px;
@@ -105,7 +108,7 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     transition: all .4s ease-in-out;
 }
 .menu-btn__burger::before {
-    transform: translateY(-8px);
+    transform: translateY(-8px)
 }
 .menu-btn__burger::after {
     transform: translateY(8px);
@@ -160,16 +163,13 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     .navmenu {
         display: none;
     }
-    /* .mobile-menu {
-        display: flex;
-    } */
     .menu-btn {
         display: flex;
     }
 }
 @media screen and (max-width: 769px) {
     .topnav {
-        height: 30px;
+        height: 33px;
     }
     #navlogo, #navsocial {
         top: 10%;
@@ -179,6 +179,8 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 /* Footer */
 
 footer {
+    position: static;
+    bottom: 0;
     width: 100%;
     border-top: 1px solid silver;
     display: flex;

@@ -1,0 +1,104 @@
+.episodepage p, span {
+    font-size: 14px;
+    line-height: 1.7rem;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+.episodepage h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+}
+.episodepage {
+    padding: 0% 20% 9% 20%;
+    background-color: #000;
+}
+.episodepage .back_btn {
+    padding: 4em 0em 1.7em 0em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    text-decoration: none;
+    margin: 0em;
+}
+.episodepage .row {  
+    display: flex;
+    flex-wrap: wrap;
+}
+.episodepage .side {
+    flex: 40%;
+    padding-right: 3%;
+}
+.episodepage .main {
+    flex: 60%;
+}
+.episodepage .epi-content {
+    display: block;
+}
+
+/* Podcast Episode Page Player */
+
+.episodepage .controls {
+    /* float: left; */
+    align-items: center;
+    display: flex;
+    margin: 0;
+    margin: 4% 0%;
+}
+.episodepage .controls .pButton {
+    cursor: pointer;
+    padding: 0;
+    margin-right: 7px;
+    width: 40px; 
+    height: 40px;
+}
+.episodepage #timeline {
+    width: 90%;
+    height: 2px;
+    margin: 4% 0%;
+    float: left;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background: rgba(252, 250, 250, 0.678);
+}
+.episodepage #playhead {
+    width: 8px;
+    height: 8px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin-top: -3px;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+.episodepage .timer {
+    font-family: monospace;
+    color: #FFFFFF;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 769px) {
+    .episodepage {
+        padding: 0% 2% 10% 2%;
+    }
+    .episodepage .back_btn {
+        padding: 3em 0em 1.4em 0em;
+    }
+    .episodepage .row {   
+        flex-direction: column;
+    }
+    .episodepage .side {
+        /* width: 100%; */
+        padding-bottom: 10%;
+    }
+    .episodepage .epi-content p {
+        font-size: 14px;
+    }
+    .episodepage #timeline {
+        width: 100%;
+    }
+    .episodepage .timer {
+        font-size: 14px;
+    }
+}

@@ -55,7 +55,7 @@
         <div class="container">
             {% for episode in podcast.episodes.all %}
             <div class="podcast-epi">
-                <a href="{% url 'core:episode' episode.id %}">
+                <a href="{% url 'core:episode' s=episode.season e=episode.id slug=episode.slug %}">
                     <img src="{{ episode.image.url }}" alt="{{ episode.title }}" style="width: 100%; height: auto;">
                     <p class="epi-id">#{{ episode.id }}</p>
                     <p class="epi-deet">{{ episode.title }}</p>

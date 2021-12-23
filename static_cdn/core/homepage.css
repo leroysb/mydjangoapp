@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+@font-face {
+    font-family: Josefin Sans;
+    src: url('/static/core/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Indie;
+    src: url('/static/core/fonts/IndieFlower-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Permanent Marker;
+    src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: 700;
+}
+body {
+    background-color: #000000;
+}
+#content {
+    position: relative;
+    height: 100vh;
+}
+#imagediv {
+    position: absolute;
+    top: 17%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+#image {
+    border-radius: 50%;
+    border: 1px #c2c2c2b9 solid;
+    max-width: 7em;
+    padding: 0.3em;
+}
+#links {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-gap: 10px;
+}
+a {
+    font-family: Indie;
+    font-size: 20px;
+    /* font-weight: 900; */
+    line-height: 1rem;
+    text-decoration: none;
+    color: #ffd900;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+    font-size: 24px;
+}
