@@ -176,9 +176,9 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Footer */
+/* Bottom */
 
-footer {
+.bottom {
     border-top: 1px solid silver;
     display: flex;
     flex-direction: row;
@@ -192,16 +192,82 @@ footer {
     justify-content: center;
     grid-gap: 10px;
 }
-footer a,
-footer a:hover {
+.bottom a,
+.bottom a:hover {
     color: #FFFFFF;
     font-size: 11px;
     text-decoration: none;
 }
 @media screen and (max-width: 769px) {
-    footer {
+    .bottom {
         padding: 3% 1%;
         flex-direction: column;
         grid-gap: 10px;
+    }
+}
+
+/* Footer player */
+
+footer {
+    background-color: #1b1b1bf5;
+    position: sticky;
+    bottom: 0;
+    padding: 1% 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-gap: 8px;
+}
+
+.footerimage {
+    width: 54px;
+    height: 54px;
+    padding: 4px;
+    object-fit: cover;
+}
+.footerimage img {
+    width: auto;
+    height: 100%;
+}
+#footer-episode img {
+    border-radius: 7px;
+}
+
+.timer {
+    position: absolute;
+    left: -0.8;
+    top: 7;
+    font-family: monospace;
+    color: #FFFFFF;
+}
+.duration {
+    position: absolute;
+    right: 1%;
+    top: 4;
+    font-family: monospace;
+    color: #FFFFFF;
+}
+#timeline {
+    width: 100%;
+    position: relative;
+    height: 2px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background: #ffffffab;
+}
+#playhead {
+    /* bottom: 40; */
+    width: 8px;
+    height: 8px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin-top: -3px;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 769px) {
+    footer {
+        padding: 2%;
     }
 }

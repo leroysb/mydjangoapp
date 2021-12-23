@@ -27,7 +27,7 @@
 }
 #blogs .blogimage {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 #blogs .blogmeta {
     margin: 2% 0% 0% 0%;

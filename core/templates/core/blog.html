@@ -1,4 +1,4 @@
-{% extends "core\base.html" %}
+{% extends "core\blogbase.html" %}
 
 {% load static %}
 
@@ -64,13 +64,13 @@
 
 {% block navmenu %}
     <a href="{% url 'core:index' %}">HOME</a>
-    <a id="menuactive">BLOG</a>
+    <a class="menuactive">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
 {% block mobmenu %}
     <a href="{% url 'core:index' %}">HOME</a>
-    <a id="menuactive">BLOG</a>
+    <a class="menuactive">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock mobmenu %}
 
@@ -87,7 +87,9 @@
         <section class="articlediv" style="border: 1px solid #ccc; border-radius: 2%;">
             <a href="{% url 'core:blogpost' pk=article.id slug=article.slug %}">
                 <div style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px;">
-                    <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                    <div style="width: 100%; height: auto; object-fit: cover;">
+                        <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
+                    </div>
                     <div class="blogmeta">
                         <p class="blogcategory">{{ article.category }}</p>
                         <h3 class="blogtitle">{{ article.title }}</h3>

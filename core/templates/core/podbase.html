@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="icon" type="image/png" href="{% static 'core/icons/lb.jpg' %}">
+
+        <!-- meta author -->
+        <meta name="author" content="Leroy Buliro">
+
+        <!-- site meta tags-->
+        {% block meta %}
+        {% endblock meta %}
+
+        <meta name="docsearch:language" content="en">
+        <link rel="canonical" href="https://leroybuliro.com/">
+
+        <!-- Load css file -->
+        <link rel="stylesheet" href="{% static 'core/podbase.css' %}">
+        {% block style %}
+        {% endblock style %}
+
+        <!-- Load js file -->
+        <!-- <script src="{% static 'core/base.js' %}"></script> -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+
+                const menuBtn = document.querySelector('.menu-btn');
+                let menuOpen = false;
+                
+                menuBtn.addEventListener('click', () => {
+                    const mobMenu = document.querySelector('.mobile-menu');
+                    
+                    if(!menuOpen){
+                        menuBtn.classList.add('open');
+                        mobMenu.classList.add('show');
+                        menuOpen= true;
+                    } else {
+                        menuBtn.classList.remove('open');
+                        mobMenu.classList.remove('show');
+                        menuOpen = false;
+                    }
+                });
+            });
+        </script>
+        {% block script %}
+        {% endblock script %}
+    </head>
+
+    <body>
+        <nav class="topnav">
+            <a id="navlogo" href="{% url 'core:index' %}">
+                <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" >
+            </a>
+            <div class="navmenu">
+                {% block navmenu %}
+                {% endblock navmenu %}
+            </div>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+        </nav>
+
+        <div class="mobile-menu">
+
+            {% block mobmenu %}
+            {% endblock mobmenu %}
+
+            {% if user.is_authenticated %}
+                <a href="#">ACCOUNT</a>
+            {% else %}
+                <a href="#">SIGN IN</a>
+            {% endif %}
+
+        </div>
+
+        {% block body %}
+        {% endblock body %}
+    
+        <div class="bottom">
+            <div id="footersocial">
+                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT.png' %}" alt="twitter" width="auto" height="22" ></a>
+                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG.png' %}" alt="instagram" width="auto" height="22" ></a>
+            </div>
+            <a>© 2021 Leroy Buliro. All rights reserved.</a>
+            <span>
+                <a href="{% url 'core:privacy' %}">Legal</a>
+            </span>
+        </div>
+
+        <footer>
+            <div id="footer-episode" class="footerimage">
+                {% if podcast %}
+                <img src="{{ podcast.image.url }}" alt="play episode">
+                {% else %}
+                <img src="{{ episode.image.url }}" alt="play episode">
+                {% endif %}
+            </div>
+            
+            
+            <div id="timeline">
+                <div id="playhead"></div>
+                <div class="timer">00:00</div>
+                <div class="duration">00:00</div>
+            </div>
+
+            <div id="footer-pButton" class="footerimage">
+                <img src="{% static 'core/icons/play_filled_white.png' %}" alt="play episode">
+            </div>
+        </footer>
+
+    </body>
+</html>

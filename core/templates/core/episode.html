@@ -1,4 +1,4 @@
-{% extends "core\base.html" %}
+{% extends "core\podbase.html" %}
 {% load static %}
 
 {% block title %}
@@ -34,11 +34,6 @@
 <!-- Podcast section -->
 
 <div class="episodepage">
-    
-    <div class="back_btn">
-        <img src="{% static 'core/icons/back_white.png' %}" alt="more episodes" width="27" height="27"/>
-        <a href="{% url 'core:podcast' %}" style="text-decoration: none; font-size: small;" >MORE EPISODES</a>
-    </div>
 
     <div class="row">
         <div class="side">
@@ -46,10 +41,10 @@
         </div>
 
         <div class="main">
-            <span style="color: gray;">{{ episode.pubDate }}</span>
-            <h5 style="color: white; padding-bottom: 4%;">{{ episode.title }}</h5>
+            <p style="color: gray;">{{ episode.pubDate }}</p>
+            <h3 style="color: white; padding-bottom: 4%;">{{ episode.title }}</h3>
             <div class="epi-content">
-                <span>DESCRIPTION</span>
+                <h4>DESCRIPTION</h4>
                 <p>{{ episode.summary }}</p>
 
                 <audio id="episodeaudio" preload="true" >
@@ -60,12 +55,6 @@
                     <img class="pButton"  id="rev" src="{% static 'core/icons/replay_10.png' %}" alt="replay 10 seconds">
                     <img  class="pButton" id="pButton" src="{% static 'core/icons/play.png' %}" alt="play episode">
                     <img class="pButton" id="fwd" src="{% static 'core/icons/forward_30.png' %}" alt="forward 30 seconds">
-                </div>
-
-                <div id="timeline">
-                    <div id="playhead"></div>
-                    <div class="timer"></div>
-                    <div class="Audio_durationTime"></div>
                 </div>
 
 
