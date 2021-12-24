@@ -232,35 +232,14 @@
                 <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" width="200" height="auto">
             </a>
             <div class="navmenu">
-                <!--a id="menuactive">HOME</a-->
+                <a href="{% url 'core:index' %}">HOME</a>
                 <a href="{% url 'core:blogpage' %}">BLOG</a>
                 <a href="{% url 'core:podcast' %}">PODCAST</a>
-                <a href="{% url 'core:events' %}">GIGS</a>
             </div>
             <div id="navsocial">
                 <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT.png' %}" alt="twitter" width="20" height="20" ></a>
                 <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG.png' %}" alt="instagram" width="20" height="20" ></a>
-            </div-->
-            
-            <!-- <div id="floatmenu">
-                <img id="menubtn" src="{% static 'core/icons/mobmenu.png' %}" alt="menu" class="center" width="40" length="40" style="float: left;">
-                <div id="menu" style="text-align: center; padding: 2% 5% 0% 5%;">
-                    <div style="margin-bottom: 40%;">
-                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:index' %}">HOME</a>
-                    </div>
-                    <div style="margin-bottom: 40%;">
-                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:blogpage' %}" >BLOG</a>
-                    </div>
-                    <div style="margin-bottom: 40%;">
-                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:podcast' %}" >PODCAST</a>
-                    </div>
-                    <div style="margin-bottom: 40%;">
-                        <a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'core:events' %}">GIGS</a>
-                    </div style="margin-bottom: 20%;">
-                        <p id="menuclose"  style="font-size: x-large;"><strong>X</strong></p>
-                    </div>
-                </div>
-            </div> -->
+            </div>
         </nav>
 
         <div class="pagesec">

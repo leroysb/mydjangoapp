@@ -1,29 +1,16 @@
-.episodepage p, span {
+.episodepage {
     font-size: 14px;
+    font-family: CrimsonPro;
     line-height: 1.7rem;
-    color: #FFFFFF;
-    margin: 0;
-    padding: 0;
+    background-color: #e7e7e7;
 }
 .episodepage h1, h2, h3, h4, h5, h6 {
-    color: #FFFFFF;
-}
-.episodepage {
-    padding: 0% 20% 9% 20%;
-    background-color: #000;
-}
-.episodepage .back_btn {
-    padding: 4em 0em 1.7em 0em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    text-decoration: none;
-    margin: 0em;
+    color: #000;
 }
 .episodepage .row {  
     display: flex;
     flex-wrap: wrap;
+    padding: 4vh 40vw;
 }
 .episodepage .side {
     flex: 40%;
@@ -33,7 +20,9 @@
     flex: 60%;
 }
 .episodepage .epi-content {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
 }
 
 /* Podcast Episode Page Player */
@@ -79,14 +68,9 @@
 }
 
 @media screen and (max-width: 769px) {
-    .episodepage {
-        padding: 0% 2% 10% 2%;
-    }
-    .episodepage .back_btn {
-        padding: 3em 0em 1.4em 0em;
-    }
     .episodepage .row {   
         flex-direction: column;
+        padding: 4vh 2vw;
     }
     .episodepage .side {
         /* width: 100%; */

@@ -199,9 +199,9 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 .bottom a,
 .bottom a:hover {
-    font-weight: 600;
+    font-weight: 500;
     color: #000000;
-    font-size: 11px;
+    font-size: 12px;
     text-decoration: none;
 }
 @media screen and (max-width: 769px) {
@@ -289,7 +289,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
-    padding: 0% 10% 40vh 10%;
+    padding: 0% 10% 200px 10%;
 }
 #side {
     display: grid;
@@ -343,7 +343,7 @@ footer {
 }
 .section2 {
     background-color: #e7e7e7;
-    padding: 10vh 10vw 4vh 10vw;
+    padding: 10vh 10vw 17vh 10vw;
 }
 .container {
     display: grid;
@@ -362,6 +362,14 @@ footer {
     background-color: #000;
     padding: 4px;
 }
+.epi-play {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
 .epi-deet {
     color: #FFFFFF;
     position: absolute;
@@ -372,7 +380,7 @@ footer {
     padding: 1em;
 }
 
-@media screen and (max-width: 690px) {
+@media screen and (max-width: 541px) {
     .podpage {
         margin: 0 0 0 0;
     }
@@ -389,10 +397,10 @@ footer {
         line-height: 1.4rem;
     }
     .dropdown-content {
-        min-width: 40%;
+        min-width: 49%;
     }
     .section2 {
-        padding: 7vh 1vw;
+        padding: 7vh 1vw 14vh 1vw;
     }
     .container {
         grid-template-columns: 1fr 1fr;
@@ -400,8 +408,14 @@ footer {
     .epi-id {
         top: 7px;
         left: 7px;
-        font-size: 18px;
+        font-size: 20px;
         padding: 1px 4px;
+    }
+    .epi-play {
+        top: 7px;
+        right: 7px;
+        width: 40px;
+        height: 40px;
     }
     .epi-deet {
         bottom: 0px;
@@ -410,7 +424,10 @@ footer {
         line-height: 1.4;
     }
 }
-@media screen and (max-width: 769px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+    #intro {
+        padding: 0% 10% 20vh 10%;
+    }
     .container {
         grid-template-columns: 1fr 1fr;
     }
@@ -431,7 +448,7 @@ footer {
     position: relative;
     display: block;
     width: calc(144% + 1.3px);
-    height: 245px;
+    height: 140px;
     transform: rotateY(180deg);
 }
 

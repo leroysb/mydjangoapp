@@ -1,14 +1,5 @@
 document.addEventListener ('DOMContentLoaded', function(){
 
-    document.querySelector('.episodepage').addEventListener('load', getHeight);
-    
-    function getHeight() {
-        let height = screen.availHeight;
-        let width = screen.availWidth;
-        document.querySelector('.episodepage').style.height = height;
-        document.querySelector('.episodepage').style.width = width;
-    };
-
     /* PODCAST PLAYER*/
 
     const audio = document.querySelector('#episodeaudio');
