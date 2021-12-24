@@ -2,19 +2,15 @@
     font-size: 14px;
     font-family: CrimsonPro;
     line-height: 1.7rem;
-    color: #FFFFFF;
+    background-color: #e7e7e7;
 }
 .episodepage h1, h2, h3, h4, h5, h6 {
-    color: #FFFFFF;
-}
-.episodepage {
-    margin: 7vh 0;
-    padding: 0% 20%;
-    background-color: #000;
+    color: #000;
 }
 .episodepage .row {  
     display: flex;
     flex-wrap: wrap;
+    padding: 4vh 40vw;
 }
 .episodepage .side {
     flex: 40%;
@@ -71,13 +67,10 @@
     margin: 0;
 }
 
-@media screen and (max-width: 690px) {
-    .episodepage {
-        margin: 2vh 0;
-        padding: 0% 2%;
-    }
+@media screen and (max-width: 769px) {
     .episodepage .row {   
         flex-direction: column;
+        padding: 4vh 2vw;
     }
     .episodepage .side {
         /* width: 100%; */

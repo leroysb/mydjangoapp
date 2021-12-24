@@ -10,6 +10,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
     os.environ.get('LocalNetwork'),
+    'localhost',
 ]
 
 

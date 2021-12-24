@@ -1,72 +1,141 @@
-{% extends "core\podbase.html" %}
 {% load static %}
 
-{% block title %}
-<title>{{podcast.title}} | Leroy Buliro</title>
-{% endblock title %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block meta %}
-<meta name="description" content="{{podcast.description}}">
-<meta name="keyword" content="{{podcast.tags}}">
-{% endblock meta %}
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="icon" type="image/png" href="{% static 'core/icons/lb.jpg' %}">
 
-{% block style %}
-<link rel="stylesheet" href="{% static 'core/podcast.css' %}">
-{% endblock style %}
+        <!-- meta -->
+        <title>{{podcast.title}} | Leroy Buliro</title>
+        <meta name="description" content="{{podcast.description}}">
+        <meta name="keyword" content="{{podcast.tags}}">
+        <meta name="author" content="Leroy Buliro">
 
-{% block script %}
-<script src="{% static 'core/podcast.js' %}"></script>
-{% endblock script %}
+        <!-- site meta tags-->
+        {% block meta %}
+        {% endblock meta %}
 
-{% block navmenu %}
-    <a href="{% url 'core:index' %}">HOME</a>
-    <a href="{% url 'core:blogpage' %}">BLOG</a>
-    <a class="menuactive">PODCAST</a>
-{% endblock navmenu %}
+        <meta name="docsearch:language" content="en">
+        <link rel="canonical" href="https://leroybuliro.com/">
 
-{% block mobmenu %}
-    <a href="{% url 'core:index' %}">HOME</a>
-    <a href="{% url 'core:blogpage' %}">BLOG</a>
-    <a class="menuactive">PODCAST</a>
-{% endblock mobmenu %}
+        <!-- Load css file -->
+        <link rel="stylesheet" href="{% static 'core/podcast.css' %}">
+        {% block style %}
+        {% endblock style %}
 
-{% block body %}
-<div class="podpage">
+        <!-- Load js file -->
+        <script src="{% static 'core/podcast.js' %}"></script>
+        {% block script %}
+        {% endblock script %}
+    </head>
 
-    <section id="intro">
-        <div style="width: 100%; height: auto; object-fit: fill;">
-            <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: 100%;">
+    <body>
+        <nav class="topnav">
+            <a id="navlogo" href="{% url 'core:index' %}">
+                <img src="{% static 'core/icons/atlbwhite.png' %}" alt="mail" >
+            </a>
+            <div class="navmenu">
+                <a href="{% url 'core:index' %}">HOME</a>
+                <a href="{% url 'core:blogpage' %}">BLOG</a>
+                <a class="menuactive">PODCAST</a>
+            </div>
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+        </nav>
+
+        <div class="mobile-menu">
+
+            <a href="{% url 'core:index' %}">HOME</a>
+            <a href="{% url 'core:blogpage' %}">BLOG</a>
+            <a class="menuactive">PODCAST</a>
+
+            {% if user.is_authenticated %}
+                <a href="#">ACCOUNT</a>
+            {% else %}
+                <a href="#">SIGN IN</a>
+            {% endif %}
+
         </div>
-        <div id="side">
-            <h2 style="color: #fff;">About</h2>
-            <div id="pod-deet">{{ podcast.description | safe}}</div>
-            <div class="dropdown">
-                <button class="dropbtn">LISTEN ON AN APP | ▼</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="{{ podcast.appleurl }}" target="_blank">Apple Podcasts</a>
-                    <a href="{{ podcast.googleurl }}" target="_blank">Google Podcasts</a>
-                    <a href="{{ podcast.spotifyurl }}" target="_blank">Spotify</a>
+
+        <div class="podpage">
+
+            <section id="intro">
+                <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;">
+                <div id="side">
+                    <h2 style="color: #fff;">About</h2>
+                    <div id="pod-deet">{{ podcast.description | safe}}</div>
+                    <div class="dropdown">
+                        <button class="dropbtn">LISTEN ON AN APP | ▼</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="{{ podcast.appleurl }}" target="_blank">Apple Podcasts</a>
+                            <a href="{{ podcast.googleurl }}" target="_blank">Google Podcasts</a>
+                            <a href="{{ podcast.spotifyurl }}" target="_blank">Spotify</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="curve">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+                    </svg>
+                </div>
+            </section>
+            
+            
+            <div class="section2">
+                <h3 style="color: #000; text-decoration: underline; margin: 0 0 30px 0;">Episodes</h3>
+                <div class="container">
+                    {% for episode in podcast.episodes.all %}
+                    <div class="podcast-epi">
+                        <a href="{% url 'core:episode' s=episode.season e=episode.id slug=episode.slug %}">
+                            <img src="{{ episode.image.url }}" alt="{{ episode.title }}" style="width: 100%; height: auto;">
+                            <p class="epi-id">#{{ episode.id }}</p>
+                            <p class="epi-deet">{{ episode.title }}</p>
+                        </a>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
+        
         </div>
-    </section>
-
-    <div class="section2">
-        <h3 style="color: white; text-decoration: underline; padding: 0em 0em 2em 0em;">Episodes</h3>
-        <div class="container">
-            {% for episode in podcast.episodes.all %}
-            <div class="podcast-epi">
-                <a href="{% url 'core:episode' s=episode.season e=episode.id slug=episode.slug %}">
-                    <img src="{{ episode.image.url }}" alt="{{ episode.title }}" style="width: 100%; height: auto;">
-                    <p class="epi-id">#{{ episode.id }}</p>
-                    <p class="epi-deet">{{ episode.title }}</p>
-                </a>
+    
+        <div class="bottom">
+            <div id="footersocial">
+                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconTT-black.png' %}" alt="twitter" width="auto" height="22" ></a>
+                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/icons/iconIG-black.png' %}" alt="instagram" width="auto" height="22" ></a>
             </div>
-            {% endfor %}
+            <a>© 2021 Leroy Buliro. All rights reserved.</a>
+            <span>
+                <a href="{% url 'core:privacy' %}">Legal</a>
+            </span>
         </div>
-    </div>
 
-</div>
-<!-- / Podcast section -->
+        <footer>
+            <div id="footer-episode" class="footerimage">
+                {% if podcast %}
+                <img src="{{ podcast.image.url }}" alt="play episode">
+                {% else %}
+                <img src="{{ episode.image.url }}" alt="play episode">
+                {% endif %}
+            </div>
+            
+            
+            <div id="timeline">
+                <div id="playhead"></div>
+                <div class="timer">00:00</div>
+                <div class="duration">00:00</div>
+            </div>
 
-{% endblock body %}
+            <div id="footer-pButton" class="footerimage">
+                <img src="{% static 'core/icons/play_filled_white.png' %}" alt="play episode">
+            </div>
+        </footer>
+
+    </body>
+</html>

@@ -1,4 +1,4 @@
-{% extends "core\podbase.html" %}
+{% extends "core\podcast.html" %}
 {% load static %}
 
 {% block title %}
@@ -37,12 +37,12 @@
 
     <div class="row">
         <div class="side">
-            <img src="{{ episode.image.url }}" alt="{{episode.title}}" style="width: 80%; height: auto;">
+            <img src="{{ episode.image.url }}" alt="{{episode.title}}" style="width: 100%; height: 100%">
         </div>
 
         <div class="main">
             <p style="color: gray;">{{ episode.pubDate }}</p>
-            <h3 style="color: white; padding-bottom: 4%;">{{ episode.title }}</h3>
+            <h3 style="padding-bottom: 4%;">{{ episode.title }}</h3>
             <div class="epi-content">
                 <h4>DESCRIPTION</h4>
                 <p>{{ episode.summary }}</p>
