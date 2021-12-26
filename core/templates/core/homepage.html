@@ -51,27 +51,24 @@
     </head>
 
     <body>
-        <div id="content">
-            <div id="imagediv">
-                <img id="image" src="{% static 'core/icons/about.jpg' %}" alt="leroy">
-            </div>
-            <div id="links">
-                <a href="{% url 'core:blogpage' %}" >BLOG</a>
-                <a href="{% url 'core:podcast' %}" >PODCAST</a>
-                <a href="https://calendly.com/lerbfinancial/consultation/" >BOOK A FINANCIAL CONSULTATION</a>
-                <a href="#" >SIGN IN</a>
+        <div class="container">
+            <div class="content">
+                
+                <section>
+                    <div id="imagediv">
+                        <img id="image" src="{% static 'core/icons/about.jpg' %}" alt="leroy">
+                    </div>
+                    <div id="links">
+                        <a href="{% url 'core:blogpage' %}" >BLOG</a>
+                        <a href="{% url 'core:podcast' %}" >PODCAST</a>
+                        <!-- <a href="https://calendly.com/lerbfinancial/consultation/" >BOOK A FINANCIAL CONSULTATION</a> -->
+                        <a href="#" >SIGN IN</a>
+                    </div>
+                </section>
+
+                <video src="{% static 'core/videos/hpvid3.mp4' %}" autoplay muted loop></video>
+
             </div>
         </div>
-        <!-- <script>
-            document.querySelector('#content').addEventListener('load', GetDim());
-                
-                function GetDim(){
-                    let height = window.innerHeight
-                    let width = window.innerWidth
-                    document.querySelector('#content').style.height = height+'px'
-                    document.querySelector('#content').style.width = width+'px'
-                };
-        </script> -->
-        
     </body>
 </html>

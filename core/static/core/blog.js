@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
         for(var i = 0 ; i < next; i++){
             if(currentindex >= articlediv.length) {
                 document.querySelector('#loadnext').style.display='none';
-                return
             } else {
                 articlediv[i+currentindex].style.display = 'block';
             }

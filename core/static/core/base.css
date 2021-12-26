@@ -179,7 +179,6 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 /* Footer */
 
 footer {
-    position: relative;
     border-top: 1px solid silver;
     display: flex;
     flex-direction: row;
@@ -189,8 +188,6 @@ footer {
 }
 #footersocial {
     display: flex;
-    align-items: center;
-    justify-content: center;
     grid-gap: 10px;
 }
 footer a,
