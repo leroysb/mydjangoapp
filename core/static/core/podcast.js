@@ -51,13 +51,13 @@ document.addEventListener ('DOMContentLoaded', function(){
     function setLoad() {
         document.querySelectorAll('#pButton1').forEach((pButton1) => {
             pButton1.alt="play episode";
-            pButton1.src="/static/core/icons/playnow.png";
+            pButton1.src="/static/core/media/playnow.png";
             pButton1.addEventListener('click', PlayPodcast());
         })
 
         const pButton3 = document.querySelector('#pButton3');
         pButton3.alt="play episode";
-        pButton3.src = "/static/core/icons/play.png";
+        pButton3.src = "/static/core/media/play.png";
     };
 
     //Player Controls
@@ -68,13 +68,13 @@ document.addEventListener ('DOMContentLoaded', function(){
             document.querySelectorAll('.episodeaudio').forEach((audio));
             audio[i].play();
             pButton1[i].alt="pause episode";
-            pButton1[i].src="/static/core/icons/pausenow.png";
+            pButton1[i].src="/static/core/media/pausenow.png";
             pButton1[i].addEventListener('click', PausePodcast());
         })
 
         const pButton3 = document.querySelector('#pButton3');
         pButton3.alt="pause episode";
-        pButton3.src = "/static/core/icons/pause.png";
+        pButton3.src = "/static/core/media/pause.png";
     };
     
     function PausePodcast() {
@@ -83,13 +83,13 @@ document.addEventListener ('DOMContentLoaded', function(){
             document.querySelectorAll('.episodeaudio').forEach((audio));
             audio[i].pause()
             pButton1[i].alt="lay episode";
-            pButton1[i].src="/static/core/icons/playnow.png";
+            pButton1[i].src="/static/core/media/playnow.png";
             pButton1[i].addEventListener('click', PlayPodcast());
         })
 
         const pButton3 = document.querySelector('#pButton3');
         pButton3.alt="play episode";
-        pButton3.src = "/static/core/icons/play.png";
+        pButton3.src = "/static/core/media/play.png";
     };
 
     
