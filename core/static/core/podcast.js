@@ -19,7 +19,7 @@ document.addEventListener ('DOMContentLoaded', function(){
         }
     });
 
-    /* HOME PAGE*/
+    /* Dropdown */
 
     document.querySelector('.dropbtn').onclick = ()=> {
         document.querySelector('#myDropdown').classList.toggle('show')
@@ -43,64 +43,54 @@ document.addEventListener ('DOMContentLoaded', function(){
     /* PODCAST PAGE*/
 
 
-    const audio = document.querySelector('#episodeaudio');
-    const pButton = document.querySelector('.pButton');
-    const pause = document.querySelector('.pause');
-    const play = document.querySelector('.play');
-    const duration = audio.duration; // Duration of audio clip, calculated here for embedding purposes
-    const rev = document.querySelector('#rev');
-    const fwd = document.querySelector('#fwd');
+    // const pButton2 = document.querySelector('#pButton2');
+    // const audio = document.querySelectorAll('#episodeaudio');
+    
+    document.querySelector('.podpage').addEventListener('load', setLoad());
+    
+    function setLoad() {
+        document.querySelectorAll('#pButton1').forEach((pButton1) => {
+            pButton1.alt="play episode";
+            pButton1.src="/static/core/icons/playnow.png";
+            pButton1.addEventListener('click', PlayPodcast());
+        })
 
-    pButton.addEventListener("click", PausePlayEpisode);
-    pause.addEventListener("click", PauseEpisode);
-    play.addEventListener("click", PlayEpisode);
-    rev.addEventListener("click", mediaBackward);
-    fwd.addEventListener("click", mediaForward);
-
-    // audio.addEventListener('load', (event) => {
-    //     pButton.src="{% static 'blogapp/icons/pause.png' %}";
-    //     pButton.src="pause episode";
-    //     pButton.addEventListener('click', PlayPausePodcast);
-    // });
+        const pButton3 = document.querySelector('#pButton3');
+        pButton3.alt="play episode";
+        pButton3.src = "/static/core/icons/play.png";
+    };
 
     //Player Controls
 
-    function PausePlayEpisode() {
-        // start podcast
-        if (audio.paused) {
-            audio.play();
-            pButton.src="{% static 'blogapp/icons/pause.png' %}";
-        } else {
-            audio.pause();
-            pButton.src="{% static 'blogapp/icons/play.png' %}";
-        }
-    }
+    function PlayPodcast() {
 
-    function PauseEpisode() {
-        audio.pause();
-        pButton.src="{% static 'blogapp/icons/play.png' %}";
-    }
+        document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
+            document.querySelectorAll('.episodeaudio').forEach((audio));
+            audio[i].play();
+            pButton1[i].alt="pause episode";
+            pButton1[i].src="/static/core/icons/pausenow.png";
+            pButton1[i].addEventListener('click', PausePodcast());
+        })
 
-    function PlayEpisode() {
-        audio.play();
-        pButton.src="{% static 'blogapp/icons/pause.png' %}";
-    }
+        const pButton3 = document.querySelector('#pButton3');
+        pButton3.alt="pause episode";
+        pButton3.src = "/static/core/icons/pause.png";
+    };
+    
+    function PausePodcast() {
 
-    function mediaBackward() {
-        if(audio.currentTime <= 10) {
-            stopMedia();
-        } else {
-            audio.currentTime -= 10;
-        }
-    }
+        document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
+            document.querySelectorAll('.episodeaudio').forEach((audio));
+            audio[i].pause()
+            pButton1[i].alt="lay episode";
+            pButton1[i].src="/static/core/icons/playnow.png";
+            pButton1[i].addEventListener('click', PlayPodcast());
+        })
 
-    function mediaForward() {
-        if(audio.currentTime >= audio.duration - 30) {
-            stopMedia();
-        } else {
-            audio.currentTime += 30;
-        }
-    }
+        const pButton3 = document.querySelector('#pButton3');
+        pButton3.alt="play episode";
+        pButton3.src = "/static/core/icons/play.png";
+    };
 
     
     // const podcast = document.querySelector('#podcast'); // id for audio element
