@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-        <link rel="icon" type="image/png" href="{% static 'core/media/lb.jpg' %}">
+        <link rel="icon" type="image/png" href="{% static 'core/media/fbl.jpg' %}">
 
         <!-- meta author -->
         <meta name="author" content="Leroy Buliro">
@@ -21,7 +21,7 @@
         <link rel="canonical" href="https://leroybuliro.com/">
 
         <!-- Load css file -->
-        <link rel="stylesheet" href="{% static 'core/base.css' %}">
+        <link rel="stylesheet" href="{% static 'core/blogbase.css' %}">
         {% block style %}
         {% endblock style %}
 
@@ -34,11 +34,14 @@
     <body>
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
-                <img src="{% static 'core/media/atlbwhite.png' %}" alt="mail" >
+                <img src="{% static 'core/media/atlbwhite.png' %}" alt="logo" >
             </a>
             <div class="navmenu">
                 {% block navmenu %}
                 {% endblock navmenu %}
+            </div>
+            <div class="access">
+                <button>Sign in</button>
             </div>
             <div class="menu-btn">
                 <div class="menu-btn__burger"></div>
@@ -65,7 +68,7 @@
             </div>
             <a>© 2021 Leroy Buliro. All rights reserved.</a>
             <span>
-                <a href="{% url 'core:privacy' %}">Legal</a>
+                <a href="{% url 'core:legal' %}">Legal</a>
             </span>
         </footer>
     </body>

@@ -3,10 +3,10 @@
 {% load static %}
 
 {% block title %}
-    <title>A-Z Logs, a blog by Leroy Buliro</title>
 {% endblock title %}
 
 {% block meta %}
+<title>A-Z Logs, a blog by Leroy Buliro</title>
 <meta name="description" content="A-Z Logs, a blog by Leroy Buliro">
 <meta name="keyword" content="Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture">
 
@@ -64,13 +64,13 @@
 
 {% block navmenu %}
     <a href="{% url 'core:index' %}">HOME</a>
-    <a class="menuactive">BLOG</a>
+    <a id="menuactive">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
 {% block mobmenu %}
     <a href="{% url 'core:index' %}">HOME</a>
-    <a class="menuactive">BLOG</a>
+    <a id="menuactive">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock mobmenu %}
 
@@ -78,8 +78,8 @@
 <div class="blogpage">
     
     <div class="centered">
-        <p style="color: #fff; font-family: CrimsonPro; font-size: xx-large; font-weight: bold; text-align: center; line-height: 1rem; margin-top: 1rem;">A-Z LOGS</p>
-        <p style="color: rgb(141, 141, 141); font-size: medium; font-weight: lighter; text-align: center; line-height: 1rem; margin-top: 8px;">A Leroy Buliro Blog</p>
+        <p style="color: #fff; font-family: CrimsonPro; font-size:40px; font-weight: bold; text-align: center; line-height: 1rem; margin-top: 1rem;">A-Z LOGS</p>
+        <p style="color: rgb(141, 141, 141); font-size: medium; font-weight: lighter; text-align: center; line-height: 1rem; margin-top: 12px;">A Leroy Buliro Blog</p>
     </div>
     
     <div id="blogs">

@@ -46,10 +46,10 @@ document.addEventListener ('DOMContentLoaded', function(){
         // start podcast
         if (audio.paused) {
             audio.play();
-            pButton.src="{% static 'core/icons/pause.png' %}";
+            pButton.src="static/core/icons/pause.png";
         } else {
             audio.pause();
-            pButton.src="{% static 'core/icons/play.png' %}";
+            pButton.src="static/core/icons/play.png";
         }
     };
 

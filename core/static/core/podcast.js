@@ -39,58 +39,104 @@ document.addEventListener ('DOMContentLoaded', function(){
             }
         }
     };
-
+    
     /* PODCAST PAGE*/
-
-
-    // const pButton2 = document.querySelector('#pButton2');
-    // const audio = document.querySelectorAll('#episodeaudio');
     
-    document.querySelector('.podpage').addEventListener('load', setLoad());
+    const pButton3 = document.querySelector('#pButton3');
+    const audio = document.querySelectorAll('.episodeaudio');
+    // const audiostatus = '';
     
-    function setLoad() {
+    document.querySelector('.podpage').addEventListener('load', ()=> 
         document.querySelectorAll('#pButton1').forEach((pButton1) => {
             pButton1.alt="play episode";
             pButton1.src="/static/core/media/playnow.png";
             pButton1.addEventListener('click', PlayPodcast());
+            pButton3.alt="play episode";
+            pButton3.src = "/static/core/media/play.png";
+            pButton3.addEventListener('click', PlayPauseEpisode());
+            // audiostatus = 'stop';
         })
-
-        const pButton3 = document.querySelector('#pButton3');
-        pButton3.alt="play episode";
-        pButton3.src = "/static/core/media/play.png";
-    };
+    );
+    // function setLoad() {
+    //     document.querySelectorAll('#pButton1').forEach((pButton1) => {
+    //         pButton1.alt="play episode";
+    //         pButton1.src="/static/core/media/playnow.png";
+    //         pButton1.addEventListener('click', PlayPodcast());
+    //         pButton3.alt="play episode";
+    //         pButton3.src = "/static/core/media/play.png";
+    //         pButton3.addEventListener('click', PlayPauseEpisode());
+    //         // audiostatus = 'stop';
+    //     })
+    // };
 
     //Player Controls
 
-    function PlayPodcast() {
-
+    function PlayPauseEpisode() {
         document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
-            document.querySelectorAll('.episodeaudio').forEach((audio));
             audio[i].play();
             pButton1[i].alt="pause episode";
             pButton1[i].src="/static/core/media/pausenow.png";
             pButton1[i].addEventListener('click', PausePodcast());
+            pButton3.alt="pause episode";
+            pButton3.src = "/static/core/media/pause.png";
         })
 
-        const pButton3 = document.querySelector('#pButton3');
-        pButton3.alt="pause episode";
-        pButton3.src = "/static/core/media/pause.png";
+        // if (audiostatus == stop) {
+        //     document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
+        //         document.querySelectorAll('.episodeaudio').forEach((audio));
+        //         audio[i].play();
+        //         pButton1[i].alt="pause episode";
+        //         pButton1[i].src="/static/core/media/pausenow.png";
+        //         pButton1[i].addEventListener('click', PausePodcast());
+        //     })
+    
+        //     const pButton3 = document.querySelector('#pButton3');
+        //     pButton3.alt="pause episode";
+        //     pButton3.src = "/static/core/media/pause.png";
+        //     audiostatus = 'playing';
+        // }
+
+        // if (audiostatus=='playing') {
+            
+        //     document.querySelectorAll('.episodeaudio').forEach((audio)=>{
+        //         audio.pause();
+        //     });
+
+        //     document.querySelectorAll('#pButton1').forEach((pButton1) => {
+        //         pButton1.alt="play episode";
+        //         pButton1.src="/static/core/media/playnow.png";
+        //     })
+
+        //     document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
+        //         document.querySelectorAll('.episodeaudio').forEach((audio));
+        //         audio[i].play();
+        //         pButton1[i].alt="pause episode";
+        //         pButton1[i].src="/static/core/media/pausenow.png";
+        //         pButton1[i].addEventListener('click', PausePodcast());
+        //     })
+
+        //     const pButton3 = document.querySelector('#pButton3');
+        //     pButton3.alt="pause episode";
+        //     pButton3.src = "/static/core/media/pause.png";
+        //     audiostatus = 'playing';
+        // }
+
     };
     
-    function PausePodcast() {
+    // function PausePodcast() {
 
-        document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
-            document.querySelectorAll('.episodeaudio').forEach((audio));
-            audio[i].pause()
-            pButton1[i].alt="lay episode";
-            pButton1[i].src="/static/core/media/playnow.png";
-            pButton1[i].addEventListener('click', PlayPodcast());
-        })
+    //     document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
+    //         document.querySelectorAll('.episodeaudio').forEach((audio));
+    //         audio[i].pause()
+    //         pButton1[i].alt="lay episode";
+    //         pButton1[i].src="/static/core/media/playnow.png";
+    //         pButton1[i].addEventListener('click', PlayPodcast());
+    //     })
 
-        const pButton3 = document.querySelector('#pButton3');
-        pButton3.alt="play episode";
-        pButton3.src = "/static/core/media/play.png";
-    };
+    //     const pButton3 = document.querySelector('#pButton3');
+    //     pButton3.alt="play episode";
+    //     pButton3.src = "/static/core/media/play.png";
+    // };
 
     
     // const podcast = document.querySelector('#podcast'); // id for audio element

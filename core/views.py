@@ -48,12 +48,12 @@ class EpisodeView(DetailView):
 #         context['gigs'] = Event.objects.filter(date__gte = datetime.date.today()).order_by('-date')
 #         return context
 
-class PrivacyView(ListView):
+class LegalView(ListView):
     context_object_name = 'privacy'
     queryset = Privacy.objects.order_by('-date').first()
-    template_name = 'core/privacy.html'
+    template_name = 'core/legal.html'
 
-class TermsView(ListView):
-    context_object_name = 'terms'
-    queryset = Terms.objects.order_by('-date').first()
-    template_name = 'core/terms.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['terms'] = Terms.objects.order_by('-date').first()
+        return context

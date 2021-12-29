@@ -69,11 +69,32 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     color: #000;
     font-weight: bolder;
 }
-.menuactive {
+.navmenu #menuactive,
+.navmenu #menuactive:hover {
     font-weight: bolder;
     cursor: pointer;
     text-decoration: line-through;
     color: #000;
+}
+.access {
+    position: absolute;
+    top: 20%;
+    right: 2%;
+    display: grid;
+    place-items: center;
+}
+.access button {
+    background-color: #4b6cff;
+    border: 1px #FFFFFF solid;
+    border-radius: 4%;
+    color: #fff;
+    /* padding: 5px 16px; */
+    font-family: Josefin Sans;
+    text-decoration: none;
+}
+.access button:hover {
+    text-decoration: none;
+    font-weight: bolder;
 }
 
 /* Hamburger menu */
@@ -163,6 +184,9 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     .navmenu {
         display: none;
     }
+    .access {
+        display: none;
+    }
     .menu-btn {
         display: flex;
     }
@@ -171,7 +195,7 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     .topnav {
         height: 33px;
     }
-    #navlogo, #navsocial {
+    #navlogo, #access {
         top: 10%;
     }
 }

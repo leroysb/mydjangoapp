@@ -64,7 +64,7 @@ body {
     color: #000;
     font-weight: bolder;
 }
-.menuactive {
+#menuactive {
     font-weight: bolder;
     cursor: pointer;
     text-decoration: line-through;
@@ -522,6 +522,8 @@ footer {
 }
 #footer-episode img {
     border-radius: 7px;
+}
+#pButton3 {
     cursor: pointer;
 }
 
