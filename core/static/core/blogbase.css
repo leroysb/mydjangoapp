@@ -78,21 +78,19 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 .access {
     position: absolute;
-    top: 20%;
+    top: 28%;
     right: 2%;
-    display: grid;
-    place-items: center;
 }
-.access button {
-    background-color: #4b6cff;
-    border: 1px #FFFFFF solid;
-    border-radius: 4%;
-    color: #fff;
-    /* padding: 5px 16px; */
+.accessbtn {
     font-family: Josefin Sans;
+    font-size: medium;
+    color: #fff;
+    background-color: #4b6cff;
+    border-radius: 4px;
+    padding: 2px 7px;
     text-decoration: none;
 }
-.access button:hover {
+.accessbtn:hover {
     text-decoration: none;
     font-weight: bolder;
 }
@@ -181,10 +179,7 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 980px) {
-    .navmenu {
-        display: none;
-    }
-    .access {
+    .navmenu, .access {
         display: none;
     }
     .menu-btn {
@@ -195,7 +190,7 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     .topnav {
         height: 33px;
     }
-    #navlogo, #access {
+    #navlogo, .access {
         top: 10%;
     }
 }

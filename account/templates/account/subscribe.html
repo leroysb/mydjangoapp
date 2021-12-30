@@ -1,0 +1,81 @@
+{% extends "account\index.html" %}
+{% load static %}
+
+{% block pagetitle %}
+<title>Subscribe - Nairobi Sentinel</title>
+{% endblock pagetitle%}
+
+{% block pageheader %}
+<h3 style="text-align: center; margin-bottom: 7vh;">Create your account</h3>
+{% endblock pageheader %}
+
+
+{% block form %}
+<form method="post">{% csrf_token %}
+
+    <div onclick="history.back()">
+        <span class="formlabel">{{ form.email.label }}</span>
+
+        {% for error  in form.email.errors %}
+        <span style="color: red; font-size: small;">*{{error}}</span>
+        {% endfor %}
+
+        {% if sess_email %}
+        <input type="email" name="email" class="forminput2"  value="{{ sess_email }}" readonly>
+        {% else %}
+        <p class="forminput"">{{ form.email }}</p>
+        {% endif %}
+
+    </div>
+    
+    <div>
+        <span class="formlabel">{{ form.username.label }}</span>
+
+        {% for error  in form.username.errors %}
+        <span style="color: red; font-size: small;">*{{error}}</span>
+        {% endfor %}
+
+        {% if sess_email %}
+        <input type="email" name="username" class="forminput">
+        {% else %}
+        <p class="forminput"">{{ form.username }}</p>
+        {% endif %}
+
+    </div>
+
+    <div>
+        <span class="formlabel">{{ form.password1.label }}</span>
+
+        {% for error  in form.password1.errors %}
+        <p class="formerror">*{{error}}</p>
+        {% endfor %}
+        
+        <input type="password" name="password1" class="forminput">
+    </div>
+
+    <div>
+        <span class="formlabel">{{ form.password2.label }}</span>
+
+        {% for error  in form.password2.errors %}
+        <p class="formerror">*{{error}}</p>
+        {% endfor %}
+
+        <input type="password" name="password2" class="forminput">
+    </div>
+
+    {% if form.non_field_errors %}
+    <div>
+        {% for error in form.non_field_errors %}
+        <p class="formerror">**{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div style="text-align: center;">
+        <p>By clicking Sign up, you agree to our <a href="{% url 'core:legal' %}" style="text-decoration: none; color: #5e5cd4;">User Agreement, Privacy Policy, and Cookie Policy</a>.</p>
+    </div>
+
+    <input type="submit" name="CreateAccount" class="btn" value="Sign up">
+
+</form>
+{% endblock form %}

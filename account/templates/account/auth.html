@@ -1,0 +1,27 @@
+{% extends "account\index.html" %}
+{% load static %}
+
+{% block pagetitle %}
+<title>Enter your Email - Nairobi Sentinel</title>
+{% endblock pagetitle %}
+
+{% block pageheader %}
+<h3 style="text-align: center; margin-bottom: 7%;">Log in or create your account</h3>
+{% endblock pageheader %}
+        
+{% block form %}
+<form method="post">{% csrf_token %}
+
+    <div>
+        <span class="formlabel">{{ form.email.label }}</span>
+        
+        {% if sess_email %}
+        <input type="email" name="username" class="forminput"  value="{{ sess_email }}">
+        {% else %}
+        <input type="email" name="email" class="forminput">
+        {% endif %}
+    </div>
+
+    <input type="submit" name="search" class="btn" value="Continue">
+</form>
+{% endblock form %}

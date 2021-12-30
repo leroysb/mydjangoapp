@@ -74,10 +74,10 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'account.User'
-# LOGIN_URL = 'login'
-# LOGOUT_URL = 'logout'
-# LOGIN_REDIRECT_URL = 'homepage'
-# LOGOUT_REDIRECT_URL = 'homepage'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = '/core/'
+LOGOUT_REDIRECT_URL = '/core/'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

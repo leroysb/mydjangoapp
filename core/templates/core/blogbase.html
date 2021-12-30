@@ -41,7 +41,11 @@
                 {% endblock navmenu %}
             </div>
             <div class="access">
-                <button>Sign in</button>
+                {% if user.is_authenticated %}
+                <a href="{% url 'account:logout' %}"><button class="accessbtn">Log out</button></a>
+                {% else %}
+                <a href="{% url 'account:auth' %}"><button class="accessbtn">Sign in</button></a>
+                {% endif %}
             </div>
             <div class="menu-btn">
                 <div class="menu-btn__burger"></div>
@@ -52,9 +56,9 @@
             {% block mobmenu %}
             {% endblock mobmenu %}
             {% if user.is_authenticated %}
-            <a href="#">ACCOUNT</a>
+                <a href="{% url 'account:logout' %}">LOG OUT</a>
             {% else %}
-            <a href="#">SIGN IN</a>
+                <a href="{% url 'account:auth' %}">SIGN IN</a>
             {% endif %}
         </div>
 

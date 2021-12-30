@@ -1,0 +1,68 @@
+{% extends "account\index.html" %}
+{% load static %}
+
+{% block pagetitle %}
+<title>Login - Nairobi Sentinel</title>
+{% endblock pagetitle %}
+
+{% block pageheader %}
+<h3 style="text-align: center; margin-bottom: 7vh;">Log into your account</h3>
+{% endblock pageheader %}
+
+
+{% block form %}
+
+
+<form method="post">{% csrf_token %}
+
+    <div>
+        <span class="formlabel">{{ form.username.label }}</span>
+        
+        {% for error  in form.username.errors %}
+        <p class="formerror">*{{ error }}</p>
+        {% endfor %}
+        
+        {% if sess_email %}
+        <input type="email" name="username" class="forminput2" value="{{ sess_email }}">
+        {% else %}
+        <p class="forminput"">{{ form.username }}</p>
+        {% endif %}
+    </div>
+    <!-- <div onclick="history.back()">
+        <span class="formlabel">{{ form.username.label }}</span>
+        
+        {% for error  in form.username.errors %}
+        <p class="formerror">*{{ error }}</p>
+        {% endfor %}
+        
+        {% if sess_email %}
+        <input type="email" name="username" class="forminput2" value="{{ sess_email }}" readonly>
+        {% else %}
+        <p class="forminput"">{{ form.username }}</p>
+        {% endif %}
+    </div> -->
+
+    <div>
+        <span class="formlabel">{{ form.password.label }}</span>
+
+        {% for error  in form.password.errors %}
+        <p class="formerror">*{{ error }}</p>
+        {% endfor %}
+        
+        <input type="password" name="password" class="forminput">
+    </div>
+
+    {% if form.non_field_errors %}
+    <div>
+        {% for error in form.non_field_errors %}
+        <p class="formerror">**{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <input type="submit" name="login" class="btn" value="Log in">
+    <!-- <input type="submit" name="login" class="btnalt" value="Log in without password"> -->
+    <button class="btnalt">Log in without password</button>
+
+</form>
+{% endblock form %}

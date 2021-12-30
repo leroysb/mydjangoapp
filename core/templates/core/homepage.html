@@ -62,7 +62,11 @@
                         <a href="{% url 'core:blogpage' %}" >BLOG</a>
                         <a href="{% url 'core:podcast' %}" >PODCAST</a>
                         <!-- <a href="https://calendly.com/lerbfinancial/consultation/" >BOOK A FINANCIAL CONSULTATION</a> -->
-                        <a href="#" >SIGN IN</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'account:logout' %}">LOG OUT</a>
+                        {% else %}
+                            <a href="{% url 'account:auth' %}">SIGN IN</a>
+                        {% endif %}
                     </div>
                 </section>
 
