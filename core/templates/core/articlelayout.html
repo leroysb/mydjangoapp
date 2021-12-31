@@ -1,0 +1,132 @@
+{% extends "core\blogbase.html" %}
+{% load static %}
+
+{% block meta %}
+<title>{{ article.title }} | A-Z Logs, a blog by Leroy Buliro</title>
+<meta name="description" content="{{ article.extract }}">
+<meta name="keyword" content="{{episode.tags}}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@leroybuliro">
+<meta name="twitter:creator" content="@leroybuliro">
+<meta name="twitter:title" content="{{ article.title }} | Leroy Buliro">
+<meta name="twitter:description" content="{{ article.extract }}">
+<meta name="twitter:image" content="">
+
+<!-- Facebook -->
+<meta property="og:url" content="https://leroybuliro.com/">
+<meta property="og:title" content="{{ article.title }} | Leroy Buliro">
+<meta property="og:description" content="{{ article.extract }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
+{% endblock meta %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'core/articlelayout.css' %}">
+{% endblock style %}
+
+{% block script %}
+<script src="{% static 'core/articlelayout.js' %}"></script>
+<script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+      "name": "Leroy Buliro",
+      "author": "Leroy Buliro",
+      "description": "Leroy Buliro: deejay, financial advisor, writer, podcaster",
+      "url": "https://leroybuliro.com",
+      "schemaVersion": "10.0",
+      "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+    }
+</script>
+{% endblock script %}
+
+{% block navmenu %}
+    <a href="{% url 'core:index' %}">HOME</a>
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+{% endblock navmenu %}
+
+{% block mobmenu %}
+    <a href="{% url 'core:index' %}">HOME</a>
+    <a href="{% url 'core:blogpage' %}">BLOG</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
+{% endblock mobmenu %}
+
+{% block body %}
+
+<div class="articlepage">
+
+    <article>
+        <section class="articlemeta">
+            <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
+            <div class="meta">
+                <div id="category">{{ article.category }}</div>
+                <div id="title">{{ article.title }}</div>
+                <div id="pubDate">{{ article.publishdate }}</div>
+                <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
+                <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
+                    <img src="{% static 'core/media/share_black.png' %}" alt="share article" width="20" height="20" >
+                    <a href="#commentnow">
+                        <img src="{% static 'core/media/comment_black.png' %}" alt="post comment" width="20" height="20" >
+                    </a>
+                    <img src="{% static 'core/media/view_black.png' %}" alt="reads" width="20" height="20" >
+                </div>
+            </div>
+        </section>
+    
+        <div class="articlecontent">
+            {% if article.credit %}
+            <p id="credit">{{ article.credit }}</p>
+            {% else %}
+            <div style="display: none;"></div>
+            {% endif %}
+            <div class="content">{{ article.content | safe }}</div>
+        </div>
+    </article>
+
+    <div>
+        <p id="entryend">END OF ENTRY</p>
+    </div>
+
+    <div class="aboutsec" id="commentnow">
+        <img src="{% static 'core/media/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;">
+        <div>
+            <p class="header">Join the Discussion</h2>
+            <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people. Thank you for being part of the community.</p>
+        </div>
+        {% if user.is_authenticated %}
+        <button>Contact Leroy</button>
+        <button>Add a comment</button>
+        {% else %}
+        <button>Contact Leroy</button>
+        <a href="{% url 'account:auth' %}"><button>Please log in or sign up to comment</button></a>
+        {% endif %}
+        <p class="responses">{{ article.comments.count }} responses</h5>
+    </div>
+
+    <!-- <div class="commentsec">
+
+        {% if article.comments %}
+
+            {% for comment in article.comments.all %}
+            <div>
+                <p>{{ comment.name }} on {{ comment.postdate }}</p>
+                <p>{{ comment.body | safe }}</p>
+            </div>
+            {% endfor %}
+
+        {% else %}
+
+            <div style="text-align: center;">
+                <p>Be the first to comment</p>
+            </div>
+
+        {% endif %}
+    </div> -->
+        
+</div>
+{% endblock body %}
