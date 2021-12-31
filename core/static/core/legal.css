@@ -92,22 +92,12 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: #000000;
-    border-top: 1px solid silver;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     padding: 1% 2%;
     color: #ffffff;
-}
-#footersocial {
-    display: flex;
-    flex-direction: row;
-    place-items: center;
-    grid-gap: 8px;
+    text-align: center;
 }
 footer a,
- a:hover {
+a:hover {
     font-size: 12px;
     text-decoration: none;
 }

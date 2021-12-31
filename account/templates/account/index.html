@@ -82,17 +82,12 @@
         overflow-y: scroll;
         z-index: -1;
     }
-    @media only screen and (max-width: 770px) {
-        #page-container {
-            margin: 10vh 2px 0 2px;
-            padding: 0;
-        }
-    }
     form {
         width:100%;
         display: grid;
         grid-gap: 30px;
         grid-template-columns: 1fr;
+        margin-top: 7vh;
     }
     .formlabel {
         font-size: 14px;
@@ -130,6 +125,16 @@
         font-size: medium;
         font-weight: bold;
         text-decoration: none;
+    }
+    @media only screen and (max-width: 770px) {
+        #page-container {
+            margin: 8vh 2px 0 2px;
+            padding: 0;
+        }
+        form {
+            grid-gap: 20px;
+            margin-top: 3vh;
+        }
     }
 
     /* Footer Section */

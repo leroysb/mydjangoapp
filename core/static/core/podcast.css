@@ -37,14 +37,12 @@ body {
 }
 #navlogo {
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 2%;
-    display: grid;
-    place-items: center;
 }
 #navlogo > img {
     width: auto;
-    height: 27px;
+    height: 17px;
 }
 .navmenu {
     position: absolute;
@@ -70,19 +68,19 @@ body {
     text-decoration: line-through;
     color: #000;
 }
-.access {
+#access {
     position: absolute;
-    top: 28%;
+    top: 24%;
     right: 2%;
-    transform: translate(-50%, -50%);
 }
 .accessbtn {
     font-family: Josefin Sans;
-    font-size: medium;
+    font-size: 14px;
     color: #fff;
     background-color: #4b6cff;
     border-radius: 4px;
-    padding: 2px 7px;
+    border: none;
+    padding: 3px 10px;
     text-decoration: none;
 }
 .accessbtn:hover {
@@ -176,7 +174,7 @@ body {
 }
 
 @media screen and (max-width: 980px) {
-    .navmenu, .access {
+    .navmenu, #access {
         display: none;
     }
     .menu-btn {
@@ -187,7 +185,7 @@ body {
     .topnav {
         height: 33px;
     }
-    #navlogo, .access {
+    #navlogo, #access {
         top: 10%;
     }
 }

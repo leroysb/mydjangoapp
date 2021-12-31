@@ -96,14 +96,14 @@
         <img src="{% static 'core/media/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;">
         <div>
             <p class="header">Join the Discussion</h2>
-            <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people.<br>Thank you for being part of the community.</p>
+            <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people. Thank you for being part of the community.</p>
         </div>
         {% if user.is_authenticated %}
-        <button>View comments</button>
+        <button>Contact Leroy</button>
         <button>Add a comment</button>
         {% else %}
-        <button>Please log in or sign up to comment</button>
-        <button>View comments</button>
+        <button>Contact Leroy</button>
+        <a href="{% url 'account:auth' %}"><button>Please log in or sign up to comment</button></a>
         {% endif %}
         <p class="responses">{{ article.comments.count }} responses</h5>
     </div>

@@ -1,12 +1,14 @@
 # Local IDE
 .vscode
 
-# Project Files
+# Project Files/Folders
 *.mp3
 *.mp4
 *.png
 *.jpeg
 *.jpg
+media_cdn/
+static_cdn/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

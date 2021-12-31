@@ -42,14 +42,12 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 #navlogo {
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 2%;
-    display: grid;
-    place-items: center;
 }
 #navlogo > img {
     width: auto;
-    height: 27px;
+    height: 17px;
 }
 .navmenu {
     position: absolute;
@@ -78,16 +76,17 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 .access {
     position: absolute;
-    top: 28%;
+    top: 24%;
     right: 2%;
 }
 .accessbtn {
     font-family: Josefin Sans;
-    font-size: medium;
+    font-size: 14px;
     color: #fff;
     background-color: #4b6cff;
     border-radius: 4px;
-    padding: 2px 7px;
+    border: none;
+    padding: 3px 10px;
     text-decoration: none;
 }
 .accessbtn:hover {
