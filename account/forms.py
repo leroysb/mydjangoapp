@@ -1,43 +1,25 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate
-from django.forms.widgets import TextInput, Textarea
-from account.models import User
 from django.forms import ModelForm, EmailField, CharField
+from django.forms.widgets import TextInput, Textarea
+
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserCreationForm
+
+from account.models import User
 from django.utils.translation import gettext_lazy as _
 
 
 #####
 
-class authForm(ModelForm):
-
-    class Meta:
-        model = User
-        fields = ['email',]
-
-    email = EmailField(max_length=100, required=True, help_text="Enter a valid email address", label=_("Email"),)
-
-    def clean_email(self):
-        email = self.cleaned_data['email'].lower()
-        return email
+class authForm(forms.Form):
+    email = CharField(max_length=100, label=_("Email"),)
 
 #####
 
 class loginForm(forms.Form):
-    email = EmailField(max_length=200, label=_("Email"))
-    password = CharField(widget=forms.PasswordInput, label=_("Password"))
 
-    # class Meta:
-    #     model = User
-    #     fields = ['email', 'password',]
-
-
-    def clean(self):
-        if self.is_valid():
-            email = self.cleaned_data['email']
-            password = self.cleaned_data['password']
-            if not authenticate(email=email, password=password):
-                raise forms.ValidationError("Wrong password!")      
+    email = CharField(max_length=100, required=True, label=_("Email now"))
+    password = CharField(widget=forms.PasswordInput(), label=_("Password"))      
 
 #####
 

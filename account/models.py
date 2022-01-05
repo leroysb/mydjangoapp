@@ -37,10 +37,10 @@ class UserManager(BaseUserManager):
 # Create your models here.
 
 class User(AbstractBaseUser):
-    email = models.EmailField(verbose_name=_('email address'), max_length=100, unique=True,)
-    username = models.CharField(max_length=14, unique=True)
-    full_name = models.CharField(verbose_name=_('full name'), max_length=255, null=True, blank=False)
-    date_of_birth = models.DateField(verbose_name=_('date of birth'), null=True)
+    email = models.EmailField(verbose_name=_('Email'), max_length=100, unique=True,)
+    username = models.CharField(verbose_name=_('Username'), max_length=14, unique=True)
+    full_name = models.CharField(verbose_name=_('Full name'), max_length=255, null=True, blank=False)
+    date_of_birth = models.DateField(verbose_name=_('Date of birth'), null=True)
     # phone_regex = RegexValidator(regex=r'^\+?2547?\d{8}$', message="Phone number must be entered in the format: '+254700000000'.")
     # phone = models.CharField(_('phone number'), validators=[phone_regex], max_length=13, unique=True, null=False, blank=False) # validators should be a list
     headshot = models.ImageField(upload_to='account/headshots', blank=True, null=True)

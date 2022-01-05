@@ -178,7 +178,10 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 980px) {
-    .navmenu, #access {
+    .navmenu {
+        display: none;
+    }
+    #access {
         display: none;
     }
     .menu-btn {

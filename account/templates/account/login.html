@@ -13,7 +13,7 @@
 {% block form %}
 
 
-<form action="" method="post">{% csrf_token %}
+<form method="post">{% csrf_token %}
 
     <div>
         <span class="formlabel">{{ form.username.label }}</span>
@@ -22,15 +22,12 @@
         <p class="formerror">*{{ error }}</p>
         {% endfor %}
         
-
         {% if sess_email %}
-        <input type="email" name="email" class="forminput2" value="{{ sess_email }}">
+        <input type="email" name="username" class="forminput2" value="{{ sess_email }}">
         {% else %}
         <p class="forminput"">{{ form.username }}</p>
         {% endif %}
-
     </div>
-
     <!-- <div onclick="history.back()">
         <span class="formlabel">{{ form.username.label }}</span>
         

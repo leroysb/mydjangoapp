@@ -1,9 +1,10 @@
 from account.models import User
 from django.contrib.auth import authenticate, login, logout
-from .forms import subscribeForm, authForm, loginForm
 from django.shortcuts import redirect, render
-from django.contrib import messages
+from .forms import subscribeForm, authForm, loginForm
+from django.http import request
 
+# from django.contrib.auth.views import LoginView
 # from django.contrib import messages
 # from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth import get_user_model
@@ -37,15 +38,12 @@ def AuthView(request, *args, **kwargs):
             return redirect(destination)
         return redirect("core:index")
 
-    # if request.POST:
     if request.method == 'POST':
         form = authForm(request.POST)
         email = request.POST['email']
-        email = email.lower()
+        request.session['sess_email'] = email.lower()
 
-        request.session['sess_email'] = email
-
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(email__iexact=email).exists():
             return redirect("account:login")
         else:
             return redirect("account:subscribe")
@@ -54,24 +52,33 @@ def AuthView(request, *args, **kwargs):
 
 ######
 
+# class LoginView(LoginView):
+#     template_name = 'account/login.html'
+#     authentication_form = loginForm()
+#     # sess_email = request.session['sess_email']
+#     # extra_context = {'sess_email': sess_email,}
+#     redirect_authenticated_user = 'core:index'
+#     next_view = 'core:index'
+
 def LoginView(request, *args, **kwargs):
 
     context= {}
     context['sess_email'] = request.session['sess_email']
-    context['form'] = loginForm()
+    form = subscribeForm()
+    context['form'] = form
+
 
     user = request.user
     if user.is_authenticated:
         return redirect("core:index")
 
-    # if request.POST:
     if request.method == 'POST':
         form = loginForm(request.POST)
 
         if form.is_valid():
             email = request.POST['email']
             password = request.POST['password']
-            user = authenticate(email=email, password=password)
+            user = authenticate(request, email=email, password=password)
 
             if user:
                 login(request, user)
@@ -82,7 +89,8 @@ def LoginView(request, *args, **kwargs):
 
                 return redirect("core:index")
 
-    return render(request, 'account/registration/login.html', context)
+    return render(request, 'registration/login.html', context)
+
 
 ######
 

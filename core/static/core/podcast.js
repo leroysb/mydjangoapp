@@ -1,142 +1,69 @@
 document.addEventListener ('DOMContentLoaded', function(){
-
-    /* menu */
-    
-    const menuBtn = document.querySelector('.menu-btn');
-    let menuOpen = false;
-    
-    menuBtn.addEventListener('click', () => {
-        const mobMenu = document.querySelector('.mobile-menu');
-        
-        if(!menuOpen){
-            menuBtn.classList.add('open');
-            mobMenu.classList.add('show');
-            menuOpen= true;
-        } else {
-            menuBtn.classList.remove('open');
-            mobMenu.classList.remove('show');
-            menuOpen = false;
-        }
-    });
-
-    /* Dropdown */
-
-    document.querySelector('.dropbtn').onclick = ()=> {
-        document.querySelector('#myDropdown').classList.toggle('show')
-    };
-
-    // Close the dropdown if the user clicks outside of the Dropdown button
-
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    };
-    
-    /* PODCAST PAGE*/
     
     const pButton3 = document.querySelector('#pButton3');
     const audio = document.querySelectorAll('.episodeaudio');
-    // const audiostatus = '';
+    var audioplaying = False;
     
-    document.querySelector('.podpage').addEventListener('load', ()=> 
+    document.addEventListener('load', ()=> {
         document.querySelectorAll('#pButton1').forEach((pButton1) => {
             pButton1.alt="play episode";
             pButton1.src="/static/core/media/playnow.png";
-            pButton1.addEventListener('click', PlayPodcast());
-            pButton3.alt="play episode";
-            pButton3.src = "/static/core/media/play.png";
-            pButton3.addEventListener('click', PlayPauseEpisode());
-            // audiostatus = 'stop';
-        })
-    );
-    // function setLoad() {
-    //     document.querySelectorAll('#pButton1').forEach((pButton1) => {
-    //         pButton1.alt="play episode";
-    //         pButton1.src="/static/core/media/playnow.png";
-    //         pButton1.addEventListener('click', PlayPodcast());
-    //         pButton3.alt="play episode";
-    //         pButton3.src = "/static/core/media/play.png";
-    //         pButton3.addEventListener('click', PlayPauseEpisode());
-    //         // audiostatus = 'stop';
-    //     })
-    // };
+            pButton1.addEventListener('click', PlayPauseEpisode());
+        });
+        
+        pButton3.alt="play episode";
+        pButton3.src = "/static/core/media/play.png";
+        // pButton3.addEventListener('click', PlayPauseEpisode());
+    });
 
     //Player Controls
 
     function PlayPauseEpisode() {
         document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
-            audio[i].play();
-            pButton1[i].alt="pause episode";
-            pButton1[i].src="/static/core/media/pausenow.png";
-            pButton1[i].addEventListener('click', PausePodcast());
-            pButton3.alt="pause episode";
-            pButton3.src = "/static/core/media/pause.png";
-        })
 
-        // if (audiostatus == stop) {
-        //     document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
-        //         document.querySelectorAll('.episodeaudio').forEach((audio));
-        //         audio[i].play();
-        //         pButton1[i].alt="pause episode";
-        //         pButton1[i].src="/static/core/media/pausenow.png";
-        //         pButton1[i].addEventListener('click', PausePodcast());
-        //     })
-    
-        //     const pButton3 = document.querySelector('#pButton3');
-        //     pButton3.alt="pause episode";
-        //     pButton3.src = "/static/core/media/pause.png";
-        //     audiostatus = 'playing';
-        // }
+            // If audio already playing (playing=true)
+            if(audioplaying == True) {
 
-        // if (audiostatus=='playing') {
-            
-        //     document.querySelectorAll('.episodeaudio').forEach((audio)=>{
-        //         audio.pause();
-        //     });
+                // Stop all audio
+                document.querySelectorAll('.episodeaudio').forEach((audio) => {
+                    audio.stop();
+                });
 
-        //     document.querySelectorAll('#pButton1').forEach((pButton1) => {
-        //         pButton1.alt="play episode";
-        //         pButton1.src="/static/core/media/playnow.png";
-        //     })
+                // Reset all images to play icon
+                pButton1.alt="play episode";
+                pButton1.src="/static/core/media/playnow.png";
+                pButton3.alt="play episode";
+                pButton3.src = "/static/core/media/play.png";
 
-        //     document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
-        //         document.querySelectorAll('.episodeaudio').forEach((audio));
-        //         audio[i].play();
-        //         pButton1[i].alt="pause episode";
-        //         pButton1[i].src="/static/core/media/pausenow.png";
-        //         pButton1[i].addEventListener('click', PausePodcast());
-        //     })
+                // Change selected episode icon to pause + main footer icon
+                pButton1[i].alt="pause episode";
+                pButton1[i].src="/static/core/media/pausenow.png";
+                pButton3.alt="pausey episode";
+                pButton3.src = "/static/core/media/pause.png";
 
-        //     const pButton3 = document.querySelector('#pButton3');
-        //     pButton3.alt="pause episode";
-        //     pButton3.src = "/static/core/media/pause.png";
-        //     audiostatus = 'playing';
-        // }
+                // Start audio for selected episode
+                audio[i].play();
 
+                // set (playing=true)
+                audioplaying = True;
+            };
+
+            // else, if (playing=false)
+            if(audioplaying == False) {
+                // Change selected episode icon to pause + main footer icon
+                pButton1[i].alt="pause episode";
+                pButton1[i].src="/static/core/media/pausenow.png";
+                pButton3.alt="pausey episode";
+                pButton3.src = "/static/core/media/pause.png";
+
+                // Start audio for selected episode
+                audio[i].play();
+
+                // set (playing=true)
+                audioplaying = True;
+            };
+        });
     };
-    
-    // function PausePodcast() {
-
-    //     document.querySelectorAll('#pButton1').forEach((pButton1,i) => {
-    //         document.querySelectorAll('.episodeaudio').forEach((audio));
-    //         audio[i].pause()
-    //         pButton1[i].alt="lay episode";
-    //         pButton1[i].src="/static/core/media/playnow.png";
-    //         pButton1[i].addEventListener('click', PlayPodcast());
-    //     })
-
-    //     const pButton3 = document.querySelector('#pButton3');
-    //     pButton3.alt="play episode";
-    //     pButton3.src = "/static/core/media/play.png";
-    // };
 
     
     // const podcast = document.querySelector('#podcast'); // id for audio element

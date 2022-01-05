@@ -12,15 +12,13 @@
 {% block form %}
 <form method="post">{% csrf_token %}
 
-    <div>
-        <span class="formlabel">{{ form.email.label }}</span>
-        
-        {% if sess_email %}
-        <input type="email" name="username" class="forminput"  value="{{ sess_email }}">
-        {% else %}
-        <input type="email" name="email" class="forminput">
-        {% endif %}
-    </div>
+    <span class="formlabel">{{ form.email.label }}</span>
+    
+    {% if sess_email %}
+    <input type="email" name="username" class="forminput"  value="{{ sess_email }}">
+    {% else %}
+    <input type="email" name="email" class="forminput">
+    {% endif %}
 
     <input type="submit" name="search" class="btn" value="Continue">
 </form>

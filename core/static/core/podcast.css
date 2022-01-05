@@ -359,6 +359,13 @@ body {
     padding: 1em;
 }
 
+
+@media (min-width: 542px) and (max-width: 769px) {
+    .podcontainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
 @media screen and (max-width: 541px) {
     .section2 {
         padding: 7vh 1vw 14vh 1vw;
@@ -383,11 +390,6 @@ body {
         font-size: 14px;
         padding: 4px 2px;
         line-height: 1.4;
-    }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-    .podcontainer {
-        grid-template-columns: 1fr 1fr;
     }
 }
 

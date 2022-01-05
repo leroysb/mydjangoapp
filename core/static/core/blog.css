@@ -15,7 +15,7 @@
 }
 
 .blogpage {
-    margin: 40px 1vw 40px 1vw;
+    margin: 40px 1vw 30vh 1vw;
 }
 .blogpage .centered {
     width: 100%;
@@ -85,6 +85,12 @@ button {
     border-radius: 8px;
     padding: 1% 4%;
     display: none;
+}
+#showbtn {
+    width: 100%;
+    display: none;
+    place-content: center;
+    margin: 30px 0;
 }
 
 @media only screen and (max-width: 1027) {

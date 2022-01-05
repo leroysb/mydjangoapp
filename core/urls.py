@@ -10,5 +10,5 @@ urlpatterns = [
     path('kubonga-show', PodcastView.as_view(), name="podcast"),
     path("kubonga-show/s<int:s>e<int:e>/<slug:slug>", EpisodeView.as_view(), name="episode"),
     path("legal", LegalView.as_view(), name="legal"),
-    # path('events', EventList.as_view(), name="events"),
+    path('events', EventList.as_view(), name="event"),
 ]
