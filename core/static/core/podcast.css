@@ -139,13 +139,14 @@ body {
 /* Mobile menu */
 
 .mobile-menu {
+    position: fixed;
     display: flex;
     flex-direction: column;
     place-items: center;
     justify-content: space-between;
     background-color: #242424;
-    position: fixed;
     top: -27px;
+    /* height: 0; */
     width: 100%;
     opacity: 0;
     padding: 1rem;
@@ -154,6 +155,7 @@ body {
 }
 .mobile-menu.show {
     top: 27px;
+    /* height: auto; */
     opacity: 1;
     display: flex;
     z-index: 1;
@@ -201,7 +203,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
-    padding: 0% 10% 200px 10%;
+    padding: 0 10% 200px 10%;
 }
 #side {
     display: grid;

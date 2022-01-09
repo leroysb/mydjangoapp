@@ -16,7 +16,7 @@ class authForm(forms.Form):
 
 #####
 
-class loginForm(forms.Form):
+class loginForm(ModelForm):
 
     email = CharField(max_length=100, required=True, label=_("Email now"))
     password = CharField(widget=forms.PasswordInput(), label=_("Password"))      
