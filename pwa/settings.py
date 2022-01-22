@@ -14,7 +14,6 @@ DEBUG = os.environ.get('DebugStatus')
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
     os.environ.get('LocalNetwork'),
-    'localhost',
 ]
 
 INSTALLED_APPS = [
