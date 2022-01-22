@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = True
+DEBUG = os.environ.get('DebugStatus')
 
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
@@ -111,7 +111,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
 
 # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_cdn'), )
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_cdn'), )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')

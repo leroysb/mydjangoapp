@@ -2,11 +2,6 @@
 .vscode
 
 # Project Files/Folders
-# *.mp3
-# *.mp4
-# *.png
-# *.jpeg
-# *.jpg
 media/
 static/
 media_cdn/
