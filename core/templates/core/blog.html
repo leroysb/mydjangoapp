@@ -1,9 +1,5 @@
-{% extends "core\blogbase.html" %}
-
+{% extends "core/base.html" %}
 {% load static %}
-
-{% block title %}
-{% endblock title %}
 
 {% block meta %}
 <title>A-Z Logs, a blog by Leroy Buliro</title>
@@ -34,43 +30,18 @@
 {% endblock style %}
 
 {% block script %}
-<!-- <script src="{% static 'core/blog.js' %}"></script> -->
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-            "@id": "#site",
-            "@type": "Website",
-            "name": "Leroy Buliro",
-            "author": "Leroy Buliro",
-            "description": "Leroy Buliro: deejay, financial advisor, writer, podcaster",
-            "url": "https://leroybuliro.com",
-            "schemaVersion": "10.0",
-            "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
-        },
-        {
-            "@type": "Blog",
-            "isPartOf": "#site",
-            "name": "A-Z Logs, a blog by Leroy Buliro",
-            "description": "A-Z Logs, a blog by Leroy Buliro",
-            "url": "https://leroybuliro.com/a-z-logs",
-            "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
-        }
-      ]
-    }
-</script>
+<script src="{% static 'core/blog.js' %}"></script>
 {% endblock script %}
 
 {% block navmenu %}
-    <a href="{% url 'core:index' %}">HOME</a>
+    <a  class="navlink" href="{% url 'core:index' %}">HOME</a>
     <a id="menuactive">BLOG</a>
-    <a href="{% url 'core:podcast' %}">PODCAST</a>
+    <a class="navlink" href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
 {% block mobmenu %}
     <a href="{% url 'core:index' %}">HOME</a>
-    <a id="menuactive">BLOG</a>
+    <a href="#">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock mobmenu %}
 

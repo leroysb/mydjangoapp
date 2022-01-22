@@ -129,3 +129,12 @@ p {
     text-decoration: none;
     color: #ffffffc4;
 }
+
+@media screen and (max-width: 770px) {
+    #imagediv {
+        top: 14%;
+    }
+    #bio {
+        bottom: 10%;
+    }    
+}

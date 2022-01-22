@@ -73,7 +73,12 @@ body {
     top: 24%;
     right: 2%;
 }
-.accessbtn {
+#access > a, a:hover {
+    text-decoration: none;
+}
+.accessbtn,
+.accessbtn:hover {
+    cursor: pointer;
     font-family: Josefin Sans;
     font-size: 14px;
     color: #fff;
@@ -82,10 +87,6 @@ body {
     border: none;
     padding: 3px 10px;
     text-decoration: none;
-}
-.accessbtn:hover {
-    text-decoration: none;
-    font-weight: bolder;
 }
 
 /* Hamburger menu */
@@ -176,8 +177,13 @@ body {
 }
 
 @media screen and (max-width: 980px) {
-    .navmenu, #access {
+    .navmenu {
         display: none;
+    }
+    #access {
+        position: absolute;
+        top: 20%;
+        right: 12%;
     }
     .menu-btn {
         display: flex;

@@ -58,7 +58,8 @@
         place-items: center;
     }
     #navlogo img {
-        height: 32px;
+        height: 27px;
+        padding: 4px 0;
     }
 
     @media screen and (max-width: 740px) {
@@ -78,7 +79,7 @@
     #page-container {
         height: 100vh;
         margin: 10vh 2px 0 2px;
-        padding: 0% 30%;
+        padding: 0 30%;
         overflow-y: scroll;
         z-index: -1;
     }
@@ -128,8 +129,8 @@
     }
     @media only screen and (max-width: 770px) {
         #page-container {
-            margin: 8vh 2px 0 2px;
-            padding: 0;
+            margin: 0 8px;
+            padding: 70px 0;
         }
         form {
             grid-gap: 20px;
@@ -178,11 +179,11 @@
 </style>
 
     <body>
-        <nav class="topnav">
+        <!-- <nav class="topnav">
             <div  id="navlogo">
                 <a href="{% url 'core:index' %}"><img src="{% static 'account/media/lbblack.png' %}" alt="logo" width="auto" height="27" /></a>
             </div>
-        </nav>
+        </nav> -->
 
         <div id="page-container">
             {% block pageheader %}
@@ -195,7 +196,7 @@
 
         <footer>
             <div class="bottompagebar">
-                <p>Copyright © 2021, Leroy Buliro. All rights reserved.</p>
+                <p>Copyright © 2018 - 2022, Leroy Buliro. All rights reserved.</p>
             </div>
         </footer>
 

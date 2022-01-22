@@ -8,5 +8,27 @@ document.addEventListener('DOMContentLoaded', function(){
         const randomNumber = Math.floor(Math.random()*2);
         const selection = choices[randomNumber];
         background.style.backgroundColor = selection;
-    }
+    };
+
+    document.addEventListener('click', (event)=> {
+        if(event.target.id=="id01"){
+            document.querySelector('#id01').style.display='none';
+        }
+    })
+
+    $(document).ready(function(){
+        // Check Radio-box
+        $(".rating input:radio").attr("checked", false);
+    
+        $('.rating input').click(function () {
+            $(".rating span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+    
+        // $('input:radio').change(
+        //   function(){
+        //     var userRating = this.value;
+        //     alert(userRating);
+        // }); 
+    });
 })

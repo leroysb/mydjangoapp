@@ -1,9 +1,9 @@
-from django.core.files import storage
 from django.db import models
 from django.db.models.deletion import *
-from django.core.files.storage import FileSystemStorage
 from account.models import User
 from ckeditor.fields import RichTextField
+# from django.core.files import storage
+# from django.core.files.storage import FileSystemStorage
 
 # Create your models here. 
 
@@ -22,7 +22,7 @@ class Article(models.Model):
     id = models.BigAutoField(primary_key=True)
     featureimage = models.ImageField(upload_to='core/article/%Y/%m/')
     title = models.CharField(max_length = 500)
-    slug = models.CharField(max_length = 500, default="slug")
+    slug = models.CharField(max_length = 500,)
     tags = models.CharField(max_length=500, default= 'untagged')
     category = models.ForeignKey(ArticleCategory, related_name="articles", on_delete=models.PROTECT,)
     writer = models.CharField(max_length=100, default = 'Leroy Buliro')
@@ -30,11 +30,13 @@ class Article(models.Model):
     publishdate = models.DateField(auto_now_add=False)
     extract = models.CharField(max_length = 2000, blank=True, null=True)
     content = RichTextField(config_name='full_editor', blank=True, null=True)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
 
     class Meta:
+        ordering = ["-publishdate"]
         db_table = 'article'
 
 class ArticleComment(models.Model):
@@ -42,10 +44,22 @@ class ArticleComment(models.Model):
     post = models.ForeignKey(Article, related_name="comments", on_delete=models.CASCADE)
     name = models.ForeignKey(User, on_delete=models.CASCADE)
     postdate = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(max_length=400, blank=False)
+    content = models.TextField(max_length=140, blank=False)
 
     class Meta:
-            db_table = 'article_comment'
+        ordering = ["-postdate"]
+        db_table = 'article_comment'
+
+class Feedback(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    # source = models.CharField(max_length = 500, blank=False)
+    postdate = models.DateTimeField(auto_now_add=True)
+    content = models.TextField(max_length=500, blank=False)
+    ratings = models.IntegerField()
+
+    class Meta:
+        ordering = ["-postdate"]
+        db_table = 'feedback'
 
 class Podcast(models.Model):
     id = models.BigAutoField(primary_key=True)

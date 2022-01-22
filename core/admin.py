@@ -15,6 +15,10 @@ class ArticleCommentAdmin(admin.ModelAdmin):
     list_display = ("id","post","content")
 admin.site.register(ArticleComment, ArticleCommentAdmin)
 
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ("id","postdate","content","ratings")
+admin.site.register(Feedback, FeedbackAdmin)
+
 class PodcastAdmin(admin.ModelAdmin):
     # prepopulated_fields = {'slug': ('title',),}
     list_display = ("id","title",)

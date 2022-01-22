@@ -59,11 +59,6 @@
             <a href="{% url 'core:index' %}">HOME</a>
             <a href="{% url 'core:blogpage' %}">BLOG</a>
             <a href="#">PODCAST</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'account:logout' %}">LOG OUT</a>
-            {% else %}
-                <a href="{% url 'account:auth' %}">SIGN IN</a>
-            {% endif %}
         </div>
 
         <div class="podpage">
@@ -148,7 +143,7 @@
                 <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconTT-black.png' %}" alt="twitter" width="auto" height="22" ></a>
                 <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconIG-black.png' %}" alt="instagram" width="auto" height="22" ></a>
             </div>
-            <a>© 2021 Leroy Buliro. All rights reserved.</a>
+            <a>© 2022 Leroy Buliro. All rights reserved.</a>
             <span>
                 <a href="{% url 'core:legal' %}">Legal</a>
             </span>
@@ -217,4 +212,13 @@
         }
     };
     </script>
+    <noscript>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-20 text-center">
+                    <p class="no-javascript-warning">Javascript not supported on your browser, please enable Javascript in order to fully utilize the website</p>
+                </div>
+            </div>
+        </div>
+    </noscript>
 </html>

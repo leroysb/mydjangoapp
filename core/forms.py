@@ -1,11 +1,15 @@
-# from django import forms
-# from .models import Comment
+from django import forms
+from django.forms import Form, ModelForm
 
-# class CommentForm(forms.ModelForm):
-#     comment = forms.CharField (label="Add a comment...", min_length=1, max_length=400, 
-#         widget=forms.Textarea(attrs={'rows': '4',}
-#         ))
+from core.models import Feedback
 
-#     class Meta:
-#         model = Comment
-#         fields = ('body',)
+class CommentForm(Form):
+    comment = forms.CharField (min_length=1, max_length=400)
+
+class feedbackForm(ModelForm):
+    content = forms.CharField (min_length=1, max_length=500)
+    ratings = forms.RadioSelect()
+
+    class Meta:
+        model = Feedback
+        fields = ['content', 'ratings',]

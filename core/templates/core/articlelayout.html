@@ -1,4 +1,5 @@
-{% extends "core\blogbase.html" %}
+{% extends "core/base.html" %}
+<!-- {% include "core/feedbackModal.html" %} -->
 {% load static %}
 
 {% block meta %}
@@ -31,23 +32,12 @@
 
 {% block script %}
 <script src="{% static 'core/articlelayout.js' %}"></script>
-<script type="application/ld+json">{
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-      "name": "Leroy Buliro",
-      "author": "Leroy Buliro",
-      "description": "Leroy Buliro: deejay, financial advisor, writer, podcaster",
-      "url": "https://leroybuliro.com",
-      "schemaVersion": "10.0",
-      "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
-    }
-</script>
 {% endblock script %}
 
 {% block navmenu %}
-    <a href="{% url 'core:index' %}">HOME</a>
-    <a href="{% url 'core:blogpage' %}">BLOG</a>
-    <a href="{% url 'core:podcast' %}">PODCAST</a>
+    <a class="navlink" href="{% url 'core:index' %}">HOME</a>
+    <a class="navlink" href="{% url 'core:blogpage' %}">BLOG</a>
+    <a class="navlink" href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
 {% block mobmenu %}
@@ -64,16 +54,24 @@
         <section class="articlemeta">
             <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
             <div class="meta">
+                <p style="color: #000; font-family: CrimsonPro; font-size:48px; font-weight: bold; text-align: center; line-height: 1rem;">A-Z LOGS</p>
                 <div id="category">{{ article.category }}</div>
                 <div id="title">{{ article.title }}</div>
                 <div id="pubDate">{{ article.publishdate }}</div>
                 <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
                 <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
-                    <img src="{% static 'core/media/share_black.png' %}" alt="share article" width="20" height="20" >
-                    <a href="#commentnow">
+                    <div class="stat">
+                        <img src="{% static 'core/media/share_black.png' %}" alt="share article" width="20" height="20" >
+                        <span class="stats">{{ article.views }}</span>
+                    </div>
+                    <div class="stat">
+                        <img src="{% static 'core/media/view_black.png' %}" alt="reads" width="20" height="20" >
+                        <span class="stats">{{ article.views }}</span>
+                    </div>
+                    <a href="#commentnow" class="stat">
                         <img src="{% static 'core/media/comment_black.png' %}" alt="post comment" width="20" height="20" >
+                        <span class="stats">{{ article.comments.count }}</span>
                     </a>
-                    <img src="{% static 'core/media/view_black.png' %}" alt="reads" width="20" height="20" >
                 </div>
             </div>
         </section>
@@ -98,35 +96,28 @@
             <p class="header">Join the Discussion</h2>
             <p>Hi there. Welcome to my personal website, a place for me to log snapshots of my life over the years, share stories as told by others, and periodically post technical content that may interest a couple other people. Thank you for being part of the community.</p>
         </div>
+        <button onclick="document.getElementById('id01').style.display='block'">Send feedback</button>
         {% if user.is_authenticated %}
-        <button>Contact Leroy</button>
         <button>Add a comment</button>
         {% else %}
-        <button>Contact Leroy</button>
         <a href="{% url 'account:auth' %}"><button>Please log in or sign up to comment</button></a>
         {% endif %}
         <p class="responses">{{ article.comments.count }} responses</h5>
     </div>
 
-    <!-- <div class="commentsec">
+    <div class="commentsec">
+    {% if article.comments.count >= 1 %}
 
-        {% if article.comments %}
-
-            {% for comment in article.comments.all %}
-            <div>
-                <p>{{ comment.name }} on {{ comment.postdate }}</p>
-                <p>{{ comment.body | safe }}</p>
-            </div>
-            {% endfor %}
-
-        {% else %}
-
-            <div style="text-align: center;">
-                <p>Be the first to comment</p>
-            </div>
-
-        {% endif %}
-    </div> -->
+        {% for comment in article.comments.all %}
+        <div class="commentBox">
+            <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.name.username }}</p>
+            <p style="color: #c2c2c2b9;">{{ comment.postdate }}</p>
+            <br>
+            <p>{{ comment.content | safe }}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
         
 </div>
 {% endblock body %}

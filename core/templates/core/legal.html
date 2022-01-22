@@ -13,6 +13,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Load js file -->
         <!-- <script src="{% static 'core/main.js' %}"></script> -->
+        <script>
+            document.addEventListener ('DOMContentLoaded', function(){
+
+                // window.onpopstate = function(event) {
+                //     console.log(event.state.section);
+                //     showSection(event.state.section);
+                // }
+
+                function showSection(section) {
+
+                    // fetch('{section}')
+
+                    document.querySelectorAll('section').forEach(section => {
+                        section.style.display = 'none';
+                    })
+                    // document.querySelector('title').innerHTML = 'Privacy FAQ - The Nairobi Sentinel'
+                    document.getElementById(section).style.display = 'block';
+                    window.scrollTo(0,0);
+                };
+
+                document.querySelectorAll('button').forEach(button  => {
+                    button.onclick = function() {
+
+                        const section = this.dataset.section;
+                        // history.pushState({section: section}, "", {section});
+                        showSection(section);                        
+                    }
+                });
+
+
+            });
+
+        </script>
         
     </head>
 
@@ -22,6 +55,10 @@
             <a id="navlogo" href="{% url 'core:index' %}">
                 <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" >
             </a>
+            <div id="navlink" style="display: flex; flex-direction: row; grid-gap: 7px;">
+                <button data-section="privacys">Privacy</button>
+                <button data-section="terms">Terms</button>
+            </div>
         </nav>
 
         <div class="pagesec">
@@ -46,7 +83,7 @@
 
         <footer>
             <div>
-                <a>© 2021 Leroy Buliro. All rights reserved.</a>
+                <a>© 2022 Leroy Buliro. All rights reserved.</a>
             </div>
         </footer>
 

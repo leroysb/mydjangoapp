@@ -1,4 +1,4 @@
-{% extends "account\index.html" %}
+{% extends "account/index.html" %}
 {% load static %}
 
 {% block pagetitle %}
@@ -15,35 +15,33 @@
 
 <form action="" method="post">{% csrf_token %}
 
+    
+    {% if sess_email %}
+    
+    <div onclick="history.back()">
+        <span class="formlabel">{{ form.username.label }}</span>
+        
+        {% for error  in form.username.errors %}
+        <p class="formerror">*{{ error }}</p>
+        {% endfor %}
+        
+        <input type="email" name="username" class="forminput2" value="{{ sess_email }}" readonly>
+        <p class="forminput"">{{ form.username }}</p>
+    </div>
+
+    {% else %}
+
     <div>
         <span class="formlabel">{{ form.username.label }}</span>
         
         {% for error  in form.username.errors %}
         <p class="formerror">*{{ error }}</p>
         {% endfor %}
-        
 
-        {% if sess_email %}
-        <input type="email" name="email" class="forminput2" value="{{ sess_email }}">
-        {% else %}
         <p class="forminput"">{{ form.username }}</p>
-        {% endif %}
-
     </div>
 
-    <!-- <div onclick="history.back()">
-        <span class="formlabel">{{ form.username.label }}</span>
-        
-        {% for error  in form.username.errors %}
-        <p class="formerror">*{{ error }}</p>
-        {% endfor %}
-        
-        {% if sess_email %}
-        <input type="email" name="username" class="forminput2" value="{{ sess_email }}" readonly>
-        {% else %}
-        <p class="forminput"">{{ form.username }}</p>
-        {% endif %}
-    </div> -->
+    {% endif %}
 
     <div>
         <span class="formlabel">{{ form.password.label }}</span>

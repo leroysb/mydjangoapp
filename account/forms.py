@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm, EmailField, CharField
+from django.forms import ModelForm, EmailField, CharField, Form
 from django.forms.widgets import TextInput, Textarea
 
 from django.contrib.auth import authenticate
@@ -11,12 +11,12 @@ from django.utils.translation import gettext_lazy as _
 
 #####
 
-class authForm(forms.Form):
+class authForm(Form):
     email = CharField(max_length=100, label=_("Email"),)
 
 #####
 
-class loginForm(ModelForm):
+class loginForm(Form):
 
     email = CharField(max_length=100, required=True, label=_("Email now"))
     password = CharField(widget=forms.PasswordInput(), label=_("Password"))      

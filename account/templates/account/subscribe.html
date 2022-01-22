@@ -1,4 +1,4 @@
-{% extends "account\index.html" %}
+{% extends "account/index.html" %}
 {% load static %}
 
 {% block pagetitle %}
@@ -72,7 +72,7 @@
     {% endif %}
 
     <div style="text-align: center;">
-        <p>By clicking Sign up, you agree to our <a href="{% url 'core:legal' %}" style="text-decoration: none; color: #5e5cd4;">User Agreement, Privacy Policy, and Cookie Policy</a>.</p>
+        <p>By clicking Sign up, you agree to our <a href="{% url 'core:legal' %}" style="text-decoration: none; color: #5e5cd4;">terms of service, and privacy policy</a>.</p>
     </div>
 
     <input type="submit" name="CreateAccount" class="btn" value="Sign up">
