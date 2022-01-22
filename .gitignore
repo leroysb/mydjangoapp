@@ -10,7 +10,7 @@
 media/
 static/
 media_cdn/
-# static_cdn/
+static_cdn/
 staticfiles/
 
 # Byte-compiled / optimized / DLL files
