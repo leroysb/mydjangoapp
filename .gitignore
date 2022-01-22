@@ -11,7 +11,7 @@ media/
 static/
 media_cdn/
 static_cdn/
-staticfiles/
+# staticfiles/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
