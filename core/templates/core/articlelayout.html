@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% include 'core/feedbackModal.html' %}
 <!-- {% include "core/feedbackModal.html" %} -->
 {% load static %}
 
@@ -36,12 +37,14 @@
 
 {% block navmenu %}
     <a class="navlink" href="{% url 'core:index' %}">HOME</a>
+    <a  class="navlink" href="{% url 'core:event' %}">EVENTS</a>
     <a class="navlink" href="{% url 'core:blogpage' %}">BLOG</a>
     <a class="navlink" href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
 {% block mobmenu %}
     <a href="{% url 'core:index' %}">HOME</a>
+    <a href="{% url 'core:event' %}">EVENTS</a>
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock mobmenu %}
@@ -120,4 +123,6 @@
     </div>
         
 </div>
+{% block feedbackModal %}
+{% endblock feedbackModal %}
 {% endblock body %}
