@@ -20,7 +20,7 @@ class ArticleCommentAdmin(admin.ModelAdmin):
 admin.site.register(ArticleComment, ArticleCommentAdmin)
 
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ("id","postdate","content","ratings", "pageSource")
+    list_display = ("id","postdate","content","ratings")
 admin.site.register(Feedback, FeedbackAdmin)
 
 class PodcastAdmin(admin.ModelAdmin):

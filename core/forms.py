@@ -9,7 +9,8 @@ class CommentForm(Form):
 class feedbackForm(ModelForm):
     content = forms.CharField (min_length=1, max_length=500)
     ratings = forms.RadioSelect()
+    # source = forms.CharField (min_length=1, max_length=500)
 
     class Meta:
         model = Feedback
-        fields = ['content', 'ratings','pageSource']
+        fields = ['content', 'ratings',]

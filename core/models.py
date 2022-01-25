@@ -68,7 +68,7 @@ class Feedback(models.Model):
     postdate = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=500, blank=False)
     ratings = models.IntegerField()
-    pageSource = models.CharField(max_length = 200, blank=False, default="null")
+    # source = models.CharField(max_length = 200, blank=False, default="null")
 
     class Meta:
         ordering = ["-postdate"]

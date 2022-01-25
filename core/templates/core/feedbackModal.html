@@ -9,7 +9,7 @@
         </div>
         
         <form class="modal-container" method="POST" action="">{% csrf_token %}
-            <input type="hidden" name="pageSource" value="{{ request.build_absolute_url }}">
+            <input type="hidden" name="source" value="{{ request.build_absolute_url }}">
             <div class="modal-section">
                 <div>
                     <textarea rows="4" type="text" style="width: 100%; padding: 4px; font-size: 14px; font-family: CrimsonPro;" placeholder="We appreciate hearing your thoughts. It helps us make things better." name="content" required></textarea>
@@ -18,7 +18,6 @@
 
                 <div>
                     <p><b>Overall, how was your experience?</b></p>
-                    
                     <div class="rating">
                         <span><input type="radio" name="ratings" id="str5" value="5"><label for="str5">&star;</label></span>
                         <span><input type="radio" name="ratings" id="str4" value="4"><label for="str4">&star;</label></span>
