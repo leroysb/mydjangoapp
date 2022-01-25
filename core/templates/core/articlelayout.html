@@ -65,15 +65,19 @@
                         <img src="{% static 'core/media/share_black.png' %}" alt="share article" width="20" height="20" >
                         <span class="stats">0</span>
                         <div class="share-options">
-                            <div class="social-media">
-                                <button class="social-media-btn">
-                                    <i class="far fa-folder-open"></i>
-                                </button>
-                                <button class="social-media-btn"><i class="fab fa-whatsapp"></i></button>
-                                <button class="social-media-btn"><i class="fab fa-instagram"></i></button>
-                                <button class="social-media-btn"><i class="fab fa-twitter"></i></button>
-                                <button class="social-media-btn"><i class="fab fa-facebook-f"></i></button>
-                                <button class="social-media-btn"><i class="fab fa-linkedin-in"></i></button>
+                            <div class="social-share">
+                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                    <img src="{% static 'core/media/twitterShare.png' %}" alt="twitter">
+                                </a>
+                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                    <img src="{% static 'core/media/facebookShare.png' %}" alt="facebook">
+                                </a>
+                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                    <img src="{% static 'core/media/linkedinShare.png' %}" alt="linkedin">
+                                </a>
+                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                    <img src="{% static 'core/media/twitterShare.png' %}" alt="whatsapp">
+                                </a>
                             </div>
                         </div>
                     </a>
