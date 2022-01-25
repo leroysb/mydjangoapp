@@ -1,0 +1,113 @@
+{% include 'core/feedbackModal.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- site meta tags-->
+        <link rel="icon" type="image/png" href="{% static 'core/media/fbl.jpg' %}"/>
+        <meta name="author" content="Leroy Buliro">
+        <link rel="canonical" href="https://leroybuliro.com/">
+        <meta name="docsearch:language" content="en">
+        {% block meta %}
+        {% endblock meta %}
+
+        <!-- Load css file -->
+        <link rel="stylesheet" href="{% static 'core/base.css' %}">
+        <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
+        
+        {% block style %}
+        {% endblock style %}
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                {
+                    "@id": "#site",
+                    "@type": "Website",
+                    "name": "Leroy Buliro",
+                    "author": "Leroy Buliro",
+                    "description": "Leroy Buliro: deejay, financial advisor, writer, podcaster",
+                    "url": "https://leroybuliro.com",
+                    "schemaVersion": "10.0",
+                    "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+                },
+                {
+                    "@type": "Blog",
+                    "isPartOf": "#site",
+                    "name": "A-Z Logs, a blog by Leroy Buliro",
+                    "description": "A-Z Logs, a blog by Leroy Buliro",
+                    "url": "https://leroybuliro.com/a-z-logs",
+                    "keywords": "Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture",
+                }
+                ]
+            }
+        </script>
+
+        <!-- Load js file -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="{% static 'core/base.js' %}"></script>
+        {% block script %}
+        {% endblock script %}
+    </head>
+    
+    <body>
+        <nav class="topnav">
+            <a id="navlogo" href="{% url 'core:index' %}">
+                <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" >
+            </a>
+            
+            {% block navmenu %}
+            <div class="navmenu">
+            </div>
+            {% endblock navmenu %}
+            
+            <div class="access">
+                {% if user.is_authenticated %}
+                <a id="accessurl" href="{% url 'account:logout' %}"><button id="accessbtn">Log out</button></a>
+                {% else %}
+                <a id="accessurl" href="{% url 'account:auth' %}"><button id="accessbtn">Sign in</button></a>
+                {% endif %}
+            </div>
+            
+            <div class="menu-btn">
+                <div class="menu-btn__burger"></div>
+            </div>
+        </nav>
+        
+        {% block mobmenu %}
+        <div class="mobile-menu">
+        </div>
+        {% endblock mobmenu %}
+        
+        <!-- <noscript>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-20 text-center">
+                        <p class="no-javascript-warning">Javascript not supported on your browser, please enable Javascript in order to fully utilize the website</p>
+                    </div>
+                </div>
+            </div>
+        </noscript> -->
+
+        {% block body %}
+        {% endblock body %}
+        
+        <footer>
+            <div id="footersocial">
+                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconTT.png' %}" alt="twitter" width="auto" height="22" ></a>
+                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconIG.png' %}" alt="instagram" width="auto" height="22" ></a>
+            </div>
+            <a>© 2022 Leroy Buliro. All rights reserved.</a>
+            <span>
+                <a href="{% url 'core:legal' %}">Legal</a>
+            </span>
+        </footer>
+    </body>
+</html>
