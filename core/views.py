@@ -1,4 +1,6 @@
 from cgitb import lookup
+from pdb import post_mortem
+from re import I
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import View
@@ -59,6 +61,24 @@ class ArticleView(FormMixin, DetailView):
         form.save()
         return super().form_valid(form)
 
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        ip = get_client_ip(self.request)
+        print(ip)
+        if Stat.objects.filter(ip=ip).exists():
+            print("ip already exists")
+            article_id = request.GET.get('article-id')
+            print(article_id)
+            post = Article.objects.get(pk=article_id)
+            post.views.add(Stat.objects.get(ip=ip))
+        else:
+            Stat.objects.create(ip=ip)
+            article_id =request.GET.get('article-id')
+            post = Article.objects.get(pk=article_id)
+            post.views.add(Stat.objects.get(ip=ip))
+        return self.render_to_response(context)
+
 class PodcastView(ListView):
     context_object_name = 'podcast'
     queryset = Podcast.objects.first()
@@ -88,3 +108,13 @@ class LegalView(ListView):
         context = super().get_context_data(**kwargs)
         context['terms'] = Terms.objects.order_by('-date').first()
         return context
+
+def get_client_ip(request):
+    ipaddress = request.META.get('HTTP_X_FORWARDED_FOR')
+    if ipaddress:
+        ip = ipaddress.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+    

@@ -18,6 +18,15 @@ class ArticleCategory(models.Model):
     class Meta:
         db_table = 'article_category'
 
+class Stat(models.Model):
+    ip = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.ip
+
+    class Meta:
+        db_table = 'stats'
+
 class Article(models.Model):
     id = models.BigAutoField(primary_key=True)
     featureimage = models.ImageField(upload_to='core/article/%Y/%m/')
@@ -30,10 +39,14 @@ class Article(models.Model):
     publishdate = models.DateField(auto_now_add=False)
     extract = models.CharField(max_length = 2000, blank=True, null=True)
     content = RichTextField(config_name='full_editor', blank=True, null=True)
-    views = models.IntegerField(default=0)
+    views = models.ManyToManyField(Stat, blank=True)
+    shares = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    def totalViews(self):
+        return self.views.count()
 
     class Meta:
         ordering = ["-publishdate"]
@@ -52,10 +65,10 @@ class ArticleComment(models.Model):
 
 class Feedback(models.Model):
     id = models.BigAutoField(primary_key=True)
-    # source = models.CharField(max_length = 500, blank=False)
     postdate = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=500, blank=False)
     ratings = models.IntegerField()
+    pageSource = models.CharField(max_length = 200, blank=False, default="null")
 
     class Meta:
         ordering = ["-postdate"]

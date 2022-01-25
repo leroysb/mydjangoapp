@@ -31,4 +31,11 @@ document.addEventListener('DOMContentLoaded', function(){
         //     alert(userRating);
         // }); 
     });
+
+    const shareBtn = document.querySelector('#sharebtn');
+    const shareOptions = document.querySelector('.share-options');
+
+    shareBtn.addEventListener('click', () => {
+        shareOptions.classList.toggle('active');
+    })
 })

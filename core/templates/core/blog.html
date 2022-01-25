@@ -59,8 +59,11 @@
     <div id="blogs">
         {% for article in articles %}
         <section class="articlediv" style="border: 1px solid #ccc; border-radius: 2%;">
-            <a href="{% url 'core:blogpost' pk=article.id slug=article.slug %}">
-                <div style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px;">
+            <!-- <a href="{% url 'core:blogpost' pk=article.id slug=article.slug %}"> -->
+            <form method="get" action="{% url 'core:blogpost' pk=article.id slug=article.slug %}">
+                <input type="hidden" name="article-id" value="{{article.id}}">
+                
+                <div class="articlesec" onclick="this.closest('form').submit();return false;" style="margin: 3%; display: grid; grid-column: 1fr; grid-gap: 10px; cursor: pointer;">
                     <div style="width: 100%; height: auto; object-fit: cover;">
                         <img  class="blogimage" src="{{ article.featureimage.url }}" alt="{{ article.title }}">
                     </div>
@@ -69,9 +72,11 @@
                         <h3 class="blogtitle">{{ article.title }}</h3>
                         <p class="blogextract">{{ article.extract  }}</p>
                         <p class="blogdate">{{ article.publishdate }}</p>
+                        <!-- <input type="submit" value="Read more"> -->
                     </div>
                 </div>
-            </a>
+            </form>
+            <!-- </a> -->
         </section>
         {% endfor %}
     </div>

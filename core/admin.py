@@ -6,6 +6,10 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
     list_display = ("id","name")
 admin.site.register(ArticleCategory, ArticleCategoryAdmin)
 
+class StatAdmin(admin.ModelAdmin):
+    list_display = ("ip",)
+admin.site.register(Stat, StatAdmin)
+
 class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',),}
     list_display = ("id", "title", "category", "publishdate")
@@ -16,7 +20,7 @@ class ArticleCommentAdmin(admin.ModelAdmin):
 admin.site.register(ArticleComment, ArticleCommentAdmin)
 
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ("id","postdate","content","ratings")
+    list_display = ("id","postdate","content","ratings", "pageSource")
 admin.site.register(Feedback, FeedbackAdmin)
 
 class PodcastAdmin(admin.ModelAdmin):

@@ -12,4 +12,4 @@ class feedbackForm(ModelForm):
 
     class Meta:
         model = Feedback
-        fields = ['content', 'ratings',]
+        fields = ['content', 'ratings','pageSource']

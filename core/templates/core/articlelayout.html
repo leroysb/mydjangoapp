@@ -61,13 +61,25 @@
                 <div id="pubDate">{{ article.publishdate }}</div>
                 <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
                 <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
-                    <div class="stat">
+                    <a class="stat" id="sharebtn">
                         <img src="{% static 'core/media/share_black.png' %}" alt="share article" width="20" height="20" >
-                        <span class="stats">{{ article.views }}</span>
-                    </div>
+                        <span class="stats">0</span>
+                        <div class="share-options">
+                            <div class="social-media">
+                                <button class="social-media-btn">
+                                    <i class="far fa-folder-open"></i>
+                                </button>
+                                <button class="social-media-btn"><i class="fab fa-whatsapp"></i></button>
+                                <button class="social-media-btn"><i class="fab fa-instagram"></i></button>
+                                <button class="social-media-btn"><i class="fab fa-twitter"></i></button>
+                                <button class="social-media-btn"><i class="fab fa-facebook-f"></i></button>
+                                <button class="social-media-btn"><i class="fab fa-linkedin-in"></i></button>
+                            </div>
+                        </div>
+                    </a>
                     <div class="stat">
                         <img src="{% static 'core/media/view_black.png' %}" alt="reads" width="20" height="20" >
-                        <span class="stats">{{ article.views }}</span>
+                        <span class="stats">{{ article.totalViews }}</span>
                     </div>
                     <a href="#commentnow" class="stat">
                         <img src="{% static 'core/media/comment_black.png' %}" alt="post comment" width="20" height="20" >
@@ -112,7 +124,7 @@
         {% for comment in article.comments.all %}
         <div class="commentBox">
             <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.name.username }}</p>
-            <p style="color: #c2c2c2b9;">{{ comment.postdate }}</p>
+            <p style="color: #c2c2c2b9;">{{ comment.postdate | timesince }}</p>
             <br>
             <p>{{ comment.content | safe }}</p>
         </div>

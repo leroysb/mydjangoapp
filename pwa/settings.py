@@ -106,11 +106,11 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # local dev static
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # local dev static
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_cdn'), )
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_cdn'), )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
