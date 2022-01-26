@@ -64,15 +64,13 @@
             </a>
             
             {% block navmenu %}
-            <div class="navmenu">
-            </div>
             {% endblock navmenu %}
             
             <div class="access">
                 {% if user.is_authenticated %}
-                <a id="accessurl" href="{% url 'account:logout' %}"><button id="accessbtn">Log out</button></a>
+                <a id="accessbtn" href="{% url 'account:logout' %}">Log out</a>
                 {% else %}
-                <a id="accessurl" href="{% url 'account:auth' %}"><button id="accessbtn">Sign in</button></a>
+                <a id="accessbtn" href="{% url 'account:auth' %}">Sign in</a>
                 {% endif %}
             </div>
             
@@ -82,8 +80,6 @@
         </nav>
         
         {% block mobmenu %}
-        <div class="mobile-menu">
-        </div>
         {% endblock mobmenu %}
         
         <!-- <noscript>

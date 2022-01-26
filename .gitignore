@@ -3,7 +3,7 @@
 
 # Project Files/Folders
 media/
-static/
+# static/
 media_cdn/
 # static_cdn/
 # staticfiles/
