@@ -69,9 +69,8 @@
     position: relative;
     text-decoration: none;
     color: #000;
-    position: relative;
 }
-.stat .stats {
+.stats {
     font-family: monospace;
     font-size: 0.8em;
     color: #000;
@@ -80,12 +79,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-.share-options{
+.share-options {
     position: absolute;
-    z-index: 2;
-    bottom: -300%;
-    left: 50%;
+    bottom: -60;
+    left: 10;
+    z-index: 1;
     width: auto;
     height: auto;
     padding: 4px;
@@ -117,14 +115,14 @@
     border: none;
     width: 24px;
     height: 24px;
-    /* border-radius: 50%; */
-    background: #000;
+    border-radius: 50%;
+    background: #fff;
     color: #fff;
-    /* line-height: 50px; */
-    /* font-size: 25px; */
+    line-height: 50px;
+    font-size: 25px;
     cursor: pointer;
     margin: 0 3px;
-    /* text-align: center; */
+    text-align: center;
 }
 .share-options.active,
 .share-options.active .social-share{

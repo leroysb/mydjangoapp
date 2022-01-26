@@ -35,7 +35,7 @@
 
 {% block navmenu %}
 <div class="navmenu">
-    <a class="navlink" href="{% url 'core:index' %}">HOME</a>
+    <!-- <a class="navlink" href="{% url 'core:index' %}">HOME</a> -->
     <a  class="navlink" href="{% url 'core:event' %}">EVENTS</a>
     <a class="navlink" href="{% url 'core:blogpage' %}">BLOG</a>
     <a class="navlink" href="{% url 'core:podcast' %}">PODCAST</a>
@@ -44,7 +44,7 @@
 
 {% block mobmenu %}
 <div class="mobile-menu">
-    <a href="{% url 'core:index' %}">HOME</a>
+    <!-- <a href="{% url 'core:index' %}">HOME</a> -->
     <a href="{% url 'core:event' %}">EVENTS</a>
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
@@ -64,31 +64,34 @@
                 <div id="title">{{ article.title }}</div>
                 <div id="pubDate">{{ article.publishdate }}</div>
                 <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
-                <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
-                    <a class="stat" id="sharebtn">
+                <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%; position: relative;">
+
+                    <a class="stat" id="sharebtn" style="cursor: pointer; position: relative;">
                         <img src="{% static 'core/media/share_black.png' %}" alt="share article" width="20" height="20" >
                         <span class="stats">0</span>
-                        <div class="share-options">
-                            <div class="social-share">
-                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
-                                    <img src="{% static 'core/media/twitterShare.png' %}" alt="twitter">
-                                </a>
-                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
-                                    <img src="{% static 'core/media/facebookShare.png' %}" alt="facebook">
-                                </a>
-                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
-                                    <img src="{% static 'core/media/linkedinShare.png' %}" alt="linkedin">
-                                </a>
-                                <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
-                                    <img src="{% static 'core/media/twitterShare.png' %}" alt="whatsapp">
-                                </a>
-                            </div>
-                        </div>
                     </a>
+                    <div class="share-options">
+                        <div class="social-share">
+                            <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                <img src="{% static 'core/media/twitterShare.png' %}" alt="twitter" style="width: 100%; height: 100%;">
+                            </a>
+                            <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                <img src="{% static 'core/media/facebookShare.png' %}" alt="facebook" style="width: 100%; height: 100%;">
+                            </a>
+                            <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                <img src="{% static 'core/media/linkedinShare.png' %}" alt="linkedin" style="width: 100%; height: 100%;">
+                            </a>
+                            <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
+                                <img src="{% static 'core/media/twitterShare.png' %}" alt="whatsapp" style="width: 100%; height: 100%;">
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="stat">
                         <img src="{% static 'core/media/view_black.png' %}" alt="reads" width="20" height="20" >
                         <span class="stats">{{ article.totalViews }}</span>
                     </div>
+
                     <a href="#commentnow" class="stat">
                         <img src="{% static 'core/media/comment_black.png' %}" alt="post comment" width="20" height="20" >
                         <span class="stats">{{ article.comments.count }}</span>
