@@ -113,16 +113,13 @@
 }
 .social-share-btn{
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 27px;
+    height: 27px;
     border-radius: 50%;
     background: #fff;
     color: #fff;
-    line-height: 50px;
-    font-size: 25px;
     cursor: pointer;
     margin: 0 3px;
-    text-align: center;
 }
 .share-options.active,
 .share-options.active .social-share{
