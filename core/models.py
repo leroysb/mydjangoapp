@@ -57,7 +57,7 @@ class ArticleComment(models.Model):
     post = models.ForeignKey(Article, related_name="comments", on_delete=models.CASCADE)
     name = models.ForeignKey(User, on_delete=models.CASCADE)
     postdate = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(max_length=140, blank=False)
+    comment = models.TextField(max_length=420, blank=False)
 
     class Meta:
         ordering = ["-postdate"]
@@ -68,7 +68,7 @@ class Feedback(models.Model):
     postdate = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=500, blank=False)
     ratings = models.IntegerField()
-    # source = models.CharField(max_length = 200, blank=False, default="null")
+    source = models.CharField(max_length = 200, blank=False)
 
     class Meta:
         ordering = ["-postdate"]

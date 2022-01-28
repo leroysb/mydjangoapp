@@ -16,7 +16,7 @@ class ArticleAdmin(admin.ModelAdmin):
 admin.site.register(Article, ArticleAdmin)
 
 class ArticleCommentAdmin(admin.ModelAdmin):
-    list_display = ("id","post","content")
+    list_display = ("id","post","comment")
 admin.site.register(ArticleComment, ArticleCommentAdmin)
 
 class FeedbackAdmin(admin.ModelAdmin):

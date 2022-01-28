@@ -9,7 +9,6 @@
         </div>
         
         <form class="modal-container" method="POST" action="">{% csrf_token %}
-            <input type="hidden" name="source" value="{{ request.build_absolute_url }}">
             <div class="modal-section">
                 <div>
                     <textarea rows="4" type="text" style="width: 100%; padding: 4px; font-size: 14px; font-family: CrimsonPro;" placeholder="We appreciate hearing your thoughts. It helps us make things better." name="content" required></textarea>
@@ -30,7 +29,7 @@
                 <p>To protect your privacy, don't include your contact info.</p>
 
                 <div style="display: flex; justify-content: right; padding-top: 12px;">
-                    <button class="modal-btn-alt" type="submit">Submit</button>
+                    <button class="modal-btn-alt" type="submit" name="submitfeedback">Submit</button>
                     <button class="modal-btn" onclick="document.getElementById('id01').style.display='none'" type="button">Cancel</button>
                 </div>
             </div>

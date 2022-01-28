@@ -1,0 +1,123 @@
+@font-face {
+    font-family: CrimsonPro;
+    src: url("/static/core/fonts/CrimsonPro-VariableFont.3baa74c26c16.ttf") format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Josefin Sans;
+    src: url("/static/core/fonts/JosefinSans-VariableFont_wght.324a513cb9c6.ttf") format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Permanent Marker;
+    src: url("/static/core/fonts/PermanentMarker-Regular.c863f8028c25.ttf") format('truetype');
+    font-weight: 700;
+}
+
+.blogpage {
+    margin: 40px 1vw 30vh 1vw;
+}
+.blogpage .centered {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+#blogs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 4% 2%;
+    margin: 40px 0 0 0;
+}
+#blogs a,
+#blogs a:hover {
+    text-decoration: none;
+}
+.articlediv {
+    filter: grayscale();
+    transition: 300ms;
+}
+.articlediv:hover {
+    filter: none;
+}
+#blogs .blogimage {
+    width: 100%;
+    height: 100%;
+}
+#blogs .blogmeta {
+    margin: 2% 0% 0% 0%;
+    display: grid;
+    grid-gap: 8px;
+    place-items: center;
+    text-align: center;
+}
+#blogs .blogcategory {
+    color: gray;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+#blogs .blogtitle {
+    color: #FFFFFF;
+    font-family: Josefin Sans;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.4rem;
+}
+#blogs .blogextract {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1rem;
+}
+#blogs .blogdate {
+    color: gray;
+    font-size: 11px;
+    font-weight: 400;
+}
+button {
+    font-family: Josefin Sans;
+    border: 1px gray solid;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 1% 4%;
+    display: none;
+}
+#showbtn {
+    width: 100%;
+    display: none;
+    place-content: center;
+    margin: 30px 0;
+}
+
+@media only screen and (max-width: 1027) {
+    #blogs {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    #blogs {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 18px;
+    }
+    .articlediv {
+        filter: none;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .blogpage {
+        margin: 30px 1vw 70px 1vw;
+    }
+    #blogs {
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+        margin: 30px 0 0 0;
+    }
+    .articlediv {
+        filter: none;
+    }
+}
