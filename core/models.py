@@ -1,9 +1,12 @@
+from colorsys import ONE_SIXTH
 from django.db import models
 from django.db.models.deletion import *
 from account.models import User
 from ckeditor.fields import RichTextField
 # from django.core.files import storage
 # from django.core.files.storage import FileSystemStorage
+
+import datetime
 
 # Create your models here. 
 
@@ -18,35 +21,51 @@ class ArticleCategory(models.Model):
     class Meta:
         db_table = 'article_category'
 
-class Stat(models.Model):
-    ip = models.CharField(max_length=100)
-    
+class ArticleTag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.CharField(max_length = 500)
+
     def __str__(self):
-        return self.ip
+        return self.name
 
     class Meta:
-        db_table = 'stats'
+        db_table = 'article_tag'
+
+class ArticleStat(models.Model):
+    IPAddres= models.GenericIPAddressField(default="0.0.0.0")
+    article = models.ForeignKey('Article', on_delete=models.CASCADE)
+    session = models.CharField(max_length=40)
+    device = models.CharField(max_length=400 ,default='null')
+    created = models.DateTimeField(default=datetime.datetime.now())
+
+    def __str__(self):
+        return '{0} in {1} article'.format(self.IPAddres,self.article.title)
+
+    class Meta:
+        ordering = ["-created"]
+        db_table = 'article_stat'
 
 class Article(models.Model):
     id = models.BigAutoField(primary_key=True)
     featureimage = models.ImageField(upload_to='core/article/%Y/%m/')
     title = models.CharField(max_length = 500)
     slug = models.CharField(max_length = 500,)
-    tags = models.CharField(max_length=500, default= 'untagged')
+    tags = models.ManyToManyField(ArticleTag, related_name="tags")
     category = models.ForeignKey(ArticleCategory, related_name="articles", on_delete=models.PROTECT,)
     writer = models.CharField(max_length=100, default = 'Leroy Buliro')
     credit = models.CharField(max_length = 700, blank=True, null=True)
     publishdate = models.DateField(auto_now_add=False)
     extract = models.CharField(max_length = 2000, blank=True, null=True)
     content = RichTextField(config_name='full_editor', blank=True, null=True)
-    views = models.ManyToManyField(Stat, blank=True)
-    shares = models.IntegerField(default=0)
+    # visits = models.PositiveIntegerField(default=0)
+    shares = models.PositiveIntegerField(default=0)
+
+    @property
+    def viewsCount(self):
+        return ArticleStat.objects.filter(article=self).count()
 
     def __str__(self):
         return self.title
-
-    def totalViews(self):
-        return self.views.count()
 
     class Meta:
         ordering = ["-publishdate"]

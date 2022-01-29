@@ -71,7 +71,6 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 #menuactive,
 #menuactive:hover {
-    font-weight: bolder;
     cursor: pointer;
     text-decoration: line-through;
     color: #000;

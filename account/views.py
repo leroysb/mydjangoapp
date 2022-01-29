@@ -2,7 +2,7 @@ from account.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from .forms import subscribeForm, authForm, loginForm
-from django.http import request
+from django.http import HttpResponse, request
 
 # from django.contrib.auth.views import LoginView
 # from django.contrib import messages
@@ -63,7 +63,7 @@ def AuthView(request, *args, **kwargs):
 def LoginView(request, *args, **kwargs):
 
     context= {}
-    context['sess_email'] = request.session['sess_email']
+    context['sess_email'] = request.session.get('sess_email')
     form = subscribeForm()
     context['form'] = form
 

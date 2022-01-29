@@ -6,9 +6,10 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
     list_display = ("id","name")
 admin.site.register(ArticleCategory, ArticleCategoryAdmin)
 
-class StatAdmin(admin.ModelAdmin):
-    list_display = ("ip",)
-admin.site.register(Stat, StatAdmin)
+class ArticleStatAdmin(admin.ModelAdmin):
+    list_display = ("IPAddres","article", "created")
+    readonly_fields = ('IPAddres', 'article', 'created', 'session', 'device')
+admin.site.register(ArticleStat, ArticleStatAdmin)
 
 class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',),}
@@ -17,10 +18,12 @@ admin.site.register(Article, ArticleAdmin)
 
 class ArticleCommentAdmin(admin.ModelAdmin):
     list_display = ("id","post","comment")
+    readonly_fields = ('post', 'name', 'comment', 'postdate')
 admin.site.register(ArticleComment, ArticleCommentAdmin)
 
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = ("id","postdate","content","ratings")
+    readonly_fields = ("postdate","content","ratings","source")
 admin.site.register(Feedback, FeedbackAdmin)
 
 class PodcastAdmin(admin.ModelAdmin):

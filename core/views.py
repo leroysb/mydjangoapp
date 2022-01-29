@@ -1,8 +1,11 @@
 from dataclasses import fields
+from urllib import request
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 # from django.http.response import HttpResponseNotFound
+
+from django.db.models import F
 
 from django.views import View
 from django.views.generic import ListView, DetailView, TemplateView, FormView
@@ -34,17 +37,7 @@ class BlogView(ListView):
     queryset = Article.objects.order_by('-publishdate')
     template_name = 'core/blog.html'
 
-class ArticleView(View):
-
-    def get(self, request, *args, **kwargs):
-        view = ArticleDetailView.as_view()
-        return view(request, *args, **kwargs)
-    
-    def post(self, request, *args, **kwargs):
-        view = FeedbackFormView.as_view()
-        return view(request, *args, **kwargs)
-
-class ArticleDetailView(FormMixin, DetailView):
+class ArticleView(FormMixin, DetailView):
     model = Article
     context_object_name = 'article'
     template_name = 'core/articlelayout.html'
@@ -52,13 +45,22 @@ class ArticleDetailView(FormMixin, DetailView):
     form_class = commentForm
 
     def post(self, request, *args, **kwargs):
-        form = commentForm(request.POST)
-        if form.is_valid():
-            post = self.get_object()
-            form.instance.name = request.user
-            form.instance.post = post
-            form.save()
-            return redirect(reverse('core:blogpost', kwargs={'pk':post.id, 'slug':post.slug}))
+
+        if 'submitcomment' in request.POST:
+            form = commentForm(request.POST)
+            if form.is_valid():
+                post = self.get_object()
+                form.instance.name = request.user
+                form.instance.post = post
+                form.save()
+                return redirect(reverse('core:blogpost', kwargs={'pk':post.id, 'slug':post.slug}))
+        else:
+            form = feedbackForm(request.POST)
+            if form.is_valid():
+                post = self.get_object()
+                form.instance.source = post
+                form.save()
+                return redirect(reverse('core:blogpost', kwargs={'pk':post.id, 'slug':post.slug}))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -67,42 +69,26 @@ class ArticleDetailView(FormMixin, DetailView):
         })
         return context
 
-    # def get(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     context = self.get_context_data(object=self.object)
-    #     ip = get_client_ip(self.request)
-    #     # print(ip)
-    #     if Stat.objects.filter(ip=ip).exists():
-    #         # print("ip already exists")
-    #         article_id = request.GET.get('article-id')
-    #         # print(article_id)
-    #         post = Article.objects.get(pk=article_id)
-    #         post.views.add(Stat.objects.get(ip=ip))
-    #     else:
-    #         Stat.objects.create(ip=ip)
-    #         article_id =request.GET.get('article-id')
-    #         post = Article.objects.get(pk=article_id)
-    #         post.views.add(Stat.objects.get(ip=ip))
-    #     return self.render_to_response(context)
+    # def get_object(self):
+    #     obj = super().get_object()
+    #     context = {}
+    #     Article.objects.filter(pk=obj.pk).update(visits=F('visits') + 1)
+    #     visits = Article.objects.filter(pk=obj.pk).get('visits')
+    #     context['visits'] = visits.views += 1   
+    #     return context
 
-class FeedbackFormView(SingleObjectMixin, FormView):
-    template_name = 'core/articlelayout.html'
-    form_class = feedbackForm
-    model = Article
+    def get(self, request, *args, **kwargs):
+            self.object = self.get_object()
+            context = self.get_context_data(object=self.object)
+            ip = get_client_ip(self.request)
 
-    def post(self, request, *args, **kwargs):
-        form = commentForm(request.POST)
-        if form.is_valid():
-            post = self.get_object()
-            form.instance.source = post
-            form.save()
-            return redirect(reverse('core:blogpost', kwargs={'pk':post.id, 'slug':post.slug}))
-
-        self.object = self.get_object()
-        form = self.get_form()
-        if form.is_valid():
-            form.save()
-            return super().post(request, *args, **kwargs)
+            post_details=Article.objects.get(pk=self.object.id)
+            ArticleStat.objects.get_or_create(
+                article=post_details,
+                IPAddres=ip,
+                session=request.session.session_key,
+                device =request.META.get('HTTP_USER_AGENT'),)
+            return self.render_to_response(context)
 
 class PodcastView(ListView):
     context_object_name = 'podcast'
@@ -141,5 +127,3 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
-
-    
