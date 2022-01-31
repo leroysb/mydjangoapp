@@ -82,11 +82,11 @@ class ArticleView(FormMixin, DetailView):
             context = self.get_context_data(object=self.object)
             ip = get_client_ip(self.request)
 
-            post_details=Article.objects.get(pk=self.object.id)
+            post_details=Article.objects.get(pk=self.object.pk)
+            # if not ArticleStat.objects.filter(IPAddres=ip, article=post_details).exists():
             ArticleStat.objects.get_or_create(
                 article=post_details,
                 IPAddres=ip,
-                session=request.session.session_key,
                 device =request.META.get('HTTP_USER_AGENT'),)
             return self.render_to_response(context)
 

@@ -34,7 +34,7 @@ class ArticleTag(models.Model):
 class ArticleStat(models.Model):
     IPAddres= models.GenericIPAddressField(default="0.0.0.0")
     article = models.ForeignKey('Article', on_delete=models.CASCADE)
-    session = models.CharField(max_length=40)
+    # session = models.CharField(max_length=40, null=True)
     device = models.CharField(max_length=400 ,default='null')
     created = models.DateTimeField(default=datetime.datetime.now())
 
