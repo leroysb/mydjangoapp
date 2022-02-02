@@ -77,9 +77,8 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 }
 .access {
     position: absolute;
-    /* top: 24%; */
-    top: 50%;
     right: 2%;
+    top: 50%;
     transform: translate(-50%, -50%);
 }
 .accessbtn,
@@ -191,6 +190,19 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     }
     #navlogo {
         top: 24%;
+    }
+}
+@media screen and (max-width: 342px) {
+    .topnav {
+        height: 27px;
+    }
+    #navlogo > img {
+        height: 10px;
+    }
+    .accessbtn,
+    .accessbtn:hover {
+        font-size: 10px;
+        padding: 3px 7px;
     }
 }
 

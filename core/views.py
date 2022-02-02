@@ -1,5 +1,3 @@
-from dataclasses import fields
-from urllib import request
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseForbidden, HttpResponseRedirect
@@ -15,6 +13,7 @@ from django.views.generic.detail import SingleObjectMixin
 
 # from django.core.paginator import Paginator, InvalidPage
 
+# from urllib import quote_plus
 from .models import *
 from .forms import *
 import datetime
@@ -65,7 +64,8 @@ class ArticleView(FormMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'form': self.form_class
+            'form': self.form_class,
+            # 'share_string': quote_plus(self.object.extract),
         })
         return context
 

@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', function(){
         if(event.target.id=="id02"){
             document.querySelector('#id02').style.display='none';
         };
-        if(event.target.id=="sharebtn"){
-            document.querySelector('.share-options').classList.toggle('active');
-        };
+        // if(event.target.id=="sharebtn"){
+        //     document.querySelector('.share-options').classList.toggle('active');
+        // };
     })
    
     $(document).ready(function(){
