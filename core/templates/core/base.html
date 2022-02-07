@@ -1,4 +1,4 @@
-{% include 'core/feedbackModal.html' %}
+<!-- {% include 'core/feedbackModal.html' %} -->
 {% load static %}
 {% load social_share %}
 
@@ -61,7 +61,8 @@
     <body>
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
-                <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" >
+                <img src="{% static 'core/media/about.jpg' %}" alt="logo" >
+                <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" style="width: auto; height: 14px;">
             </a>
             
             {% block navmenu %}
@@ -81,18 +82,8 @@
         </nav>
         
         {% block mobmenu %}
-        {% endblock mobmenu %}
+        {% endblock mobmenu %}        
         
-        <!-- <noscript>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-20 text-center">
-                        <p class="no-javascript-warning">Javascript not supported on your browser, please enable Javascript in order to fully utilize the website</p>
-                    </div>
-                </div>
-            </div>
-        </noscript> -->
-
         {% block body %}
         {% endblock body %}
         
@@ -107,5 +98,11 @@
             </span>
         </footer>
     </body>
+    
     {% add_pinterest_script %}
+    <noscript>
+        <div style="display: flex; place-content: center;">
+            <p>Javascript not supported on your browser, please enable Javascript in order to fully utilize the website</p>
+        </div>
+    </noscript>
 </html>

@@ -78,14 +78,15 @@
     <body>
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
-                <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" >
+                <img src="{% static 'core/media/about.jpg' %}" alt="logo" >
+                <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" style="width: auto; height: 14px;">
             </a>
             
             <div class="navmenu">
-                <!-- <a  class="navlink" href="{% url 'core:index' %}">HOME</a> -->
-                <a  class="navlink" href="{% url 'core:event' %}">EVENTS</a>
+                <!-- <a  href="{% url 'core:index' %}">HOME</a> -->
+                <a  href="{% url 'core:event' %}">EVENTS</a>
                 <a id="menuactive">BLOG</a>
-                <a class="navlink" href="{% url 'core:podcast' %}">PODCAST</a>
+                <a href="{% url 'core:podcast' %}">PODCAST</a>
             </div>
             
             <div class="access">
@@ -169,6 +170,11 @@
             </span>
         </footer>
     </body>
+    <noscript>
+        <div style="display: flex; place-content: center;">
+            <p>Javascript not supported on your browser, please enable Javascript in order to fully utilize the website</p>
+        </div>
+    </noscript>
 </html>
 
 <!-- 
@@ -208,10 +214,10 @@
 
 {% block navmenu %}
 <div class="navmenu">
-    <a  class="navlink" href="{% url 'core:index' %}">HOME</a>
-    <a  class="navlink" href="{% url 'core:event' %}">EVENTS</a>
+    <a  href="{% url 'core:index' %}">HOME</a>
+    <a  href="{% url 'core:event' %}">EVENTS</a>
     <a id="menuactive">BLOG</a>
-    <a class="navlink" href="{% url 'core:podcast' %}">PODCAST</a>
+    <a href="{% url 'core:podcast' %}">PODCAST</a>
 </div>
 {% endblock navmenu %}
 

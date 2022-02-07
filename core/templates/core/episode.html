@@ -1,38 +1,7 @@
-{% extends "core\podcast.html" %}
 {% load static %}
 
-{% block title %}
-    <title>{{episode.title}} | Leroy Buliro</title>
-{% endblock title %}
-
-{% block meta %}
-<meta name="description" content="{{episode.summary}}">
-<meta name="keyword" content="{{episode.tags}}">
-{% endblock meta %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'core/episode.css' %}">
-{% endblock style %}
-
-{% block script %}
-<script src="{% static 'core/episode.js' %}"></script>
-{% endblock script %}
-
-{% block navmenu %}
-    <a href="{% url 'core:index' %}">HOME</a>
-    <a href="{% url 'core:blogpage' %}">BLOG</a>
-    <a href="{% url 'core:podcast' %}">PODCAST</a>
-{% endblock navmenu %}
-
-{% block mobmenu %}
-    <a href="{% url 'core:index' %}">HOME</a>
-    <a href="{% url 'core:blogpage' %}">BLOG</a>
-    <a href="{% url 'core:podcast' %}">PODCAST</a>
-{% endblock mobmenu %}
-
-{% block body %}
+{% block episode %}
 <!-- Podcast section -->
-
 <div class="episodepage">
 
     <div class="row">
@@ -47,7 +16,7 @@
                 <h4>DESCRIPTION</h4>
                 <p>{{ episode.summary }}</p>
 
-                <audio id="episodeaudio" preload="true" >
+                <!-- <audio id="episodeaudio" preload="true" >
                     <source src="{{ episode.audio.url }}">
                 </audio>
 
@@ -55,10 +24,11 @@
                     <img class="pButton"  id="rev" src="{% static 'core/icons/replay_10.png' %}" alt="replay 10 seconds">
                     <img  class="pButton" id="pButton" src="{% static 'core/icons/play.png' %}" alt="play episode">
                     <img class="pButton" id="fwd" src="{% static 'core/icons/forward_30.png' %}" alt="forward 30 seconds">
-                </div>
+                </div> -->
+
             </div>
         </div>
     </div>
 
 </div>
-{% endblock body %}
+{% endblock episode %}

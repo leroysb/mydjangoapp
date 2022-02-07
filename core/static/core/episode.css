@@ -3,6 +3,9 @@
     font-family: CrimsonPro;
     line-height: 1.7rem;
     display: none;
+    z-index: 2;
+    position: absolute;
+    bottom: 13vh;
 }
 .episodepage h1, h2, h3, h4, h5, h6 {
     color: #000;

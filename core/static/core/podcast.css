@@ -21,6 +21,7 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     font-family: Josefin Sans;
+    position: relative;
 }
 
 /* Menu */
@@ -37,21 +38,36 @@ body {
 }
 #navlogo {
     position: absolute;
-    top: 30%;
+    /* top: 30%; */
     left: 2%;
+    top: 50%;
+    transform: translate(-0%, -50%);
+    /* width: 30px;
+    height: 30px;
+    object-fit: cover; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 7px;
 }
 #navlogo > img {
     width: auto;
-    height: 17px;
+    height: 30px;
+    /* width: 100%;
+    height: 100%; */
 }
 .navmenu {
     position: absolute;
-    top: 50%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    grid-gap: 14px;
 }
 .navmenu a {
-    padding: 5px 16px;
+    padding: 5px 14px;
     text-decoration: none;
     font-size: 12px;
     color: #fff;
@@ -60,18 +76,19 @@ body {
 .navmenu a:hover {
     background-color: #ddd;
     color: #000;
-    font-weight: bolder;
 }
-#menuactive {
-    font-weight: bolder;
+#menuactive,
+#menuactive:hover {
     cursor: pointer;
-    text-decoration: line-through;
+    text-decoration: none;
     color: #000;
 }
 #access {
     position: absolute;
-    top: 24%;
+    /* top: 24%; */
     right: 2%;
+    top: 50%;
+    transform: translate(-0%, -50%);
 }
 #access > a, a:hover {
     text-decoration: none;
@@ -181,8 +198,6 @@ body {
         display: none;
     }
     #access {
-        position: absolute;
-        top: 20%;
         right: 12%;
     }
     .menu-btn {
@@ -193,9 +208,9 @@ body {
     .topnav {
         height: 33px;
     }
-    #navlogo {
+    /* #navlogo {
         top: 24%;
-    }
+    } */
 }
 
 /* Main Block */
@@ -401,97 +416,6 @@ body {
     }
 }
 
-/* Episode Block */
-
-.episodepage {
-    font-size: 14px;
-    font-family: CrimsonPro;
-    line-height: 1.7rem;
-    display: none;
-}
-.episodepage h1, h2, h3, h4, h5, h6 {
-    color: #000;
-}
-.episodepage .row {  
-    display: flex;
-    flex-wrap: wrap;
-    padding: 4vh 40vw;
-}
-.episodepage .side {
-    flex: 40%;
-    padding-right: 3%;
-}
-.episodepage .main {
-    flex: 60%;
-}
-.episodepage .epi-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
-}
-
-/* Podcast Episode Page Player */
-
-.episodepage .controls {
-    /* float: left; */
-    align-items: center;
-    display: flex;
-    margin: 0;
-    margin: 4% 0%;
-}
-.episodepage .controls .pButton {
-    cursor: pointer;
-    padding: 0;
-    margin-right: 7px;
-    width: 40px; 
-    height: 40px;
-}
-.episodepage #timeline {
-    width: 90%;
-    height: 2px;
-    margin: 4% 0%;
-    float: left;
-    -webkit-border-radius: 15px;
-    border-radius: 15px;
-    background: rgba(252, 250, 250, 0.678);
-}
-.episodepage #playhead {
-    width: 8px;
-    height: 8px;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    margin-top: -3px;
-    background: #FFFFFF;
-    cursor: pointer;
-}
-.episodepage .timer {
-    font-family: monospace;
-    color: #FFFFFF;
-    float: right;
-    padding: 0;
-    margin: 0;
-}
-
-@media screen and (max-width: 769px) {
-    .episodepage .row {   
-        flex-direction: column;
-        padding: 4vh 2vw;
-    }
-    .episodepage .side {
-        /* width: 100%; */
-        padding-bottom: 10%;
-    }
-    .episodepage .epi-content p {
-        font-size: 14px;
-    }
-    .episodepage #timeline {
-        width: 100%;
-    }
-    .episodepage .timer {
-        font-size: 14px;
-    }
-}
-
 /* Bottom */
 
 .bottom {
@@ -530,6 +454,7 @@ footer {
     background-color: #1b1b1bf5;
     position: sticky;
     bottom: 0;
+    z-index: 3;
     padding: 1% 2%;
     display: flex;
     flex-direction: row;
@@ -540,17 +465,21 @@ footer {
 .footerimage {
     width: 54px;
     height: 54px;
-    padding: 4px;
     object-fit: cover;
+    position: relative;
 }
 .footerimage img {
     width: auto;
     height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 #footer-episode img {
     border-radius: 7px;
 }
-#pButton3 {
+.footerimage #pButtonFT {
     cursor: pointer;
 }
 

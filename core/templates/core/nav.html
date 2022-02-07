@@ -1,0 +1,25 @@
+{% load static %}
+
+{% block nav %}
+<nav class="topnav">
+    <a id="navlogo" href="{% url 'core:index' %}">
+        <img src="{% static 'core/media/about.jpg' %}" alt="logo" >
+        <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" style="width: auto; height: 14px;">
+    </a>
+    
+    {% block navmenu %}
+    {% endblock navmenu %}
+    
+    <div class="access">
+        {% if user.is_authenticated %}
+        <a class="accessbtn" href="{% url 'account:logout' %}">Log out</a>
+        {% else %}
+        <a class="accessbtn" href="{% url 'account:auth' %}">Sign in</a>
+        {% endif %}
+    </div>
+    
+    <div class="menu-btn">
+        <div class="menu-btn__burger"></div>
+    </div>
+</nav>
+{% endblock nav %}
