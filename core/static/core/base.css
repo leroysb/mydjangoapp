@@ -25,6 +25,7 @@ body {
     background-color: #000000;
     overflow: hidden;
     overflow-y: scroll;
+    position: relative;
 }
 
 p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
@@ -156,12 +157,14 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     place-items: center;
     justify-content: space-between;
-    background-color: #242424;
+    /* background-color: #242424; */
+    background-color: rgba(51, 61, 61, 0.959);
     width: 100%;
     opacity: 0;
     padding: 1rem;
     transition: .4s ease-in-out;
     z-index: 2;
+    border-top: 1px #fff solid;
 }
 .mobile-menu.show {
     top: 27px;
