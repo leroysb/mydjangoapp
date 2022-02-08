@@ -157,13 +157,14 @@ body {
 /* Mobile menu */
 .mobile-menu {
     position: sticky;
-    display: flex;
+    display: none;
     flex-direction: column;
     place-items: center;
     justify-content: space-between;
     background-color: #242424;
     /* top: -27px; */
     width: 100%;
+    /* height: 100vh; */
     opacity: 0;
     padding: 1rem;
     transition: .4s ease-in-out;

@@ -68,14 +68,14 @@
             </div>
         </nav>
 
+        <div class="mobile-menu">
+            <a href="{% url 'core:index' %}">HOME</a>
+            <a href="{% url 'core:event' %}">EVENTS</a>
+            <a href="{% url 'core:blogpage' %}">BLOG</a>
+            <a href="#">PODCAST</a>
+        </div>
         
         <div class="podpage">
-            <div class="mobile-menu">
-                <a href="{% url 'core:index' %}">HOME</a>
-                <a href="{% url 'core:event' %}">EVENTS</a>
-                <a href="{% url 'core:blogpage' %}">BLOG</a>
-                <a href="#">PODCAST</a>
-            </div>
 
             <section id="intro">
                 <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;">
