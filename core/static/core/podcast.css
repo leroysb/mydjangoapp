@@ -38,13 +38,9 @@ body {
 }
 #navlogo {
     position: absolute;
-    /* top: 30%; */
     left: 2%;
     top: 50%;
     transform: translate(-0%, -50%);
-    /* width: 30px;
-    height: 30px;
-    object-fit: cover; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -54,17 +50,15 @@ body {
 #navlogo > img {
     width: auto;
     height: 30px;
-    /* width: 100%;
-    height: 100%; */
 }
 .navmenu {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    grid-gap: 14px;
+    grid-gap: 14px; */
 }
 .navmenu a {
     padding: 5px 14px;
@@ -85,25 +79,21 @@ body {
 }
 #access {
     position: absolute;
-    /* top: 24%; */
     right: 2%;
     top: 50%;
     transform: translate(-0%, -50%);
 }
-#access > a, a:hover {
-    text-decoration: none;
-}
 .accessbtn,
 .accessbtn:hover {
+    text-decoration: none;
     cursor: pointer;
     font-family: Josefin Sans;
-    font-size: 14px;
+    font-size: 13px;
     color: #fff;
     background-color: #4b6cff;
     border-radius: 4px;
     border: none;
     padding: 3px 10px;
-    text-decoration: none;
 }
 
 /* Hamburger menu */
@@ -162,9 +152,7 @@ body {
     place-items: center;
     justify-content: space-between;
     background-color: #242424;
-    /* top: -27px; */
     width: 100%;
-    /* height: 100vh; */
     opacity: 0;
     padding: 1rem;
     transition: .4s ease-in-out;
@@ -172,7 +160,6 @@ body {
 }
 .mobile-menu.show {
     top: 27px;
-    /* height: auto; */
     opacity: 1;
     display: flex;
     z-index: 1;
@@ -197,7 +184,7 @@ body {
         display: none;
     }
     #access {
-        right: 12%;
+        right: 10%;
     }
     .menuBtn {
         display: flex;
@@ -207,9 +194,16 @@ body {
     .topnav {
         height: 33px;
     }
-    /* #navlogo {
-        top: 24%;
-    } */
+}
+@media screen and (max-width: 342px) {
+    .topnav {
+        height: 30px;
+    }
+    .accessbtn,
+    .accessbtn:hover {
+        font-size: 10px;
+        padding: 3px 7px;
+    }
 }
 
 /* Main Block */
@@ -499,6 +493,7 @@ footer {
 }
 #timeline {
     width: 100%;
+    margin: 0 7px;
     position: relative;
     height: 2px;
     -webkit-border-radius: 15px;
