@@ -108,7 +108,7 @@ body {
 
 /* Hamburger menu */
 
-.menu-btn {
+.menuBtn {
     position: absolute;
     top: 10%;
     right: 2%;
@@ -143,28 +143,26 @@ body {
 .menu-btn__burger::after {
     transform: translateY(8px);
 }
-.menu-btn.open .menu-btn__burger{
+.menuBtn.open .menu-btn__burger{
     transform: translateX(-18px);
     background: transparent;
 }
-.menu-btn.open .menu-btn__burger::before{
+.menuBtn.open .menu-btn__burger::before{
     transform: rotate(45deg) translate(10px, -10px);
 }
-.menu-btn.open .menu-btn__burger::after{
+.menuBtn.open .menu-btn__burger::after{
     transform: rotate(-45deg) translate(10px, 10px);
 }
 
 /* Mobile menu */
-
 .mobile-menu {
-    position: fixed;
+    position: sticky;
     display: flex;
     flex-direction: column;
     place-items: center;
     justify-content: space-between;
     background-color: #242424;
-    top: -27px;
-    /* height: 0; */
+    /* top: -27px; */
     width: 100%;
     opacity: 0;
     padding: 1rem;
@@ -200,7 +198,7 @@ body {
     #access {
         right: 12%;
     }
-    .menu-btn {
+    .menuBtn {
         display: flex;
     }
 }
