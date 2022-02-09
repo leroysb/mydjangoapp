@@ -60,9 +60,12 @@
                     </div>
                     <div id="links">
                         <a href="#" style="text-decoration: line-through;">MIXES</a>
-                        <a href="{% url 'core:event' %}" >EVENTS</a>
+                        <a href="#" style="text-decoration: line-through;">EVENTS</a>
+                        <a href="#" style="text-decoration: line-through;">BLOG</a>
+                        <a href="#" style="text-decoration: line-through;">PODCAST</a>
+                        <!-- <a href="{% url 'core:event' %}" >EVENTS</a>
                         <a href="{% url 'core:blogpage' %}" >BLOG</a>
-                        <a href="{% url 'core:podcast' %}" >PODCAST</a>
+                        <a href="{% url 'core:podcast' %}" >PODCAST</a> -->
                         <!-- <a href="https://calendly.com/lerbfinancial/consultation/" >BOOK A FINANCIAL CONSULTATION</a> -->
                         {% if user.is_authenticated %}
                             <a href="{% url 'account:logout' %}">LOG OUT</a>
@@ -71,8 +74,8 @@
                         {% endif %}
                     </div>
                     <div id="bio">
-                        <!-- <p>deejay ◊ storyteller ◊ quant</p> -->
-                        <p>contact</p>
+                        <p>deejay ◊ storyteller ◊ consultant</p>
+                        <!-- <p>contact</p> -->
                     </div>
                 </section>
 
