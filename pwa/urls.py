@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('django.contrib.auth.urls')),
     path('account/',include('account.urls')),
-    path('', include('core.urls')),
+    # path('', include('core.urls')),
 ]
 
 # Static & Media files served during dev
