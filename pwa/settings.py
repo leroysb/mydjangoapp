@@ -8,7 +8,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #heroku
 
 SECRET_KEY = os.environ.get('pwakey')
 
-# DEBUG = True
 DEBUG = os.environ.get('DebugStatus')
 
 ALLOWED_HOSTS = [
@@ -35,7 +34,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware', # For Heroku static serving
+    'whitenoise.middleware.WhiteNoiseMiddleware', # For Heroku static serving
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -109,9 +108,7 @@ LOGOUT_REDIRECT_URL = '/home'
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # local dev static
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
-
-# Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_cdn'), )
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_cdn'), ) # Extra places for collectstatic to find static files.
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
@@ -119,8 +116,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # For Heroku
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # For Heroku
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

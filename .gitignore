@@ -3,10 +3,9 @@
 
 # Project Files/Folders
 media/
-# static/
+static/
 media_cdn/
-# static_cdn/
-# staticfiles/
+static_cdn/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
