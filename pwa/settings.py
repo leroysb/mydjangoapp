@@ -1,7 +1,6 @@
 import os
 import django_heroku
 import dj_database_url
-from decouple import config
 from pathlib import Path
 
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +26,7 @@ INSTALLED_APPS = [
 
     # My app
     'account',
-    # 'core',
+    'core',
 
     # Third party apps
     'ckeditor',
