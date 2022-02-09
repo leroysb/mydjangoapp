@@ -1,12 +1,8 @@
-from colorsys import ONE_SIXTH
 from django.db import models
 from django.db.models.deletion import *
+from django.utils import timezone
 from account.models import User
 from ckeditor.fields import RichTextField
-# from django.core.files import storage
-# from django.core.files.storage import FileSystemStorage
-
-import datetime
 
 # Create your models here. 
 
@@ -36,7 +32,7 @@ class ArticleStat(models.Model):
     article = models.ForeignKey('Article', on_delete=models.CASCADE)
     # session = models.CharField(max_length=40, null=True)
     device = models.CharField(max_length=400 ,default='null')
-    created = models.DateTimeField(default=datetime.datetime.now())
+    created = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return '{0} in {1} article'.format(self.IPAddres,self.article.title)
