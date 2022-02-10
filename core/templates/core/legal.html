@@ -64,19 +64,23 @@
         <div class="pagesec">
                 
             <section id="privacys">
+                {% with privacy.0 as privacy %}
                 <h1 style="text-align: center;">PRIVACY POLICY</h1>
                 <br/>
                 <h4>Effective Date: {{ privacy.date }}</h4>
                 <br>
                 <div class="content">{{ privacy.content | safe }} </div>
+                {% endwith %}
             </section>
-
+            
             <section id="terms">
+                {% with terms.0 as terms %}
                 <h1 style="text-align: center;">TERMS OF USE</h1>
                 <br/>
                 <h4>Effective Date: {{ terms.date }}</h4>
                 <br>
                 <div class="content">{{ terms.content | safe }}</div>
+                {% endwith %}
             </section>
 
         </div>
