@@ -1,6 +1,8 @@
 {% load static %}
+{% with podcast.0 as podcast %}
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -21,28 +23,6 @@
 
         <!-- Load js -->
         <script src="{% static 'core/podcast.js' %}"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-
-                /* menu */
-                const menuBtn = document.querySelector('.menuBtn')
-                let menuOpen = false
-                
-                menuBtn.addEventListener('click', () => {
-                    const mobMenu = document.querySelector('.mobile-menu')
-                    
-                    if(!menuOpen){
-                        menuBtn.classList.add('open')
-                        mobMenu.classList.add('show')
-                        menuOpen= true
-                    } else {
-                        menuBtn.classList.remove('open')
-                        mobMenu.classList.remove('show')
-                        menuOpen = false
-                    }
-                })            
-            })
-        </script>
     </head>
 
     <body>
@@ -108,8 +88,7 @@
                         <p class="epi-id">#{{ episode.id }}</p>
                         <p class="epi-deet">{{ episode.title }}</p>
                         <div class="epi-play">
-                            <img onload="setImage()" id="pButton" style="width: 100%; height: 100%;">
-                            <!-- <img id="pButton" style="width: 100%; height: 100%;" src="{% static 'core/media/playnow.png' %}"> -->
+                            <img id="pModule" class="play-button">
                         </div>
                         <audio id="audio" preload="true" >
                             <source src="{{ episode.audio.url }}">
@@ -179,5 +158,5 @@
         </noscript>
     </body>
 
-
-</html>
+    </html>
+    {% endwith %}

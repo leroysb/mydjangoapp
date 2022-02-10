@@ -357,6 +357,14 @@ body {
     background-color: #000;
     padding: 4px;
 }
+.epi-deet {
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: #000000b7;
+    padding: 1em;
+}
 .epi-play {
     position: absolute;
     top: 12px;
@@ -366,16 +374,10 @@ body {
     object-fit: cover;
     cursor: pointer;
 }
-.epi-deet {
-    color: #FFFFFF;
-    position: absolute;
-    bottom: 0px;
+.play-button {
     width: 100%;
-    /* font-size: 17px; */
-    background-color: #000000b7;
-    padding: 1em;
+    height: 100%;
 }
-
 
 @media (min-width: 542px) and (max-width: 769px) {
     .podcontainer {

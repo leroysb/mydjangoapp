@@ -60,23 +60,29 @@
                     </div>
                     <div id="links">
                         <a href="#" style="text-decoration: line-through;">MIXES</a>
+                        
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'core:event' %}" >EVENTS</a>
+                        <a href="{% url 'core:blogpage' %}" >BLOG</a>
+                        <a href="{% url 'core:podcast' %}" >PODCAST</a>
+                        {% else %}
                         <a href="#" style="text-decoration: line-through;">EVENTS</a>
                         <a href="#" style="text-decoration: line-through;">BLOG</a>
                         <a href="#" style="text-decoration: line-through;">PODCAST</a>
-                        <!-- <a href="{% url 'core:event' %}" >EVENTS</a>
-                        <a href="{% url 'core:blogpage' %}" >BLOG</a>
-                        <a href="{% url 'core:podcast' %}" >PODCAST</a> -->
+                        {% endif %}
+
                         <!-- <a href="https://calendly.com/lerbfinancial/consultation/" >BOOK A FINANCIAL CONSULTATION</a> -->
+
                         {% if user.is_authenticated %}
                             <a href="{% url 'account:logout' %}">LOG OUT</a>
                         {% else %}
                             <a href="{% url 'account:auth' %}">SIGN IN</a>
                         {% endif %}
                     </div>
-                    <div id="bio">
+                    <!-- <div id="bio">
                         <p>deejay ◊ storyteller ◊ consultant</p>
-                        <!-- <p>contact</p> -->
-                    </div>
+                        <p>contact</p>
+                    </div> -->
                 </section>
 
                 <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>

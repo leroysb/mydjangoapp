@@ -92,7 +92,7 @@ class ArticleView(FormMixin, DetailView):
 
 class PodcastView(ListView):
     context_object_name = 'podcast'
-    queryset = Podcast.objects.first()
+    queryset = Podcast.objects.all
     template_name = 'core/podcastLayout.html'
 
 class EpisodeView(DetailView):

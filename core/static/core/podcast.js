@@ -1,18 +1,19 @@
 document.addEventListener ('DOMContentLoaded', function(){
     
-    const pButton = document.querySelectorAll('#pButton')
+    const pButton = document.querySelectorAll('#pModule')
     const pButtonFT = document.querySelector('#pButtonFT')
     const audio = document.querySelectorAll('#audio')
     
-    // function setImage() {
-    //     pButton.alt="play episode"
-    //     pButton.src="/static/core/media/playnow.png"
-    //     pButton.addEventListener('click', PlayPause)
-    //     pButtonFT.alt="play episode"
-    //     pButtonFT.src = "/static/core/media/play.png"
-    //     pButtonFT.addEventListener('click', PlayPause)
-    //     let audioplaying = False
-    // }
+    window.onload = ()=> {
+        pButton.alt="play episode"
+        pButton.src="/static/core/media/playnow.png"
+        pButton.addEventListener('click', PlayPause)
+        pButtonFT.alt="play episode"
+        pButtonFT.src = "/static/core/media/play.png"
+        pButtonFT.addEventListener('click', PlayPause)
+        let audioplaying = False
+        console.log("done")
+    }
 
     //Player Controls
 
@@ -20,7 +21,7 @@ document.addEventListener ('DOMContentLoaded', function(){
         pButton.forEach((pButton,i) => {
 
             // If audio already playing (playing=true)
-            if(audioplaying === True) {
+            if(audioplaying ==! True) {
 
                 // Stop all audio
                 audio.stop()
@@ -73,6 +74,24 @@ document.addEventListener ('DOMContentLoaded', function(){
 
     // // timeline width adjusted for playhead
     // const timelineWidth = timeline.offsetWidth - playhead.offsetWidth
+
+    /* menu */
+    const menuBtn = document.querySelector('.menuBtn')
+    let menuOpen = false
+    
+    menuBtn.addEventListener('click', () => {
+        const mobMenu = document.querySelector('.mobile-menu')
+        
+        if(!menuOpen){
+            menuBtn.classList.add('open')
+            mobMenu.classList.add('show')
+            menuOpen= true
+        } else {
+            menuBtn.classList.remove('open')
+            mobMenu.classList.remove('show')
+            menuOpen = false
+        }
+    })
 
     /* Dropdown */
 

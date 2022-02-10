@@ -1,5 +1,4 @@
 import os
-import django_heroku
 import dj_database_url
 from pathlib import Path
 
@@ -136,4 +135,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+# Configure Django App for Heroku.
+import django_heroku
 django_heroku.settings(locals())
