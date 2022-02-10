@@ -1,10 +1,10 @@
 document.addEventListener ('DOMContentLoaded', function(){
     
-    const pButton = document.querySelectorAll('#pModule')
+    const pButton = document.querySelectorAll('#pButton')
     const pButtonFT = document.querySelector('#pButtonFT')
     const audio = document.querySelectorAll('#audio')
     
-    window.onload = ()=> {
+    pButton.onload = ()=> {
         pButton.alt="play episode"
         pButton.src="/static/core/media/playnow.png"
         pButton.addEventListener('click', PlayPause)

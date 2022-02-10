@@ -88,7 +88,8 @@
                         <p class="epi-id">#{{ episode.id }}</p>
                         <p class="epi-deet">{{ episode.title }}</p>
                         <div class="epi-play">
-                            <img id="pModule" class="play-button">
+                            <img id="pButton" class="play-button">
+                            <!-- <img src="{% static 'core/media/playnow.png' %}" id="pButton" class="play-button"> -->
                         </div>
                         <audio id="audio" preload="true" >
                             <source src="{{ episode.audio.url }}">
