@@ -7,22 +7,19 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
         <!-- site meta -->
         <link rel="canonical" href="https://leroybuliro.com/">
         <link rel="icon" type="image/png" href="{% static 'core/media/fbl.jpg' %}">
-        <title>{{podcast.title}} | A podcast by Leroy Buliro</title>
-        <meta name="description" content="{{podcast.description}}">
-        <meta name="keyword" content="{{podcast.tags}}">
         <meta name="author" content="Leroy Buliro">
         <meta name="docsearch:language" content="en">
-
+        {% block meta %}
+        {% endblock meta %}     
         <!-- Load css file -->
-        <link rel="stylesheet" href="{% static 'core/podcast.css' %}">
-        <!-- <link rel="stylesheet" href="{% static 'core/episode.css' %}"> -->
-
+        {% block style %}
+        {% endblock style %}
         <!-- Load js -->
-        <script src="{% static 'core/podcast.js' %}"></script>
+        {% block script %}
+        {% endblock script %}
     </head>
 
     <body>
@@ -33,7 +30,8 @@
             </a>
             <div class="navmenu">
                 <a href="{% url 'core:blogpage' %}">BLOG</a>
-                <a id="menuactive">PODCAST</a>
+                {% block navmenu %}
+                {% endblock navmenu %}
                 <a href="{% url 'core:event' %}">EVENTS</a>
             </div>
             <div id="access">
@@ -47,58 +45,16 @@
                 <div class="menu-btn__burger"></div>
             </div>
         </nav>
-
+        
         <div class="mobile-menu">
             <a href="{% url 'core:event' %}">EVENTS</a>
             <a href="{% url 'core:blogpage' %}">BLOG</a>
-            <a href="#">PODCAST</a>
+            {% block mobilemenu %}
+            {% endblock mobilemenu %}
         </div>
         
-        <div class="podpage">
-
-            <section id="intro">
-                <img src="{{ podcast.image.url }}" alt="{{podcast.title}}" style="width: 100%; height: auto;">
-                <div id="side">
-                    <h2 style="color: #fff;">About</h2>
-                    <div id="pod-deet">{{ podcast.description | safe}}</div>
-                    <div class="dropdown">
-                        <button class="dropbtn">LISTEN ON AN APP | ▼</button>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href="{{ podcast.appleurl }}" target="_blank">Apple Podcasts</a>
-                            <a href="{{ podcast.googleurl }}" target="_blank">Google Podcasts</a>
-                            <a href="{{ podcast.spotifyurl }}" target="_blank">Spotify</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="curve">
-                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-                    </svg>
-                </div>
-            </section>
-            
-            <div class="section2">
-                <h3 style="color: #000; text-decoration: underline; margin: 0 0 30px 0;">Episodes</h3>
-                <div class="podcontainer">
-                    {% for episode in podcast.episodes.all %}
-                    <div class="podcast-epi">
-                        <!-- <a href="{% url 'core:episode' s=episode.season e=episode.id slug=episode.slug %}">
-                        </a> -->
-                        <img src="{{ episode.image.url }}" alt="{{ podcast.title|slugify }}-{{ episode.title|slugify }}" style="width: 100%; height: auto;">
-                        <p class="epi-id">#{{ episode.id }}</p>
-                        <p class="epi-deet">{{ episode.title }}</p>
-                        <div class="epi-play">
-                            <img id="pButton" class="play-button">
-                            <!-- <img src="{% static 'core/media/playnow.png' %}" id="pButton" class="play-button"> -->
-                        </div>
-                        <audio id="audio" preload="true" >
-                            <source src="{{ episode.audio.url }}">
-                        </audio>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+        {% block page %}
+        {% endblock page %}
 
         <div class="bottom">
             <div id="footersocial">
@@ -147,8 +103,7 @@
             </div>
 
             <div class="footerimage">
-                <img id="pButtonFT">
-                <!-- <img src="{% static 'core/media/play.png' %}" alt="play episode"> -->
+                <!-- <img id="pButtonFT"> -->
             </div>
         </footer>
 
@@ -158,6 +113,5 @@
             </div>
         </noscript>
     </body>
-
-    </html>
-    {% endwith %}
+</html>
+{% endwith %}

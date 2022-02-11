@@ -61,7 +61,7 @@
                     <div id="links">
                         <a href="#" style="text-decoration: line-through;">MIXES</a>
                         
-                        {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
                         <a href="{% url 'core:event' %}" >EVENTS</a>
                         <a href="{% url 'core:blogpage' %}" >BLOG</a>
                         <a href="{% url 'core:podcast' %}" >PODCAST</a>

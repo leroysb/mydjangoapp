@@ -7,8 +7,8 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
 admin.site.register(ArticleCategory, ArticleCategoryAdmin)
 
 class ArticleStatAdmin(admin.ModelAdmin):
-    list_display = ("IPAddres","article", "created")
-    readonly_fields = ('IPAddres', 'article', 'created', 'device')
+    list_display = ("IPAddres","article",)
+    readonly_fields = ('IPAddres', 'article', 'device')
 admin.site.register(ArticleStat, ArticleStatAdmin)
 
 class ArticleAdmin(admin.ModelAdmin):

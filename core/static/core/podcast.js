@@ -1,19 +1,25 @@
 document.addEventListener ('DOMContentLoaded', function(){
-    
-    const pButton = document.querySelectorAll('#pButton')
-    const pButtonFT = document.querySelector('#pButtonFT')
-    const audio = document.querySelectorAll('#audio')
-    
-    pButton.onload = ()=> {
-        pButton.alt="play episode"
-        pButton.src="/static/core/media/playnow.png"
-        pButton.addEventListener('click', PlayPause)
-        pButtonFT.alt="play episode"
-        pButtonFT.src = "/static/core/media/play.png"
-        pButtonFT.addEventListener('click', PlayPause)
-        let audioplaying = False
-        console.log("done")
-    }
+
+    // var element = document.createElement('div');
+    // element.classList.add('epi-play');
+    // document.querySelector('.podcast-epi').appendChild(element);
+
+    var pButton = new Image();
+    pButton.src = '/static/core/media/playnow.png';
+    pButton.height = '100%';
+    pButton.width = '100%';
+    document.querySelector('.epi-play').appendChild(pButton);
+    pButton.addEventListener('click', PlayPause());
+
+    var pButtonFT = new Image();
+    pButtonFT.src = '/static/core/media/play.png';
+    pButtonFT.height = '100%';
+    pButtonFT.width = '100%';
+    document.querySelector('.footerimage').appendChild(pButtonFT);
+    pButtonFT.addEventListener('click', PlayPause());
+
+    const audio = document.querySelectorAll('#audio');
+    let audioplaying = false;
 
     //Player Controls
 
@@ -21,43 +27,37 @@ document.addEventListener ('DOMContentLoaded', function(){
         pButton.forEach((pButton,i) => {
 
             // If audio already playing (playing=true)
-            if(audioplaying ==! True) {
+            if(audioplaying !== true) {
 
                 // Stop all audio
                 audio.stop()
 
                 // Reset all images to play icon
-                pButton.alt="play episode"
                 pButton.src="/static/core/media/playnow.png"
-                pButtonFT.alt="play episode"
                 pButtonFT.src = "/static/core/media/play.png"
 
                 // Change selected episode icon to pause + main footer icon
-                pButton[i].alt="pause episode"
                 pButton[i].src="/static/core/media/pausenow.png"
-                pButtonFT.alt="pause episode"
                 pButtonFT.src = "/static/core/media/pause.png"
 
                 // Start audio for selected episode
                 audio[i].play()
 
                 // set (playing=true)
-                audioplaying = True
+                audioplaying = true
             }
 
             // else, if (playing=false)
-            if(audioplaying === False) {
+            if(audioplaying == false) {
                 // Change selected episode icon to pause + main footer icon
-                pButton[i].alt="pause episode"
                 pButton[i].src="/static/core/media/pausenow.png"
-                pButtonFT.alt="pausey episode"
                 pButtonFT.src = "/static/core/media/pause.png"
 
                 // Start audio for selected episode
                 audio[i].play()
 
                 // set (playing=true)
-                audioplaying = True
+                audioplaying = true
             }
         })
     }
