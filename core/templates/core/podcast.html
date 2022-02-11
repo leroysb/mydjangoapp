@@ -1,10 +1,12 @@
-{% extends 'core/podcastLayout.html' %}
+{% extends 'core/podbase.html' %}
 {% load static %}
 
 {% block meta %}
+{% with podcast.0 as podcast %}
 <title>{{podcast.title}} | A podcast by Leroy Buliro</title>
 <meta name="description" content="{{podcast.description}}">
 <meta name="keyword" content="{{podcast.tags}}">
+{% endwith %}
 {% endblock meta %}
 
 {% block style %}
@@ -24,6 +26,7 @@
 {% endblock mobilemenu %}
 
 {% block page %}
+{% with podcast.0 as podcast %}
 <div class="podpage">
 
     <section id="intro">
@@ -52,20 +55,21 @@
         <div class="podcontainer">
             {% for episode in podcast.episodes.all %}
             <div class="podcast-epi">
-                <!-- <a href="{% url 'core:episode' s=episode.season e=episode.id slug=episode.slug %}">
-                </a> -->
-                <img src="{{ episode.image.url }}" alt="{{ podcast.title|slugify }}-{{ episode.title|slugify }}" style="width: 100%; height: auto;">
-                <p class="epi-id">#{{ episode.id }}</p>
-                <p class="epi-deet">{{ episode.title }}</p>
-                <div class="epi-play">
-                    <!-- <img id="pButton" class="play-button"> -->
-                </div>
-                <audio id="audio" preload="true" >
-                    <source src="{{ episode.audio.url }}">
-                </audio>
+                <a href="{% url 'core:episode' s=episode.season e=episode.id slug=episode.slug %}">
+                    <img src="{{ episode.image.url }}" alt="{{ podcast.title|slugify }}-{{ episode.title|slugify }}" style="width: 100%; height: auto;">
+                    <p class="epi-id">#{{ episode.id }}</p>
+                    <p class="epi-deet">{{ episode.title }}</p>
+                    <div class="epi-play">
+                        <!-- <img id="pButton" class="play-button"> -->
+                    </div>
+                    <audio id="audio" preload="true" >
+                        <source src="{{ episode.audio.url }}">
+                    </audio>
+                </a>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
+{% endwith %}
 {% endblock page %}

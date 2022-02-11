@@ -1,7 +1,29 @@
+{% extends 'core/podbase.html' %}
 {% load static %}
 
-{% block episode %}
-<!-- Podcast section -->
+{% block meta %}
+<title>{{episode.title}} | Kubonga Show: A podcast by Leroy Buliro</title>
+<meta name="description" content="{{episode.description}}">
+<meta name="keyword" content="{{episode.tags}}">
+{% endblock meta %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'core/episode.css' %}">
+{% endblock style %}
+
+{% block script %}
+<script src="{% static 'core/episode.js' %}"></script>
+{% endblock script %}
+
+{% block navmenu %}
+<a href="{% url 'core:podcast' %}">PODCAST</a>
+{% endblock navmenu %}
+
+{% block mobilemenu %}
+<a href="{% url 'core:podcast' %}">PODCAST</a>
+{% endblock mobilemenu %}
+
+{% block page %}
 <div class="episodepage">
 
     <div class="row">
@@ -16,7 +38,7 @@
                 <h4>DESCRIPTION</h4>
                 <p>{{ episode.summary }}</p>
 
-                <!-- <audio id="episodeaudio" preload="true" >
+                <audio id="episodeaudio" preload="true" >
                     <source src="{{ episode.audio.url }}">
                 </audio>
 
@@ -24,11 +46,11 @@
                     <img class="pButton"  id="rev" src="{% static 'core/icons/replay_10.png' %}" alt="replay 10 seconds">
                     <img  class="pButton" id="pButton" src="{% static 'core/icons/play.png' %}" alt="play episode">
                     <img class="pButton" id="fwd" src="{% static 'core/icons/forward_30.png' %}" alt="forward 30 seconds">
-                </div> -->
+                </div>
 
             </div>
         </div>
     </div>
 
 </div>
-{% endblock episode %}
+{% endblock page %}
