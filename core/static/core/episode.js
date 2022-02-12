@@ -2,8 +2,7 @@ document.addEventListener ('DOMContentLoaded', function(){
 
     /* PODCAST PLAYER*/
 
-    const audio = document.querySelector('#episodeaudio');
-    var duration = document.querySelector('.duration');
+    const audio = document.querySelector('audio');
     var timer = document.querySelector('.timer');
     var pButtonFT = document.querySelector('#pButtonFT');
 
@@ -23,7 +22,7 @@ document.addEventListener ('DOMContentLoaded', function(){
         return h+':'+m+':'+s;
     }
 
-    duration.innerHTML = secondsToHms(audio.duration);
+    document.querySelector('.duration').innerHTML = secondsToHms(audio.duration).toString();
     timer.innerHTML = secondsToHms(audio.currentTime);
 
     audio.ontimeupdate = ()=> {
