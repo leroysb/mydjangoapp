@@ -1,29 +1,19 @@
 {% extends "core/base.html" %}
-
 {% load static %}
 
-{% block title %}
-{% endblock title %}
-
 {% block meta %}
-<title>Page not found: Leroy Buliro</title>
+<title>Page not found: Fueled by Leroy</title>
 <meta name="description" content="Leroy Buliro: deejay, storyteller, financial advisor">
 <meta name="keyword" content="Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture">
 {% endblock meta %}
 
-{% block style %}
-<link rel="stylesheet" href="{% static 'core/blog.css' %}">
-{% endblock style %}
-
 {% block navmenu %}
-    <!-- <a href="{% url 'core:index' %}">HOME</a> -->
     <a href="{% url 'core:event' %}">EVENTS</a>
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
 {% endblock navmenu %}
 
 {% block mobmenu %}
-    <!-- <a href="{% url 'core:index' %}">HOME</a> -->
     <a href="{% url 'core:event' %}">EVENTS</a>
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
