@@ -7,8 +7,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #heroku
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = False
-# DEBUG = os.environ.get('DebugStatus')
+# DEBUG = False
+DEBUG = os.environ.get('DebugStatus')
 
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
@@ -106,13 +106,14 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_cdn'),
-    os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'media'),
-] # Extra places for collectstatic to find static files.
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static_cdn'),
+#     # os.path.join(BASE_DIR, 'static'),
+#     # os.path.join(BASE_DIR, 'media'),
+# ] # Extra places for collectstatic to find static files.
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
@@ -120,8 +121,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # For Heroku
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# For Heroku Static Serving
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
