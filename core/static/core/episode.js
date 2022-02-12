@@ -3,17 +3,11 @@ document.addEventListener ('DOMContentLoaded', function(){
     /* PODCAST PLAYER*/
 
     const audio = document.querySelector('#episodeaudio');
-    // const duration = audio.duration; // Duration of audio clip, calculated here for embedding purposes
-    const timer = document.querySelector('.timer');
-    const pButton = document.querySelector('#pButton');
-    const pause = document.querySelector('#pause');
-    const play = document.querySelector('#play');
-    const rev = document.querySelector('#rev');
-    const fwd = document.querySelector('#fwd');
+    var duration = document.querySelector('.duration');
+    var timer = document.querySelector('.timer');
+    var pButtonFT = document.querySelector('#pButtonFT');
 
-    pButton.addEventListener("click", PausePlayEpisode);
-    rev.addEventListener("click", mediaBackward);
-    fwd.addEventListener("click", mediaForward);
+    pButtonFT.addEventListener("click", PausePlay);
 
     // Timer
 
@@ -23,17 +17,13 @@ document.addEventListener ('DOMContentLoaded', function(){
         var m = Math.floor(d % 3600 / 60);
         var s = Math.floor(d % 3600 % 60);
 
-        // var hDisplay = h > 0 ? h + (h == 1 ? ":" : ":") : "00:";
-        // var mDisplay = m > 0 ? m + (m == 1 ? ":" : ":") : "00:";
-        // var sDisplay = s > 0 ? s + (s == 1 ? "0" : "") : "00";
-        // return hDisplay + mDisplay + sDisplay;
-
         if (h   < 10) {h   = "0"+h;}
         if (m < 10) {m = "0"+m;}
         if (s < 10) {s = "0"+s;}
         return h+':'+m+':'+s;
     }
 
+    duration.innerHTML = secondsToHms(audio.duration);
     timer.innerHTML = secondsToHms(audio.currentTime);
 
     audio.ontimeupdate = ()=> {
@@ -42,30 +32,14 @@ document.addEventListener ('DOMContentLoaded', function(){
 
     //Player Controls
 
-    function PausePlayEpisode() {
+    function PausePlay() {
         // start podcast
         if (audio.paused) {
             audio.play();
-            pButton.src="static/core/icons/pause.png";
+            pButtonFT.src="/static/core/media/pause.png";
         } else {
             audio.pause();
-            pButton.src="static/core/icons/play.png";
-        }
-    };
-
-    function mediaBackward() {
-        if(audio.currentTime <= 10) {
-            stopMedia();
-        } else {
-            audio.currentTime -= 10;
-        }
-    };
-
-    function mediaForward() {
-        if(audio.currentTime >= audio.duration - 30) {
-            stopMedia();
-        } else {
-            audio.currentTime += 30;
+            pButtonFT.src="/static/core/media/play.png";
         }
     };
 

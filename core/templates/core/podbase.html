@@ -15,7 +15,7 @@
         {% block meta %}
         {% endblock meta %}     
         <!-- Load css file -->
-        <link rel="stylesheet" href="{% static 'core/episode.css' %}">
+        <link rel="stylesheet" href="{% static 'core/podbase.css' %}">
         {% block style %}
         {% endblock style %}
         <!-- Load js -->
@@ -74,10 +74,10 @@
                 <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" style="width: auto; height: 14px;">
             </a>
             <div class="navmenu">
-                <a href="{% url 'core:blogpage' %}">BLOG</a>
+                <a href="{% url 'core:event' %}">EVENTS</a>
                 {% block navmenu %}
                 {% endblock navmenu %}
-                <a href="{% url 'core:event' %}">EVENTS</a>
+                <a href="{% url 'core:blogpage' %}">BLOG</a>
             </div>
             <div id="access">
                 {% if user.is_authenticated %}
@@ -100,7 +100,7 @@
         
         {% block page %}
         {% endblock page %}
-
+        
         <div class="bottom">
             <div id="footersocial">
                 <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconTT-black.png' %}" alt="twitter" width="auto" height="22" ></a>
@@ -111,45 +111,9 @@
                 <a href="{% url 'core:legal' %}">Legal</a>
             </span>
         </div>
-
-        <!-- <div class="episodepage">
-            {% with podcast.episode.0  as episode %}
-            
-                <div class="row">
-                    <div class="side">
-                        <img src="{{ episode.image.url }}" alt="{{episode.title}}" style="width: 100%; height: 100%">
-                    </div>
-                    <div class="main">
-                        <p style="color: gray;">{{ episode.pubDate }}</p>
-                        <h3 style="padding-bottom: 4%;">{{ episode.title }}</h3>
-                        <div class="epi-content">
-                            <h4>DESCRIPTION</h4>
-                            <p>{{ episode.summary }}</p>
-            
-                        </div>
-                    </div>
-                </div>
-                {% endwith %}
-        </div> -->
-    
-        <!-- <footer>
-            <div id="footer-episode" class="footerimage">
-                {% if podcast %}
-                <img src="{{ podcast.image.url }}" alt="play episode">
-                {% else %}
-                <img src="{{ episode.image.url }}" alt="play episode">
-                {% endif %}
-            </div>
-            
-            <div id="timeline">
-                <div id="playhead"></div>
-                <div class="timer">00:00</div>
-                <div class="duration">00:00</div>
-            </div>
-
-            <div class="footerimage">
-            </div>
-        </footer> -->
+        
+        {% block player %}
+        {% endblock player %}
 
         <noscript>
             <div style="display: flex; place-content: center;">
