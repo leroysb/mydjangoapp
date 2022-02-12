@@ -59,8 +59,7 @@
                     <img src="{{ episode.image.url }}" alt="{{ podcast.title|slugify }}-{{ episode.title|slugify }}" style="width: 100%; height: auto;">
                     <p class="epi-id">#{{ episode.id }}</p>
                     <p class="epi-deet">{{ episode.title }}</p>
-                    <div class="epi-play">
-                        <!-- <img id="pButton" class="play-button"> -->
+                    <div class="epi-play" onload="pgSetup()">
                     </div>
                     <audio id="audio" preload="true" >
                         <source src="{{ episode.audio.url }}">
