@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.episodepage {
+    font-size: 14px;
+    font-family: CrimsonPro;
+    line-height: 1.7rem;
+    background-color: #FFFFFF;
+}
+.episodepage p, h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+}
+.episodepage .row {  
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10vh 20vw;
+}
+.episodepage .side {
+    flex: 40%;
+    padding-right: 3%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.episodepage .main {
+    flex: 60%;
+}
+.episodepage .epi-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+
+@media screen and (max-width: 769px) {
+    .episodepage .row {   
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: 4vh 2vw;
+    }
+    .episodepage .side {
+        /* width: 100%; */
+        padding-bottom: 10%;
+    }
+    .episodepage .epi-content p {
+        font-size: 14px;
+    }
+}
