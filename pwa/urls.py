@@ -9,8 +9,7 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')),
     path('account/',include('account.urls')),
     path('', include('core.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+]
 
 # Static & Media files served during dev
 if settings.DEBUG:

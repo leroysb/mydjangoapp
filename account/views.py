@@ -48,17 +48,9 @@ def AuthView(request, *args, **kwargs):
         else:
             return redirect("account:subscribe")
 
-    return render(request, "account/auth.html", context)
+    return render(request, "registration/auth.html", context)
 
 ######
-
-# class LoginView(LoginView):
-#     template_name = 'account/login.html'
-#     authentication_form = loginForm()
-#     # sess_email = request.session['sess_email']
-#     # extra_context = {'sess_email': sess_email,}
-#     redirect_authenticated_user = 'core:index'
-#     next_view = 'core:index'
 
 def LoginView(request, *args, **kwargs):
 
@@ -126,7 +118,7 @@ def SubscribeView (request, *args, **kwargs):
         else:
             context['form'] = form
 
-    return render(request, 'account/subscribe.html', context)
+    return render(request, 'registration/subscribe.html', context)
 
 ######
 

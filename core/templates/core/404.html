@@ -8,23 +8,27 @@
 {% endblock meta %}
 
 {% block navmenu %}
+<div class="navmenu">
     <a href="{% url 'core:event' %}">EVENTS</a>
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
+</div>
 {% endblock navmenu %}
 
 {% block mobmenu %}
+<div class="mobile-menu">
     <a href="{% url 'core:event' %}">EVENTS</a>
     <a href="{% url 'core:blogpage' %}">BLOG</a>
     <a href="{% url 'core:podcast' %}">PODCAST</a>
+</div>
 {% endblock mobmenu %}
 
 {% block body %}
 <div style="margin: 7% 2% 7% 2%;">
-    <h4>Page Not Found</h4>
+    <h4 style="color: #fff;">Page Not Found</h4>
     <br/>
     <div>
-        <p>The URL you have requested was not found. We apologize for any inconvenience. From here you can return to the homepage.</p>
+        <p style="color: #fff;">The URL you have requested was not found. We apologize for any inconvenience. From here you can return to the homepage.</p>
         <br/>
         <a href="{% url 'core:index' %}" style="color: red; font-weight: bolder;">Go Back Home</a>
     </div>

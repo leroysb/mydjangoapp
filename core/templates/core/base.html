@@ -1,15 +1,12 @@
-<!-- {% include 'core/feedbackModal.html' %} -->
 {% load static %}
 {% load social_share %}
 
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
         <!-- site meta tags-->
         <link rel="icon" type="image/png" href="{% static 'core/media/favicon.ico' %}"/>
         <meta name="author" content="Leroy Buliro">
@@ -17,14 +14,11 @@
         <meta name="docsearch:language" content="en">
         {% block meta %}
         {% endblock meta %}
-
         <!-- Load css file -->
         <link rel="stylesheet" href="{% static 'core/base.css' %}">
         <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
-        
         {% block style %}
         {% endblock style %}
-
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -50,7 +44,6 @@
                 ]
             }
         </script>
-
         <!-- Load js file -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="{% static 'core/base.js' %}"></script>
