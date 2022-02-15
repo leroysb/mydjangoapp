@@ -106,11 +106,11 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static_cdn'),
-# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_cdn'),
+]
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
@@ -141,6 +141,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-# Configure Django App for Heroku.
-# import django_heroku
-# django_heroku.settings(locals())
+Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
