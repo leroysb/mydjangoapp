@@ -7,8 +7,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #heroku
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = False
-# DEBUG = os.environ.get('DebugStatus')
+# DEBUG = False
+DEBUG = os.environ.get('DebugStatus')
 
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
@@ -115,7 +115,7 @@ STATICFILES_DIRS = [
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
-WHITENOISE_MANIFEST_STRICT = False
+# WHITENOISE_MANIFEST_STRICT = False
 WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
 MEDIA_URL = '/media/'
