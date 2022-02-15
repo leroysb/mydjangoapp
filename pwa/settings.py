@@ -1,14 +1,14 @@
 import os
 import dj_database_url
-# from pathlib import Path
+from pathlib import Path
 
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #heroku
+BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #heroku
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = False
-# DEBUG = os.environ.get('DebugStatus')
+# DEBUG = False
+DEBUG = os.environ['DebugStatus']
 
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
@@ -106,17 +106,17 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_cdn'),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static_cdn'),
+# ]
 
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_KEEP_ONLY_HASHED_FILES = True
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
+# WHITENOISE_MANIFEST_STRICT = False
+# WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
