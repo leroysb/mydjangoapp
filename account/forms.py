@@ -31,12 +31,11 @@ class subscribeForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['email', 'username', 'password']
 
     email = EmailField(max_length=200, label=_("Email"))
     username = CharField(max_length=14, label=_("Username"))
-    password1 = CharField(widget=forms.PasswordInput, label=_("Password"))
-    password2 = CharField(widget=forms.PasswordInput, label=_("Password confirmation"))
+    password = CharField(widget=forms.PasswordInput, label=_("Password"))
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()

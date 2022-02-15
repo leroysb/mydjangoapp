@@ -36,18 +36,11 @@ Subscribe
     </div>
 
     <div>
-        <span class="formlabel">{{ form.password1.label }}</span>
-        {% for error  in form.password1.errors %}
+        <span class="formlabel">{{ form.password.label }}</span>
+        {% for error  in form.password.errors %}
         <p class="formerror">*{{error}}</p>
         {% endfor %}
-        <input type="password" name="password1" class="forminput">
-    </div>
-    <div>
-        <span class="formlabel">{{ form.password2.label }}</span>
-        {% for error  in form.password2.errors %}
-        <p class="formerror">*{{error}}</p>
-        {% endfor %}
-        <input type="password" name="password2" class="forminput">
+        <input type="password" name="password" class="forminput">
     </div>
 
     {% if form.non_field_errors %}

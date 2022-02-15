@@ -91,7 +91,7 @@ def SubscribeView (request, *args, **kwargs):
     context= {}
     context['sess_email'] = request.session['sess_email']
     form = subscribeForm()
-    context['form'] = form
+    context['subscribeForm'] = form
 
     user = request.user
     if user.is_authenticated:
@@ -103,9 +103,12 @@ def SubscribeView (request, *args, **kwargs):
 
         if form.is_valid():
             form.save()
-            email = form.cleaned_data.get('email').lower()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
+            email = request.POST['email']
+            username = request.POST['username']
+            raw_password = request.POST['password']
+            # email = form.cleaned_data.get('email').lower()
+            # username = form.cleaned_data.get('username')
+            # raw_password = form.cleaned_data.get('password')
             account = authenticate(email=email, username=username, password=raw_password)
             login(request, account)
             destination = kwargs.get("next")
@@ -116,7 +119,7 @@ def SubscribeView (request, *args, **kwargs):
             return redirect('core:index')
 
         else:
-            context['form'] = form
+            context['subscribeForm'] = form
 
     return render(request, 'registration/subscribe.html', context)
 
