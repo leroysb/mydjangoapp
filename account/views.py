@@ -56,7 +56,7 @@ def LoginView(request, *args, **kwargs):
 
     context= {}
     context['sess_email'] = request.session.get('sess_email')
-    form = subscribeForm()
+    form = loginForm()
     context['form'] = form
 
 
@@ -104,7 +104,7 @@ def SubscribeView (request, *args, **kwargs):
         if form.is_valid():
             form.save()
             email = form.cleaned_data.get('email').lower()
-            username = form.cleaned_data.get('email').lower()
+            username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(email=email, username=username, password=raw_password)
             login(request, account)

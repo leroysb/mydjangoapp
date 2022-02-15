@@ -25,41 +25,28 @@ Subscribe
         {% else %}
         <p class="forminput"">{{ form.email }}</p>
         {% endif %}
-
     </div>
     
     <div>
         <span class="formlabel">{{ form.username.label }}</span>
-
         {% for error  in form.username.errors %}
-        <span style="color: red; font-size: small;">*{{error}}</span>
+        <p class="formerror">*{{error}}</p>
         {% endfor %}
-
-        {% if sess_email %}
-        <input type="email" name="username" class="forminput">
-        {% else %}
-        <p class="forminput"">{{ form.username }}</p>
-        {% endif %}
-
+        <input type="text" name="username" class="forminput">
     </div>
 
     <div>
         <span class="formlabel">{{ form.password1.label }}</span>
-
         {% for error  in form.password1.errors %}
         <p class="formerror">*{{error}}</p>
         {% endfor %}
-        
         <input type="password" name="password1" class="forminput">
     </div>
-
     <div>
         <span class="formlabel">{{ form.password2.label }}</span>
-
         {% for error  in form.password2.errors %}
         <p class="formerror">*{{error}}</p>
         {% endfor %}
-
         <input type="password" name="password2" class="forminput">
     </div>
 

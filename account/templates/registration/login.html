@@ -15,9 +15,7 @@ Login
 
 <form action="" method="post">{% csrf_token %}
 
-    
     {% if sess_email %}
-    
     <div onclick="history.back()">
         <span class="formlabel">{{ form.username.label }}</span>
         
@@ -26,7 +24,6 @@ Login
         {% endfor %}
         
         <input type="email" name="username" class="forminput2" value="{{ sess_email }}" readonly>
-        <p class="forminput"">{{ form.username }}</p>
     </div>
 
     {% else %}
