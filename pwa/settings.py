@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -106,17 +106,17 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_cdn'),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For heroku static
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static_cdn'),
+# ]
 
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_KEEP_ONLY_HASHED_FILES = True
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
+# WHITENOISE_MANIFEST_STRICT = False
+# WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
@@ -142,5 +142,5 @@ CKEDITOR_CONFIGS = {
 }
 
 # Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
