@@ -7,8 +7,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #heroku
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = False
-# DEBUG = os.environ.get('DebugStatus')
+# DEBUG = False
+DEBUG = os.environ.get('DebugStatus')
 
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),

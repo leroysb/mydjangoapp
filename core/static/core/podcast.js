@@ -4,23 +4,28 @@ document.addEventListener ('DOMContentLoaded', function(){
     // element.classList.add('epi-play');
     // document.querySelector('.podcast-epi').appendChild(element);
 
-    const pgSetup = (function() {
-        var pButton = new Image();
-        pButton.src = "/static/core/media/playnow.png";
-        pButton.height = "100%";
-        pButton.width = "100%";
-        document.querySelector('.epi-play').appendChild(pButton);
-        pButton.addEventListener('click', PlayPause());
-    
-        // var pButtonFT = new Image();
-        // pButtonFT.src = "/static/core/media/play.png";
-        // pButtonFT.height = "100%";
-        // pButtonFT.width = "100%";
-        // document.querySelector('.footerimage').appendChild(pButtonFT);
-        // pButtonFT.addEventListener('click', PlayPause());
-    }());
+    $(window).load(function(){
+        $('.epi-play').append('<img id="pButton" src="/static/core/media/playnow.png" style="width: 100%; height: 100%;"></img>')
+    })
 
-    pgSetup()
+    // const pgSetup = (function() {
+    //     // var pButton = new Image();
+    //     var pButton = document.createElement('img')
+    //     pButton.src = "/static/core/media/playnow.png";
+    //     pButton.height = "100%";
+    //     pButton.width = "100%";
+    //     document.querySelector('.epi-play').appendChild(pButton);
+    //     pButton.addEventListener('click', PlayPause());
+    
+    //     // var pButtonFT = new Image();
+    //     // pButtonFT.src = "/static/core/media/play.png";
+    //     // pButtonFT.height = "100%";
+    //     // pButtonFT.width = "100%";
+    //     // document.querySelector('.footerimage').appendChild(pButtonFT);
+    //     // pButtonFT.addEventListener('click', PlayPause());
+    // }());
+
+    // pgSetup()
 
     const audio = document.querySelectorAll('#audio');
     let audioplaying = false;
