@@ -59,7 +59,6 @@ def LoginView(request, *args, **kwargs):
     form = loginForm()
     context['loginForm'] = form
 
-
     user = request.user
     if user.is_authenticated:
         return redirect("core:index")
