@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('core.urls')),
 ]
 
+
 # Static & Media files served during dev
 if settings.DEBUG:
     urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
