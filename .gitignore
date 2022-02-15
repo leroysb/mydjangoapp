@@ -1,12 +1,6 @@
 # Local IDE
 .vscode
 
-# Project Files/Folders
-# media/
-# static/
-# media_cdn/
-# static_cdn/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
