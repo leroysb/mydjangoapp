@@ -2,9 +2,9 @@
 .vscode
 
 # Project Files/Folders
-media/
-static/
-media_cdn/
+# media/
+# static/
+# media_cdn/
 # static_cdn/
 
 # Byte-compiled / optimized / DLL files
