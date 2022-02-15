@@ -57,7 +57,7 @@ def LoginView(request, *args, **kwargs):
     context= {}
     context['sess_email'] = request.session.get('sess_email')
     form = loginForm()
-    context['form'] = form
+    context['loginForm'] = form
 
 
     user = request.user
