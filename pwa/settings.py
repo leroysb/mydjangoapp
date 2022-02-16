@@ -112,7 +112,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
 #     os.path.join(BASE_DIR, 'static_cdn'),
 # ]
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # WHITENOISE_MANIFEST_STRICT = False
@@ -142,5 +142,5 @@ CKEDITOR_CONFIGS = {
 }
 
 # Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
