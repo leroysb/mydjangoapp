@@ -11,12 +11,13 @@ Enter your Email
         
 {% block form %}
 <form method="post">{% csrf_token %}
-
-    <span class="formlabel">{{ form.email.label }}</span>
-    {% for error  in form.email.errors %}
-    <span class="formerror">*{{ error }}</span>
-    {% endfor %}
-    <input type="email" name="email" class="forminput" value="{{ sess_email }}" required>
+    <div>
+        <span class="formlabel">{{ form.email.label }}</span>
+        {% for error  in form.email.errors %}
+        <span class="formerror">*{{ error }}</span>
+        {% endfor %}
+        <input type="email" name="email" class="forminput" value="{{ sess_email }}" required>
+    </div>
 
     <input type="submit" name="search" class="btn" value="Continue">
 </form>

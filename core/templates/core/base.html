@@ -54,8 +54,8 @@
     <body>
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
-                <img src="{% static 'core/media/about.jpg' %}" alt="logo" >
-                <img src="{% static 'core/media/lbwhite.png' %}" alt="logo" style="width: auto; height: 14px;">
+                <img class="logoimg" src="{% static 'core/media/about.jpg' %}" alt="logo" >
+                <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">
             </a>
             
             {% block navmenu %}

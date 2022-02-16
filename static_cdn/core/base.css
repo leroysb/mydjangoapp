@@ -55,9 +55,9 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     align-items: center;
     grid-gap: 7px;
 }
-#navlogo > img {
+.logoimg {
     width: auto;
-    height: 30px;
+    height: 22px;
 }
 .navmenu {
     position: absolute;
@@ -193,6 +193,9 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 769px) {
     .topnav {
         height: 33px;
+    }
+    .logoimg {
+        height: 14px;
     }
 }
 @media screen and (max-width: 342px) {
