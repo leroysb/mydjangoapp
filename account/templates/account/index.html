@@ -18,6 +18,7 @@
             background-color: white;
             width: 100vw;
             overflow-x: hidden;
+            overflow-y: hidden;
         }
 
         @font-face {
@@ -65,10 +66,8 @@
 
         #page-container {
             height: 100vh;
-            margin: 10vh 2px 0 2px;
+            margin: 20vh 2px 0 2px;
             padding: 0 30%;
-            overflow-y: scroll;
-            z-index: -1;
         }
         form {
             width:100%;
@@ -76,6 +75,7 @@
             grid-gap: 30px;
             grid-template-columns: 1fr;
             margin-top: 7vh;
+            overflow-y: scroll;
         }
         .formlabel {
             font-size: 14px;
@@ -85,11 +85,15 @@
         .forminput {
             width: 100%;
             font-size: 17px;
+            font-weight: bold;
+            font-family: CrimsonPro;
             padding: 2px 4px;
         }
         .forminput2 {
             width: 100%;
             font-size: 17px;
+            font-weight: bold;
+            font-family: CrimsonPro;
             padding: 2px 4px;
             opacity: 70%;
         }
@@ -117,8 +121,8 @@
         }
         @media only screen and (max-width: 770px) {
             #page-container {
-                margin: 0 8px;
-                padding: 70px 0;
+                margin: 20vh 8px;
+                padding: 0;
             }
             form {
                 grid-gap: 14px;
@@ -170,6 +174,11 @@
     </style>
     <body>
         <div id="page-container">
+            <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+                <a href="{% url 'core:index' %}">
+                    <img src="{% static 'core/media/lbblack.png' %}" alt="logo" style="width: auto; height: 70px;">
+                </a>
+            </div>
             {% block pageheader %}
             {% endblock pageheader %}
         

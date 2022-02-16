@@ -7,8 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = False
-# DEBUG = os.environ['DebugStatus']
+# DEBUG = False
+DEBUG = os.environ['DebugStatus']
 
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
@@ -100,7 +100,7 @@ USE_L10N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = 'account.User'
-LOGIN_URL = 'login'
+LOGIN_URL = 'auth'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'

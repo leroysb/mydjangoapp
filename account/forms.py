@@ -12,14 +12,18 @@ from django.utils.translation import gettext_lazy as _
 #####
 
 class authForm(Form):
-    email = CharField(max_length=100, label=_("Email"),)
+    email = CharField(widget=forms.EmailInput(), max_length=100, label=_("Email"),)
 
 #####
 
-class loginForm(Form):
+class loginForm(ModelForm):
 
-    email = CharField(max_length=100, required=True, label=_("Re-enter Email"))
+    email = CharField(widget=forms.EmailInput(), label=_("Re-enter Email"))
     password = CharField(widget=forms.PasswordInput(), label=_("Password"))
+
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'password']
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()

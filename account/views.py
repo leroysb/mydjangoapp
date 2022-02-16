@@ -4,16 +4,11 @@ from django.shortcuts import redirect, render
 from .forms import subscribeForm, authForm, loginForm
 from django.http import HttpResponse, request
 
-# from django.contrib.auth.views import LoginView
 # from django.contrib import messages
-# from django.contrib.auth.forms import UserCreationForm
-# from django.contrib.auth import get_user_model
-# Account = get_user_model()
 
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 # from rest_framework import permissions, status
-
 
 def LogoutView(request, *args, **kwargs):
     logout(request)
@@ -55,9 +50,9 @@ def AuthView(request, *args, **kwargs):
 def LoginView(request, *args, **kwargs):
 
     context= {}
-    context['sess_email'] = request.session.get('sess_email')
+    context['sess_email'] = request.session['sess_email']
     form = loginForm()
-    context['loginForm'] = form
+    context['form'] = form
 
     user = request.user
     if user.is_authenticated:
@@ -90,26 +85,22 @@ def SubscribeView (request, *args, **kwargs):
     context= {}
     context['sess_email'] = request.session['sess_email']
     form = subscribeForm()
-    context['subscribeForm'] = form
+    context['form'] = form
 
     user = request.user
     if user.is_authenticated:
         return redirect("core:index")
 
-    # if request.POST:
-    if request.method == 'POST':
+    if request.POST:
         form = subscribeForm(request.POST)
 
         if form.is_valid():
             form.save()
-            email = request.POST['email']
-            username = request.POST['username']
-            raw_password = request.POST['password']
-            # email = form.cleaned_data.get('email').lower()
-            # username = form.cleaned_data.get('username')
-            # raw_password = form.cleaned_data.get('password')
-            account = authenticate(email=email, username=username, password=raw_password)
-            login(request, account)
+            email = form.cleaned_data.get('email').lower()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(email=email, username=username, password=raw_password)
+            login(request, user)
             destination = kwargs.get("next")
 
             if destination:

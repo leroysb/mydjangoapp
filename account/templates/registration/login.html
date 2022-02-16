@@ -13,37 +13,38 @@ Login
 <form action="" method="post">{% csrf_token %}
 
     {% if sess_email %}
+
     <div onclick="history.back()">
-        <span class="formlabel">{{ loginForm.username.label }}</span>
-        {% for error  in loginForm.username.errors %}
-        <p class="formerror">*{{ error }}</p>
+        <span class="formlabel">{{ form.email.label }}</span>
+        {% for error  in form.email.errors %}
+        <span class="formerror">*{{ error }}</span>
         {% endfor %}
-        <input type="email" name="username" class="forminput2" value="{{ sess_email }}" readonly>
+        <input type="email" name="email" class="forminput2" value="{{ sess_email }}" readonly>
     </div>
 
     {% else %}
 
     <div>
-        <span class="formlabel">{{ loginForm.username.label }}</span>
-        {% for error  in loginForm.username.errors %}
-        <p class="formerror">*{{ error }}</p>
+        <span class="formlabel">{{ form.username.label }}</span>
+        {% for error  in form.username.errors %}
+        <span class="formerror">*{{ error }}</span>
         {% endfor %}
-        <p class="forminput"">{{ loginForm.username }}</p>
+        <input type="email" name="username" class="forminput" required>
     </div>
 
     {% endif %}
 
     <div>
-        <span class="formlabel">{{ loginForm.password.label }}</span>
-        {% for error  in loginForm.password.errors %}
-        <p class="formerror">*{{ error }}</p>
+        <span class="formlabel">{{ form.password.label }}</span>
+        {% for error  in form.password.errors %}
+        <span class="formerror">*{{ error }}</span>
         {% endfor %}
         <input type="password" name="password" class="forminput">
     </div>
 
-    {% if loginForm.non_field_errors %}
+    {% if form.non_field_errors %}
     <div>
-        {% for error in loginForm.non_field_errors %}
+        {% for error in form.non_field_errors %}
         <p class="formerror">**{{ error }}</p>
         {% endfor %}
     </div>

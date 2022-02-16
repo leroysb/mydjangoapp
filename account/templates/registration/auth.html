@@ -13,12 +13,10 @@ Enter your Email
 <form method="post">{% csrf_token %}
 
     <span class="formlabel">{{ form.email.label }}</span>
-    
-    {% if sess_email %}
-    <input type="email" name="username" class="forminput"  value="{{ sess_email }}">
-    {% else %}
-    <input type="email" name="email" class="forminput">
-    {% endif %}
+    {% for error  in form.email.errors %}
+    <span class="formerror">*{{ error }}</span>
+    {% endfor %}
+    <input type="email" name="email" class="forminput" value="{{ sess_email }}" required>
 
     <input type="submit" name="search" class="btn" value="Continue">
 </form>

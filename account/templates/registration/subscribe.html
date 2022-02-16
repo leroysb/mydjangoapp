@@ -13,39 +13,39 @@ Subscribe
 {% block form %}
 <form method="post">{% csrf_token %}
 
-    <div onclick="history.back()">
-        <span class="formlabel">{{ subscribeForm.email.label }}</span>
+    <div>
+        <span class="formlabel">{{ form.email.label }}</span>
 
-        {% for error  in subscribeForm.email.errors %}
+        {% for error  in form.email.errors %}
         <span style="color: red; font-size: small;">*{{error}}</span>
         {% endfor %}
 
         {% if sess_email %}
-        <input type="email" name="email" class="forminput2"  value="{{ sess_email }}" readonly>
+        <input type="email" name="email" class="forminput2"  value="{{ sess_email }}" readonly onclick="history.back()">
         {% else %}
-        <p class="forminput"">{{ subscribeForm.email }}</p>
+        <input type="email" name="email" class="forminput"  value="{{ sess_email }}" required>
         {% endif %}
     </div>
     
     <div>
-        <span class="formlabel">{{ subscribeForm.username.label }}</span>
-        {% for error  in subscribeForm.username.errors %}
-        <p class="formerror">*{{error}}</p>
+        <span class="formlabel">{{ form.username.label }}</span>
+        {% for error  in form.username.errors %}
+        <span class="formerror">*{{error}}</span>
         {% endfor %}
-        <input type="text" name="username" class="forminput">
+        <input type="text" name="username" class="forminput" required>
     </div>
 
     <div>
-        <span class="formlabel">{{ subscribeForm.password.label }}</span>
-        {% for error  in subscribeForm.password.errors %}
-        <p class="formerror">*{{error}}</p>
+        <span class="formlabel">{{ form.password.label }}</span>
+        {% for error  in form.password.errors %}
+        <span class="formerror">*{{error}}</span>
         {% endfor %}
         <input type="password" name="password" class="forminput">
     </div>
 
-    {% if subscribeForm.non_field_errors %}
+    {% if form.non_field_errors %}
     <div>
-        {% for error in subscribeForm.non_field_errors %}
+        {% for error in form.non_field_errors %}
         <p class="formerror">**{{ error }}</p>
         {% endfor %}
     </div>
