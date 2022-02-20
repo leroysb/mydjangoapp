@@ -164,7 +164,7 @@
 
         {% for comment in article.comments.all %}
         <div class="commentBox">
-            <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.name.username }}</p>
+            <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.name.alias }}</p>
             <p style="color: #c2c2c2b9;">{{ comment.postdate | timesince }} ago</p>
             <br>
             <p>{{ comment.comment | safe }}</p>

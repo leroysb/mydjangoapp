@@ -129,6 +129,20 @@ p {
     text-decoration: none;
     color: #ffffffc4;
 }
+#user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+span {
+    padding: 4px;
+    background-color: #000000;
+    color: #ffd900;
+    font-family: Josefin Sans;
+    font-size: small;
+    font-weight: bolder;
+}
 
 @media screen and (max-width: 770px) {
     #imagediv {

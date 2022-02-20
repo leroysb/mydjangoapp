@@ -48,10 +48,11 @@
                     <div id="imagediv">
                         <img id="image" src="{% static 'core/media/about.jpg' %}" alt="leroy">
                     </div>
+
                     <div id="links">
                         <a href="#" style="text-decoration: line-through;">MIXES</a>
                         
-                        {% if user.is_superuser %}
+                        {% if user.is_staff %}
                         <a href="{% url 'core:event' %}" >EVENTS</a>
                         <a href="{% url 'core:blogpage' %}" >BLOG</a>
                         <a href="{% url 'core:podcast' %}" >PODCAST</a>
@@ -69,10 +70,21 @@
                             <a href="{% url 'account:auth' %}">SIGN IN</a>
                         {% endif %}
                     </div>
-                    <!-- <div id="bio">
+                    
+                    <div id="bio">
                         <p>deejay ◊ storyteller ◊ consultant</p>
-                        <p>contact</p>
-                    </div> -->
+                    </div>
+                    
+                    {% if user.is_authenticated %}
+                    <div id="user">
+                        {% if user.is_staff %}
+                        <span>Logged in as @{{ request.user.alias }}</span>
+                        {% else %}
+                        <span>Hi {{ request.user.alias }}. We are still getting things ready for you.</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
                 </section>
 
                 <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>

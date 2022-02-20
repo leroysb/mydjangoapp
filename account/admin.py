@@ -14,7 +14,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('email', 'alias',)
+        fields = ('email', 'alias', 'password')
 
     def save(self, commit=True):
         # Save the provided password in hashed format
