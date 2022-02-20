@@ -28,11 +28,11 @@ Subscribe
     </div>
     
     <div>
-        <span class="formlabel">{{ form.username.label }}</span>
-        {% for error  in form.username.errors %}
+        <span class="formlabel">{{ form.alias.label }}</span>
+        {% for error  in form.alias.errors %}
         <span class="formerror">*{{error}}</span>
         {% endfor %}
-        <input type="text" name="username" class="forminput" required>
+        <input type="text" name="alias" class="forminput" required>
     </div>
 
     <div>

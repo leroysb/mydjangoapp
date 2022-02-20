@@ -38,7 +38,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name=_('Email'), max_length=100, unique=True,)
-    username = models.CharField(verbose_name=_('Username'), max_length=14, unique=True)
+    alias = models.CharField(verbose_name=_('Username'), max_length=14, unique=True)
     full_name = models.CharField(verbose_name=_('Full name'), max_length=255, null=True, blank=False)
     date_of_birth = models.DateField(verbose_name=_('Date of birth'), null=True)
     # phone_regex = RegexValidator(regex=r'^\+?2547?\d{8}$', message="Phone number must be entered in the format: '+254700000000'.")
@@ -54,7 +54,7 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username',]
+    REQUIRED_FIELDS = ['alias',]
 
     def __str__(self):
         return self.email

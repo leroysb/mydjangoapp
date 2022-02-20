@@ -5,6 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from .models import *
+from django.contrib.auth import get_user_model
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
@@ -12,8 +13,8 @@ class UserCreationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     class Meta:
-        model = User
-        fields = ('email', 'username',)
+        model = get_user_model()
+        fields = ('email', 'alias',)
 
     def save(self, commit=True):
         # Save the provided password in hashed format
@@ -33,7 +34,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'password', 'is_active', 'is_staff', 'is_admin')
+        fields = ('email', 'alias', 'password', 'is_active', 'is_staff', 'is_admin')
 
 
 class UserAdmin(BaseUserAdmin):
@@ -41,14 +42,14 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    list_display = ('email', 'username', 'date_joined','last_login', 'is_superuser', 'is_admin', 'is_staff', 'is_active',)
+    list_display = ('email', 'alias', 'date_joined','last_login', 'is_superuser', 'is_admin', 'is_staff', 'is_active',)
     list_filter = ('is_admin', 'is_staff',)
-    search_fields = ('email', 'username',)
+    search_fields = ('email', 'alias',)
     readonly_fields = ('id', 'date_joined','last_login')
     ordering = ('email',)
     filter_horizontal = ()
     fieldsets = (
-        (None, {'fields': ('email', 'username', 'password', 'id', 'date_joined','last_login')}),
+        (None, {'fields': ('email', 'alias', 'password', 'id', 'date_joined','last_login')}),
         # ('Personal info', {'fields': ('date_of_birth',)}),
         ('Permissions', {'fields': ('is_superuser', 'is_admin', 'is_staff','is_active',)}),
     )

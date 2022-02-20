@@ -1,8 +1,6 @@
 from django import forms
 from django.forms import ModelForm, EmailField, CharField, Form
-from django.forms.widgets import TextInput, Textarea
-
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
 from account.models import User
@@ -22,8 +20,17 @@ class loginForm(ModelForm):
     password = CharField(widget=forms.PasswordInput(), label=_("Password"))
 
     class Meta:
-        model = User
-        fields = ['email', 'username', 'password']
+        model = get_user_model()
+        fields = ['email', 'password']
+
+    def clean_email(self):
+        email = self.cleaned_data['email'].lower()
+        return email
+
+class signinForm(Form):
+
+    email = EmailField(widget=forms.EmailInput(), label=_("Email"))
+    password = CharField(widget=forms.PasswordInput(), label=_("Password"))
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
@@ -34,11 +41,11 @@ class loginForm(ModelForm):
 class subscribeForm(UserCreationForm):
 
     class Meta:
-        model = User
-        fields = ['email', 'username', 'password']
+        model = get_user_model()
+        fields = ['email', 'alias', 'password']
 
     email = EmailField(max_length=200, label=_("Email"))
-    username = CharField(max_length=14, label=_("Username"))
+    alias = CharField(max_length=14, label=_("Username"))
     password = CharField(widget=forms.PasswordInput, label=_("Password"))
 
     def clean_email(self):

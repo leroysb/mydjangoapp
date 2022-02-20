@@ -1,7 +1,7 @@
-from account.models import User
+from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
-from .forms import subscribeForm, authForm, loginForm
+from .forms import subscribeForm, authForm, loginForm, signinForm
 from django.http import HttpResponse, request
 
 # from django.contrib import messages
@@ -39,7 +39,7 @@ def AuthView(request, *args, **kwargs):
         request.session['sess_email'] = email.lower()
 
         if User.objects.filter(email__iexact=email).exists():
-            return redirect("account:login")
+            return redirect("account:signin")
         else:
             return redirect("account:subscribe")
 
@@ -77,6 +77,36 @@ def LoginView(request, *args, **kwargs):
 
     return render(request, 'registration/login.html', context)
 
+def SigninView(request, *args, **kwargs):
+
+    context= {}
+    context['sess_email'] = request.session['sess_email']
+    form = signinForm()
+    context['form'] = form
+
+    user = request.user
+    if user.is_authenticated:
+        return redirect("core:index")
+
+    if request.method == 'POST':
+        form = signinForm(request.POST)
+
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(request, email=email, password=password)
+
+            if user:
+                login(request, user)
+                destination = get_redirect_if_exists(request)
+
+                if destination:
+                    return redirect(destination)
+
+                return redirect("core:index")
+
+    return render(request, 'registration/signin.html', context)
+
 
 ######
 
@@ -97,15 +127,14 @@ def SubscribeView (request, *args, **kwargs):
         if form.is_valid():
             form.save()
             email = form.cleaned_data.get('email').lower()
-            username = form.cleaned_data.get('username')
+            alias = form.cleaned_data.get('alias')
             raw_password = form.cleaned_data.get('password')
-            user = authenticate(email=email, username=username, password=raw_password)
+            user = authenticate(email=email, alias=alias, password=raw_password)
             login(request, user)
             destination = kwargs.get("next")
 
             if destination:
                 return redirect('destination')
-                
             return redirect('core:index')
 
         else:

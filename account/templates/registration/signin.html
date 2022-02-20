@@ -25,11 +25,11 @@ Login
     {% else %}
 
     <div>
-        <span class="formlabel">{{ form.username.label }}</span>
-        {% for error  in form.username.errors %}
+        <span class="formlabel">{{ form.alias.label }}</span>
+        {% for error  in form.alias.errors %}
         <span class="formerror">*{{ error }}</span>
         {% endfor %}
-        <input type="email" name="username" class="forminput" required>
+        <input type="email" name="alias" class="forminput" required>
     </div>
 
     {% endif %}
