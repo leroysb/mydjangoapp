@@ -44,7 +44,7 @@ class User(AbstractBaseUser):
     # phone_regex = RegexValidator(regex=r'^\+?2547?\d{8}$', message="Phone number must be entered in the format: '+254700000000'.")
     # phone = models.CharField(_('phone number'), validators=[phone_regex], max_length=13, unique=True, null=False, blank=False) # validators should be a list
     headshot = models.ImageField(upload_to='account/headshots', blank=True, null=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
