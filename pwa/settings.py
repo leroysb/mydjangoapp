@@ -7,8 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-# DEBUG = False
-DEBUG = os.environ['DebugStatus']
+DEBUG = False
+# DEBUG = os.environ['DebugStatus']
 
 ALLOWED_HOSTS = [
     os.environ.get('Y7P2018'),
@@ -142,5 +142,5 @@ CKEDITOR_CONFIGS = {
 }
 
 # Configure Django App for Heroku.
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
