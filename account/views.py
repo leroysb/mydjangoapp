@@ -131,7 +131,7 @@ def SubscribeView (request, *args, **kwargs):
             password = form.cleaned_data.get('password')
             user = authenticate(email=email, alias=alias, password=password)
             login(request, user)
-            destination = kwargs.get("next")
+            destination = kwargs.get('next')
 
             if destination:
                 return redirect('destination')
@@ -147,6 +147,6 @@ def SubscribeView (request, *args, **kwargs):
 def get_redirect_if_exists(request):
     redirect = None
     if request.GET:
-        if request.GET.get("next"):
-            redirect = str(request.GET.get("next"))
+        if request.GET.get('next'):
+            redirect = str(request.GET.get('next'))
     return redirect
