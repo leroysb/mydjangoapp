@@ -1,35 +1,35 @@
-# from django.shortcuts import render, redirect, get_object_or_404
-# from django.urls import reverse_lazy, reverse
-# from django.http import HttpResponseForbidden, HttpResponseRedirect
-# # from django.http.response import HttpResponseNotFound
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseForbidden, HttpResponseRedirect
+# from django.http.response import HttpResponseNotFound
 
-# from django.db.models import F
+from django.db.models import F
 
-# from django.views import View
-# from django.views.generic import ListView, DetailView, TemplateView, FormView
-# from django.views.generic.edit import FormMixin, ModelFormMixin
-# from django.views.generic.detail import SingleObjectMixin
-# # from django.views.generic.list import MultipleObjectMixin
+from django.views import View
+from django.views.generic import ListView, DetailView, TemplateView, FormView
+from django.views.generic.edit import FormMixin, ModelFormMixin
+from django.views.generic.detail import SingleObjectMixin
+# from django.views.generic.list import MultipleObjectMixin
 
-# # from django.core.paginator import Paginator, InvalidPage
+# from django.core.paginator import Paginator, InvalidPage
 
-# # from urllib import quote_plus
+# from urllib import quote_plus
 # from .models import *
 # from .forms import *
-# import datetime
+import datetime
 
-# # Error views.
+# Error views.
 
-# def page404 (request, exception):
-#     return render(request, 'core/404.html')
+def page404 (request, exception):
+    return render(request, 'core/404.html')
 
-# def page500 (request):
-#     return render(request, 'core/serverError.html')
+def page500 (request):
+    return render(request, 'core/serverError.html')
 
-# # Page views.
+# Page views.
 
-# class HomepageView(TemplateView):
-#     template_name = 'core/homepage.html'
+class HomepageView(TemplateView):
+    template_name = 'core/homepage.html'
 
 # class BlogView(ListView):
 #     context_object_name = 'articles'
