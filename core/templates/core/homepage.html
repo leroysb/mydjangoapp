@@ -71,12 +71,12 @@
                         {% endif %}
                     </div>
                     
-                    <div id="bio">
+                    <!-- <div id="bio">
                         <p>deejay ◊ storyteller ◊ consultant</p>
-                    </div>
+                    </div> -->
                     
                     {% if user.is_authenticated %}
-                    <div id="user">
+                    <div id="bio">
                         {% if user.is_staff %}
                         <span>Logged in as @{{ request.user.alias }}</span>
                         {% else %}
