@@ -1,5 +1,5 @@
 import os
-# import dj_database_url
+import dj_database_url
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +29,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     'ckeditor',
-    # 'django_social_share',
+    'django_social_share',
 ]
 
 MIDDLEWARE = [
@@ -142,5 +142,5 @@ CKEDITOR_CONFIGS = {
 }
 
 # Configure Django App for Heroku.
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
