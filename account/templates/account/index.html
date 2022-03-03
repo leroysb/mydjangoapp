@@ -13,14 +13,6 @@
             margin: 0;
             padding: 0;
         }
-
-        body {
-            background-color: white;
-            width: 100vw;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
         @font-face {
             font-family: CrimsonPro;
             src: url('/static/account/fonts/CrimsonPro-VariableFont.ttf') format('truetype');
@@ -30,44 +22,26 @@
             font-family: CrimsonPro;
         }
 
-        /* Navigation Section */
-
-        .topnav {
-            position: fixed;
-            border: none;
-            top: 0;
-            width: 100%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            background-color: #ffffff;
-            z-index: 1;
-        }
-        #navlogo {
-            display: grid;
-            place-items: center;
-        }
-        #navlogo img {
-            height: 27px;
-            padding: 4px 0;
+        body {
+            background-color: #505cff;
+            width: 100vw;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
-        @media screen and (max-width: 740px) {
-            .topnav {
-                padding: 0.5% 1%;
-            }
-            #navlogo {
-                margin: 2px 0;
-            }
-            #navlogo img {
-                height: 24px;
-            }
-        }
 
         /* Page Section */
 
         #page-container {
-            height: 100vh;
-            margin: 20vh 2px auto 2px;
-            padding: 0 30%;
+            background-color: #ffffff;
+            position: absolute;
+            min-width: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            padding: 30px 20px;
+            border-radius: 8px;
         }
         form {
             width:100%;
@@ -120,10 +94,6 @@
             text-decoration: none;
         }
         @media only screen and (max-width: 767px) {
-            #page-container {
-                margin: 20vh 8px auto 8px;
-                padding: 0;
-            }
             form {
                 grid-gap: 14px;
                 margin-top: 3vh;

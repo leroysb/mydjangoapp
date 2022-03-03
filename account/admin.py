@@ -34,7 +34,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'alias', 'password', 'is_active', 'is_staff', 'is_admin')
+        fields = ('email', 'alias', 'password', 'is_deactivated', 'is_active', 'is_staff', 'is_admin')
 
 
 class UserAdmin(BaseUserAdmin):
@@ -42,16 +42,17 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    list_display = ('email', 'alias', 'date_joined','last_login', 'is_superuser', 'is_admin', 'is_staff', 'is_active',)
+    list_display = ('email', 'alias', 'date_joined','last_login', 'is_superuser', 'is_admin', 'is_staff', 'is_active', 'is_deactivated')
     list_filter = ('is_admin', 'is_staff',)
     search_fields = ('email', 'alias',)
     readonly_fields = ('id', 'date_joined','last_login')
     ordering = ('email',)
     filter_horizontal = ()
     fieldsets = (
-        (None, {'fields': ('email', 'alias', 'password', 'id', 'date_joined','last_login')}),
-        # ('Personal info', {'fields': ('date_of_birth',)}),
-        ('Permissions', {'fields': ('is_superuser', 'is_admin', 'is_staff','is_active',)}),
+        ('Personal info', {'fields': ('id','email', 'alias',)}),
+        ('Meta', {'fields': ('date_joined','last_login')}),
+        ('Private', {'fields': ('password',)}),
+        ('Permissions', {'fields': ('is_superuser', 'is_admin', 'is_staff','is_active', 'is_deactivated')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
