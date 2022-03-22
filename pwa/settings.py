@@ -11,7 +11,6 @@ DEBUG = False
 # DEBUG = os.environ['DebugStatus']
 
 ALLOWED_HOSTS = [
-    os.environ.get('Y7P2018'),
     os.environ.get('LocalNetwork'),
 ]
 

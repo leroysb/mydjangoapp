@@ -45,26 +45,15 @@
         <div class="container">
             <div class="content">
                 <section>
-                    <!-- <div id="imagediv">
+                    <div id="imagediv">
                         <img id="image" src="{% static 'core/media/lbwhite.png' %}" alt="leroy">
-                    </div> -->
+                    </div>
 
                     <div id="links">
-                        {% if user.is_admin %}
-                        <a href="#" style="text-decoration: line-through;">MIXES</a>
-                        <a href="{% url 'core:event' %}" >EVENTS</a>
-                        <a href="{% url 'core:blogpage' %}" >BLOG</a>
-                        <a href="{% url 'core:podcast' %}" >PODCAST</a>
-                        {% else %}
                         <a href="https://soundcloud.com/lerb-fanbase" >MIXES</a>
                         <a href="https://www.facebook.com/DJLERB/events" >EVENTS</a>
                         <a href="https://medium.com/@leroybuliro" >BLOG</a>
                         <a href="https://anchor.fm/kubonga" >PODCAST</a>
-                        {% endif %}
-                        
-
-                        <!-- <a href="https://calendly.com/lerbfinancial/consultation/" >BOOK A FINANCIAL CONSULTATION</a> -->
-
                         {% if user.is_authenticated %}
                             <a href="{% url 'account:logout' %}">LOG OUT</a>
                         {% else %}
