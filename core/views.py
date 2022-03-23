@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 from .models import *
-from .forms import *
 
 # Error views.
 
