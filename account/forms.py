@@ -44,8 +44,8 @@ class subscribeForm(ModelForm):
         model = get_user_model()
         fields = ['email', 'alias', 'password']
 
-    email = EmailField(max_length=200, label=_("Email"))
-    alias = CharField(max_length=14, label=_("Username"))
+    email = EmailField(label=_("Email"))
+    alias = CharField(label=_("Username"))
     password = CharField(widget=forms.PasswordInput, label=_("Password"))
 
     def save(self, commit=True):
