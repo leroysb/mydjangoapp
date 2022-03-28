@@ -16,7 +16,11 @@ Enter your Email
         {% for error  in form.email.errors %}
         <span class="formerror">*{{ error }}</span>
         {% endfor %}
+        {% if sess_email %}
         <input type="email" name="email" class="forminput" value="{{ sess_email }}" required>
+        {% else %}
+        <input type="email" name="email" class="forminput" value="{{ form.email }}" required>
+        {% endif %}
     </div>
 
     <input type="submit" name="search" class="btn" value="Continue">
