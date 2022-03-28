@@ -38,7 +38,12 @@ class UserManager(BaseUserManager):
 # Create your models here.
 
 class User(AbstractBaseUser):
-    email = models.EmailField(verbose_name=_('Email'), max_length=100, unique=True,)
+    email = models.EmailField(
+        verbose_name=_('Email'), 
+        max_length=100, 
+        validators=[RegexValidator(r'^[a-z0-9]+[\.\-a-z0-9_]*[a-z0-9]+@[\.\-a-z0-9_]*\.[a-z]{2,3}$', message="Invalid email")],
+        unique=True,
+    )
     alias = models.CharField(
         verbose_name=_('Username'), 
         max_length=10, 
