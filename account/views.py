@@ -6,10 +6,6 @@ from django.http import HttpResponse, request
 
 # from django.contrib import messages
 
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-# from rest_framework import permissions, status
-
 def LogoutView(request, *args, **kwargs):
     logout(request)
     # messages.success(request, 'Successfully logged out!', fail_silently=True)
@@ -35,13 +31,18 @@ def AuthView(request, *args, **kwargs):
 
     if request.method == 'POST':
         form = authForm(request.POST)
-        email = request.POST['email']
-        request.session['sess_email'] = email.lower()
 
-        if User.objects.filter(email__iexact=email).exists():
-            return redirect("account:signin")
+        if form.is_valid():
+            email = request.POST['email']
+            request.session['sess_email'] = email.lower()
+
+            if User.objects.filter(email__iexact=email).exists():
+                return redirect("account:signin")
+            else:
+                return redirect("account:subscribe")
+
         else:
-            return redirect("account:subscribe")
+            context['form'] = form
 
     return render(request, "registration/auth.html", context)
 
@@ -138,7 +139,7 @@ def SubscribeView (request, *args, **kwargs):
             return redirect('core:index')
 
         else:
-            context['form'] = subscribeForm(initial={'alias': alias}, instance=form)
+            context['form'] = form
 
     return render(request, 'registration/subscribe.html', context)
 
