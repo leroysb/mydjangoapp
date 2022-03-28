@@ -14,7 +14,7 @@ class authForm(Form):
         widget=forms.EmailInput(), 
         max_length=100, 
         label=_("Email"),
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Invalid email"))],
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
     )
 
 #####
