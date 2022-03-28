@@ -42,7 +42,7 @@ def AuthView(request, *args, **kwargs):
                 return redirect("account:subscribe")
 
         else:
-            context['form'] = authForm(initial=form)
+            context['form'] = form
 
     return render(request, "registration/auth.html", context)
 
