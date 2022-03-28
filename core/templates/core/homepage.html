@@ -5,9 +5,9 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Fueled By Leroy</title>
+        <title>Leroy Buliro</title>
         <link rel="icon" type="image/png" href="{% static 'core/media/favicon.ico' %}">
-        <meta name="description" content="Leroy Buliro: deejay, storyteller, financial advisor">
+        <meta name="description" content="Leroy Buliro is a part-time deejay, full-time consultant, and occassional storyteller.">
         <meta name="keyword" content="Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture">
         <!-- meta author -->
         <meta name="author" content="Leroy Buliro">
@@ -45,9 +45,19 @@
         <div class="container">
             <div class="content">
                 <section>
-                    <!-- <div id="imagediv">
-                        <img id="image" src="{% static 'core/media/lbwhite.png' %}" alt="leroy">
-                    </div> -->
+                    <div id="imagediv">
+                        <img id="image" src="{% static 'core/media/about.jpg' %}" alt="leroy">
+                    </div>
+                    
+                    {% if user.is_authenticated %}
+                    <div id="intro">
+                        {% if user.is_staff %}
+                        <span>Logged in as @{{ request.user.alias }}</span>
+                        {% else %}
+                        <span>Hi {{ request.user.alias }}. We are still getting things ready for you.</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
 
                     <div id="links">
                         <a href="https://soundcloud.com/lerb-fanbase" >MIXES</a>
@@ -61,20 +71,10 @@
                         {% endif %}
                     </div>
                     
-                    <!-- <div id="bio">
-                        <p>deejay ◊ storyteller ◊ consultant</p>
-                    </div> -->
-                    
-                    {% if user.is_authenticated %}
                     <div id="bio">
-                        {% if user.is_staff %}
-                        <span>Logged in as @{{ request.user.alias }}</span>
-                        {% else %}
-                        <span>Hi {{ request.user.alias }}. We are still getting things ready for you.</span>
-                        {% endif %}
+                        <p>deejay ◊ storyteller ◊ financial consultant ◊ fullstack developer</p>
                     </div>
-                    {% endif %}
-                    
+                                        
                 </section>
 
                 <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>
