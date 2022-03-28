@@ -2,15 +2,20 @@ from django import forms
 from django.forms import ModelForm, EmailField, CharField, Form
 from django.contrib.auth import authenticate, get_user_model
 # from django.contrib.auth.forms import UserCreationForm
-
 from account.models import User
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import RegexValidator
 
 
 #####
 
 class authForm(Form):
-    email = CharField(widget=forms.EmailInput(), max_length=100, label=_("Email"),)
+    email = CharField(
+        widget=forms.EmailInput(), 
+        max_length=100, 
+        label=_("Email"),
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Invalid email"))],
+    )
 
 #####
 

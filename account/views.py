@@ -138,7 +138,7 @@ def SubscribeView (request, *args, **kwargs):
             return redirect('core:index')
 
         else:
-            context['form'] = form
+            context['form'] = subscribeForm(initial={'alias': alias}, instance=form)
 
     return render(request, 'registration/subscribe.html', context)
 
