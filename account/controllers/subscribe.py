@@ -1,18 +1,15 @@
 from email import message
 from django import forms
-from django.forms import ModelForm, EmailField, CharField, Form
+from django.forms import ModelForm, EmailField, CharField
 from django.contrib.auth import authenticate, get_user_model
-from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 
-from ..models import User
 from .redirect import get_redirect_if_exists
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, request
 
-class subscribeForm(UserCreationForm):
+class subscribeForm(ModelForm):
 
     class Meta:
         model = get_user_model()
@@ -31,7 +28,7 @@ class subscribeForm(UserCreationForm):
     password = CharField(
         widget=forms.PasswordInput(),
         label=_("Password"),
-        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))],
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
     )
 
     def save(self, commit=True):

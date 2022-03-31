@@ -12,7 +12,8 @@ class UserCreationForm(forms.ModelForm):
     fields, plus a repeated password."""
     password = forms.CharField(
         label='Password',
-        widget=forms.PasswordInput
+        widget=forms.PasswordInput,
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
     )
 
     class Meta:
