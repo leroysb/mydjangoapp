@@ -3,8 +3,7 @@ from django import forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django.core.exceptions import ValidationError
-from .models import *
+from django.core.validators import RegexValidator
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
@@ -38,7 +37,7 @@ class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ('email', 'alias', 'password', 'is_deactivated', 'is_active', 'is_staff', 'is_admin')
 
 

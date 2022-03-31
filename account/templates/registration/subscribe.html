@@ -23,7 +23,7 @@ Subscribe
         {% if sess_email %}
         <input type="email" name="email" class="forminput2"  value="{{ sess_email }}" readonly onclick="history.back()">
         {% else %}
-        <input type="email" name="email" class="forminput"  value="{{ sess_email }}" required>
+        <input type="email" name="email" class="forminput"  required>
         {% endif %}
     </div>
     
@@ -32,7 +32,11 @@ Subscribe
         {% for error  in form.alias.errors %}
         <span class="formerror">*{{error}}</span>
         {% endfor %}
+        {% if alias %}
+        <input type="email" name="email" class="forminput2"  value="{{ alias }}" readonly onclick="history.back()">
+        {% else %}
         <input type="text" name="alias" class="forminput" required>
+        {% endif %}
     </div>
 
     <div>
