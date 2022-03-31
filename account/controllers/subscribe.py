@@ -42,12 +42,12 @@ def SubscribeView (request, *args, **kwargs):
 
     form = subscribeForm(request.POST)
     if form.is_valid():
-        # form.save()
         email = form.cleaned_data.get('email').lower()
         alias = form.cleaned_data.get('alias')
         password = form.cleaned_data.get('password')
+
         try: 
-            # user = authenticate(email=email, alias=alias, password=password)
+            user = authenticate(email=email, alias=alias, password=password)
             user = User.objects.create_user(email, alias, password)
         except:
             user = None
@@ -55,7 +55,6 @@ def SubscribeView (request, *args, **kwargs):
         if user != None:
             login(request, user)
             destination = get_redirect_if_exists(request)
-
             if destination:
                 return redirect('destination')
             return redirect('core:index')
@@ -64,4 +63,4 @@ def SubscribeView (request, *args, **kwargs):
             context['alias'] = request.session['alias']
             return render(request, 'account/subscribe.html', context)
 
-    return render(request, 'account/subscribe.html', context)
+    return render(request, "account/subscribe.html", context)

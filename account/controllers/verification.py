@@ -51,4 +51,4 @@ def AuthView(request, *args, **kwargs):
         else:
             context['form'] = authForm(request.POST, initial=form)
 
-    return render(request, "registration/auth.html", context)
+    return render(request, "account/auth.html", context)
