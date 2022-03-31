@@ -48,7 +48,7 @@ def SubscribeView (request, *args, **kwargs):
 
         try: 
             user = authenticate(email=email, alias=alias, password=password)
-            user = User.objects.create_user(email, alias, password)
+            # user = User.objects.create_user(email, alias, password)
         except:
             user = None
 
