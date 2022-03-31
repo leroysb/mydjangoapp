@@ -40,7 +40,6 @@ class subscribeForm(ModelForm):
         return user
 
 def SubscribeView (request, *args, **kwargs):
-    
     context= {}
     context['sess_email'] = request.session['sess_email']
     form = subscribeForm()
@@ -52,6 +51,8 @@ def SubscribeView (request, *args, **kwargs):
 
     if request.POST:
         form = subscribeForm(request.POST)
+        alias = request.POST['alias']
+        context['alias'] = request.session['alias']
 
         if form.is_valid():
             form.save()
@@ -60,6 +61,8 @@ def SubscribeView (request, *args, **kwargs):
             password = form.cleaned_data.get('password')
             user = authenticate(email=email, alias=alias, password=password)
             login(request, user)
+            del request.session['alias']
+            del request.session['sess_email']
             destination = get_redirect_if_exists(request)
 
             if destination:
