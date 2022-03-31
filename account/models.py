@@ -45,9 +45,9 @@ class User(AbstractBaseUser):
         unique=True,
     )
     alias = models.CharField(
-        verbose_name=_('Username'), 
-        max_length=10, 
-        validators=[RegexValidator(r'^[a-zA-Z0-9_]{4,10}$', message="Username should be between 4-10 characters, and must contain letters, numbers, or '_' only.")],
+        verbose_name=_('Username'),
+        max_length=18,
+        validators=[RegexValidator(r'^[a-zA-Z0-9_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
         unique=True,
     )
     full_name = models.CharField(verbose_name=_('Full name'), max_length=255, null=True, blank=False)

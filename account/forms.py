@@ -21,8 +21,17 @@ class authForm(Form):
 
 class loginForm(ModelForm):
 
-    email = CharField(widget=forms.EmailInput(), label=_("Re-enter Email"))
-    password = CharField(widget=forms.PasswordInput(), label=_("Password"))
+    email = CharField(
+        widget=forms.EmailInput(),
+        max_length=100, 
+        label=_("Email"),
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+    )
+    password = CharField(
+        widget=forms.PasswordInput(),
+        label=_("Password"),
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', )],
+    )
 
     class Meta:
         model = get_user_model()
@@ -34,8 +43,17 @@ class loginForm(ModelForm):
 
 class signinForm(Form):
 
-    email = EmailField(widget=forms.EmailInput(), label=_("Email"))
-    password = CharField(widget=forms.PasswordInput(), label=_("Password"))
+    email = CharField(
+        widget=forms.EmailInput(),
+        max_length=100, 
+        label=_("Email"),
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+    )
+    password = CharField(
+        widget=forms.PasswordInput(),
+        label=_("Password"),
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$')],
+    )
 
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
@@ -49,9 +67,21 @@ class subscribeForm(ModelForm):
         model = get_user_model()
         fields = ['email', 'alias', 'password']
 
-    email = EmailField(label=_("Email"))
-    alias = CharField(label=_("Username"))
-    password = CharField(widget=forms.PasswordInput, label=_("Password"))
+    alias = CharField(
+        label=_("Username"),
+        validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
+    )
+    email = CharField(
+        widget=forms.EmailInput(),
+        max_length=100, 
+        label=_("Email"),
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+    )
+    password = CharField(
+        widget=forms.PasswordInput(),
+        label=_("Password"),
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', )],
+    )
 
     def save(self, commit=True):
         # Save the provided password in hashed format
