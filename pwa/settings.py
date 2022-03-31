@@ -96,7 +96,7 @@ USE_L10N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = 'account.User'
-LOGIN_URL = 'auth'
+LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/home'
