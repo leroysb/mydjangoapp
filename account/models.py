@@ -7,6 +7,8 @@ from django.contrib.auth.models import (
 from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 
+import uuid
+
 # create new user and superuser
 
 class UserManager(BaseUserManager):
@@ -38,6 +40,10 @@ class UserManager(BaseUserManager):
 # Create your models here.
 
 class User(AbstractBaseUser):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4
+    )
     email = models.EmailField(
         verbose_name=_('Email'), 
         max_length=100, 

@@ -6,6 +6,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from .models import *
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
