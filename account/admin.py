@@ -9,6 +9,16 @@ from .models import User
 from django.utils.translation import gettext_lazy as _
 
 class UserCreationForm(forms.ModelForm):
+    alias = forms.CharField(
+        label=_("Username"),
+        validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
+    )
+    email = forms.EmailField(
+        label=_("Email"),
+        widget=forms.EmailInput(),
+        max_length=100, 
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+    )
     password = forms.CharField(
         label=_("Password"),
         widget=forms.PasswordInput,

@@ -1,35 +1,24 @@
-from email import message
-from django import forms
-from django.forms import ModelForm, EmailField, CharField
 from django.contrib.auth import authenticate, get_user_model
+from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
-from django.core.validators import RegexValidator
 from .redirect import get_redirect_if_exists
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
 from ..admin import UserCreationForm
+from ..models import User
 
 class subscribeForm(UserCreationForm):
-
-    alias = CharField(
-        label=_("Username"),
-        # validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
-    )
-    email = EmailField(
-        label=_("Email"),
-        widget=forms.EmailInput(),
-        # max_length=100, 
-        # validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
-    )
-    password = CharField(
-        # label=_("Password"),
-        # widget=forms.PasswordInput(),
-        # validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
-    )
 
     class Meta:
         model = get_user_model()
         fields = ['email', 'alias', 'password']
+
+    def cleaned_alias(self, *args, **kwargs):
+        alias = self.cleaned_data.get("alias")
+
+        if User.objects.filter(alias=alias).exists():
+            raise ValidationError ("Username is taken!!")
+        return alias
 
 def SubscribeView (request, *args, **kwargs):
     context= {}
