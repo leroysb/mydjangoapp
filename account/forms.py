@@ -1,3 +1,4 @@
+from email import message
 from django import forms
 from django.forms import ModelForm, EmailField, CharField, Form
 from django.contrib.auth import authenticate, get_user_model
@@ -52,7 +53,7 @@ class signinForm(Form):
     password = CharField(
         widget=forms.PasswordInput(),
         label=_("Password"),
-        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$')],
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))],
     )
 
     def clean_email(self):
@@ -80,7 +81,7 @@ class subscribeForm(ModelForm):
     password = CharField(
         widget=forms.PasswordInput(),
         label=_("Password"),
-        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', )],
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))],
     )
 
     def save(self, commit=True):
