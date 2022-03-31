@@ -56,6 +56,11 @@ class User(AbstractBaseUser):
         validators=[RegexValidator(r'^[a-zA-Z0-9_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
         unique=True,
     )
+    # password = models.CharField(
+    #     verbose_name=_('Password'),
+    #     max_length=24,
+    #     validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
+    # )
     full_name = models.CharField(verbose_name=_('Full name'), max_length=255, null=True, blank=False)
     date_of_birth = models.DateField(verbose_name=_('Date of birth'), null=True)
     headshot = models.ImageField(upload_to='account/headshots', blank=True, null=True)

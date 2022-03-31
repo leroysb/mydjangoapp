@@ -17,18 +17,18 @@ class subscribeForm(UserCreationForm):
 
     alias = CharField(
         label=_("Username"),
-        validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
+        # validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
     )
     email = EmailField(
-        widget=forms.EmailInput(),
-        max_length=100, 
         label=_("Email"),
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+        widget=forms.EmailInput(),
+        # max_length=100, 
+        # validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
     )
     password = CharField(
-        widget=forms.PasswordInput(),
-        label=_("Password"),
-        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
+        # label=_("Password"),
+        # widget=forms.PasswordInput(),
+        # validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
     )
 
 def SubscribeView (request, *args, **kwargs):
