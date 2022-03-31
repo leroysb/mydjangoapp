@@ -34,6 +34,7 @@ class subscribeForm(forms.Form):
 def SubscribeView (request, *args, **kwargs):
     context= {}
     context['sess_email'] = request.session['sess_email']
+    context['form'] = subscribeForm()
 
     user = request.user
     if user.is_authenticated:
@@ -61,6 +62,6 @@ def SubscribeView (request, *args, **kwargs):
         else:
             alias = request.POST['alias']
             context['alias'] = request.session['alias']
-            return render(request, 'registration/subscribe.html', context)
+            return render(request, 'account/subscribe.html', context)
 
-    return render(request, 'registration/subscribe.html', context)
+    return render(request, 'account/subscribe.html', context)
