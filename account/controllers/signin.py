@@ -49,6 +49,7 @@ def SigninView(request, *args, **kwargs):
 
             if user:
                 login(request, user)
+                del request.session['sess_email']
                 destination = get_redirect_if_exists(request)
 
                 if destination:
