@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from .redirect import get_redirect_if_exists
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
+from django import forms
 from ..admin import UserCreationForm
 from ..models import User
 
@@ -13,12 +14,17 @@ class subscribeForm(UserCreationForm):
         model = get_user_model()
         fields = ['email', 'alias', 'password']
 
-    def cleaned_alias(self, *args, **kwargs):
-        alias = self.cleaned_data.get("alias")
+    labels = {
+        'email': _("Email"),
+        'alias': _("Username"),
+        'password': _("Password"),
+    }
 
-        if User.objects.filter(alias=alias).exists():
-            raise ValidationError ("Username is taken!!")
-        return alias
+    def clean(self, *args, **kwargs):
+        alias = self.cleaned_data['alias']
+
+        if not User.objects.filter(alias=alias).exists():
+            raise forms.ValidationError ({'alias': "Username is taken!!"})
 
 def SubscribeView (request, *args, **kwargs):
     context= {}
@@ -40,8 +46,6 @@ def SubscribeView (request, *args, **kwargs):
             password = form.cleaned_data.get('password')
             user = authenticate(email=email, alias=alias, password=password)
             login(request, user)
-            del request.session['alias']
-            del request.session['sess_email']
             destination = get_redirect_if_exists(request)
 
             if destination:
