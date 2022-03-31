@@ -11,10 +11,6 @@ from ..admin import UserCreationForm
 
 class subscribeForm(UserCreationForm):
 
-    class Meta:
-        model = get_user_model()
-        fields = ['email', 'alias', 'password']
-
     alias = CharField(
         label=_("Username"),
         # validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
@@ -30,6 +26,10 @@ class subscribeForm(UserCreationForm):
         # widget=forms.PasswordInput(),
         # validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
     )
+
+    class Meta:
+        model = get_user_model()
+        fields = ['email', 'alias', 'password']
 
 def SubscribeView (request, *args, **kwargs):
     context= {}
