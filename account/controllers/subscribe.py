@@ -1,60 +1,66 @@
-from django.contrib.auth import authenticate, get_user_model
-from django.forms import ValidationError
-from django.utils.translation import gettext_lazy as _
-from .redirect import get_redirect_if_exists
-from django.contrib.auth import authenticate, login
-from django.shortcuts import redirect, render
 from django import forms
-from ..admin import UserCreationForm
-from ..models import User
+from django.core.validators import RegexValidator
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import authenticate, get_user_model, login
+from django.shortcuts import redirect, render
+from .redirect import get_redirect_if_exists
+User = get_user_model()
 
-class subscribeForm(UserCreationForm):
+class subscribeForm(forms.Form):
 
-    class Meta:
-        model = get_user_model()
-        fields = ['email', 'alias', 'password']
+    alias = forms.CharField(
+        label=_("Username"),
+        validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
+    )
+    email = forms.EmailField(
+        label=_("Email"),
+        widget=forms.EmailInput(),
+        max_length=100, 
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+    )
+    password = forms.CharField(
+        label=_("Password"),
+        widget=forms.PasswordInput,
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
+    )
 
-    labels = {
-        'email': _("Email"),
-        'alias': _("Username"),
-        'password': _("Password"),
-    }
+    def clean_alias(self):
+        alias = self.cleaned_data.get('alias')
 
-    def clean(self, *args, **kwargs):
-        alias = self.cleaned_data['alias']
-
-        if not User.objects.filter(alias=alias).exists():
+        if not User.objects.filter(alias__iexact=alias).exists():
             raise forms.ValidationError ({'alias': "Username is taken!!"})
+        return alias
 
 def SubscribeView (request, *args, **kwargs):
     context= {}
     context['sess_email'] = request.session['sess_email']
-    form = subscribeForm()
-    context['form'] = form
 
     user = request.user
     if user.is_authenticated:
         return redirect("core:index")
 
-    if request.POST:
-        form = subscribeForm(request.POST)
-        
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get('email').lower()
-            alias = form.cleaned_data.get('alias')
-            password = form.cleaned_data.get('password')
-            user = authenticate(email=email, alias=alias, password=password)
+    form = subscribeForm(request.POST)
+    if form.is_valid():
+        # form.save()
+        email = form.cleaned_data.get('email').lower()
+        alias = form.cleaned_data.get('alias')
+        password = form.cleaned_data.get('password')
+        try: 
+            # user = authenticate(email=email, alias=alias, password=password)
+            user = User.objects.create_user(email, alias, password)
+        except:
+            user = None
+
+        if user != None:
             login(request, user)
             destination = get_redirect_if_exists(request)
 
             if destination:
                 return redirect('destination')
             return redirect('core:index')
-
         else:
-            context['form'] = form
             alias = request.POST['alias']
             context['alias'] = request.session['alias']
+            return render(request, 'registration/subscribe.html', context)
 
     return render(request, 'registration/subscribe.html', context)
