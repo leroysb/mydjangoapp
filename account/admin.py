@@ -70,7 +70,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 # Now register the new UserAdmin...
-admin.site.register(User, UserAdmin)
+admin.site.register(get_user_model, UserAdmin)
 
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
