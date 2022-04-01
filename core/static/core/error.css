@@ -28,7 +28,7 @@ body {
     position: relative;
 }
 
-p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
+p, a, h1, h2, h3, h4, h5, h6 {
     font-family: Josefin Sans;
 }
 
@@ -38,18 +38,14 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     margin-top: 30%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     grid-gap: 30px;
     text-align: center;
 }
 .logoimg {
     width: 80px;
     height: auto;
-}
-
-@media screen and (max-width: 769px) {
-    .logoimg {
-        height: 70px;
-    }
 }
 
 /* Footer */
