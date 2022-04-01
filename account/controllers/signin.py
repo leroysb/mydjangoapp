@@ -29,7 +29,7 @@ class signinForm(Form):
         password = cleaned_data['password']
         user = authenticate(request, email=email, password=password)
         if not user:
-            msg = _("Incorrect username, password pairing!!")
+            msg = _("Incorrect username and password pairing!!")
             raise ValidationError(msg, code='invalid')
 
 def SigninView(request, *args, **kwargs):
