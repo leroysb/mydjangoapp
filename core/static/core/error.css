@@ -42,8 +42,8 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 .logoimg {
-    width: auto;
-    height: 80px;
+    width: 80px;
+    height: auto;
 }
 
 @media screen and (max-width: 769px) {
