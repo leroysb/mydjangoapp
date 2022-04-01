@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from .redirect import get_redirect_if_exists
 User = get_user_model()
 
-class subscribeForm(forms.Form):
+class subscribeForm(forms.ModelForm):
 
     alias = forms.CharField(
         label=_("Username"),
@@ -24,43 +24,51 @@ class subscribeForm(forms.Form):
         validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
     )
 
+    class Meta:
+        model = User
+        fields = ('email', 'alias', 'password')
+
     def clean_alias(self):
         alias = self.cleaned_data.get('alias')
 
         if not User.objects.filter(alias__iexact=alias).exists():
-            raise forms.ValidationError ({'alias': "Username is taken!!"})
+            raise forms.ValidationError ("Username is taken!!")
         return alias
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.save()
+        return user
+
 def SubscribeView (request, *args, **kwargs):
+    user = request.user
+    if user.is_authenticated:
+        return redirect("core:index")
+        
     context= {}
     context['sess_email'] = request.session['sess_email']
     context['form'] = subscribeForm()
 
-    user = request.user
-    if user.is_authenticated:
-        return redirect("core:index")
-
-    form = subscribeForm(request.POST)
-    if form.is_valid():
-        email = form.cleaned_data.get('email').lower()
-        alias = form.cleaned_data.get('alias')
-        password = form.cleaned_data.get('password')
-
-        try: 
+    if request.method == "POST":
+        form = subscribeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email').lower()
+            alias = form.cleaned_data.get('alias')
+            password = form.cleaned_data.get('password')
             user = authenticate(email=email, alias=alias, password=password)
-            # user = User.objects.create_user(email, alias, password)
-        except:
-            user = None
-
-        if user != None:
             login(request, user)
+            del request.session['sess_email']
             destination = get_redirect_if_exists(request)
             if destination:
                 return redirect('destination')
             return redirect('core:index')
         else:
-            alias = request.POST['alias']
-            context['alias'] = request.session['alias']
-            return render(request, 'account/subscribe.html', context)
+            return render(request, 'account/subscribe.html', {
+                'form': subscribeForm(),
+                'sess_email': request.session['sess_email'],
+            })
 
     return render(request, "account/subscribe.html", context)

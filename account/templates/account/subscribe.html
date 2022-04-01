@@ -11,7 +11,8 @@ Subscribe
 
 
 {% block form %}
-<form method="post">{% csrf_token %}
+<form method="post">
+    {% csrf_token %}
 
     <div>
         <span class="formlabel">{{ form.email.label }}</span>
@@ -21,7 +22,9 @@ Subscribe
         {% endfor %}
 
         {% if sess_email %}
-        <input type="email" name="email" class="forminput2"  value="{{ sess_email }}" readonly onclick="history.back()">
+        <a href="{% url 'account:auth' %}">
+            <input type="email" name="email" class="forminput2"  value="{{ sess_email }}" readonly>
+        </a>
         {% else %}
         <input type="email" name="email" class="forminput"  required>
         {% endif %}
