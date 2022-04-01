@@ -44,7 +44,7 @@ p, a, h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 .logoimg {
-    width: 80px;
+    width: 20%;
     height: auto;
 }
 
@@ -72,6 +72,10 @@ footer a:hover {
     text-decoration: none;
 }
 @media screen and (max-width: 769px) {
+    .logoimg {
+        width: 40%;
+        height: auto;
+    }
     footer {
         padding: 3% 1%;
         flex-direction: column;
