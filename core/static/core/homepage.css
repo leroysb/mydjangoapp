@@ -82,10 +82,10 @@ section {
     place-items: center; */
 }
 #image {
-    border-radius: 50%;
-    border: 1px #c2c2c28f solid;
+    /* border-radius: 50%; */
+    /* border: 1px #c2c2c28f solid; */
     max-width: 7em;
-    padding: 0.3em;
+    /* padding: 0.3em; */
 }
 #links {
     position: absolute;
@@ -118,8 +118,8 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: right;
+    text-align: right;
 }
 #bio {
     position: absolute;
@@ -157,5 +157,8 @@ span {
 @media screen and (max-width: 770px) {
     #imagediv {
         left: 2px;
-    }   
+    }  
+    #image {
+        max-width: 4em;
+    } 
 }
