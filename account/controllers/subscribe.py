@@ -66,9 +66,7 @@ def SubscribeView (request, *args, **kwargs):
                 return redirect('destination')
             return redirect('core:index')
         else:
-            return render(request, 'account/subscribe.html', {
-                'form': subscribeForm(),
-                'sess_email': request.session['sess_email'],
-            })
+            context['form'] = subscribeForm()
+            context['sess_email'] = request.session['sess_email']
 
     return render(request, "account/subscribe.html", context)
