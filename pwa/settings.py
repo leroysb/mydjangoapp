@@ -7,8 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-# DEBUG = False
-DEBUG = os.environ['DebugStatus']
+DEBUG = False
+# DEBUG = os.environ['DebugStatus']
 
 ALLOWED_HOSTS = [
     os.environ.get('LocalNetwork'),

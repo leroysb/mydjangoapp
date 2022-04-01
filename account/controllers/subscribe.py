@@ -28,12 +28,11 @@ class subscribeForm(forms.ModelForm):
         model = User
         fields = ('email', 'alias', 'password')
 
-    def clean(self):
+    def clean_alias(self):
         cleaned_data = super(subscribeForm, self).clean()
         alias = cleaned_data.get("alias")
         if User.objects.filter(alias__iexact=alias).exists():
-            msg = "Username is not available!"
-            # msg = f"{alias} is not available!"
+            msg = f"{alias} is not available!"
             self.add_error('alias', msg)
         return alias
 
@@ -57,9 +56,9 @@ def SubscribeView (request, *args, **kwargs):
         form = subscribeForm(request.POST)
         if form.is_valid():
             form.save()
-            email = form.cleaned_data.get('email').lower()
-            alias = form.cleaned_data.get('alias')
-            password = form.cleaned_data.get('password')
+            email = form.cleaned_data['email'].lower()
+            alias = form.cleaned_data['alias']
+            password = form.cleaned_data['password']
             user = authenticate(email=email, alias=alias, password=password)
             login(request, user)
             del request.session['sess_email']
