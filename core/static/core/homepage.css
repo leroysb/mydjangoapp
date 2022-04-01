@@ -75,10 +75,11 @@ section {
 }
 #imagediv {
     position: absolute;
-    top: 17%;
-    width: 100%;
+    bottom: 4%;
+    left: 20px;
+    /* width: 100%;
     display: grid;
-    place-items: center;
+    place-items: center; */
 }
 #image {
     border-radius: 50%;
@@ -155,6 +156,6 @@ span {
 
 @media screen and (max-width: 770px) {
     #imagediv {
-        top: 14%;
+        left: 2px;
     }   
 }
