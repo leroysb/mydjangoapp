@@ -1,0 +1,90 @@
+@font-face {
+    font-family: Josefin Sans;
+    src: url('/static/core/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Indie;
+    src: url('/static/core/fonts/IndieFlower-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Permanent Marker;
+    src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+body {
+    background-color: #000000;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: relative;
+}
+
+p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
+    font-family: Josefin Sans;
+}
+
+/* Menu */
+#errContainer {
+    width: 100%;
+    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 30px;
+    text-align: center;
+}
+#navlogo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-0%, -50%);
+}
+.logoimg {
+    width: auto;
+    height: 80px;
+}
+
+@media screen and (max-width: 769px) {
+    .logoimg {
+        height: 70px;
+    }
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid silver;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 2%;
+    clear: both;
+}
+#footersocial {
+    display: flex;
+    grid-gap: 10px;
+}
+footer a,
+footer a:hover {
+    color: #FFFFFF;
+    font-size: 11px;
+    text-decoration: none;
+}
+@media screen and (max-width: 769px) {
+    footer {
+        padding: 3% 1%;
+        flex-direction: column;
+        grid-gap: 10px;
+    }
+}

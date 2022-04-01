@@ -73,20 +73,6 @@ section {
     justify-content: center;
     flex-direction: column;
 }
-#imagediv {
-    position: absolute;
-    bottom: 4%;
-    left: 20px;
-    /* width: 100%;
-    display: grid;
-    place-items: center; */
-}
-#image {
-    /* border-radius: 50%; */
-    /* border: 1px #c2c2c28f solid; */
-    max-width: 7em;
-    /* padding: 0.3em; */
-}
 #links {
     position: absolute;
     top: 50%;
@@ -111,15 +97,32 @@ a:hover {
     text-decoration: none;
     font-size: 24px;
 }
+#imagediv {
+    position: absolute;
+    bottom: 7%;
+    left: 10%;
+    width: 100%;
+    /* display: grid;
+    place-items: center; */
+}
+#image {
+    /* border-radius: 50%; */
+    /* border: 1px #c2c2c28f solid; */
+    max-width: 7em;
+    /* padding: 0.3em; */
+}
 #intro {
     position: absolute;
-    bottom: 4%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: right;
-    text-align: right;
+    bottom: 2%;
+    left: 20px;
+}
+#intro span {
+    padding: 4px;
+    background-color: #000000;
+    color: #ffd900;
+    font-family: Josefin Sans;
+    font-size: small;
+    font-weight: bolder;
 }
 #bio {
     position: absolute;
@@ -131,7 +134,7 @@ a:hover {
     justify-content: center;
     text-align: center;
 }
-p {
+#bio p {
     font-family: Josefin Sans;
     font-size: 14px;
     font-weight: 400;
@@ -139,26 +142,15 @@ p {
     text-decoration: none;
     color: #ffffffc4;
 }
-#user {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-}
-span {
-    padding: 4px;
-    background-color: #000000;
-    color: #ffd900;
-    font-family: Josefin Sans;
-    font-size: small;
-    font-weight: bolder;
-}
 
 @media screen and (max-width: 770px) {
     #imagediv {
-        left: 2px;
+        left: 10px;
     }  
     #image {
         max-width: 4em;
-    } 
+    }
+    #intro {
+        left: 10px;
+    }
 }

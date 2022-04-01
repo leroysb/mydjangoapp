@@ -12,138 +12,7 @@
         <link rel="canonical" href="https://leroybuliro.com/">
         <meta name="docsearch:language" content="en">
         <!-- Load css file -->
-        <style>
-            @font-face {
-                font-family: Josefin Sans;
-                src: url('/static/core/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
-                font-weight: 400;
-            }
-            @font-face {
-                font-family: Indie;
-                src: url('/static/core/fonts/IndieFlower-Regular.ttf') format('truetype');
-                font-weight: 400;
-            }
-            @font-face {
-                font-family: Permanent Marker;
-                src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
-                font-weight: 700;
-            }
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-            }
-            body {
-                background-color: #000000;
-                overflow: hidden;
-                overflow-y: scroll;
-                position: relative;
-            }
-
-            p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
-                font-family: Josefin Sans;
-            }
-
-            /* Menu */
-
-            .topnav {
-                position: sticky;
-                position: -webkit-sticky;
-                top: 0;
-                height: 42px;
-                width: 100%;
-                border: none;
-                background-color: rgba(51, 61, 61, 0.959);
-                z-index: 3;
-            }
-            #navlogo {
-                position: absolute;
-                left: 2%;
-                top: 50%;
-                transform: translate(-0%, -50%);
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                grid-gap: 7px;
-            }
-            .logoimg {
-                width: auto;
-                height: 22px;
-            }
-            .access {
-                position: absolute;
-                right: 2%;
-                top: 50%;
-                transform: translate(-0%, -50%);
-            }
-            .accessbtn,
-            .accessbtn:hover {
-                text-decoration: none;
-                cursor: pointer;
-                font-family: Josefin Sans;
-                font-size: 13px;
-                color: #ffffff;
-                background-color: #4b6cff;
-                border-radius: 4px;
-                border: none;
-                padding: 3px 10px;
-            }
-            @media screen and (max-width: 769px) {
-                .topnav {
-                    height: 33px;
-                }
-                .logoimg {
-                    height: 14px;
-                }
-            }
-            @media screen and (max-width: 342px) {
-                .topnav {
-                    height: 30px;
-                }
-                .accessbtn,
-                .accessbtn:hover {
-                    font-size: 10px;
-                    padding: 3px 7px;
-                }
-            }
-
-            /* Footer */
-
-            footer {
-                border-top: 1px solid silver;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                padding: 1% 2%;
-                clear: both;
-            }
-            #footersocial {
-                display: flex;
-                grid-gap: 10px;
-            }
-            footer a,
-            footer a:hover {
-                color: #FFFFFF;
-                font-size: 11px;
-                text-decoration: none;
-            }
-            @media screen and (max-width: 769px) {
-                footer {
-                    padding: 3% 1%;
-                    flex-direction: column;
-                    grid-gap: 10px;
-                }
-            }
-
-        </style>
+        <link rel="stylesheet" href="{% static 'core/error.css' %}">
         <!-- Load js file -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="{% static 'core/base.js' %}"></script>
@@ -152,26 +21,14 @@
     </head>
     
     <body>
-        <nav class="topnav">
+        <div id="errContainer">
             <a id="navlogo" href="{% url 'core:index' %}">
                 <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">
             </a>
             
-            <div class="access">
-                {% if user.is_authenticated %}
-                <a class="accessbtn" href="{% url 'account:logout' %}">Log out</a>
-                {% else %}
-                <a class="accessbtn" href="{% url 'account:auth' %}">Sign in</a>
-                {% endif %}
-            </div>
-            
-            <!-- <div class="menu-btn">
-                <div class="menu-btn__burger"></div>
-            </div> -->
-        </nav>       
-        
-        {% block body %}
-        {% endblock body %}
+            {% block body %}
+            {% endblock body %}
+        </div>       
         
         <footer>
             <div id="footersocial">
