@@ -32,7 +32,7 @@ class subscribeForm(forms.ModelForm):
         alias = self.cleaned_data.get('alias')
 
         if not User.objects.filter(alias__iexact=alias).exists():
-            raise forms.ValidationError ("Username is taken!!")
+            raise forms.ValidationError (f'{alias} + " is not available"')
         return alias
 
     def save(self, commit=True):
@@ -68,5 +68,6 @@ def SubscribeView (request, *args, **kwargs):
         else:
             context['form'] = subscribeForm()
             context['sess_email'] = request.session['sess_email']
+            context['alias'] = request.POST.get['alias']
 
     return render(request, "account/subscribe.html", context)
