@@ -22,9 +22,7 @@
     
     <body>
         <div id="errContainer">
-            <a id="navlogo" href="{% url 'core:index' %}">
-                <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">
-            </a>
+            <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">           
             
             {% block body %}
             {% endblock body %}

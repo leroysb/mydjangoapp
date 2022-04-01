@@ -41,12 +41,6 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     grid-gap: 30px;
     text-align: center;
 }
-#navlogo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-0%, -50%);
-}
 .logoimg {
     width: auto;
     height: 80px;
