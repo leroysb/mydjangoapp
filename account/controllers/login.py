@@ -18,8 +18,8 @@ class loginForm(ModelForm):
     email = EmailField(
         widget=forms.EmailInput(),
         max_length=100, 
-        label=_("Email"),
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+        label=_("Email / Username"),
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message=_("Please enter a valid email"))],
     )
     password = CharField(
         widget=forms.PasswordInput(),
@@ -36,14 +36,13 @@ class loginForm(ModelForm):
         return email
 
 def LoginView(request, *args, **kwargs):
+    user = request.user
+    if user.is_authenticated:
+        return redirect("core:index")
 
     context= {}
     form = loginForm()
     context['form'] = form
-
-    user = request.user
-    if user.is_authenticated:
-        return redirect("core:index")
 
     if request.method == 'POST':
         form = loginForm(request.POST)

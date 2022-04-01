@@ -47,7 +47,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(
         verbose_name=_('Email'), 
         max_length=100, 
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message="Invalid email")],
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message="Invalid email")],
         unique=True,
     )
     alias = models.CharField(

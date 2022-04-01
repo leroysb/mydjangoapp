@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate, get_user_model, login
 from django.shortcuts import redirect, render
 from .redirect import get_redirect_if_exists
+
 User = get_user_model()
 
 class subscribeForm(forms.ModelForm):
@@ -16,7 +17,7 @@ class subscribeForm(forms.ModelForm):
         label=_("Email"),
         widget=forms.EmailInput(),
         max_length=100, 
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,3}$', message=_("Please enter a valid email"))],
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message=_("Please enter a valid email"))],
     )
     password = forms.CharField(
         label=_("Password"),
