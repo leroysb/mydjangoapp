@@ -32,7 +32,9 @@ class subscribeForm(forms.ModelForm):
         cleaned_data = super(subscribeForm, self).clean()
         alias = cleaned_data.get("alias")
         if User.objects.filter(alias__iexact=alias).exists():
-            self.add_error('alias', "f'{alias} is not available!'")
+            msg = "Username is not available!"
+            # msg = f"{alias} is not available!"
+            self.add_error('alias', msg)
         return alias
 
     def save(self, commit=True):
