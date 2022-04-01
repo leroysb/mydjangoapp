@@ -68,6 +68,6 @@ def SubscribeView (request, *args, **kwargs):
         else:
             context['form'] = subscribeForm()
             context['sess_email'] = request.session['sess_email']
-            context['alias'] = request.POST.get['alias']
+            context['alias'] = request.POST['alias']
 
     return render(request, "account/subscribe.html", context)
