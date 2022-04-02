@@ -17,7 +17,7 @@ class loginForm(forms.Form):
         widget=forms.EmailInput(), 
         max_length=100, 
         label=_("Email"),
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message=_("Please enter a valid email"))],
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{2,20}$', message=_("Please enter a valid email"))],
     )
     password = forms.CharField(
         widget=forms.PasswordInput(),
