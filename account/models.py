@@ -42,7 +42,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     id = models.UUIDField(
         primary_key=True,
-        default=uuid.uuid4
+        default=uuid.uuid4,
     )
     email = models.EmailField(
         verbose_name=_('Email'), 
@@ -61,9 +61,21 @@ class User(AbstractBaseUser):
     #     max_length=24,
     #     validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character."))]
     # )
-    full_name = models.CharField(verbose_name=_('Full name'), max_length=255, null=True, blank=False)
-    date_of_birth = models.DateField(verbose_name=_('Date of birth'), null=True)
-    headshot = models.ImageField(upload_to='account/headshots', blank=True, null=True)
+    full_name = models.CharField(
+        verbose_name=_('Full name'),
+        max_length=255,
+        null=True,
+        blank=False,
+    )
+    date_of_birth = models.DateField(
+        verbose_name=_('Date of birth'),
+        null=True,
+    )
+    headshot = models.ImageField(
+        upload_to='account/headshots',
+        blank=True,
+        null=True,
+    )
     is_deactivated = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
