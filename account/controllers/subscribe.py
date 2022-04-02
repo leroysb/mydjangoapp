@@ -16,8 +16,6 @@ class subscribeForm(forms.ModelForm):
     email = forms.EmailField(
         label=_("Email"),
         widget=forms.EmailInput(),
-        max_length=100, 
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message=_("Please enter a valid email"))],
     )
     password = forms.CharField(
         label=_("Password"),
