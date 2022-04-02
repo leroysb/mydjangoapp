@@ -4,21 +4,22 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
 from email import message
 from django import forms
-from django.forms import Form, ModelForm, EmailField, CharField, ValidationError
+from django.forms import ValidationError
 from django.contrib.auth import authenticate, get_user_model
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 
 User = get_user_model()
 
-class signinForm(Form):
+class signinForm(forms.Form):
 
-    email = EmailField(
-        widget=forms.EmailInput(),
+    email = forms.EmailField(
+        widget=forms.EmailInput(), 
         max_length=100, 
         label=_("Email"),
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message=_("Please enter a valid email"))],
     )
-    password = CharField(
+    password = forms.CharField(
         widget=forms.PasswordInput(),
         label=_("Password"),
     )
