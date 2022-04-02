@@ -11,7 +11,7 @@ class subscribeForm(forms.ModelForm):
 
     email = forms.CharField(
         label=_("Email"),
-        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message=_("Please enter a valid email"))],
+        validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{0,14}$', message=_("Please enter a valid email"))],
     )
     alias = forms.CharField(
         label=_("Username"),
