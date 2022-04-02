@@ -16,11 +16,9 @@ Subscribe
 
     <div>
         <span class="formlabel">{{ form.email.label }}</span>
-
         {% for error  in form.email.errors %}
-        <span style="color: red; font-size: small;">*{{error}}</span>
+        <span class="formerror">*{{error}}</span>
         {% endfor %}
-
         {% if sess_email %}
         <a href="{% url 'account:auth' %}">
             <input type="email" name="email" class="forminput2"  value="{{ sess_email }}" readonly>
