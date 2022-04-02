@@ -13,7 +13,7 @@ User = get_user_model()
 
 class signinForm(forms.Form):
 
-    email = forms.EmailField(
+    email = forms.CharField(
         widget=forms.EmailInput(), 
         max_length=100, 
         label=_("Email"),
@@ -44,20 +44,16 @@ def SigninView(request, *args, **kwargs):
 
     if request.method == 'POST':
         form = signinForm(request.POST)
-
         if form.is_valid():
             email = request.POST['email']
             password = request.POST['password']
             user = authenticate(request, email=email, password=password)
-
             if user:
                 login(request, user)
                 del request.session['sess_email']
                 destination = get_redirect_if_exists(request)
-
                 if destination:
                     return redirect(destination)
-
                 return redirect("core:index")
         else:
             context['form'] = form

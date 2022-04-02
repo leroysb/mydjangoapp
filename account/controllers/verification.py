@@ -13,7 +13,6 @@ User = get_user_model()
 
 class authForm(forms.Form):
     email = forms.CharField(
-        widget=forms.EmailInput(), 
         max_length=100, 
         label=_("Email"),
         validators=[RegexValidator(r'^[a-z0-9]+(\.?[a-z0-9])*[a-z0-9]+@[a-z0-9\-]*\.[a-z]{1,20}$', message=_("Please enter a valid email"))],

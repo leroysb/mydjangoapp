@@ -69,7 +69,6 @@ def SubscribeView (request, *args, **kwargs):
             return redirect('core:index')
         else:
             context['form'] = form
-            context['sess_email'] = request.session['sess_email']
             context['alias'] = request.POST['alias']
 
     return render(request, "account/subscribe.html", context)
