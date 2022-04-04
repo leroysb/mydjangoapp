@@ -3,11 +3,10 @@ import dj_database_url
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #heroku
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('LocalNetwork'),
@@ -28,11 +27,12 @@ INSTALLED_APPS = [
     # Third party apps
     'ckeditor',
     'django_social_share',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,7 +47,10 @@ ROOT_URLCONF = 'pwa.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'react-frontend/build'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,9 +121,10 @@ SESSION_TIMEOUT_REDIRECT = "/"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static_cdn'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'react-frontend/build/static'),
+    os.path.join(BASE_DIR, 'static_cdn'),
+]
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
@@ -150,6 +154,10 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 # Configure Django App for Heroku.
 import django_heroku
