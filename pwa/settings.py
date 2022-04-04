@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     os.environ.get('LocalNetwork'),
@@ -27,11 +27,9 @@ INSTALLED_APPS = [
     # Third party apps
     'ckeditor',
     'django_social_share',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
@@ -49,7 +47,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'react-frontend/build'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -122,7 +119,6 @@ SESSION_TIMEOUT_REDIRECT = "/"
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'react-frontend/build/static'),
     os.path.join(BASE_DIR, 'static_cdn'),
 ]
 
@@ -154,10 +150,6 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
 
 # Configure Django App for Heroku.
 import django_heroku
