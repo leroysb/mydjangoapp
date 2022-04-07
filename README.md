@@ -1,13 +1,38 @@
 This is the source code to my personal web app which you can find [here](https://fueledbyleroy.herokuapp.com).
 
 ## Tech Stack
-Python 3.8.10
+### Application and Data
+Python
 
-Django 4.0.3
+Django
 
 PostgreSQL
 
-## Getting Started
+Markdown
+
+HTML5
+
+JavaScript
+
+ES6
+
+jQuery
+
+### Utilities
+Google Analytics
+
+Google Tag Manager
+
+### DevOps
+Git
+
+GitHub Actions
+
+Docker
+
+Selenium
+
+### Getting Started
 
 `$ cd path/to/your/dev/folder`
 

@@ -10,7 +10,7 @@ Enter your Email
 {% endblock pageheader %}
         
 {% block form %}
-<form method="post">{% csrf_token %}
+<form method="post" class="authform">{% csrf_token %}
     <div>
         <span class="formlabel">{{ form.email.label }}</span>
         {% for error  in form.email.errors %}
