@@ -10,7 +10,7 @@ Google Analytics, Google Tag Manager
 ### DevOps
 Git, GitHub Actions, Docker, Selenium
 
-### Getting Started
+## Getting Started
 
 `$ cd path/to/your/dev/folder`
 
