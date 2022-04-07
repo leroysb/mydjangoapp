@@ -1,4 +1,4 @@
-This is the source code to my personal web app which you can find [here](https://fueledbyleroy.herokuapp.com).
+This is the source code of my personal web app which is deployed through heroku. View it [here](https://fueledbyleroy.herokuapp.com).
 
 ## Tech Stack
 ### Application and Data
