@@ -2,35 +2,13 @@ This is the source code to my personal web app which you can find [here](https:/
 
 ## Tech Stack
 ### Application and Data
-Python
-
-Django
-
-PostgreSQL
-
-Markdown
-
-HTML5
-
-JavaScript
-
-ES6
-
-jQuery
+Python, Django, PostgreSQL, Markdown, HTML5, JavaScript, ES6, jQuery
 
 ### Utilities
-Google Analytics
-
-Google Tag Manager
+Google Analytics, Google Tag Manager
 
 ### DevOps
-Git
-
-GitHub Actions
-
-Docker
-
-Selenium
+Git, GitHub Actions, Docker, Selenium
 
 ### Getting Started
 
