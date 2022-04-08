@@ -112,7 +112,7 @@ a:hover {
 #intro {
     position: absolute;
     bottom: 2%;
-    left: 20px;
+    width: 100%;
 }
 #intro span {
     padding: 4px;
@@ -147,8 +147,5 @@ a:hover {
     }  
     #image {
         max-width: 4em;
-    }
-    #intro {
-        left: 10px;
     }
 }

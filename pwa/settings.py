@@ -151,6 +151,18 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-# Configure Django App for Heroku.
+#SMPT Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
+EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSL
+# EMAIL_TIMEOUT
+# EMAIL_SSL_KEYFILE
+# EMAIL_SSL_CERTFILE
+
+# Django Heroku Configuration
 import django_heroku
 django_heroku.settings(locals())

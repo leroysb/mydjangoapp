@@ -29,6 +29,18 @@ Subscribe
     </div>
     
     <div>
+        <span class="formlabel">{{ form.full_name.label }}</span>
+        {% for error  in form.full_name.errors %}
+        <span class="formerror">*{{error}}</span>
+        {% endfor %}
+        {% if full_name %}
+        <input type="text" name="full_name" class="forminput"  value="{{ full_name }}" required>
+        {% else %}
+        <input type="text" name="full_name" class="forminput" required>
+        {% endif %}
+    </div>
+    
+    <div>
         <span class="formlabel">{{ form.alias.label }}</span>
         {% for error  in form.alias.errors %}
         <span class="formerror">*{{error}}</span>

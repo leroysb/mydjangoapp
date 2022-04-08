@@ -3,7 +3,15 @@ from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate, get_user_model, login
 from django.shortcuts import redirect, render
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_text, force_str, DjangoUnicodeDecodeError
+from django.contrib.sites.shortcuts import get_current_site
+from ..utils import activation_token
 from .redirect import get_redirect_if_exists
+from .activate import activationEmail
 
 User = get_user_model()
 
@@ -19,6 +27,9 @@ class subscribeForm(forms.ModelForm):
         label=_("Username"),
         validators=[RegexValidator(r'^[A-Za-z0-9-_]{3,18}$', message="Username should be between 3-18 characters, and must contain letters, numbers, or '_' only.")],
     )
+    full_name = forms.CharField(
+        label=_("Full Name"),
+    )
     password = forms.CharField(
         label=_("Password"),
         widget=forms.PasswordInput,
@@ -27,7 +38,7 @@ class subscribeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'alias', 'password')
+        fields = ('email', 'alias', 'full_name', 'password')
 
     def clean_alias(self):
         cleaned_data = super(subscribeForm, self).clean()
@@ -58,10 +69,12 @@ def SubscribeView (request, *args, **kwargs):
         if form.is_valid():
             form.save()
             email = form.cleaned_data['email'].lower()
+            full_name = form.cleaned_data['full_name']
             alias = form.cleaned_data['alias']
             password = form.cleaned_data['password']
-            user = authenticate(email=email, alias=alias, password=password)
+            user = authenticate(email=email, full_name=full_name, alias=alias, password=password)
             login(request, user)
+            activationEmail() # Send activation email
             del request.session['sess_email']
             destination = get_redirect_if_exists(request)
             if destination:
@@ -70,5 +83,6 @@ def SubscribeView (request, *args, **kwargs):
         else:
             context['form'] = form
             context['alias'] = request.POST['alias']
+            context['full_name'] = request.POST['full_name']
 
     return render(request, "account/subscribe.html", context)

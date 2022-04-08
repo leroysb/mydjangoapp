@@ -1,0 +1,13 @@
+{% autoescape %}
+Account Registration
+
+
+Hey, {{name}}
+
+An account has been created for you at Leroy Buliro's official website. Please follow the link below to activate your account.
+
+Activation Link >> http://{{siteURI}}{% url 'activate' uidcoded=uid token=token %}
+
+If you received this email in error, you can safely ignore this email.
+
+{% endautoescape %}

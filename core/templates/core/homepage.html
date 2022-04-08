@@ -44,6 +44,17 @@
         <div class="container">
             <div class="content">
                 <section>
+                    {% if user.is_authenticated %}
+                    <div id="intro">
+                        {% if user.is_staff %}
+                        <span>Logged in as @{{ request.user.alias }}</span>
+                        {% if user.is_deactivated %}
+                        <span>Hi {{ request.user.alias }}. Your account is deactivated. Kindly check your email for an activation link to fully enjoy the features of the site.</span>
+                        {% else %}
+                        <span>Hi {{ request.user.alias }}. We are still getting things ready for you.</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}                                        
                     
                     <div id="links">
                         <!-- <a href="https://soundcloud.com/lerb-fanbase" target="_blank" >MIXES</a> -->
@@ -61,15 +72,6 @@
                         <img id="image" src="{% static 'core/media/lbwhite.png' %}" alt="leroy">
                     </div>
                     
-                    {% if user.is_authenticated %}
-                    <div id="intro">
-                        {% if user.is_staff %}
-                        <span>Logged in as @{{ request.user.alias }}</span>
-                        {% else %}
-                        <span>Hi {{ request.user.alias }}. We are still getting things ready for you.</span>
-                        {% endif %}
-                    </div>
-                    {% endif %}                                        
                 </section>
                 <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>
             </div>
