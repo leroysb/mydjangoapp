@@ -34,6 +34,7 @@ class UserManager(BaseUserManager):
         user.is_staff = True
         user.is_active = True
         user.is_deactivated = False
+        user.is_verified = True
         user.save(using=self._db)
         return user
 
@@ -75,7 +76,8 @@ class User(AbstractBaseUser):
         blank=True,
         null=True,
     )
-    is_deactivated = models.BooleanField(default=True)
+    is_deactivated = models.BooleanField(default=False)
+    is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)

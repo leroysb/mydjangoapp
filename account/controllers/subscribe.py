@@ -3,13 +3,6 @@ from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate, get_user_model, login
 from django.shortcuts import redirect, render
-from django.core.mail import EmailMessage
-from django.conf import settings
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_text, force_str, DjangoUnicodeDecodeError
-from django.contrib.sites.shortcuts import get_current_site
-from ..utils import activation_token
 from .redirect import get_redirect_if_exists
 from .activate import activationEmail
 
@@ -74,7 +67,7 @@ def SubscribeView (request, *args, **kwargs):
             password = form.cleaned_data['password']
             user = authenticate(email=email, full_name=full_name, alias=alias, password=password)
             login(request, user)
-            activationEmail() # Send activation email
+            activationEmail(request, user) # Send activation email
             del request.session['sess_email']
             destination = get_redirect_if_exists(request)
             if destination:
