@@ -43,7 +43,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     id = models.UUIDField(
         primary_key=True,
-        default=uuid.uuid4,
+        default=uuid.uuid4(),
     )
     email = models.EmailField(
         verbose_name=_('Email'), 

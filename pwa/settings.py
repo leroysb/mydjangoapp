@@ -1,5 +1,5 @@
 import os
-import dj_database_url
+# import dj_database_url
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -64,12 +64,12 @@ WSGI_APPLICATION = 'pwa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pwadb',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydjangodb',
         'USER': os.environ.get('DBuser'),
         'PASSWORD': os.environ.get('DBpwd'),
         'HOST': os.environ.get('DBhost'),
-        'PORT': os.environ.get('MSport'),
+        'PORT': os.environ.get('PGport'),
     }
 }
 
