@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     os.environ.get('LocalNetwork'),
@@ -117,9 +117,9 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_TIMEOUT_REDIRECT = "/"
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn') # Local
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Local
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static_cdn'),
 ]
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
