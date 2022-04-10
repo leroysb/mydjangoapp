@@ -11,6 +11,7 @@ def page500 (request):
     return render(request, 'core/serverError.html')
 
 class HomepageView(TemplateView):
+    # del request.session['sess_email']
     template_name = 'core/homepage.html'
 
 class LegalView(ListView):

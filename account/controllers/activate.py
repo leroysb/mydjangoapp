@@ -5,16 +5,17 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
+from django.utils.encoding import force_bytes, force_str
 from ..utils import activation_token
 from django.contrib.sites.shortcuts import get_current_site
 from .redirect import get_redirect_if_exists
 import threading
+from django_thread import Thread
 
-class EmailThread(threading.Thread):
+class EmailThread(Thread):
     def __init__(self, email):
         self.email = email
-        threading.Thread.__init__(self)
+        Thread.__init__(self)
 
     def run(self):
         self.email.send()
@@ -41,7 +42,6 @@ def userActivationView(request, uidcoded, token):
         user = User.objects.get(pk=uid)
     except Exception as e:
         user = None
-
     if user and activation_token.check_token(user, token):
         user.is_verified = True
         user.save()

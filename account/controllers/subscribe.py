@@ -68,7 +68,6 @@ def SubscribeView (request, *args, **kwargs):
             user = authenticate(email=email, full_name=full_name, alias=alias, password=password)
             login(request, user)
             activationEmail(request, user) # Send activation email
-            del request.session['sess_email']
             destination = get_redirect_if_exists(request)
             if destination:
                 return redirect('destination')

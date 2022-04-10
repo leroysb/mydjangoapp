@@ -41,7 +41,7 @@ class UserManager(BaseUserManager):
 # Create your models here.
 
 class User(AbstractBaseUser):
-    id = models.UUIDField(
+    uid = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4(),
     )

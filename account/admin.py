@@ -45,11 +45,11 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'alias', 'date_joined','last_login', 'is_superuser', 'is_admin', 'is_staff', 'is_active', 'is_deactivated', 'is_verified')
     list_filter = ('is_admin', 'is_staff',)
     search_fields = ('email', 'alias',)
-    readonly_fields = ('id', 'date_joined','last_login')
+    readonly_fields = ('uid', 'date_joined','last_login')
     ordering = ('email',)
     filter_horizontal = ()
     fieldsets = (
-        ('Personal info', {'fields': ('id','email', 'alias',)}),
+        ('Personal info', {'fields': ('uid','email', 'alias',)}),
         ('Meta', {'fields': ('date_joined','last_login')}),
         ('Private', {'fields': ('password',)}),
         ('Permissions', {'fields': ('is_superuser', 'is_admin', 'is_staff','is_active', 'is_verified', 'is_deactivated')}),
