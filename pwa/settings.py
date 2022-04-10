@@ -118,9 +118,10 @@ SESSION_TIMEOUT_REDIRECT = "/"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Local
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_cdn'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static_cdn'),
+#     os.path.join(BASE_DIR, 'staticfiles'),
+# ]
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
