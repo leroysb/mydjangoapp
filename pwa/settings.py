@@ -1,12 +1,12 @@
 import os
-# import dj_database_url
+import dj_database_url
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     os.environ.get('LocalNetwork'),
@@ -165,5 +165,5 @@ EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 # EMAIL_SSL_CERTFILE
 
 # # Django Heroku Configuration
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
