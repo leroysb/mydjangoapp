@@ -14,6 +14,9 @@ class HomepageView(TemplateView):
     # del request.session['sess_email']
     template_name = 'core/homepage.html'
 
+class PodcastView(TemplateView):
+    template_name = 'core/podcast.html'
+
 class LegalView(ListView):
     context_object_name = 'privacy'
     queryset = Privacy.objects.order_by('-date')

@@ -155,18 +155,8 @@ CKEDITOR_CONFIGS = {
 #SMPT Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = False
-
-def emailPort():
-    if EMAIL_USE_SSL == True:
-        port = 465
-        return port
-    else:
-        port = 587
-        return port
-
-EMAIL_PORT = emailPort()
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 # EMAIL_TIMEOUT

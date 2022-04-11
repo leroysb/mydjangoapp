@@ -9,8 +9,7 @@ from django.utils.encoding import force_bytes, force_str
 from ..utils import activation_token
 from django.contrib.sites.shortcuts import get_current_site
 from .redirect import get_redirect_if_exists
-import threading
-from django_thread import Thread
+from threading import Thread
 
 class EmailThread(Thread):
     def __init__(self, email):
@@ -21,7 +20,7 @@ class EmailThread(Thread):
         self.email.send()
 
 def activationEmail(request, user):
-    template = render_to_string("account/emailActivation.html", {
+    emailTemplate = render_to_string("account/emailActivation.html", {
         'name': user.full_name,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': activation_token.make_token(user),
@@ -29,9 +28,9 @@ def activationEmail(request, user):
     })
     email = EmailMessage(
         'Verify Email - Leroy Buliro',
-        template,
+        emailTemplate,
         settings.EMAIL_HOST_USER,
-        [request.POST['email']],
+        [request.POST['email'],],
     )
     email.fail_silently=False
     EmailThread(email).start()
