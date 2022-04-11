@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('pwakey')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('LocalNetwork'),
@@ -118,10 +118,10 @@ SESSION_TIMEOUT_REDIRECT = "/"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Local
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static_cdn'),
-#     os.path.join(BASE_DIR, 'staticfiles'),
-# ]
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'static_cdn'),
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # For Heroku Static Serving
@@ -164,5 +164,5 @@ EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 # EMAIL_SSL_CERTFILE
 
 # # Django Heroku Configuration
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
