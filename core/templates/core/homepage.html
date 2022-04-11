@@ -57,8 +57,10 @@
                     <div id="intro">
                         {% if user.is_staff %}
                         <span>Logged in as @{{ request.user.alias }}</span>
-                        {% else %}
+                        {% elif user.is_verified %}
                         <span>Hi {{ request.user.full_name }}. We are still getting things ready for you.</span>
+                        {% else %}
+                        <span>Hi {{ request.user.full_name }}. Check your email for a verification link to fully enjoy the features of the website.</span>
                         {% endif %}
                     </div>
                     {% endif %}                                        
