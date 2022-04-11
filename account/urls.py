@@ -13,6 +13,6 @@ urlpatterns = [
     path('login/', LoginView, name='login'),
     path('signin/', SigninView, name='signin'),
     path('subscribe/', SubscribeView, name='subscribe'),
-    path('activation-<uidcoded><token>/', userActivationView, name='activate'),
+    path('activation/<uidcoded>/<token>/', userActivationView, name='activate'),
     path('logout/', LogoutView, name='logout'),
 ]

@@ -40,15 +40,12 @@ def activationEmail(request, user):
 def userActivationView(request, uidcoded, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidcoded))
-        user = User.objects.get(pk=uid)
+        user = User.objects.get(uid=uid)
     except Exception as e:
         user = None
     if user and activation_token.check_token(user, token):
         user.is_verified = True
         user.save()
-        destination = get_redirect_if_exists(request)
-        if destination:
-            return redirect('destination')
-        return redirect('account:login')
+        return redirect('account:auth')
 
     return render(request, 'account/activationFailed.html', {'user':user})
