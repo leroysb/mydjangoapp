@@ -164,5 +164,5 @@ EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 # EMAIL_SSL_CERTFILE
 
 # # Django Heroku Configuration
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
