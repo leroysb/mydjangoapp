@@ -1,5 +1,5 @@
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth import get_user_model as User
+from django.contrib.auth import get_user_model
 from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
 from django.conf import settings
@@ -10,6 +10,8 @@ from ..utils import activation_token
 from django.contrib.sites.shortcuts import get_current_site
 from .redirect import get_redirect_if_exists
 from threading import Thread
+
+User = get_user_model()
 
 class EmailThread(Thread):
     def __init__(self, email):
