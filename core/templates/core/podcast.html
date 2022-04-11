@@ -1,15 +1,12 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block meta %}
+{% block head %}
 <title>Kubonga Show | A Leroy Buliro podcast</title>
 <meta name="description" content='Translated to "talk" in Swahili slang - "Kubonga" is a seasonal, meandering conversation with guests where they tell their stories, converse on topics close to their heart and, yeah, just have a nice chat.'>
 <meta name="keyword" content="Kenya, lifestyle, culture">
-{% endblock meta %}
-
-{% block style %}
 <link rel="stylesheet" href="{% static 'core/podcast.css' %}">
-{% endblock style %}
+{% endblock head %}
 
 {% block navmenu %}
 <a href="https://medium.com/@leroybuliro" target="_blank" >BLOG</a>
@@ -17,6 +14,7 @@
 {% endblock navmenu %}
 
 {% block mobilemenu %}
+<a href="{% url 'core:index' %}" >HOME</a>
 <a href="https://medium.com/@leroybuliro" target="_blank" >BLOG</a>
 <a href="#">PODCAST</a>
 {% endblock mobilemenu %}

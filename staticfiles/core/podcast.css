@@ -1,0 +1,98 @@
+body {
+    background-color: #ffffff;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: relative;
+}
+.podpage {
+    margin: 8vh 0 0 0;
+}
+.podintro {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 40px;
+    padding: 0 10% 200px 10%;
+}
+.podside {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+}
+.pod-deet {
+    font-size: 20px;
+    line-height: 1.7rem;
+}
+.podurls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media screen and (max-width: 541px) {
+    .podpage {
+        margin: 0 0 0 0;
+    }
+    .podintro {   
+        grid-template-columns: 1fr;
+        padding: 0 0 20vh 0;
+    }
+    .podside {
+        grid-gap: 30px;
+        padding: 0 1em;
+    }
+    .pod-deet {
+        font-size: 20px;
+        line-height: 1.4rem;
+    }
+    .podurls {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: left;
+        grid-gap: 10px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .podintro {
+        padding: 0% 10% 20vh 10%;
+    }
+}
+
+/** Curve **/
+.curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.curve svg {
+    position: relative;
+    display: block;
+    width: calc(144% + 1.3px);
+    height: 140px;
+    transform: rotateY(180deg);
+}
+.curve .shape-fill {
+    fill: #e7e7e7;
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .curve svg {
+        width: calc(126% + 1.3px);
+        height: 127px;
+    }
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .curve svg {
+        width: calc(134% + 1.3px);
+        height: 80px;
+    }
+}

@@ -10,13 +10,14 @@
         <meta name="author" content="Leroy Buliro">
         <link rel="canonical" href="https://leroybuliro.com/">
         <meta name="docsearch:language" content="en">
-        {% block meta %}
-        {% endblock meta %}
+        {% block head %}
+        {% endblock head %}
         <!-- Load css file -->
         <link rel="stylesheet" href="{% static 'core/base.css' %}">
-        <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
-        {% block style %}
-        {% endblock style %}
+        <!-- <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}"> -->
+        <!-- Load js file -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="{% static 'core/main.js' %}"></script>
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -42,17 +43,11 @@
                 ]
             }
         </script>
-        <!-- Load js file -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="{% static 'core/main.js' %}"></script>
-        {% block script %}
-        {% endblock script %}
     </head>
     
     <body>
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
-                <!-- <img class="logoimg" src="{% static 'core/media/about.jpg' %}" alt="logo" > -->
                 <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">
             </a>
             
