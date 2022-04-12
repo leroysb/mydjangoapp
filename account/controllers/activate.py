@@ -22,14 +22,14 @@ class EmailThread(Thread):
         self.email.send()
 
 def activationEmail(request, user):
-    emailTemplate = render_to_string("account/emailActivation.html", {
+    emailTemplate = render_to_string("emails/emailActivation.html", {
         'name': user.full_name,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': activation_token.make_token(user),
         'siteURI': get_current_site(request),
     })
     email = EmailMessage(
-        'Verify Email - Leroy Buliro',
+        'Verify Email',
         emailTemplate,
         settings.EMAIL_HOST_USER,
         [request.POST['email'],],
@@ -48,4 +48,6 @@ def userActivationView(request, uidcoded, token):
         user.save()
         return redirect('account:auth')
 
-    return render(request, 'account/activationFailed.html', {'user':user})
+    request.session['msg'] = "Email activation failed. Try again later."
+    return redirect('account:authmsg')
+

@@ -58,4 +58,4 @@ def SigninView(request, *args, **kwargs):
         else:
             context['form'] = form
 
-    return render(request, 'registration/signin.html', context)        
+    return render(request, 'account/signin.html', context)        
