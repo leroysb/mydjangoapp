@@ -189,7 +189,7 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
         height: 33px;
     }
     .logoimg {
-        height: 20px;
+        height: 18px;
     }
 }
 @media screen and (max-width: 342px) {
