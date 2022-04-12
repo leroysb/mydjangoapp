@@ -8,7 +8,7 @@ Python, Django, PostgreSQL, Markdown, HTML5, JavaScript, ES6, jQuery
 Google Analytics, Google Tag Manager
 
 ### DevOps
-Git, GitHub Actions, Docker, Selenium
+Git, GitHub Actions, Docker, ZenHub
 
 ## Getting Started
 

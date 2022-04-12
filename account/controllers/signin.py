@@ -23,7 +23,7 @@ class signinForm(forms.Form):
         widget=forms.PasswordInput(),
         label=_("Password"),
     )
-    
+
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data['email']
@@ -42,7 +42,7 @@ def SigninView(request, *args, **kwargs):
     context['sess_email'] = request.session['sess_email']
     context['form'] = signinForm()
 
-    if request.method == 'POST':
+    if request.POST:
         form = signinForm(request.POST)
         if form.is_valid():
             email = request.POST['email']
