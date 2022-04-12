@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-import django_heroku
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
@@ -158,6 +157,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 
-# Django Heroku Configuration
+# Heroku Configuration
+import django_heroku
 import dj_database_url
 django_heroku.settings(locals())
