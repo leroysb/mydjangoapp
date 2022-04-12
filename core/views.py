@@ -2,14 +2,6 @@ from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 from .models import *
 
-# Error views.
-
-def page404 (request, exception):
-    return render(request, 'core/404.html')
-
-def page500 (request):
-    return render(request, 'core/serverError.html')
-
 class HomepageView(TemplateView):
     template_name = 'core/homepage.html'
 
