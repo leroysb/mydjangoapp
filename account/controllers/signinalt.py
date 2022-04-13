@@ -88,8 +88,8 @@ def userVerifyView(request, uidcoded, token):
     except Exception as e:
         user = None
     if user and activation_token.check_token(user, token):
-        email = user.email
-        password = user.password
+        email = user['email']
+        password = user['password']
         account = authenticate(request, email=email, password=password)
         if account:
             login(request, account)
