@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 from .redirect import get_redirect_if_exists
 from django.shortcuts import redirect, render
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
 from django.conf import settings
@@ -84,12 +84,16 @@ def loginEmail(request, user):
 def userVerifyView(request, uidcoded, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidcoded))
-        user = User.objects.get(pk=uid)
+        user = User.objects.get(uid=uid)
     except Exception as e:
         user = None
     if user and activation_token.check_token(user, token):
-        login(request, user)
-        return redirect('core:index')
+        email = user.email
+        password = user.password
+        account = authenticate(request, email=email, password=password)
+        if account:
+            login(request, account)
+            return redirect('core:index')
 
     request.session['msg'] = "Login failed. Try again later."
     return redirect('account:authmsg')
