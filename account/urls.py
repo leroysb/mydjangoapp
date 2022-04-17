@@ -12,12 +12,12 @@ app_name = "account"
 
 urlpatterns = [
     path('auth/', AuthView, name='auth'),
-    path('auth-reply/', AuthMsgView, name='authmsg'),
+    path('auth/reply/', AuthMsgView, name='authmsg'),
     path('login/', LoginView, name='login'),
-    path('signin/', SigninView, name='signin'),
-    path('signin/alt/', SignAltView, name='signinalt'),
-    path('signin/verify-<uidcoded><token>/', userVerifyView, name='signinauth'),
+    path('login/verify/', SigninView, name='signin'),
+    path('login/alt/', SignAltView, name='signinalt'),
+    path('login/identifier?state=<uidcoded><token>/', userVerifyView, name='signinauth'),
     path('subscribe/', SubscribeView, name='subscribe'),
-    path('activate-<uidcoded><token>/', userActivationView, name='activate'),
+    path('login/identifier?state=activate-<uidcoded><token>/', userActivationView, name='activate'),
     path('logout/', LogoutView, name='logout'),
 ]
