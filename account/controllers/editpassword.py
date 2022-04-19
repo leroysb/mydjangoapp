@@ -65,12 +65,13 @@ def editPwdView(request, uidcoded, token):
         user = None
 
     if user and activation_token.check_token(user, token):
-        context['user'] = user
+        context['usemail'] = user.email
 
         if request.POST:
             form = changePwdForm(request.POST)
             if form.is_valid:
                 email = form.cleaned_data('email')
+                user = User.objects.get(uid=uid)
                 user.set_password(form.cleaned_data["password"])
                 user.save()
                 request.session['msg'] = "Password successfully changed."

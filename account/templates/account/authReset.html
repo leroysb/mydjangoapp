@@ -16,7 +16,7 @@ Enter your new password
         {% for error  in form.email.errors %}
         <span class="formerror">*{{ error }}</span>
         {% endfor %}
-        <input type="email" name="email" class="forminput" value="{{ user.email }}" required readonly>
+        <input type="email" name="email" class="forminput" value="{{ usemail }}" required readonly>
     </div>
     
     <div>
