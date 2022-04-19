@@ -40,10 +40,12 @@ Login
         {% endfor %}
     </div>
     {% endif %}
-
+    
     <input type="submit" name="login" class="btn" value="Log in">
-    <a class="btnalt" href="{% url 'account:signinalt' %}">Log in without password</a>
-    <!-- <p style="text-align: center;">Don't have an account? <a href="{% url 'account:subscribe' %}">Sign up</a></p> -->
+    
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: right; font-weight: bold;">
+        <a style="text-decoration: none;" href="{% url 'account:reset1' %}">Forgot Password?</a>
+    </div>
 
 </form>
 {% endblock form %}

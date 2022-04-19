@@ -18,7 +18,7 @@ from threading import Thread
 
 User = get_user_model()
 
-class signInAltForm(forms.Form):
+class pwdResetForm(forms.Form):
     email = forms.CharField(
         max_length=100, 
         label=_("Email"),
@@ -32,7 +32,7 @@ class signInAltForm(forms.Form):
             raise forms.ValidationError(msg, code="invalid")
         return email
 
-def SignAltView(request, *args, **kwargs):
+def resetPwdView(request, *args, **kwargs):
     user = request.user
     if user.is_authenticated:
         destination = get_redirect_if_exists(request)
@@ -41,21 +41,20 @@ def SignAltView(request, *args, **kwargs):
         return redirect("core:index")
 
     context = {}
-    form = signInAltForm()
+    form = pwdResetForm()
     context['form'] = form
 
     if request.POST:
-        form = signInAltForm(request.POST)
+        form = pwdResetForm(request.POST)
 
         if form.is_valid():
             email = request.POST['email']
             user = User.objects.get(email__iexact=email)
-            loginEmail(request, user)
-            request.session['msg'] = "Check your email."
+            resetPwd(request, user)
+            request.session['msg'] = "Check your email for the reset password link."
             return redirect('account:authmsg')
 
-    return render(request, "account/signinalt.html", context)
-
+    return render(request, "account/pwdreset.html", context)
 
 class EmailThread(Thread):
     def __init__(self, email):
@@ -65,15 +64,15 @@ class EmailThread(Thread):
     def run(self):
         self.email.send()
 
-def loginEmail(request, user):
-    emailTemplate = render_to_string("emails/emailLogin.html", {
+def resetPwd(request, user):
+    emailTemplate = render_to_string("emails/emailPwdReset.html", {
         'name': user.full_name,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': activation_token.make_token(user),
         'siteURI': get_current_site(request),
     })
     email = EmailMessage(
-        'Log into your account',
+        'Reset your account password',
         emailTemplate,
         settings.EMAIL_HOST_USER,
         [request.POST['email'],],
@@ -95,6 +94,6 @@ def userVerifyView(request, uidcoded, token):
             login(request, account)
             return redirect('core:index')
 
-    request.session['msg'] = "Login failed. Try again later."
+    request.session['msg'] = "Reset failed. Try again later."
     return redirect('account:authmsg')
 

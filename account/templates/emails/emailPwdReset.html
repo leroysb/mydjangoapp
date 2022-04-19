@@ -1,0 +1,12 @@
+{% autoescape on %}
+Hi {{ user.name }},
+
+To set up a new password, click the link below:
+
+http://{{siteURI}}{% url 'account:reset2' uidcoded=uid token=token %}
+
+The link will expire in 24hrs.
+
+Thanks,
+The LERB Team.
+{% endautoescape %}

@@ -44,6 +44,10 @@
             padding: 30px 20px;
             border-radius: 8px;
         }
+        #page-container img {
+            width: auto;
+            height: 70px;
+        }
         form {
             width:100%;
             display: grid;
@@ -103,6 +107,10 @@
             cursor: pointer;
         }
         @media only screen and (max-width: 767px) {
+            #page-container img {
+                width: auto;
+                height: 50px;
+            }
             form {
                 grid-gap: 14px;
                 margin-top: 3vh;
@@ -121,7 +129,7 @@
             <div id="page-container">
                 <div style="display: flex; justify-content: center; margin-bottom: 30px;">
                     <a href="{% url 'core:index' %}">
-                        <img src="{% static 'core/media/lbblack.png' %}" alt="logo" style="width: auto; height: 70px;">
+                        <img src="{% static 'core/media/lbblack.png' %}" alt="logo" style="width: auto; height: 50px;">
                     </a>
                 </div>
                 {% block pageheader %}
