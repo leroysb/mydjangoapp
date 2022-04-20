@@ -5,10 +5,10 @@ This is the source code of my personal web app which is deployed on heroku. Clic
 Python, Django, PostgreSQL, Markdown, HTML5, JavaScript, ES6, jQuery
 
 ### Utilities
-Google Analytics, Google Tag Manager
+Google Analytics
 
 ### DevOps
-Git, GitHub Actions, Docker, ZenHub
+Git, GitHub Actions, Docker
 
 ## Getting Started
 

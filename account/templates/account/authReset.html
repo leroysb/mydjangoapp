@@ -12,10 +12,6 @@ Enter your new password
 {% block form %}
 <form method="post" class="authform">{% csrf_token %}
     <div>
-        <span class="formlabel">{{ form.email.label }}</span>
-        {% for error  in form.email.errors %}
-        <span class="formerror">*{{ error }}</span>
-        {% endfor %}
         <input type="email" name="email" class="forminput" value="{{ usemail }}" required readonly>
     </div>
     

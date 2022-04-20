@@ -3,10 +3,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
-DEBUG = False
+DEBUG = os.getenv('DebugStatus')
 
 ALLOWED_HOSTS = [
-    os.environ.get('LocalNetwork'),
+    os.getenv('IPlocal'),
 ]
 
 INSTALLED_APPS = [
@@ -120,12 +120,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-# For Heroku Static Serving
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# WHITENOISE_MANIFEST_STRICT = False
-# WHITENOISE_KEEP_ONLY_HASHED_FILES = True
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -158,6 +152,6 @@ EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 
 # Heroku Configuration
-import django_heroku
-import dj_database_url
-django_heroku.settings(locals())
+# import django_heroku
+# import dj_database_url
+# django_heroku.settings(locals())
