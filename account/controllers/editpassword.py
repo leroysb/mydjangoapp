@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.contrib.sites.shortcuts import get_current_site
@@ -39,12 +40,16 @@ def activationEmail(request, user):
 
 class changePwdForm(forms.Form):
     email = forms.CharField( label = _("Email"))
-    pwd = forms.CharField( widget = forms.PasswordInput(), label = _("New Password"))
-    pwd2 = forms.CharField( widget = forms.PasswordInput(), label = _("Re-enter Password"))
+    password = forms.CharField(
+        label=_("New Password"),
+        widget=forms.PasswordInput,
+        validators=[RegexValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$', message=_(" Password should be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character (!@#$%)."))]
+    )
+    password2 = forms.CharField( widget = forms.PasswordInput(), label = _("Re-enter Password"))
 
     def clean_password(self):
-        password = self.cleaned_data('pwd1')
-        password2 = self.cleaned_data('pwd2')
+        password = self.cleaned_data('password')
+        password2 = self.cleaned_data('password2')
         if password != password2:
             msg = _("Passwords do not match!")
             raise forms.ValidationError(msg, code='Invalid')
@@ -65,11 +70,9 @@ def editPwdView(request, uidcoded, token):
         user = None
 
     if user and activation_token.check_token(user, token):
-        context['usemail'] = user.email
-
         if request.POST:
             form = changePwdForm(request.POST)
-            if form.is_valid:
+            if form.is_valid():
                 email = form.cleaned_data('email')
                 user = User.objects.get(uid=uid)
                 user.set_password(form.cleaned_data["password"])

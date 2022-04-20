@@ -11,25 +11,30 @@ Enter your new password
         
 {% block form %}
 <form method="post" class="authform">{% csrf_token %}
-    <div>
-        <input type="email" name="email" class="forminput" value="{{ usemail }}" required readonly>
-    </div>
     
     <div>
-        <span class="formlabel">{{ form.pwd.label }}</span>
+        <span class="formlabel">{{ form.password.label }}</span>
         {% for error  in form.pwd.errors %}
         <span class="formerror">*{{ error }}</span>
         {% endfor %}
-        <input type="password" name="pwd" class="forminput" required>
+        <input type="password" name="password" class="forminput" required>
     </div>
     
     <div>
-        <span class="formlabel">{{ form.pwd2.label }}</span>
+        <span class="formlabel">{{ form.password2.label }}</span>
         {% for error  in form.pwd2.errors %}
         <span class="formerror">*{{ error }}</span>
         {% endfor %}
-        <input type="password" name="pwd2" class="forminput" required>
+        <input type="password" name="password2" class="forminput" required>
     </div>
+
+    {% if form.non_field_errors %}
+    <div>
+        {% for error in form.non_field_errors %}
+        <p class="formerror">**{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <input type="submit" name="send" class="btn" value="Change password">
 </form>
