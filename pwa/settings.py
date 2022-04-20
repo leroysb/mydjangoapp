@@ -152,6 +152,6 @@ EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 
 # Heroku Configuration
-# import django_heroku
-# import dj_database_url
-# django_heroku.settings(locals())
+import django_heroku
+import dj_database_url
+django_heroku.settings(locals())
