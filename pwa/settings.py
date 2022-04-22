@@ -5,8 +5,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
-DEBUG = True
-DEBUG = os.environ.get('DebugStatus')
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
@@ -19,14 +18,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # My app
     'account',
     'core',
-
-    # Third party apps
-    'ckeditor',
-    # 'django_social_share',
+    'ckeditor', # Third party app
+    # 'django_social_share', # Third party app
 ]
 
 MIDDLEWARE = [
@@ -119,26 +114,19 @@ SESSION_TIMEOUT_REDIRECT = "/"
 STATIC_URL = '/static/'
 
 if DEBUG == True:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Local
-    STATICFILES_DIRS = [
-        # os.path.join(BASE_DIR, 'static_cdn'),
-        os.path.join(BASE_DIR, 'staticfiles'),
-    ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 else:
     # Heroku Configuration
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static'),
+    ]
     import django_heroku
     import dj_database_url
     django_heroku.settings(locals())
 
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Local
-    STATICFILES_DIRS = [
-        # os.path.join(BASE_DIR, 'static_cdn'),
-        os.path.join(BASE_DIR, 'static'),
-    ]
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')
 

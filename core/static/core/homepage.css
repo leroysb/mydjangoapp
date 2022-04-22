@@ -160,6 +160,6 @@ a, a:hover {
 @media screen and (max-width: 480px) {
     .feedbackBtn {
         bottom: 20%;
-        right: -10%;
+        right: -11%;
     }
 }
