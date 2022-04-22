@@ -26,7 +26,10 @@ Login
     </div>
 
     <div>
-        <span class="formlabel">{{ form.password.label }}</span>
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; font-weight: bold;">
+            <span class="formlabel">{{ form.password.label }}</span>
+            <a style="text-decoration: none;" href="{% url 'account:reset1' %}">Forgot Password?</a>
+        </div>
         {% for error  in form.password.errors %}
         <span class="formerror">*{{ error }}</span>
         {% endfor %}
@@ -43,9 +46,6 @@ Login
     
     <input type="submit" name="login" class="btn" value="Log in">
     
-    <div style="display: flex; flex-direction: row; align-items: center; justify-content: right; font-weight: bold;">
-        <a style="text-decoration: none;" href="{% url 'account:reset1' %}">Forgot Password?</a>
-    </div>
 
 </form>
 {% endblock form %}

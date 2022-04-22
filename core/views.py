@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
-from .models import *
-
-class HomepageView(TemplateView):
-    template_name = 'core/homepage.html'
+from .models import Privacy, Terms
 
 class PodcastView(TemplateView):
     template_name = 'core/podcast.html'

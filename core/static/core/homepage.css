@@ -142,10 +142,12 @@ a:hover {
     opacity: 0.7;
 }
 .feedbackBtn {
+    cursor: pointer;
     display: inline;
     position: absolute;
-    bottom: -12px;
-    right: 20px;
+    bottom: 20%;
+    right: -10px;
+    border: none;
     border-radius: 4px 4px;
     padding: 4px 10px 20px 10px;
     background-color: #000000b7;
@@ -154,6 +156,10 @@ a:hover {
     font-size: 14px;
     font-weight: normal;
     z-index: 2;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 @media screen and (max-width: 770px) {
