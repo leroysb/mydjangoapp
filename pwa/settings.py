@@ -1,12 +1,15 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
-DEBUG = os.getenv('DebugStatus')
+DEBUG = True
+DEBUG = os.environ.get('DebugStatus', False)
 
 ALLOWED_HOSTS = [
-    os.getenv('IPlocal'),
+    os.environ.get('IPlocal'),
 ]
 
 INSTALLED_APPS = [

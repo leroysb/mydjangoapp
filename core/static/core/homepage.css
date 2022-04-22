@@ -141,6 +141,20 @@ a:hover {
     text-decoration: none;
     color: #ffffffc4;
 }
+.feedbackBtn {
+    display: inline;
+    position: relative;
+    bottom: 0;
+    right: 80%;
+    padding: 4px 8px 4px 8px;
+    background-color: #35a731b7;
+    color: #000000;
+    font-family: CrimsonPro;
+    font-size: 14px;
+    /* box-shadow: #000; */
+    box-shadow: 3px 3px red, -1em 0 .4em olive;
+    z-index: 2;
+}
 
 @media screen and (max-width: 770px) {
     #imagediv {
