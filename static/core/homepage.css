@@ -153,6 +153,13 @@ a, a:hover {
         max-width: 4em;
     }
     .feedbackBtn {
+        bottom: 20%;
         right: -8%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .feedbackBtn {
+        bottom: 20%;
+        right: -10%;
     }
 }
