@@ -72,9 +72,10 @@ section {
 }
 #intro p {
     display: inline-flex;
-    flex-wrap: nowrap;
+    width: 100%;
+    /* flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
-    -moz-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap; */
     padding: 8px 4px;
     color: #ffd900;
     font-family: Josefin Sans;
