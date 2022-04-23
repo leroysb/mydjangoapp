@@ -71,13 +71,13 @@ def editPwdView(request, uidcoded, token):
         if request.POST:
             form = changePwdForm(request.POST)
             if form.is_valid():
-                    user.set_password(form.cleaned_data["password"])
-                    user.set_verified = True
-                    user.save()
-                    request.session['msg'] = "Password successfully changed."
-                    return redirect('account:authmsg')
+                user.set_password(form.cleaned_data["password"])
+                user.set_verified = True
+                user.save()
+                request.session['msg'] = "Password successfully changed."
+                return redirect('account:authmsg')
     else:
-        request.session['msg'] = "Link has expired. Request for a new one."
+        request.session['msg'] = "Link has expired. Request a new one."
         return redirect('account:authmsg')
 
     return render(request, 'account/authReset.html', context)

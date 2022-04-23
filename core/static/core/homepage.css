@@ -72,6 +72,7 @@ section {
 }
 .intro .introText {
     text-align: center;
+    white-space: nowrap;
     padding: 8px 4px;
     color: #ffd900;
     font-family: Josefin Sans;
