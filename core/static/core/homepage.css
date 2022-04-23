@@ -84,6 +84,7 @@ a, a:hover {
     position: absolute;
     top: 4%;
     width: 100%;
+    left: 0;
 }
 #intro span {
     padding: 4px;
