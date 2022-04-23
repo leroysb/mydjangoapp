@@ -59,7 +59,7 @@ section {
     justify-content: center;
     flex-direction: column;
 }
-#intro {
+.intro {
     position: absolute;
     top: 7%;
     left: 50%;
@@ -70,8 +70,8 @@ section {
     border: 3px solid gray;
     background-color: #000000;
 }
-#intro p {
-    overflow-x: hidden;
+.intro .introText {
+    text-align: center;
     padding: 8px 4px;
     color: #ffd900;
     font-family: Josefin Sans;

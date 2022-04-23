@@ -55,13 +55,13 @@
             <div class="content">
                 <section>
                     {% if user.is_authenticated %}
-                    <div id="intro">
+                    <div class="intro">
                         {% if user.is_staff %}
-                        <p>Logged in as @{{ request.user.alias }}</p>
+                        <div class="introText">Logged in as @{{ request.user.alias }}</div>
                         {% elif user.is_verified %}
-                        <p>Hi {{ request.user.full_name }}. We are still getting things ready for you. You shall receive updates on future feature updates. Stay Tuned!!.</p>
+                        <div class="introText">Hi {{ request.user.full_name }}. We are still getting things ready for you. You shall receive updates on future feature updates. Stay Tuned!!.</div>
                         {% else %}
-                        <p>Hi {{ request.user.full_name }}. Check your email for a verification link to fully enjoy the features of the website.</p>
+                        <div class="introText">Hi {{ request.user.full_name }}. Check your email for a verification link to fully enjoy the features of the website.</div>
                         {% endif %}
                     </div>
                     {% endif %}                                        
