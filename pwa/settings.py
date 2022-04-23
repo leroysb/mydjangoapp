@@ -7,11 +7,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
 DEBUG = os.environ.get('DEBUG')
 
-# Heroku Configuration
-import django_heroku
-import dj_database_url
-django_heroku.settings(locals())
-
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
 ]
@@ -151,3 +146,8 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
+
+# Heroku Configuration
+import django_heroku
+import dj_database_url
+django_heroku.settings(locals())
