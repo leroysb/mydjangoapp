@@ -117,13 +117,13 @@ if DEBUG == True:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 else:
     # Heroku Configuration
+    import django_heroku
+    import dj_database_url
+    django_heroku.settings(locals())
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
     ]
-    import django_heroku
-    import dj_database_url
-    django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')

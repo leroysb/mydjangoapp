@@ -1,0 +1,232 @@
+@font-face {
+    font-family: Josefin Sans;
+    src: url("/static/core/fonts/JosefinSans-VariableFont_wght.324a513cb9c6.ttf") format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Indie;
+    src: url("/static/core/fonts/IndieFlower-Regular.0841af952c80.ttf") format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Permanent Marker;
+    src: url("/static/core/fonts/PermanentMarker-Regular.c863f8028c25.ttf") format('truetype');
+    font-weight: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
+    font-family: Josefin Sans;
+}
+
+/* Menu */
+
+.topnav {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    height: 42px;
+    width: 100%;
+    border: none;
+    background-color: rgba(51, 61, 61, 0.959);
+    z-index: 3;
+}
+#navlogo {
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    transform: translate(-0%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 7px;
+}
+.logoimg {
+    width: auto;
+    height: 22px;
+}
+.navmenu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.navmenu a {
+    padding: 5px 14px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 400;
+}
+.navmenu a:hover {
+    background-color: #ddd;
+    color: #000;
+}
+#menuactive,
+#menuactive:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+.access {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translate(-0%, -50%);
+}
+.accessbtn,
+.accessbtn:hover {
+    text-decoration: none;
+    cursor: pointer;
+    font-family: Josefin Sans;
+    font-size: 13px;
+    color: #ffffff;
+    background-color: #4b6cff;
+    border-radius: 4px;
+    border: none;
+    padding: 3px 10px;
+}
+
+/* Hamburger menu */
+
+.menu-btn {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+.menu-btn__burger {
+    width: 14px;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    transition: all .4s ease-in-out;
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    transition: all .4s ease-in-out;
+}
+.menu-btn__burger::before {
+    transform: translateY(-8px)
+}
+.menu-btn__burger::after {
+    transform: translateY(8px);
+}
+.menu-btn.open .menu-btn__burger{
+    transform: translateX(-18px);
+    background: transparent;
+}
+.menu-btn.open .menu-btn__burger::before{
+    transform: rotate(45deg) translate(10px, -10px);
+}
+.menu-btn.open .menu-btn__burger::after{
+    transform: rotate(-45deg) translate(10px, 10px);
+}
+
+/* Mobile menu */
+
+.mobile-menu {
+    position: sticky;
+    display: none;
+    flex-direction: column;
+    place-items: center;
+    justify-content: space-between;
+    /* background-color: #242424; */
+    background-color: rgba(51, 61, 61, 0.959);
+    width: 100%;
+    opacity: 0;
+    padding: 1rem;
+    transition: .4s ease-in-out;
+    z-index: 2;
+    border-top: 1px #fff solid;
+}
+.mobile-menu.show {
+    top: 27px;
+    opacity: 1;
+    display: flex;
+}
+.mobile-menu a,
+.mobile-menu a:hover {
+    font-size: 1rem;
+    line-height: 2em;
+    color: #fff;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 980px) {
+    .navmenu {
+        display: none;
+    }
+    .access {
+        right: 10%;
+    }
+    .menu-btn {
+        display: flex;
+    }
+}
+@media screen and (max-width: 769px) {
+    .topnav {
+        height: 33px;
+    }
+    .logoimg {
+        height: 18px;
+    }
+}
+@media screen and (max-width: 342px) {
+    .topnav {
+        height: 30px;
+    }
+    .accessbtn,
+    .accessbtn:hover {
+        font-size: 10px;
+        padding: 3px 7px;
+    }
+}
+
+/* Footer */
+
+footer {
+    border-top: 1px solid silver;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 2%;
+    clear: both;
+}
+#footersocial {
+    display: flex;
+    grid-gap: 10px;
+}
+footer a, a:hover {
+    color: #000000;
+    font-size: 11px;
+    text-decoration: none;
+}
+@media screen and (max-width: 769px) {
+    footer {
+        padding: 3% 1%;
+        flex-direction: column;
+        grid-gap: 10px;
+    }
+}
