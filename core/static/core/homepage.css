@@ -83,17 +83,49 @@ a, a:hover {
 #intro {
     position: absolute;
     top: 4%;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 3px solid gray;
+    background-color: #000000;
 }
 #intro span {
     padding: 4px;
-    background-color: #000000;
     color: #ffd900;
     text-align: center;
     font-family: Josefin Sans;
     font-size: small;
     font-weight: bolder;
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -moz-animation: flow 17s linear infinite;
+    -webkit-animation: flow 17s linear infinite;
+    animation: flow 17s linear infinite;
 }
+@-moz-keyframes flow {
+    from { -moz-transform: translateX(100%);}
+    to {-moz-transform: translateX(-100%);}
+}
+@-webkit-keyframes flow {
+    from { -webkit-transform: translateX(100%);}
+    to {-webkit-transform: translateX(-100%);}
+}
+@keyframes flow {
+    from {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+    to {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
 #bio {
     position: absolute;
     bottom: 10%;
