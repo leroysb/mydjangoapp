@@ -7,17 +7,17 @@
 }
 @font-face {
     font-family: Indie;
-    src: url('/static/core/fonts/IndieFlower-Regular.ttf') format('truetype');
+    src: url("/static/core/fonts/IndieFlower-Regular.0841af952c80.ttf") format('truetype');
     font-weight: 400;
 }
 @font-face {
     font-family: CrimsonPro;
-    src: url('/static/core/fonts/CrimsonPro-VariableFont.ttf') format('truetype');
+    src: url("/static/core/fonts/CrimsonPro-VariableFont.3baa74c26c16.ttf") format('truetype');
     font-weight: 400;
 }
 @font-face {
     font-family: Josefin Sans;
-    src: url('/static/core/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    src: url("/static/core/fonts/JosefinSans-VariableFont_wght.324a513cb9c6.ttf") format('truetype');
     font-weight: 400;
 }
 body {
@@ -69,13 +69,13 @@ section {
     border-radius: 4px;
     border: 3px solid gray;
     background-color: #000000;
+}
+#intro p {
+    padding: 4px;
     display: flex;
     flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     -moz-flex-wrap: nowrap;
-}
-#intro p {
-    padding: 4px;
     color: #ffd900;
     text-align: center;
     font-family: Josefin Sans;
