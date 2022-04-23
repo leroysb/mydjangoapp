@@ -7,11 +7,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
 DEBUG = os.environ.get('DEBUG')
 
-if DEBUG == False:
-    # Heroku Configuration
-    import django_heroku
-    import dj_database_url
-    django_heroku.settings(locals())
+# Heroku Configuration
+import django_heroku
+import dj_database_url
+django_heroku.settings(locals())
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
