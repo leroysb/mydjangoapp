@@ -71,7 +71,11 @@ section {
     background-color: #000000;
 }
 #intro p {
-    padding: 4px;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    padding: 8px 4px;
     color: #ffd900;
     font-family: Josefin Sans;
     font-size: small;
