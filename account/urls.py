@@ -18,7 +18,7 @@ urlpatterns = [
     path('login/dynamic/', SigninView, name='signin'),
     path('login/identifier?state=verify-<uidcoded><token>/', userVerifyView, name='signinauth'),
     path('login/dynamic/resets/', resetPwdView, name='reset1'),
-    path('login/dynamic/resets/identifier?state=resets-<uidcoded><token>/', editPwdView, name='reset2'),
+    path('login/dynamic/resets/identifier?state=<uidcoded><token>/', editPwdView, name='reset2'),
     path('subscribe/', SubscribeView, name='subscribe'),
     path('login/identifier?state=activate-<uidcoded><token>/', userActivationView, name='activate'),
     path('logout/', LogoutView, name='logout'),

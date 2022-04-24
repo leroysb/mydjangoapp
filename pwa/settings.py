@@ -5,7 +5,7 @@ load_dotenv()
     
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
-DEBUG = False
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
@@ -113,11 +113,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_TIMEOUT_REDIRECT = "/"
 
 STATIC_URL = '/static/'
-
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
-
 TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -145,9 +142,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 
-# Heroku Configuration
-import django_heroku
-import dj_database_url
-django_heroku.settings(locals())
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+if DEBUG == False:
+    # Heroku Configuration
+    import django_heroku
+    import dj_database_url
+    django_heroku.settings(locals())
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
