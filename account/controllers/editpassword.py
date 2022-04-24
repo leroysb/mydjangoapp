@@ -55,8 +55,7 @@ class changePwdForm(forms.Form):
         return password
 
 def editPwdView(request, uidcoded, token):
-    user = request.user
-    if user.is_authenticated:
+    if request.user.is_authenticated:
         return redirect("core:index")
 
     context={}
@@ -69,14 +68,14 @@ def editPwdView(request, uidcoded, token):
         user = None
 
     if user and activation_token.check_token(user, token):
-        userAccount = User.objects.get(uid=uid)
+        user = User.objects.get(uid=uid)
         if request.POST:
             form = changePwdForm(request.POST)
             if form.is_valid():
                 raw_password = form.cleaned_data["password"]
-                userAccount.set_password(raw_password)
-                userAccount.set_verified = True
-                userAccount.save()
+                user.set_password(raw_password)
+                user.set_verified = True
+                user.save()
                 request.session['msg'] = "Password successfully changed."
                 return redirect('account:authmsg')
     else:
