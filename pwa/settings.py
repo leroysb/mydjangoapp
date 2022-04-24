@@ -114,9 +114,6 @@ SESSION_TIMEOUT_REDIRECT = "/"
 
 STATIC_URL = '/static/'
 
-if DEBUG == True:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 if DEBUG == False:
     # Heroku Configuration
     import django_heroku
@@ -124,6 +121,8 @@ if DEBUG == False:
     django_heroku.settings(locals())
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 MEDIA_URL = '/media/'
