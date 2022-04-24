@@ -1,19 +1,16 @@
-from email import message
 from django import forms
-from django.contrib.auth import get_user_model
-from django.utils.translation import gettext_lazy as _
-from django.core.validators import RegexValidator
-from .redirect import get_redirect_if_exists
-from django.shortcuts import redirect, render
-from django.contrib.auth import login, authenticate
-from django.shortcuts import redirect, render
-from django.core.mail import EmailMessage
 from django.conf import settings
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_str
-from ..utils import activation_token
+from django.contrib.auth import get_user_model, login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+from django.core.validators import RegexValidator
+from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.translation import gettext_lazy as _
+from .redirect import get_redirect_if_exists
+from ..utils import activation_token
 from threading import Thread
 
 User = get_user_model()

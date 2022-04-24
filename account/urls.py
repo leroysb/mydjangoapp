@@ -1,12 +1,12 @@
 from django.urls import path
 from .controllers.login import LoginView
-from .controllers.subscribe import SubscribeView
+from .controllers.signup import SubscribeView
 from .controllers.signin import SigninView
 from .controllers.logout import LogoutView
-from .controllers.verification import AuthView
+from .controllers.search import AuthView
 from .controllers.activate import userActivationView
 from .controllers.pwdreset import resetPwdView, userVerifyView
-from .controllers.messages import AuthMsgView
+from .controllers.resMessages import AuthMsgView
 from .controllers.editpassword import editPwdView
 
 app_name = "account"

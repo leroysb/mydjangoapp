@@ -1,14 +1,14 @@
 from django import forms
-from django.core.validators import RegexValidator
-from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.sites.shortcuts import get_current_site
-from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
-from django.conf import settings
+from django.core.validators import RegexValidator
+from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.translation import gettext_lazy as _
 from ..utils import activation_token
 from threading import Thread
 
@@ -67,13 +67,16 @@ def editPwdView(request, uidcoded, token):
         user = User.objects.get(uid=uid)
     except Exception as e:
         user = None
+
     if user and activation_token.check_token(user, token):
+        userAccount = User.objects.get(uid=uid)
         if request.POST:
             form = changePwdForm(request.POST)
             if form.is_valid():
-                user.set_password(form.cleaned_data["password"])
-                user.set_verified = True
-                user.save()
+                raw_password = form.cleaned_data["password"]
+                userAccount.set_password(raw_password)
+                userAccount.set_verified = True
+                userAccount.save()
                 request.session['msg'] = "Password successfully changed."
                 return redirect('account:authmsg')
     else:

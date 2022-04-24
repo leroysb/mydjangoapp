@@ -1,4 +1,3 @@
-from lib2to3.pgen2.tokenize import generate_tokens
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 import six
 
