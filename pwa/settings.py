@@ -5,13 +5,7 @@ load_dotenv()
     
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('pwakey')
-# DEBUG = os.environ.get('DEBUG')
-
-if not os.environ.get('DEBUG'):
-    DEBUG = False
-else:
-    DEBUG = True
-
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
