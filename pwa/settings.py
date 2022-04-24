@@ -9,6 +9,7 @@ DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
+    'fueledbyleroy.herokuapp.com',
 ]
 
 INSTALLED_APPS = [
