@@ -67,7 +67,10 @@ def editPwdView(request, uidcoded, token):
     except Exception as e:
         user = None
 
-    if user and activation_token.check_token(user, token):
+    if not user and activation_token.check_token(user, token):
+        request.session['msg'] = "Link has expired. Request a new one."
+        return redirect('account:authmsg')
+    else:
         user = User.objects.get(uid=uid)
         if request.POST:
             form = changePwdForm(request.POST)
@@ -78,8 +81,5 @@ def editPwdView(request, uidcoded, token):
                 user.save()
                 request.session['msg'] = "Password successfully changed."
                 return redirect('account:authmsg')
-    else:
-        request.session['msg'] = "Link has expired. Request a new one."
-        return redirect('account:authmsg')
 
     return render(request, 'account/authReset.html', context)
