@@ -70,16 +70,16 @@ def editPwdView(request, uidcoded, token):
     if not user and activation_token.check_token(user, token):
         request.session['msg'] = "Link has expired. Request a new one."
         return redirect('account:authmsg')
-    else:
-        user = User.objects.get(uid=uid)
-        if request.POST:
-            form = changePwdForm(request.POST)
-            if form.is_valid():
-                raw_password = form.cleaned_data["password"]
-                user.set_password(raw_password)
-                user.set_verified = True
-                user.save()
-                request.session['msg'] = "Password successfully changed."
-                return redirect('account:authmsg')
+        
+    user = User.objects.get(uid=uid)
+    if request.POST:
+        form = changePwdForm(request.POST)
+        if form.is_valid():
+            raw_password = form.cleaned_data["password"]
+            user.set_password(raw_password)
+            user.set_verified = True
+            user.save()
+            request.session['msg'] = "Password successfully changed."
+            return redirect('account:authmsg')
 
     return render(request, 'account/authReset.html', context)
