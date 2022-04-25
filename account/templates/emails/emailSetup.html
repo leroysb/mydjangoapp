@@ -1,0 +1,14 @@
+{% autoescape on %}
+Hi {{name}},
+
+Welcome to LeroyBuliro.net! Your new account has been setup.
+
+Your username is: {{username}}
+You can create a password at the following URL:
+https://login.wordpress.org/register/create/fueledbyachari/afef26f2a01176cd8cea8dd36e58f7f9/
+http://{{siteURI}}{% url 'account:activate' uidcoded=uid token=token %}
+
+If you received this email in error, you can safely ignore it.
+
+-- The LeroyBuliro.net Team
+{% endautoescape %}

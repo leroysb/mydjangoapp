@@ -11,6 +11,11 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
     list_display = ("id","name")
 admin.site.register(ArticleCategory, ArticleCategoryAdmin)
 
+class ArticleTagAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',),}
+    list_display = ("id","name")
+admin.site.register(ArticleTag, ArticleTagAdmin)
+
 class ArticleStatAdmin(admin.ModelAdmin):
     list_display = ("IPAddres","article",)
     readonly_fields = ('IPAddres', 'article', 'device')
