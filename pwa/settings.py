@@ -112,6 +112,16 @@ SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_TIMEOUT_REDIRECT = "/"
 
+if DEBUG == True:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+else:
+    # Heroku Configuration
+    import django_heroku
+    import dj_database_url
+    django_heroku.settings(locals())
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
@@ -141,13 +151,3 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
-
-if DEBUG == False:
-    # Heroku Configuration
-    import django_heroku
-    import dj_database_url
-    django_heroku.settings(locals())
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
