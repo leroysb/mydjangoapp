@@ -37,7 +37,7 @@
         </script>
     </head>
     
-    <body>
+    <body class="pagebody">
         <nav class="topnav">
             <a id="navlogo" href="{% url 'core:index' %}">
                 <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">
@@ -68,17 +68,10 @@
         
         {% block page %}
         {% endblock page %}
+
+        {% block footer %}
+        {% endblock footer %}
         
-        <footer>
-            <div id="footersocial">
-                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconTT-black.png' %}" alt="twitter" width="auto" height="22" ></a>
-                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconIG-black.png' %}" alt="instagram" width="auto" height="22" ></a>
-            </div>
-            <a style="color: #000000;">© 2022 Leroy Buliro. All rights reserved.</a>
-            <span>
-                <a href="{% url 'core:legal' %}" style="color: #000000;">Legal</a>
-            </span>
-        </footer>
     </body>
     
     <noscript>

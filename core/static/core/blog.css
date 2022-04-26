@@ -14,6 +14,9 @@
     font-weight: 700;
 }
 
+.pagebody {
+    background-color: #000;
+}
 .blogpage {
     margin: 40px 1vw 30vh 1vw;
 }
@@ -28,10 +31,6 @@
     grid-gap: 4% 2%;
     margin: 40px 0 0 0;
 }
-#blogs a,
-#blogs a:hover {
-    text-decoration: none;
-}
 .articlediv {
     filter: grayscale();
     transition: 300ms;
@@ -43,33 +42,34 @@
     width: 100%;
     height: 100%;
 }
-#blogs .blogmeta {
+.blogmeta {
     margin: 2% 0% 0% 0%;
     display: grid;
     grid-gap: 8px;
     place-items: center;
     text-align: center;
 }
-#blogs .blogcategory {
+.blogcategory {
     color: gray;
     font-size: 10px;
     font-weight: 400;
     text-transform: uppercase;
 }
-#blogs .blogtitle {
+.blogtitle {
     color: #FFFFFF;
     font-family: Josefin Sans;
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1.4rem;
 }
-#blogs .blogextract {
+.blogextract, .blogextract:hover {
     color: #FFFFFF;
     font-size: 12px;
     font-weight: 400;
     line-height: 1rem;
+    text-decoration: none;
 }
-#blogs .blogdate {
+.blogdate {
     color: gray;
     font-size: 11px;
     font-weight: 400;
@@ -119,5 +119,33 @@ button {
     }
     .articlediv {
         filter: none;
+    }
+}
+
+/* Footer */
+
+footer {
+    border-top: 1px solid silver;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 2%;
+    clear: both;
+}
+#footersocial {
+    display: flex;
+    grid-gap: 10px;
+}
+footer a, a:hover {
+    color: #fff;
+    font-size: 11px;
+    text-decoration: none;
+}
+@media screen and (max-width: 769px) {
+    footer {
+        padding: 3% 1%;
+        flex-direction: column;
+        grid-gap: 10px;
     }
 }

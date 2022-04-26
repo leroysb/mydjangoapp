@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'account',
     'core',
     'ckeditor', # Third party app
-    # 'django_social_share', # Third party app
+    'django_social_share', # Third party app
 ]
 
 MIDDLEWARE = [
