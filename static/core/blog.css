@@ -34,9 +34,21 @@
 .articlediv {
     filter: grayscale();
     transition: 300ms;
+    text-decoration: none;
 }
 .articlediv:hover {
     filter: none;
+    text-decoration: none;
+}
+.articlediv > a, a:hover {
+    text-decoration: none;
+}
+.articlesec {
+    margin: 3%;
+    display: grid;
+    grid-column: 1fr;
+    grid-gap: 10px;
+    cursor: pointer;
 }
 #blogs .blogimage {
     width: 100%;
@@ -62,9 +74,9 @@
     text-transform: uppercase;
     line-height: 1.4rem;
 }
-.blogextract, .blogextract:hover {
+.blogextract {
     color: #FFFFFF;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1rem;
     text-decoration: none;
@@ -137,7 +149,7 @@ footer {
     display: flex;
     grid-gap: 10px;
 }
-footer a, a:hover {
+footer > a, a:hover {
     color: #fff;
     font-size: 11px;
     text-decoration: none;

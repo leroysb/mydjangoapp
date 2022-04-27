@@ -69,11 +69,7 @@
                     <div id="links">
                         <!-- <a href="https://soundcloud.com/lerb-fanbase" target="_blank" >MIXES</a> -->
                         <a href="https://ra.co/dj/lerb/" target="_blank" >TOUR DATES</a>
-                        {% if user.is_admin %}
                         <a href="{% url 'core:blog' %}">BLOG</a>
-                        {% else %}
-                        <a href="#" style="text-decoration: line-through;">BLOG</a>
-                        {% endif %}
                         <a href="{% url 'core:podcast' %}">PODCAST</a>
                         {% if user.is_authenticated %}
                         <a href="{% url 'account:logout' %}">LOG OUT</a>

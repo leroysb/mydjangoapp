@@ -81,14 +81,12 @@ document.addEventListener('DOMContentLoaded', function(){
     };
 
     // ARTICLE PAGE
-    const background = document.querySelector('.meta');
-
-    document.body.querySelector('.meta').addEventListener('load', getBGcolor());
-
-    function getBGcolor() {
-        const choices = ['#86baaf', '#ffca52']
+    document.body.querySelector('.meta').addEventListener('load', ()=> {
+        const background = document.querySelector('.meta');
+        const choices = ['#86baaf', '#ffca52'];
         const randomNumber = Math.floor(Math.random()*2);
         const selection = choices[randomNumber];
         background.style.backgroundColor = selection;
-    };
+    });
+    // $('.meta').
 });
