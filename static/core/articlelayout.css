@@ -412,7 +412,8 @@ footer {
     display: flex;
     grid-gap: 10px;
 }
-footer a, a:hover {
+footer a,
+footer a:hover {
     color: #fff;
     font-size: 11px;
     text-decoration: none;
