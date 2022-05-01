@@ -22,6 +22,10 @@
     -webkit-box-sizing: border-box;
 }
 
+p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
+    font-family: Josefin Sans;
+}
+
 /* Menu */
 
 .topnav {
@@ -70,7 +74,7 @@
 #menuactive:hover {
     cursor: pointer;
     text-decoration: none;
-    color: #000;
+    color: #fff;
 }
 .access {
     position: absolute;

@@ -33,7 +33,7 @@
     grid-template-columns:  1fr 1fr;
     margin: 0% 0% 3% 0%;
 }
-.articlemeta .meta {
+.meta {
     padding: 0 8%;
     display: grid;
     justify-items: center;
@@ -41,18 +41,18 @@
     text-align: center;
     grid-gap: 1em;
 }
-.articlemeta .meta a, 
-.articlemeta .meta a:hover {
+.meta a, 
+.meta a:hover {
     text-decoration: none;
 }
-.articlemeta #category {
+#category {
     font-family: CrimsonPro;
     font-size: 1em;
     color: #000;
     background-color: transparent;
     text-transform: uppercase;
 }
-.articlemeta #title {
+#title {
     font-family: Josefin Sans;
     font-size: 2em;
     font-weight: bolder;
@@ -60,7 +60,7 @@
     text-transform: uppercase;
     margin: 1em 0em;
 }
-.articlemeta #pubDate {
+#pubDate {
     font-family: Josefin Sans;
     font-size: 0.8em;
     color: #000;
@@ -251,10 +251,10 @@
     .articlemeta {
         grid-template-columns:  1fr;
     }
-    .articlemeta .meta {
+    .meta {
         padding: 27px 2%;
     }
-    .articlemeta #title {
+    #title {
         margin: 4vh 0;
     }
     .articlecontent {

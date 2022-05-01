@@ -26,18 +26,6 @@
 <meta property="og:image:height" content="500">
 <link rel="stylesheet" href="{% static 'core/articlelayout.css' %}">
 <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
-<script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-        // ARTICLE PAGE
-        document.querySelector('.meta').addEventListener('load', ()=> {
-            const background = document.querySelector('.meta');
-            const choices = ['#86baaf', '#ffca52'];
-            const randomNumber = Math.floor(Math.random()*2);
-            const selection = choices[randomNumber];
-            background.style.backgroundColor = selection;
-        });
-    })
-</script>
 {% endblock head %}
 
 {% block navmenu %}
@@ -61,8 +49,10 @@
             {% else %}
             <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
             {% endif %}
-            <div class="meta">
-                <p style="color: #000; font-family: CrimsonPro; font-size:48px; font-weight: bold; text-align: center; line-height: 1rem;">A-Z LOGS</p>
+            <div class="meta" style="background-color: #ffca52;">
+                <a href="{% url 'core:blog' %}" style="text-decoration: none;">
+                    <p style="color: #000; font-family: CrimsonPro; font-size:48px; font-weight: bold; text-align: center; line-height: 1rem;">A-Z LOGS</p>
+                </a>
                 <div id="category">{{ article.category }}</div>
                 <div id="title">{{ article.title }}</div>
                 <div id="pubDate">{{ article.publishdate }}</div>
