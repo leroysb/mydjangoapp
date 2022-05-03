@@ -61,7 +61,7 @@ section {
 }
 .intro {
     position: absolute;
-    top: 7%;
+    bottom: 7%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
@@ -81,9 +81,9 @@ section {
     -moz-transform: translateX(100%);
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
-    -moz-animation: flow 17s linear infinite;
-    -webkit-animation: flow 17s linear infinite;
-    animation: flow 17s linear infinite;
+    -moz-animation: flow linear infinite;
+    -webkit-animation: flow linear infinite;
+    animation: flow linear infinite;
 }
 @-moz-keyframes flow {
     from { -moz-transform: translateX(100%);}
