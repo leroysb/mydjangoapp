@@ -68,10 +68,10 @@
                     
                     <div id="links">
                         <!-- <a href="https://soundcloud.com/lerb-fanbase" target="_blank" >MIXES</a> -->
-                        <a href="https://ra.co/dj/lerb/" target="_blank" >TOUR DATES</a>
+                        <a href="https://ra.co/dj/lerb/" target="_blank" >TOURS</a>
                         <a href="{% url 'core:blog' %}">BLOG</a>
                         <a href="{% url 'core:podcast' %}">PODCAST</a>
-                        <a href="#" style="text-decoration: line-through;">SHOP NOW</a>
+                        <a href="#" style="text-decoration: line-through;">SHOP</a>
                         {% if user.is_authenticated %}
                         <a href="{% url 'account:logout' %}">LOG OUT</a>
                         {% else %}
@@ -79,11 +79,11 @@
                         {% endif %}
                     </div>
                     
-                    <div id="imagediv">
+                    <!-- <div id="imagediv">
                         <img id="image" src="{% static 'core/media/lbwhite.png' %}" alt="leroy">
-                    </div>
+                    </div> -->
                     
-                    <div id="id01" class="modal">
+                    <!-- <div id="id01" class="modal">
                         
                         <div class="modal-content" style="max-width:600px">
                             
@@ -120,12 +120,12 @@
                             </form>
 
                         </div>
-                    </div>
+                    </div> -->
                     
                 </section>
                 <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>
             </div>
-            <button class="feedbackBtn" onclick="document.getElementById('id01').style.display='block'">Send Feedback</button>
+            <!-- <button class="feedbackBtn" onclick="document.getElementById('id01').style.display='block'">Send Feedback</button> -->
         </div>
     </body>
 </html>
