@@ -78,7 +78,7 @@
             {% for article in articles %}
             <section class="articlediv" style="border: 1px solid #ccc; border-radius: 2%;">
                 <a class="articlesec" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
-                    <div style="width: 100%; height: auto; object-fit: cover;">
+                    <div class="image">
                         {% if article.featureimageURI %}
                         <img  class="blogimage" src="{{ article.featureimageURI }}" alt="{{ article.title }}">
                         {% else %}

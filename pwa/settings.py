@@ -65,7 +65,7 @@ DATABASES = {
     #     'USER': os.environ.get('DBuser'),
     #     'PASSWORD': os.environ.get('DBpwd'),
     #     'HOST': os.environ.get('DBhost'),
-    #     'PORT': os.environ.get('PGport'),
+    #     'PORT': os.environ.get('MSport'),
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

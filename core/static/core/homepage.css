@@ -78,12 +78,12 @@ section {
     font-family: Josefin Sans;
     font-size: small;
     font-weight: bolder;
+    transform: translateX(100%);
     -moz-transform: translateX(100%);
     -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-    -moz-animation: flow linear infinite;
-    -webkit-animation: flow linear infinite;
-    animation: flow linear infinite;
+    animation: flow 30s linear infinite;
+    -moz-animation: flow 30s linear infinite;
+    -webkit-animation: flow 30s linear infinite;
 }
 @-moz-keyframes flow {
     from { -moz-transform: translateX(100%);}

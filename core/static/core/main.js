@@ -83,18 +83,11 @@ document.addEventListener('DOMContentLoaded', function(){
     // ARTICLE PAGE
     const background = document.querySelector('.meta');
 
-    // document.body.addEventListener('load', ()=> {
-    //     const choices = ['#86baaf', '#ffca52'];
-    //     const randomNumber = Math.floor(Math.random()*2);
-    //     const selection = choices[randomNumber];
-    //     background.style.backgroundColor = selection;
-    // });
-
-    $('.meta').ready(function(){
-        const background = document.querySelector('.meta');
+    document.body.addEventListener('load', ()=> {
         const choices = ['#86baaf', '#ffca52'];
         const randomNumber = Math.floor(Math.random()*2);
         const selection = choices[randomNumber];
-        background.style.backgroundColor = selection;
-    })
+        background.style.background = selection;
+    });
+
 });
