@@ -154,16 +154,29 @@ p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
     /* background-color: #242424; */
     background-color: rgba(51, 61, 61, 0.959);
     width: 100%;
-    opacity: 0;
     padding: 1rem;
-    transition: .4s ease-in-out;
     z-index: 2;
     border-top: 1px #fff solid;
 }
 .mobile-menu.show {
+    transition: .4s ease-in-out;
+    animation: showmenu .4s;
+    -moz-animation: flow .4s;
+    -webkit-animation: flow .4s;
     top: 27px;
-    opacity: 1;
     display: flex;
+}
+@keyframes showmenu {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@-moz-keyframes showmenu {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@-webkit-keyframes showmenu {
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
 .mobile-menu a,
 .mobile-menu a:hover {

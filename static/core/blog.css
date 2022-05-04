@@ -64,7 +64,11 @@
     transform: scale(1);
     transition: 1s ease-in-out;
 }
-.image:hover .blogimage {
+.articlediv .blogimage {
+    transform: scale(1);
+    transition: 1s ease-in-out;
+}
+.articlediv:hover .blogimage {
     transform: scale(1.4);
 }
 .blogmeta {
@@ -89,7 +93,7 @@
     line-height: 1.4rem;
     filter: none;
 }
-.extract {
+.extract, .extract > p {
     color: #ccc;
     font-size: 13px;
     font-weight: 400;

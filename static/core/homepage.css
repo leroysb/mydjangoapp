@@ -81,9 +81,9 @@ section {
     transform: translateX(100%);
     -moz-transform: translateX(100%);
     -webkit-transform: translateX(100%);
-    animation: flow 30s linear infinite;
-    -moz-animation: flow 30s linear infinite;
-    -webkit-animation: flow 30s linear infinite;
+    animation: flow 14s linear infinite;
+    -moz-animation: flow 14s linear infinite;
+    -webkit-animation: flow 14s linear infinite;
 }
 @-moz-keyframes flow {
     from { -moz-transform: translateX(100%);}
@@ -144,15 +144,16 @@ a, a:hover {
     text-decoration: none;
     color: #ffffffc4;
 }
-#imagediv {
+.image {
     position: absolute;
-    bottom: 7%;
-    left: 20px;
+    bottom: 4%;
     width: 100%;
-    /* display: grid;
-    place-items: center; */
+    display: flex;
+    /* place-items: center; */
+    align-items: center;
+    justify-content: center;
 }
-#image {
+.image > img {
     max-width: 5em;
     opacity: 0.7;
 }
@@ -177,11 +178,8 @@ a, a:hover {
     transform: rotate(-90deg);
 }
 
-@media screen and (max-width: 770px) {
-    #imagediv {
-        left: 10px;
-    }  
-    #image {
+@media screen and (max-width: 770px) { 
+    .image > img {
         max-width: 4em;
     }
     .feedbackBtn {
