@@ -51,9 +51,9 @@
             
             <div class="access">
                 {% if user.is_authenticated %}
-                <a class="accessbtn" href="{% url 'account:logout' %}">Log out</a>
+                <a class="accessbtn" href="{% url 'account:logout' %}">LOG OUT</a>
                 {% else %}
-                <a class="accessbtn" href="{% url 'account:auth' %}">Sign in</a>
+                <a class="accessbtn" href="{% url 'account:auth' %}">SIGN IN</a>
                 {% endif %}
             </div>
             

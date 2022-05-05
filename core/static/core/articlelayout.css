@@ -149,7 +149,7 @@
     line-height: 2em;
 }
 .content a, a:hover {
-    color: #03bb0d;
+    color: #76cbff;
     font-family: Josefin Sans;
     font-size: 1em;
     line-height: 2em;
@@ -217,7 +217,8 @@
     font-size: 0.9rem;
     font-weight: bold;
     color: #000000;
-    background: #44bb44;
+    /* background: #44bb44; */
+    background: #03bb0d;
     border: none;
     /* border: #b8b8b8 1px solid; */
     border-radius: 4px;
