@@ -27,8 +27,6 @@
         <meta property="og:image:height" content="500">
         <!-- Load css file -->
         <link rel="stylesheet" href="{% static 'core/homepage.css' %}">
-        <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
-        <script src="{% static 'core/main.js' %}"></script>
         <script type="application/ld+json">{
             "@context": "http://schema.org",
             "@type": "WebSite",
@@ -54,18 +52,6 @@
         <div class="container">
             <div class="content">
                 <section>
-                    {% if user.is_authenticated %}
-                    <div class="intro">
-                        {% if user.is_staff %}
-                        <div class="introText">Logged in as @{{ request.user.alias }}</div>
-                        {% elif user.is_verified %}
-                        <div class="introText">Hi {{ request.user.full_name }}. We are still getting things ready for you. You shall receive updates on future feature updates. Stay Tuned!!.</div>
-                        {% else %}
-                        <div class="introText">Hi {{ request.user.full_name }}. Check your email for a verification link to fully enjoy the features of the website.</div>
-                        {% endif %}
-                    </div>
-                    {% endif %}                                        
-                    
                     <div id="links">
                         <!-- <a href="https://soundcloud.com/lerb-fanbase" target="_blank" >MIXES</a> -->
                         <a href="https://ra.co/dj/lerb/" target="_blank" >TOURS</a>
@@ -78,54 +64,26 @@
                         <a href="{% url 'account:auth' %}">LOG IN</a>
                         {% endif %}
                     </div>
+
+                    {% if user.is_authenticated %}
+                    <div class="intro">
+                        {% if user.is_staff %}
+                        <div class="introText">Logged in as @{{ request.user.alias }}</div>
+                        {% elif user.is_verified %}
+                        <div class="introText">Hi {{ request.user.full_name }}. We are still getting things ready for you. You shall receive updates on future feature updates. Stay Tuned!!.</div>
+                        {% else %}
+                        <div class="introText">Hi {{ request.user.full_name }}. Check your email for a verification link to fully enjoy the features of the website.</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}                                        
                     
-                    <!-- <div class="image">
+                    <div class="image">
                         <img src="{% static 'core/media/lbwhite.png' %}" alt="leroy">
-                    </div> -->
-                    
-                    <!-- <div id="id01" class="modal">
-                        
-                        <div class="modal-content" style="max-width:600px">
-                            
-                            <div style="padding: 0.01em;">
-                                <p style="text-align: left; color: #000; font-size: x-large; font-weight: bold;">What's on your mind?</p>
-                                <span onclick="document.getElementById('id01').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
-                            </div>
-                            
-                            <form class="modal-container" method="POST" action="">{% csrf_token %}
-                                <div class="modal-section">
-                                    <div>
-                                        <textarea rows="4" type="text" style="width: 100%; padding: 4px; font-size: 14px; font-family: CrimsonPro;" placeholder="We appreciate hearing your thoughts. It helps us make things better." name="content" required></textarea>
-                                        <p style="color: #929292; font-size: small;">0/500 maximum characters.</p>
-                                    </div>
-
-                                    <div>
-                                        <p><b>Overall, how was your experience?</b></p>
-                                        <div class="rating">
-                                            <span><input type="radio" name="ratings" id="str5" value="5"><label for="str5">&star;</label></span>
-                                            <span><input type="radio" name="ratings" id="str4" value="4"><label for="str4">&star;</label></span>
-                                            <span><input type="radio" name="ratings" id="str3" value="3"><label for="str3">&star;</label></span>
-                                            <span><input type="radio" name="ratings" id="str2" value="2"><label for="str2">&star;</label></span>
-                                            <span><input type="radio" name="ratings" id="str1" value="1"><label for="str1">&star;</label></span>
-                                        </div>
-                                    </div>
-
-                                    <p>To protect your privacy, don't include your contact info.</p>
-
-                                    <div style="display: flex; justify-content: right; padding-top: 12px;">
-                                        <button class="modal-btn-alt" type="submit" name="submitfeedback">Submit</button>
-                                        <button class="modal-btn" onclick="document.getElementById('id01').style.display='none'" type="button">Cancel</button>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div> -->
+                    </div>
                     
                 </section>
                 <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>
             </div>
-            <!-- <button class="feedbackBtn" onclick="document.getElementById('id01').style.display='block'">Send Feedback</button> -->
         </div>
     </body>
 </html>
