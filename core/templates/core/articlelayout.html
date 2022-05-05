@@ -24,8 +24,21 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1000">
 <meta property="og:image:height" content="500">
+
 <link rel="stylesheet" href="{% static 'core/articlelayout.css' %}">
 <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
+
+<script>
+    document.addEventListener('DOMContentLoaded', ()=> {
+        $(document).ready(()=> {
+            const background = document.querySelector('.meta')
+            const choices = ['#86baaf', '#ffca52']
+            const randomNumber = Math.floor(Math.random()*2)
+            const selection = choices[randomNumber]
+            background.style.background = selection
+        });
+    })
+</script>
 {% endblock head %}
 
 {% block navmenu %}
@@ -51,7 +64,7 @@
             {% else %}
             <img src="{{ article.featureimage.url }}" alt="{{ article.title }}" height="720" width="480" style="height: auto; width: 100%; object-fit: cover;">
             {% endif %}
-            <div class="meta" style="background: #86baaf;">
+            <div class="meta">
                 <a href="{% url 'core:blog' %}" style="text-decoration: none;">
                     <p style="color: #000; font-family: CrimsonPro; font-size:48px; font-weight: bold; text-align: center; line-height: 1rem;">A-Z LOGS</p>
                 </a>

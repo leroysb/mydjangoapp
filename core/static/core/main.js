@@ -80,14 +80,4 @@ document.addEventListener('DOMContentLoaded', function(){
         currentindex += next;
     };
 
-    // ARTICLE PAGE
-    const background = document.querySelector('.meta');
-
-    document.body.addEventListener('load', ()=> {
-        const choices = ['#86baaf', '#ffca52'];
-        const randomNumber = Math.floor(Math.random()*2);
-        const selection = choices[randomNumber];
-        background.style.background = selection;
-    });
-
 });
