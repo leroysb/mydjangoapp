@@ -39,7 +39,7 @@
     </head>
     
     <body class="pagebody">
-        <nav class="topnav">
+        <nav>
             <a id="navlogo" href="{% url 'core:index' %}">
                 <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">
             </a>
@@ -57,21 +57,27 @@
                 {% endif %}
             </div>
             
-            <div class="menu-btn">
+            <!-- <div class="menu-btn">
                 <div class="menu-btn__burger"></div>
-            </div>
+            </div>  -->
         </nav>
-        
-        <div class="mobile-menu">
-            {% block mobilemenu %}
-            {% endblock mobilemenu %}        
-        </div>
         
         {% block page %}
         {% endblock page %}
-
+        
         {% block footer %}
         {% endblock footer %}
+        
+        <div class="mobile-menu">
+            <a href="{% url 'core:index' %}">
+                <div class="mobile-menu-item">
+                    <img src="{% static 'core/media/home.svg' %}"></img>
+                    <span>Home</span>
+                </div>
+            </a>
+            {% block mobilemenu %}
+            {% endblock mobilemenu %}
+        </div>
         
     </body>
     

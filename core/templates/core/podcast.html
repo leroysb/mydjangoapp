@@ -9,17 +9,31 @@
 {% endblock head %}
 
 {% block navmenu %}
-<a href="{% url 'core:index' %}" >HOME</a>
+<!-- <a href="{% url 'core:index' %}" >HOME</a> -->
 <a href="{% url 'core:blog' %}">BLOG</a>
 <a id="menuactive">PODCAST</a>
 <a href="#">SHOP</a>
 {% endblock navmenu %}
 
 {% block mobilemenu %}
-<a href="{% url 'core:index' %}" >HOME</a>
-<a href="{% url 'core:blog' %}">BLOG</a>
-<a href="#">PODCAST</a>
-<a href="#">SHOP</a>
+<a href="{% url 'core:blog' %}">
+    <div class="mobile-menu-item">
+        <img src="{% static 'core/media/blog.svg' %}"></img>
+        <span>Blog</span>
+    </div>
+</a>
+<a href="#">
+    <div class="mobile-menu-item">
+        <img src="{% static 'core/media/podcast.svg' %}"></img>
+        <span>Podcast</span>
+    </div>
+</a>
+<a href="#">
+    <div class="mobile-menu-item">
+        <img src="{% static 'core/media/shop.svg' %}"></img>
+        <span>Shop</span>
+    </div>
+</a>
 {% endblock mobilemenu %}
 
 {% block page %}
