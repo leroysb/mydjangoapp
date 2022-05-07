@@ -32,6 +32,7 @@ body {
     width: 100%;
 }
 
+/** For tablet devices **/
 @media screen and (max-width: 541px) {
     .podpage {
         margin: 0 0 0 0;
