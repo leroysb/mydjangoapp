@@ -139,9 +139,3 @@ a, a:hover {
     max-width: 5em;
     opacity: 0.7;
 }
-
-@media screen and (max-width: 770px) { 
-    .image > img {
-        max-width: 4em;
-    }
-}
