@@ -127,7 +127,7 @@ a, a:hover {
 }
 .image {
     position: absolute;
-    bottom: 4%;
+    top: 47%;
     width: 100%;
     display: flex;
     place-items: center;
