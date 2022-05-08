@@ -261,7 +261,7 @@
         margin: 4vh 0;
     }
     .articlecontent {
-        margin: 0 2%;
+        margin: 10px 2%;
     }
     .content p:first-child::first-letter {
         padding: 0 .1em;
