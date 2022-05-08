@@ -127,6 +127,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')
 
+# AmazonS3 configurations
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+# AWS_S3_SESSION_PROFILE = os.getenv('')
+# AWS_ACCESS_KEY_ID = os.getenv('')
+# AWS_SECRET_ACCESS_KEY = os.getenv('')
+# AWS_STORAGE_BUCKET_NAME = os.getenv('')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_CONFIGS = {
