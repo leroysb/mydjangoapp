@@ -177,7 +177,12 @@
         {% else %}
         <a href="{% url 'account:auth' %}"><button>Please log in or sign up to comment</button></a>
         {% endif %}
+
+        {% if article.comments.count = 1 %}
+        <p class="responses">{{ article.comments.count }} response</h5>
+        {% else %}
         <p class="responses">{{ article.comments.count }} responses</h5>
+        {% endif %}
     </div>
 
     <div class="commentsec">
