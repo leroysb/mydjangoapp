@@ -4,5 +4,5 @@ from .views import CatalogueView
 app_name = "store"
 
 urlpatterns = [
-    path("shop/", CatalogueView.as_view(), name="shop"),
+    path("", CatalogueView.as_view(), name="catalogue"),
 ]

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block head %}
-<title>Events & Tickets | Leroy Buliro</title>
+<title>Store Catalogue | Leroy Buliro</title>
 <meta name="description" content="A-Z Logs, a blog by Leroy Buliro">
 <meta name="keyword" content="Kenya, Nairobi, underground events, nightlife">
 <!-- Twitter -->
@@ -22,7 +22,7 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1000">
 <meta property="og:image:height" content="500">
-<link rel="stylesheet" href="{% static 'core/events.css' %}">
+<link rel="stylesheet" href="{% static 'store/catalogue.css' %}">
 {% endblock head %}
 
 {% block navmenu %}
@@ -32,7 +32,7 @@
 {% endblock navmenu %}
 
 {% block mobilemenu %}
-<a href="#">
+<a href="{% url 'core:events' %}">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/tickets.svg' %}"></img>
         <span>Tickets</span>
@@ -50,7 +50,7 @@
         <span>Podcast</span>
     </div>
 </a>
-<a href="{% url 'store:catalogue' %}">
+<a href="#">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/shop.svg' %}"></img>
         <span>Shop</span>
@@ -61,7 +61,7 @@
 {% block page %}
 <div class="eventpage">
     <div class="centered">
-        <p class="pageheader">NO UPCOMING EVENTS</p>
+        <p class="pageheader">NO ITEMS AVAILABLE</p>
     </div>
 </div>
 {% endblock page %}

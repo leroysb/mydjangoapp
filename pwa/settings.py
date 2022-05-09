@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'core',
+    'store',
     'ckeditor', # Third party app
     'django_social_share', # Third party app
 ]
