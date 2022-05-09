@@ -1,13 +1,11 @@
 {% extends "core/error.html" %}
 {% load static %}
 
-{% block meta %}
-<title>Page not found: Fueled by Leroy</title>
-<meta name="description" content="Leroy Buliro: deejay, storyteller, financial advisor">
-<meta name="keyword" content="Kenya, Nairobi, booze, travel, nightlife, food, lifestyle, culture">
-{% endblock meta %}
+{% block head %}
+<title>Page not found</title>
+{% endblock head %}
 
-{% block body %}
+{% block page %}
 <div style="margin: 7% 2% 7% 2%;">
     <h3 style="color: #fff;">Page Not Found</h3>
     <br/>
@@ -17,4 +15,4 @@
         <a href="{% url 'core:index' %}" style="color: red; font-weight: bolder;">Go Back Home</a>
     </div>
 </div>
-{% endblock body %}
+{% endblock page %}
