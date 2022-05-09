@@ -123,53 +123,6 @@
     <div>
         <p class="entryend" id="sharenow">END OF ENTRY</p>
     </div>
-    
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <span style="color: #ffffff; font-size: small;">SHARE THIS STORY</span>
-        <!-- <br/> -->
-        <!-- <div class="share-options"> -->
-        <div class="social-share">
-
-            {% post_to_twitter 
-                "{{ article.title }}"
-                "{{ request.build_absolute_uri }}"  
-                "<p class="social-share-btn" href="https://twitter.com/share?url=<URL>&text=<TEXT>via=<USERNAME>" target="_blank">
-                    <img src="{% static 'core/media/twitterShare.png' %}" alt="twitter">
-                </p>"
-            %}
-
-            {% post_to_facebook "{{ request.build_absolute_uri }}" "Facebook" %}
-            <!-- <a class="social-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=<URL>" target="_blank">
-                <img src="{% static 'core/media/facebookShare.png' %}" alt="share on facebook">
-            </a> -->
-
-            <div>
-                {% post_to_linkedin "{{ request.build_absolute_uri }}" %}
-            </div>
-            <!-- <a class="social-share-btn" href="https://www.linkedin.com/shareArticle?url=<URL>&title=<TITLE>&summary=<SUMMARY>&source=<SOURCE_URL>" target="_blank">
-                <img src="{% static 'core/media/linkedinShare.png' %}" alt="share on linkedin">
-            </a> -->
-
-            {% post_to_whatsapp "{{ request.build_absolute_uri }}" "whatsapp" %}
-            <!-- <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
-                <img src="{% static 'core/media/whatsappShare.png' %}" alt="share on whatsapp">
-            </a> -->
-
-            <!-- {% post_to_telegram "{{ article.title }}" "{{ request.build_absolute_uri }}" "telegram"  %} -->
-            <!-- <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
-                <img src="{% static 'core/media/telegramShare.png' %}" alt="share on telegram">
-            </a> -->
-
-            <div>
-                {% save_to_pinterest "{{ request.build_absolute_uri }}"  %}
-            </div>
-            <!-- <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
-                <img src="{% static 'core/media/pinterestShare.png' %}" alt="share on pinterest">
-            </a> -->
-        </div>
-        <!-- </div> -->
-        
-    </div>
 
     <div class="aboutsec" id="commentnow">
         <img src="{% static 'core/media/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;">
