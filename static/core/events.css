@@ -42,7 +42,7 @@
 
 /* Footer */
 footer {
-    position: absolute;
+    position: sticky;
     bottom: 0;
     width: 100%;
     border-top: 1px solid silver;
