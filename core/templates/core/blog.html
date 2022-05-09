@@ -59,6 +59,12 @@
 {% endblock navmenu %}
 
 {% block mobilemenu %}
+<a href="{% url 'core:events' %}">
+    <div class="mobile-menu-item">
+        <img src="{% static 'core/media/tickets.svg' %}"></img>
+        <span>Tickets</span>
+    </div>
+</a>
 <a href="#">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/blog.svg' %}"></img>
@@ -83,8 +89,8 @@
 <div>
     <div class="blogpage">
         <div class="centered">
-            <p style="color: #fff; font-family: CrimsonPro; font-size:40px; font-weight: bold; text-align: center; line-height: 1rem; margin-top: 1rem;">A-Z LOGS</p>
-            <p style="color: rgb(141, 141, 141); font-size: medium; font-weight: lighter; text-align: center; line-height: 1rem; margin-top: 12px;">A Leroy Buliro Blog</p>
+            <p class="pageheader">A-Z LOGS</p>
+            <p class="pagesubheader">A Leroy Buliro Blog</p>
         </div>
         
         {% if articles %}

@@ -49,6 +49,12 @@
 {% endblock navmenu %}
 
 {% block mobilemenu %}
+<a href="{% url 'core:events' %}">
+    <div class="mobile-menu-item">
+        <img src="{% static 'core/media/tickets.svg' %}"></img>
+        <span>Tickets</span>
+    </div>
+</a>
 <a href="{% url 'core:blog' %}">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/blog.svg' %}"></img>
@@ -124,15 +130,15 @@
         <!-- <div class="share-options"> -->
         <div class="social-share">
 
-            <!-- {% post_to_twitter 
+            {% post_to_twitter 
                 "{{ article.title }}"
                 "{{ request.build_absolute_uri }}"  
                 "<p class="social-share-btn" href="https://twitter.com/share?url=<URL>&text=<TEXT>via=<USERNAME>" target="_blank">
                     <img src="{% static 'core/media/twitterShare.png' %}" alt="twitter">
                 </p>"
-            %} -->
+            %}
 
-            <!-- {% post_to_facebook "{{ request.build_absolute_uri }}" "Facebook" %} -->
+            {% post_to_facebook "{{ request.build_absolute_uri }}" "Facebook" %}
             <!-- <a class="social-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=<URL>" target="_blank">
                 <img src="{% static 'core/media/facebookShare.png' %}" alt="share on facebook">
             </a> -->
@@ -144,7 +150,7 @@
                 <img src="{% static 'core/media/linkedinShare.png' %}" alt="share on linkedin">
             </a> -->
 
-            <!-- {% post_to_whatsapp "{{ request.build_absolute_uri }}" "whatsapp" %} -->
+            {% post_to_whatsapp "{{ request.build_absolute_uri }}" "whatsapp" %}
             <!-- <a class="social-share-btn" href="https://leroybuliro.net/{{ request.build_absolute_url }}/" target="_blank">
                 <img src="{% static 'core/media/whatsappShare.png' %}" alt="share on whatsapp">
             </a> -->

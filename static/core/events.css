@@ -1,0 +1,46 @@
+@font-face {
+    font-family: CrimsonPro;
+    src: url('/static/core/fonts/CrimsonPro-VariableFont.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Josefin Sans;
+    src: url('/static/core/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Permanent Marker;
+    src: url('/static/core/fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: 700;
+}
+
+.pagebody {
+    background: #000;
+    width:100%;
+    height:100%;
+    overflow:auto;
+}
+.eventpage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    min-width: 300px;
+    padding: 30px 20px;
+    border-radius: 8px;
+}
+.centered {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+.pageheader {
+    color: #fff;
+    font-family: CrimsonPro;
+    font-size:40px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1rem;
+    margin-top: 1rem;
+}
