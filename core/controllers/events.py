@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, ListView
-from .models import Event
+from ..models import Event
 
 class EventView(TemplateView):
     template_name = 'core/events.html'
