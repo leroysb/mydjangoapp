@@ -22,10 +22,9 @@
     -webkit-box-sizing: border-box;
 }
 body {
-    background-color: #000000;
-    overflow: hidden;
-    overflow-y: scroll;
-    position: relative;
+    background: #000000;
+    /* position: relative; */
+    height: 100vh;
 }
 
 p, a, h1, h2, h3, h4, h5, h6 {
@@ -34,7 +33,7 @@ p, a, h1, h2, h3, h4, h5, h6 {
 
 /* Menu */
 #errContainer {
-    width: 100%;
+    /* position: absolute; */
     margin-top: 40px;
     display: flex;
     flex-direction: column;
