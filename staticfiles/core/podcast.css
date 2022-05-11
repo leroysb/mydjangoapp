@@ -1,5 +1,6 @@
 body {
-    background-color: #9AB8BA;
+    background: #045256;
+    /* background-color: #9AB8BA; */
     overflow: hidden;
     overflow-y: scroll;
     position: relative;
