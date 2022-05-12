@@ -16,28 +16,23 @@
 
 .pagebody {
     background: #000;
-    width:100%;
     height: 100vh;
-    position: relative;
 }
-.eventpage {
-    display: grid;
-    place-content: center;
-    padding: 40vh 0;
-    overflow: hidden;
+::-webkit-scrollbar {
+    display: none;
 }
-.centered {
-    width: 100%;
+section {
+    min-height: calc(100vh - 34px);
     display: grid;
     place-items: center;
 }
-.pageheader {
-    color: #fff;
+.title {
+    width: 100%;
     font-family: CrimsonPro;
     font-size:40px;
     font-weight: bold;
     text-align: center;
-    margin-top: 1rem;
+    color: #fff;
 }
 
 /* Footer */

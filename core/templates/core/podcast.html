@@ -12,7 +12,7 @@
 <!-- <a href="{% url 'core:index' %}" >HOME</a> -->
 <a href="{% url 'core:blog' %}">BLOG</a>
 <a id="menuactive">PODCAST</a>
-<a href="#">SHOP</a>
+<a href="{% url 'store:catalogue' %}">SHOP</a>
 {% endblock navmenu %}
 
 {% block mobilemenu %}

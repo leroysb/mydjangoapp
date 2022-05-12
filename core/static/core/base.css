@@ -147,7 +147,7 @@ nav {
 /* Mobile menu */
 
 .mobile-menu {
-    position: sticky;
+    position: fixed;
     width: 100%;
     bottom: 0;
     z-index: 3;
@@ -187,6 +187,9 @@ nav {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+    }
+    footer {
+        margin-bottom: 48px;
     }
 }
 @media screen and (max-width: 769px) {
