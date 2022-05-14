@@ -156,16 +156,13 @@
     {% endif %}
     </div> 
 </div>
-{% if user.is_authenticated %}
+<!-- {% if user.is_authenticated %}
 <div id="id02" class="Cmodal">
-    
     <div class="Cmodal-content" style="max-width:600px">
-        
         <div style="padding: 0.01em;">
             <p style="text-align: left; color: #000; font-size: x-large; font-weight: bold;">Add a comment!</p>
             <span onclick="document.getElementById('id02').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
         </div>
-        
         <form class="modal-container" method="POST" action="">
             {% csrf_token %}
             <!-- <input type="hidden" name="post" value="{{ article }}"> -->
@@ -174,17 +171,15 @@
                     <textarea name="comment" rows="4" type="text" style="width: 100%; padding: 4px; font-size: 14px; font-family: CrimsonPro;" placeholder="This conversation is moderated." required></textarea>
                     <p style="color: #929292; font-size: small; padding-top: 1px;">0/420 maximum characters.</p>
                 </div>
-
                 <div style="display: flex; justify-content: right; padding-top: 4px;">
                     <button class="modal-btn-alt" type="submit" name="submitcomment">Submit</button>
                     <button class="modal-btn" onclick="document.getElementById('id02').style.display='none'" type="button">Cancel</button>
                 </div>
             </div>
         </form>
-
     </div>
 </div>
-{% endif %}
+{% endif %} -->
 
 {% endblock page %}
 
