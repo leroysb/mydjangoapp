@@ -5,6 +5,10 @@ from django.db import models
 from django.db.models.deletion import *
 from ckeditor.fields import RichTextField
 
+from datetime import datetime
+from dateutil.tz import tzlocal
+now = datetime.now(tzlocal()).replace(microsecond=0).isoformat()
+
 User = get_user_model()
 
 class Event(models.Model):
@@ -50,7 +54,10 @@ class ArticleStat(models.Model):
     article = models.ForeignKey('Article', on_delete=models.CASCADE)
     # session = models.CharField(max_length=40, null=True)
     device = models.CharField(max_length=400 ,default='null')
-    # visited = models.DateTimeField(default=timezone.now(), auto_now_add=True)
+    visited = models.DateTimeField(
+        default=datetime.now(tzlocal()).replace(microsecond=0).isoformat(),
+        # auto_now_add=True,
+    )
 
     def __str__(self):
         return '{0} in {1} article'.format(self.IPAddres,self.article.title)

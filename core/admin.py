@@ -17,8 +17,8 @@ class ArticleTagAdmin(admin.ModelAdmin):
 admin.site.register(ArticleTag, ArticleTagAdmin)
 
 class ArticleStatAdmin(admin.ModelAdmin):
-    list_display = ("IPAddres","article",)
-    readonly_fields = ('IPAddres', 'article', 'device')
+    list_display = ("IPAddres","article","visited")
+    readonly_fields = ('IPAddres', 'article', 'device', 'visited')
 admin.site.register(ArticleStat, ArticleStatAdmin)
 
 class ArticleAdmin(admin.ModelAdmin):
