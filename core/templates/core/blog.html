@@ -92,7 +92,6 @@
 {% endblock head %}
 
 {% block navmenu %}
-<!-- <a  href="{% url 'core:index' %}">HOME</a> -->
 <a id="menuactive">BLOG</a>
 <a href="{% url 'core:podcast' %}">PODCAST</a>
 <a href="{% url 'store:catalogue' %}">SHOP</a>
@@ -136,7 +135,7 @@
         {% if articles %}
         <div id="blogs">
             {% for article in articles %}
-            <section class="articlediv" style="border: 1px solid #ccc; border-radius: 2%; display: flex; flex-direction: column; grid-gap: 10px;">
+            <section class="articlediv">
                 <a class="articlesec" href="{% url 'core:article' pk=article.id slug=article.slug %}">                    
                     <div class="image">
                         {% if article.featureimageURI %}
@@ -170,13 +169,6 @@
 
 {% block footer %}
 <footer>
-    <!-- <div id="footersocial">
-        <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconTT.png' %}" alt="twitter" width="auto" height="22" ></a>
-        <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconIG.png' %}" alt="instagram" width="auto" height="22" ></a>
-    </div> -->
-    <span>
-        <a onclick="document.getElementById('id01').style.display='block'" style="color: #168dd9;cursor: pointer;">send feedback on web experience</a>
-    </span>
     <a style="color: #fff;">© 2022 Leroy Buliro. All rights reserved.</a>
     <span>
         <a href="{% url 'core:legal' %}" style="color: #fff;">Legal</a>

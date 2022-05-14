@@ -1,5 +1,6 @@
 from django import forms
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+from django.http import request
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
@@ -22,25 +23,18 @@ class feedbackForm(forms.ModelForm):
         model = Feedback
         fields = ['content', 'ratings',]
 
-class BlogView(ListView):
-    context_object_name = 'articles'
-    queryset = Article.objects.order_by('-publishdate')
-    template_name = 'core/blog.html'
+def BlogView(request, *args, **kwargs):
+    context = {}
+    context['articles'] = Article.objects.order_by('-publishdate')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update({
-            'form': feedbackForm(),
-        })
-        return context
+    if 'submitfeedback' in request.POST:
+        form = feedbackForm(request.POST)
+        if form.is_valid(): 
+            form.instance.source = 'blog home'
+            form.save()
+            return redirect(reverse('core:blog'))
 
-    def post(self, request, *args, **kwargs):
-        if 'submitfeedback' in request.POST:
-            form = feedbackForm(request.POST)
-            if form.is_valid(): 
-                form.instance.source = 'blog home'
-                form.save()
-                return redirect(reverse('core:blog'))
+    return render(request, 'core/blog.html', context)
 
 class ArticleView(FormMixin, DetailView):
     model = Article
