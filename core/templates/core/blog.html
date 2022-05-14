@@ -148,11 +148,11 @@
                     <div class="blogmeta">
                         <p class="blogcategory">{{ article.category }}</p>
                         <h3 class="blogtitle">{{ article.title }}</h3>
-                        {% if article.extract %}
+                        <!-- {% if article.extract %}
                         <p class="extract" style="color: #ccc;">{{ article.extract  }}</p>
                         {% else %}
                         <p class="extract" style="color: #ccc;">{{ article.content | safe | truncatewords:24 }}</p>
-                        {% endif %}
+                        {% endif %} -->
                         <p class="blogdate">{{ article.publishdate }}</p>
                     </div>
                 </a>
@@ -174,7 +174,9 @@
         <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconTT.png' %}" alt="twitter" width="auto" height="22" ></a>
         <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconIG.png' %}" alt="instagram" width="auto" height="22" ></a>
     </div> -->
-    <span onclick="document.getElementById('id01').style.display='block'" style="color: #168dd9;">Send Feedback on web experience</span>
+    <span>
+        <a onclick="document.getElementById('id01').style.display='block'" style="color: #168dd9;cursor: pointer;">Send Feedback on web experience</a>
+    </span>
     <a style="color: #fff;">© 2022 Leroy Buliro. All rights reserved.</a>
     <span>
         <a href="{% url 'core:legal' %}" style="color: #fff;">Legal</a>
