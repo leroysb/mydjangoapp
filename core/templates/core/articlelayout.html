@@ -147,16 +147,16 @@
 
         {% for comment in article.comments.all %}
         <div class="commentBox">
-            <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.name.alias }}</p>
-            <p style="color: #c2c2c2b9;">{{ comment.postdate | timesince }} ago</p>
+            <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.user.alias }}</p>
+            <p style="color: #c2c2c2b9;">{{ comment.timestamp | timesince }} ago</p>
             <br>
-            <p>{{ comment.comment | safe }}</p>
+            <p>{{ comment.content | safe }}</p>
         </div>
         {% endfor %}
     {% endif %}
     </div> 
 </div>
-<!-- {% if user.is_authenticated %}
+{% if user.is_authenticated %}
 <div id="id02" class="Cmodal">
     <div class="Cmodal-content" style="max-width:600px">
         <div style="padding: 0.01em;">
@@ -168,7 +168,7 @@
             <!-- <input type="hidden" name="post" value="{{ article }}"> -->
             <div class="modal-section">
                 <div>
-                    <textarea name="comment" rows="4" type="text" style="width: 100%; padding: 4px; font-size: 14px; font-family: CrimsonPro;" placeholder="This conversation is moderated." required></textarea>
+                    <textarea name="content" rows="4" type="text" style="width: 100%; padding: 4px; font-size: 14px; font-family: CrimsonPro;" placeholder="This conversation is moderated." required></textarea>
                     <p style="color: #929292; font-size: small; padding-top: 1px;">0/420 maximum characters.</p>
                 </div>
                 <div style="display: flex; justify-content: right; padding-top: 4px;">
@@ -179,7 +179,7 @@
         </form>
     </div>
 </div>
-{% endif %} -->
+{% endif %}
 
 {% endblock page %}
 

@@ -1,20 +1,20 @@
 from django import forms
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import redirect, render
 from django.http import request
 from django.urls import reverse
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
-from core.models import Feedback
-# from core.models import Feedback, ArticleComment
+from core.models import Feedback, ArticleComment
 from ..models import *
 from ..utils import get_client_ip
 
-# class commentForm(forms.ModelForm):
-#     comment = forms.CharField(min_length=1, max_length=420, widget=forms.Textarea(attrs={'rows':4}) )
+class commentForm(forms.ModelForm):
+    content = forms.CharField(min_length=1, max_length=420, widget=forms.Textarea(attrs={'rows':4}) )
     
-#     class Meta:
-#         model = ArticleComment
-#         fields = ['comment',]
+    class Meta:
+        model = ArticleComment
+        fields = ['content',]
 
 class feedbackForm(forms.ModelForm):
     content = forms.CharField (min_length=1, max_length=500)
@@ -41,15 +41,14 @@ def ArticleView(request, pk, slug):
     context = {}
     obj = Article.objects.get(pk=pk)
     context['article'] = obj
-    context['form'] = feedbackForm()
+    context['form'] = feedbackForm() and commentForm()
     
-    # if 'submitcomment' in request.POST:
-    #     form = commentForm(request.POST)
-    #     if form.is_valid():
-    #         post = obj
-    #         form.instance.name = request.user
-    #         form.instance.post = post
-    #         form.save()
+    if 'submitcomment' in request.POST:
+        form = commentForm(request.POST)
+        if form.is_valid():
+            form.instance.name = request.user
+            form.instance.post = obj
+            form.save()
     
     if 'submitfeedback' in request.POST:
         form = feedbackForm(request.POST)
