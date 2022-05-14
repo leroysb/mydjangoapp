@@ -7,34 +7,43 @@ body {
     position: relative;
 }
 .podpage {
-    margin: 8vh 0 0 0;
+    margin: 0 0 0 0;
 }
-.podpage h2, h3, h4, p {
+.podpage p, h2, h3 {
     color: #fff;
 }
 .podintro {
+    background: #9AB8BA url('/static/core/media/podBg.jpg');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 40px;
-    padding: 0 10% 200px 10%;
+    height: 620px;
+    padding: 8vh 10% 200px 10%;
+}
+.podintro h2, h4, p {
+    color: #000000;
 }
 .podside {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    max-width: 480px;
 }
-.pod-deet {
-    font-size: 20px;
-    line-height: 1.7rem;
-    color: #fff;
+.podlogo {
+    width: 480px;
 }
 .podurls {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: left;
+    gap: 14px;
     width: 100%;
 }
 .episodes {
@@ -42,25 +51,35 @@ body {
     display: flex;
     flex-direction: column;
     gap: 33px;
-    margin: 0 10% 70px 10%;
+    padding: 0 10% 70px 10%;
+}
+.pod-deet {
+    font-size: 20px;
+    line-height: 1.7rem;
+    overflow-wrap: break-word;
 }
 .episode {
     border-radius:12px;
-    width: 80%;
+    width: 100%;
 }
 
-/** For tablet devices **/
+/** For mobile devices **/
+
 @media only screen and (max-width: 541px) {
     .podpage {
         margin: 0 0 0 0;
     }
-    .podintro {   
-        grid-template-columns: 1fr;
+    .podintro {
         padding: 0 0 20vh 0;
+        background-position: center;
     }
     .podside {
-        grid-gap: 30px;
-        padding: 0 1em;
+        gap: 30px;
+        top: 40%;
+        left: 72%;
+    }
+    .podlogo {
+        width: 370px;
     }
     .pod-deet {
         font-size: 20px;
@@ -72,13 +91,19 @@ body {
         justify-content: left;
         grid-gap: 10px;
     }
+    .podurls img {
+        width: 130px;
+    }
     .episodes {
-        margin: 0 2% 70px 2%;
+        padding: 0 2% 70px 2%;
     }
     .episode {
         width: 100%;
     }
 }
+
+/** For tablet devices **/
+
 @media (min-width: 768px) and (max-width: 1023px) {
     .podintro {
         padding: 0% 10% 20vh 10%;
@@ -99,10 +124,10 @@ body {
     display: block;
     width: calc(144% + 1.3px);
     height: 140px;
-    transform: rotateY(180deg);
+    transform: rotateY(0deg);
 }
 .curve .shape-fill {
-    fill: #e7e7e7;
+    fill: #000000;
 }
 
 /** For tablet devices **/
