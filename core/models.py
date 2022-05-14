@@ -1,4 +1,6 @@
 from django.contrib.auth import get_user_model
+# from django.contrib.contenttypes.fields import GenericForeignKey
+# from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models.deletion import *
 from ckeditor.fields import RichTextField
@@ -48,7 +50,7 @@ class ArticleStat(models.Model):
     article = models.ForeignKey('Article', on_delete=models.CASCADE)
     # session = models.CharField(max_length=40, null=True)
     device = models.CharField(max_length=400 ,default='null')
-    # created = models.DateTimeField(default=timezone.now())
+    # visited = models.DateTimeField(default=timezone.now(), auto_now_add=True)
 
     def __str__(self):
         return '{0} in {1} article'.format(self.IPAddres,self.article.title)
@@ -84,16 +86,38 @@ class Article(models.Model):
         ordering = ["-publishdate"]
         db_table = 'article'
 
-class ArticleComment(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    post = models.ForeignKey(Article, related_name="comments", on_delete=models.CASCADE)
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
-    postdate = models.DateTimeField(auto_now_add=True)
-    comment = models.TextField(max_length=420, blank=False)
+# class CommentManager(models.Manager):
+#     def filter_by_instance(self, instance):
+#         content_type = ContentType.objects.get_for_model(instance.__class__)
+#         obj_id = instance.id
+#         qs = super(CommentManager, self).filter(content_type=content_type, id=obj_id)
+#         return qs
 
-    class Meta:
-        ordering = ["-postdate"]
-        db_table = 'article_comment'
+# class ArticleComment(models.Model):
+#     name = models.ForeignKey(User, on_delete=models.CASCADE)
+#     id = models.BigAutoField(primary_key=True)
+#     post = models.ForeignKey(Article, related_name="comments", on_delete=models.CASCADE)
+#     # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+#     # object_id = models.PositiveIntegerField()
+#     # content_object = GenericForeignKey('content_type', id)
+#     comment = models.TextField(max_length=420, blank=False)
+#     postdate = models.DateTimeField(auto_now_add=True)
+#     parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.PROTECT)
+
+#     objects = CommentManager()
+
+#     class Meta:
+#         ordering = ["-postdate"]
+#         db_table = 'article_comment'
+
+#     def children(self):
+#         return ArticleComment.objects.filter(parent=self)
+
+#     @property
+#     def is_parent(self):
+#         if self.parent is not None:
+#             return False
+#         return True
 
 class Feedback(models.Model):
     id = models.BigAutoField(primary_key=True)
