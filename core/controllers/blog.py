@@ -27,6 +27,21 @@ class BlogView(ListView):
     queryset = Article.objects.order_by('-publishdate')
     template_name = 'core/blog.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'form': feedbackForm(),
+        })
+        return context
+
+    def post(self, request, *args, **kwargs):
+        if 'submitfeedback' in request.POST:
+            form = feedbackForm(request.POST)
+            if form.is_valid(): 
+                form.instance.source = 'blog home'
+                form.save()
+                return redirect(reverse('core:blog'))
+
 class ArticleView(FormMixin, DetailView):
     model = Article
     context_object_name = 'article'

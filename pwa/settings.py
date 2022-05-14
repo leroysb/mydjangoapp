@@ -6,7 +6,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = "abc.def"
 SECRET_KEY = os.environ.get('pwakey')
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),
@@ -163,6 +163,6 @@ EMAIL_HOST_USER = os.environ.get('PWAEmailUser')
 EMAIL_HOST_PASSWORD = os.environ.get('PWAEmailPwd')
 
 # Heroku Configuration
-import django_heroku
-import dj_database_url
-django_heroku.settings(locals())
+# import django_heroku
+# import dj_database_url
+# django_heroku.settings(locals())
