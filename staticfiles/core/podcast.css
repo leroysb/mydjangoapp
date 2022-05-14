@@ -1,12 +1,16 @@
 body {
     /* background: #045256; */
-    background: #9AB8BA;
+    /* background: #9AB8BA; */
+    background-color: #000000;
     overflow: hidden;
     overflow-y: scroll;
     position: relative;
 }
 .podpage {
     margin: 8vh 0 0 0;
+}
+.podpage h2, p {
+    color: #fff;
 }
 .podintro {
     position: relative;
@@ -24,6 +28,7 @@ body {
 .pod-deet {
     font-size: 20px;
     line-height: 1.7rem;
+    color: #fff;
 }
 .podurls {
     display: flex;
@@ -32,9 +37,20 @@ body {
     justify-content: space-between;
     width: 100%;
 }
+.episodes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    margin: 0 10% 70px 10%;
+}
+.episode {
+    border-radius:12px;
+    width: 80%;
+}
 
 /** For tablet devices **/
-@media screen and (max-width: 541px) {
+@media only screen and (max-width: 541px) {
     .podpage {
         margin: 0 0 0 0;
     }
@@ -55,6 +71,12 @@ body {
         align-items: flex-start;
         justify-content: left;
         grid-gap: 10px;
+    }
+    .episodes {
+        margin: 0 2% 70px 2%;
+    }
+    .episode {
+        width: 100%;
     }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -118,7 +140,7 @@ footer {
     grid-gap: 10px;
 }
 footer a, a:hover {
-    color: #000000;
+    color: #fff;
     font-size: 11px;
     text-decoration: none;
 }
