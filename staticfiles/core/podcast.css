@@ -31,7 +31,7 @@ body {
     gap: 20px;
     position: absolute;
     top: 30%;
-    left: 70%;
+    right: 30%;
     transform: translate(-50%, -50%);
     max-width: 480px;
 }
@@ -76,7 +76,7 @@ body {
     .podside {
         gap: 30px;
         top: 40%;
-        left: 72%;
+        right: 28%;
     }
     .podlogo {
         width: 370px;
