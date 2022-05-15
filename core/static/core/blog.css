@@ -204,24 +204,27 @@ footer a:hover {
     }
     .articlesec,
     .articlesec:hover {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         grid-gap: 10px;
         cursor: pointer;
     }
     .blogmeta {
         margin: 0;
         display: flex;
-        /* gap: 8px; */
         flex-direction: column;
         align-content: space-between;
+        text-align: left;
     }
     .blogcategory {
+        text-align: left;
         font-size: 10px;
     }
     .blogtitle {
+        text-align: left;
         font-size: 14px;
     }
     .blogdate {
+        text-align: left;
         font-size: 10px;
     }
     
