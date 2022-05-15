@@ -178,7 +178,7 @@ nav {
     font-family: Indie;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 534px) {
     .navmenu {
         display: none;
     }
