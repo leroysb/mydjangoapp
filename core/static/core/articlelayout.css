@@ -45,14 +45,22 @@
 .meta a:hover {
     text-decoration: none;
 }
-#category {
+.header {
+    color: #000;
+    font-family: CrimsonPro;
+    font-size:48px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1rem;
+}
+.category {
     font-family: CrimsonPro;
     font-size: 1em;
     color: #000;
     background-color: transparent;
     text-transform: uppercase;
 }
-#title {
+.title {
     font-family: Josefin Sans;
     font-size: 2em;
     font-weight: bolder;
@@ -60,7 +68,7 @@
     text-transform: uppercase;
     margin: 1em 0em;
 }
-#pubDate {
+.pubDate {
     font-family: Josefin Sans;
     font-size: 0.8em;
     color: #000;
@@ -251,7 +259,8 @@
     background-color: #2b2b2b9f;
 }
 .replyBox {
-    padding: 30px 0 0 20px;
+    margin: 30px 0;
+    padding: 0 0 0 20px;
     border-left: 2px #adadad solid;
 }
 
@@ -261,12 +270,23 @@
     }
     .meta {
         padding: 27px 2%;
+        grid-gap: 8px;
     }
-    #title {
+    .header {
+        font-size: 28px;
+    }
+    .category {
+        font-size: 12px;
+    }
+    .title {
         margin: 4vh 0;
+        font-size: 17px;
+    }
+    .pubDate {
+        font-size: 10px;
     }
     .articlecontent {
-        margin: 10px 2%;
+        margin: 32px 2% 10px 2%;
     }
     .content p:first-child::first-letter {
         padding: 0 .1em;

@@ -84,11 +84,11 @@
             {% endif %}
             <div class="meta">
                 <a href="{% url 'core:blog' %}" style="text-decoration: none;">
-                    <p style="color: #000; font-family: CrimsonPro; font-size:48px; font-weight: bold; text-align: center; line-height: 1rem;">A-Z LOGS</p>
+                    <p class="header">A-Z LOGS</p>
                 </a>
-                <div id="category">{{ article.category }}</div>
-                <div id="title">{{ article.title }}</div>
-                <div id="pubDate">{{ article.publishdate }}</div>
+                <div class="category">{{ article.category }}</div>
+                <div class="title">{{ article.title }}</div>
+                <div class="pubDate">{{ article.publishdate }}</div>
                 <hr style="border-top: 1px #000 solid; padding: 0% 20%; margin: 0;"/>
                 <div style="display: flex; flex-direction: row; justify-content: space-between; width: 40%;">
 
@@ -102,7 +102,7 @@
                     </div>
                     <a href="#commentnow" class="stat">
                         <img src="{% static 'core/media/comment_black.png' %}" alt="post comment" width="20" height="20" >
-                        <span class="stats">{{ article.comments.count }}</span>
+                        <span class="stats">{{ commentsCount }}</span>
                     </a>
                 </div>
             </div>
@@ -135,14 +135,14 @@
         <a href="{% url 'account:auth' %}"><button>Please log in or sign up to comment</button></a>
         {% endif %}
 
-        {% if article.comments.count == 1 %}
+        {% if commentsCount == 1 %}
         <p class="responses">1 response</h5>
         {% else %}
-        <p class="responses">{{ article.comments.count }} responses</h5>
+        <p class="responses">{{ commentsCount }} responses</h5>
         {% endif %}
     </div>
 
-    {% if article.comments.count >= 1 %}
+    {% if commentsCount >= 1 %}
     <div class="commentsec">
 
         {% for comment in article.comments.all %}
@@ -175,7 +175,7 @@
                         <p>{{ reply.content | safe }}</p>
                     </div>
                     <div style="display: flex; flex-direction: row; gap: 17px;">
-                        {% if request.user == comment.user %}
+                        {% if request.user == reply.user %}
                         <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
                         {% endif %}
                         <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
@@ -192,7 +192,7 @@
                     <p style="text-align: left; color: #000; font-size: x-large; font-weight: bold;">Add reply!</p>
                     <span onclick="document.getElementById('replyComment').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
                 </div>
-                <form class="modal-container" method="POST">
+                <form class="modal-container" method="POST" action="">
                     {% csrf_token %}
                     <div class="modal-section">
                         <div>
@@ -221,7 +221,7 @@
             <p style="text-align: left; color: #000; font-size: x-large; font-weight: bold;">Add a comment!</p>
             <span onclick="document.getElementById('newComment').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
         </div>
-        <form class="modal-container" method="POST">
+        <form class="modal-container" method="POST" action="">
             {% csrf_token %}
             <div class="modal-section">
                 <div>

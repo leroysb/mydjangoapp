@@ -56,7 +56,7 @@
     flex-direction: column;
     grid-gap: 10px;
     filter: grayscale();
-    transition: 1s;
+    transition: 400ms;
 }
 .articlediv:hover {
     filter: none;
@@ -85,14 +85,14 @@
 }
 .image .blogimage {
     transform: scale(1);
-    transition: 1s ease-in-out;
+    transition: 400ms ease-in-out;
 }
 .articlediv .blogimage {
     transform: scale(1);
-    transition: 1s ease-in-out;
+    transition: 400ms ease-in-out;
 }
 .articlediv:hover .blogimage {
-    transform: scale(1.4);
+    transform: scale(1.2);
 }
 .blogmeta {
     margin: 2% 0% 0% 0%;
