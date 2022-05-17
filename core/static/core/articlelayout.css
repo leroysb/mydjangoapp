@@ -239,16 +239,20 @@
     /* border-top: 1px silver solid; */
     padding: 0px 30% 7rem 30%;
 }
+.commentsec p {
+    font-family: CrimsonPro;
+    font-size: 14px;
+    color: #FFFFFF;
+}
 .commentBox {
     padding: 14px 7px;
     margin-bottom: 18px;
     border-radius: 4px;
     background-color: #2b2b2b9f;
 }
-.commentsec p {
-    font-family: CrimsonPro;
-    font-size: 14px;
-    color: #FFFFFF;
+.replyBox {
+    padding: 30px 0 0 20px;
+    border-left: 2px #adadad solid;
 }
 
 @media screen and (max-width: 820px) {

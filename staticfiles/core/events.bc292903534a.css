@@ -1,0 +1,71 @@
+@font-face {
+    font-family: CrimsonPro;
+    src: url("/static/core/fonts/CrimsonPro-VariableFont.3baa74c26c16.ttf") format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Josefin Sans;
+    src: url("/static/core/fonts/JosefinSans-VariableFont_wght.324a513cb9c6.ttf") format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Permanent Marker;
+    src: url("/static/core/fonts/PermanentMarker-Regular.c863f8028c25.ttf") format('truetype');
+    font-weight: 700;
+}
+
+.pagebody {
+    background: #000;
+    height: 100vh;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+section {
+    min-height: calc(100vh - 34px);
+    display: grid;
+    place-items: center;
+}
+.title {
+    width: 100%;
+    font-family: CrimsonPro;
+    font-size:40px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid silver;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 2%;
+}
+#footersocial {
+    display: flex;
+    grid-gap: 10px;
+}
+footer a,
+footer a:hover {
+    color: #fff;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+/** For mobile devices **/
+@media screen and (max-width: 720px) and (min-width: 320px) {
+    .eventpage {
+        padding: 30vh 0;
+    }
+    footer {
+        padding: 3% 1%;
+        flex-direction: column;
+        grid-gap: 10px;
+    }
+}

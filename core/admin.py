@@ -26,10 +26,10 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ("id", "title", "category", "publishdate")
 admin.site.register(Article, ArticleAdmin)
 
-class ArticleCommentAdmin(admin.ModelAdmin):
+class CommentAdmin(admin.ModelAdmin):
     list_display = ("id","content_type","content")
-    readonly_fields = ('user', 'content', 'timestamp')
-admin.site.register(ArticleComment, ArticleCommentAdmin)
+    # readonly_fields = ('user', 'content', 'timestamp')
+admin.site.register(Comment, CommentAdmin)
 
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = ("id","postdate","content","ratings")
