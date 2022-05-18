@@ -7,14 +7,10 @@ from django.views.generic.edit import FormMixin
 from core.models import Feedback, Comment, Article, ArticleStat
 from ..utils import get_client_ip
 
-class commentForm(forms.ModelForm):
+class commentForm(forms.Form):
     content_type = forms.CharField(widget=forms.HiddenInput)
     object_id = forms.CharField(widget=forms.HiddenInput)
     content = forms.CharField(widget=forms.Textarea(attrs={'rows':4}))
-    
-    class Meta:
-        model = Comment
-        fields = ['content', 'user',]
 
 class feedbackForm(forms.ModelForm):
     content = forms.CharField (min_length=1, max_length=500)
@@ -41,10 +37,8 @@ def ArticleView(request, pk, slug):
     context = {}
     obj = get_object_or_404(Article, pk=pk)
     context['article'] = obj
-    context['commentsCount'] = Comment.objects.filter(
-        content_type=obj.get_content_type,
-        object_id=obj.id
-    ).count()
+    context['form'] = commentForm()
+    context['commentsCount'] = Comment.objects.filter(content_type=obj.get_content_type, object_id=obj.id).count()
 
     ip = get_client_ip(request)
     post_details=Article.objects.get(pk=obj.pk)
@@ -54,52 +48,45 @@ def ArticleView(request, pk, slug):
         device = request.META.get('HTTP_USER_AGENT')
     )
 
-    # initial_data = {
-    #     "content_type": obj.get_content_type,
-    #     "object_id": obj.id,
-    # }
+    initial_data = {
+        "content_type": obj.get_content_type,
+        "object_id": obj.id,
+    }
     
     if 'submitcomment' in request.POST:
-        form = commentForm(request.POST)
+        form = commentForm(request.POST, initial=initial_data)
         if form.is_valid():
-            # c_type = form.cleaned_data.get('content_type')
-            content_type = ContentType.objects.get(model=obj.get_content_type)
-            # object_id = form.cleaned_data.get('object_id')
-            object_id = obj.id
-            content = request.POST.get('content')
+            content = form.cleaned_data['content']
+            object_id = form.cleaned_data['object_id']
+            c_type = form.cleaned_data['content_type']
+            content_type = ContentType.objects.get(model=c_type)
             parent = None
 
             try:
-                parent_id = int(request.POST.get('parent_id'))
+                parent_id = request.POST.get('parent_id')
             except:
                 parent_id = None
 
             if parent_id:
-                parent_qs = Comment.objects.filter(id=parent_id)
-                if parent_qs.exists() and parent_qs.count() == 1:
+                parent_qs = Comment.objects.filter(pk=parent_id)
+                if parent_qs.exists():
                     parent = parent_qs.first()
 
-            # Comment.objects.get_or_create(
-            #     user = request.user,
-            #     content_type = content_type,
-            #     object_id = object_id,
-            #     content = content,
-            #     parent = parent,
-            # )
-
-            form.instance.user = request.user
-            form.instance.content_type = content_type
-            form.instance.object_id = object_id
-            form.instance.content = content
-            form.instance.parent = parent
-            form.save()
+            new_comment = Comment(
+                user = request.user,
+                content_type = content_type,
+                object_id = object_id,
+                parent = parent,
+                content = content,
+            )
+            new_comment.save(force_insert=True)
             return redirect(reverse('core:article', kwargs={'pk':obj.id}))
     
-    if 'submitfeedback' in request.POST:
-        form = feedbackForm(request.POST)
-        if form.is_valid():
-            form.instance.source = obj
-            form.save()
+    # if 'submitfeedback' in request.POST:
+    #     form = feedbackForm(request.POST)
+    #     if form.is_valid():
+    #         form.instance.source = obj
+    #         form.save()
 
     return render(request, 'core/articlelayout.html', context)
     

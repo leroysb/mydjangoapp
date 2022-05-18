@@ -113,7 +113,7 @@ class Comment(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.PROTECT) 
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.PROTECT)
     content = models.TextField(max_length=420, blank=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
@@ -123,14 +123,14 @@ class Comment(models.Model):
         ordering = ['-timestamp']
         db_table = 'comments'
 
-    def replies(self):
-        return Comment.objects.filter(parent=self)
-
     @property
     def is_parent(self):
         if self.parent is not None:
             return False
         return True
+    
+    def replies(self):
+        return Comment.objects.filter(parent=self)
 
 class Feedback(models.Model):
     id = models.BigAutoField(primary_key=True)

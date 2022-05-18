@@ -56,7 +56,7 @@
     flex-direction: column;
     grid-gap: 10px;
     filter: grayscale();
-    transition: 400ms;
+    transition: 700ms;
 }
 .articlediv:hover {
     filter: none;
@@ -85,11 +85,11 @@
 }
 .image .blogimage {
     transform: scale(1);
-    transition: 400ms ease-in-out;
+    transition: 700ms ease-in-out;
 }
 .articlediv .blogimage {
     transform: scale(1);
-    transition: 400ms ease-in-out;
+    transition: 700ms ease-in-out;
 }
 .articlediv:hover .blogimage {
     transform: scale(1.2);
@@ -199,8 +199,7 @@ footer a:hover {
     .articlediv {
         border-radius: 12px;
         grid-gap: 10px;
-        filter: grayscale();
-        transition: 1s;
+        filter: none;
     }
     .articlesec,
     .articlesec:hover {
