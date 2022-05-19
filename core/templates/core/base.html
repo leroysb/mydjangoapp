@@ -10,7 +10,7 @@
         {% endblock head %}
         <link rel="stylesheet" href="{% static 'core/base.css' %}"/>
         <link rel="stylesheet" href="{% static 'core/feedbackModal.css' %}">
-        <script src="{% static 'core/main.js' %}"></script>
+        <script type="text/javascript" src="{% static 'core/main.js' %}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script type="application/ld+json">
             {
@@ -96,8 +96,20 @@
             </div>
         </div>
         
-        {% block footer %}
-        {% endblock footer %}
+        <footer>
+            <!-- <div id="footersocial">
+                <a href="https://twitter.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconTT.png' %}" alt="twitter" width="auto" height="22" ></a>
+                <a href="https://instagram.com/leroybuliro/" target="_blank"><img src="{% static 'core/media/iconIG.png' %}" alt="instagram" width="auto" height="22" ></a>
+            </div> -->
+            <!-- <span>
+                <a onclick="document.getElementById('id01').style.display='block'" style="color: #168dd9;cursor: pointer;">Feedback</a>
+            </span> -->
+            <a style="color: #fff;">© 2022 Leroy Buliro. All rights reserved.</a>
+            <a style="color: #fff;">Designed and maintained by LERB Enterprise</a>
+            <!-- <span>
+                <a href="{% url 'core:legal' %}" style="color: #fff;">Legal</a>
+            </span> -->
+        </footer>
         
         <div class="mobile-menu">
             <a href="{% url 'core:index' %}">

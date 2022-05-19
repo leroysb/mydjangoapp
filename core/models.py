@@ -1,4 +1,3 @@
-from audioop import reverse
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -75,13 +74,18 @@ class Article(models.Model):
     likes = models.PositiveIntegerField(default=0)
 
     @property
-    def viewsCount(self):
+    def viewCount(self):
         return ArticleStat.objects.filter(article=self).count()
 
     @property
     def comments(self):
-        instance = self
-        qs = Comment.objects.filter_by_instance(instance)
+        qs = Comment.objects.filter_by_instance(self)
+        return qs
+    
+    @property
+    def commentCount(self):
+        content_type = ContentType.objects.get_for_model(self.__class__)
+        qs = Comment.objects.filter(content_type=content_type, object_id=self.id).count()
         return qs
 
     @property
@@ -110,27 +114,28 @@ class CommentManager(models.Manager):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # post = models.ForeignKey(Article, related_name='replies', on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.PROTECT)
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     content = models.TextField(max_length=420, blank=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     objects = CommentManager()
+    
+    def replies(self):
+        return Comment.objects.filter(parent=self)
+
+    @property
+    def is_parent(self):
+        if self.parent is None:
+            return True
+        return False
 
     class Meta:
         ordering = ['-timestamp']
         db_table = 'comments'
-
-    @property
-    def is_parent(self):
-        if self.parent is not None:
-            return False
-        return True
-    
-    def replies(self):
-        return Comment.objects.filter(parent=self)
 
 class Feedback(models.Model):
     id = models.BigAutoField(primary_key=True)

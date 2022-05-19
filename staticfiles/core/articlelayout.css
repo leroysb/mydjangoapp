@@ -270,7 +270,15 @@ textarea {
     font-family: CrimsonPro;
 }
 
-@media screen and (max-width: 820px) {
+/* Tablet view */
+
+/* @media screen and (min-width: 769px) and (max-width: 810px) {
+    
+} */
+
+/* Mobile view */
+
+@media screen and (max-width: 810px) {
     .articlemeta {
         grid-template-columns:  1fr;
     }

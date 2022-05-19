@@ -169,7 +169,7 @@ footer a:hover {
 }
 
 /** For tablet devices **/
-@media screen and (max-width: 810px) and (min-width: 721px) {
+@media screen and (min-width: 721px) and (max-width: 926px) {
     #blogs {
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 18px;
