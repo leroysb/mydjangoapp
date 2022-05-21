@@ -158,7 +158,7 @@
                     <br>
                     <p>{{ comment.content | safe }}</p>
                     <br>
-                    <div style="display: flex; flex-direction: row; gap: 17px;">
+                    <div style="display: flex; flex-direction: row; gap: 17px; justify-content: flex-end;">
                         <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
                         {% if request.user == comment.user %}
                         <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
