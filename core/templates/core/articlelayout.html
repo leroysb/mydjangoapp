@@ -35,6 +35,11 @@
             const selection = choices[randomNumber]
             background.style.background = selection
         });
+        
+        $('.readyreply').click((event)=> {
+            event.preventDefault();
+            $(this).parent().next('.replyform').fadeToggle();
+        })
     })
 </script>
 {% endblock head %}
@@ -117,11 +122,9 @@
             <div class="content">{{ article.content | safe }}</div>
         </div>
     </article>
-    
     <div>
         <p class="entryend" id="sharenow">END OF ENTRY</p>
     </div>
-
     <div class="aboutsec" id="commentnow">
         <img src="{% static 'core/media/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;">
         <div>
@@ -146,57 +149,42 @@
     <div class="commentsec">
         {% for comment in article.comments %}
         <div class="commentBox">
-            <section style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
-                <div>
-                    <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.user.alias }}</p>
-                    <p style="color: #c2c2c2b9;">{{ comment.timestamp | timesince }} ago</p>
+            <section>
+                <div class="maincomment">
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.user.alias }}</p>
+                        <p style="color: #c2c2c2b9;">{{ comment.timestamp | timesince }} ago</p>
+                    </div>
                     <br>
                     <p>{{ comment.content | safe }}</p>
-                </div>
-                <div style="display: flex; flex-direction: row; gap: 17px;">
-                    <img onclick="document.getElementById('replyComment').style.display='block'" src="{% static 'core/media/reply.svg' %}" alt="reply comment" width="20" height="20" style="cursor: pointer;">
-                    {% if request.user == comment.user %}
-                    <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                    <br>
+                    <div style="display: flex; flex-direction: row; gap: 17px;">
+                        <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
+                        {% if request.user == comment.user %}
+                        <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                        {% endif %}
+                        <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="replyform" style="display: none;">
+                        <form class="modal-container" method="POST" action=".">
+                            {% csrf_token %}
+                            <div class="modal-section">
+                                {{ form.content }}
+                                <input type="hidden" name="parent_id" value="{{ comment }}">
+                                <div style="display: flex; justify-content: right;">
+                                    <button class="modal-btn-alt" type="submit" name="submitcomment" style="padding: 4px 7px;">Reply</button>
+                                    <!-- <button class="modal-btn" class="closereply" type="button" style="padding: 2px 4px;">Cancel</button> -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     {% endif %}
-                    <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
                 </div>
             </section>
-            {% if user.is_authenticated %}
-            <div id="replyComment" class="modal">
-                <div class="modal-content" style="max-width:600px">
-                    <div style="padding: 0.01em;">
-                        <p style="text-align: left; color: #000; font-size: x-large; font-weight: bold;">Reply!</p>
-                        <span onclick="document.getElementById('replyComment').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
-                    </div>
-                    <form class="modal-container" method="POST" action=".">
-                        {% csrf_token %}
-                        <div class="modal-section">
-                            <div>
-                                {{ form.content }}
-                                <input type="hidden" name="parent_id" value="{{ comment.pk }}">
-                                <p style="color: #929292; font-size: small; padding-top: 1px;">1/420 maximum characters.</p>
-                            </div>
-                            <div style="display: flex; justify-content: right; padding-top: 4px;">
-                                <button class="modal-btn-alt" type="submit" name="submitcomment">Send</button>
-                                <button class="modal-btn" onclick="document.getElementById('replyComment').style.display='none'" type="button">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            {% else %}
-            <div id="replyComment" class="modal">
-                <div class="modal-content" style="max-width:600px">
-                    <div style="padding: 0.01em;">
-                        <p style="text-align: left; color: #000; font-size: large; font-weight: bold;">You must be logged in to reply!</p>
-                        <span onclick="document.getElementById('replyComment').style.display='none'" class="modal-close-btn" title="Close">&times;</span>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {% for reply in comment.replies %}
-            <blockquote class="replyBox">
-                <section style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
+            {% for reply in comment.replies.all %}
+            <section class="replyBox">
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
                     <div>
                         <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ reply.user.alias }}</p>
                         <p style="color: #c2c2c2b9;">{{ reply.timestamp | timesince }} ago</p>
@@ -209,14 +197,27 @@
                         {% endif %}
                         <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
                     </div>
-                </section>                
-            </blockquote>
+                </div>                
+            </section>
             {% endfor %}
         </div>
         {% endfor %}
     </div> 
     {% endif %}
+
 </div>
+
+{% if not user.is_authenticated %}
+<div class="replyform" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width:600px">
+        <div style="padding: 0.01em;">
+            <p style="text-align: left; color: #000; font-size: large; font-weight: bold;">You must be logged in to reply!</p>
+            <span id="closereply" class="modal-close-btn" title="Close">&times;</span>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 {% if user.is_authenticated %}
 <div id="newComment" class="modal">
     <div class="modal-content" style="max-width:600px">
@@ -243,4 +244,5 @@
     </div>
 </div>
 {% endif %}
+
 {% endblock page %}

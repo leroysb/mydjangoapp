@@ -125,7 +125,7 @@ class Comment(models.Model):
     objects = CommentManager()
     
     def replies(self):
-        return Comment.objects.filter(parent=self)
+        return Comment.objects.filter(parent=self).order_by('timestamp')
 
     @property
     def is_parent(self):
