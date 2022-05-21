@@ -256,12 +256,12 @@
     padding: 14px 18px;
     margin-bottom: 18px;
     border-radius: 4px;
-    background-color: #2b2b2b9f;
+    background-color: #68686834;
 }
 .replyBox {
     margin: 30px 0 0 0;
     padding: 0 0 0 20px;
-    border-left: 2px #adadad solid;
+    border-left: 1px #adadad solid;
 }
 textarea {
     width: 100%;

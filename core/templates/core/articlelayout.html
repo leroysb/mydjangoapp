@@ -35,10 +35,16 @@
             const selection = choices[randomNumber]
             background.style.background = selection
         });
+
+        $('#commentnow').click(()=> {
+            $(window).scrollTop($('.aboutsec').offset().top)
+        })        
         
-        $('.readyreply').click((event)=> {
-            event.preventDefault();
-            $(this).parent().next('.replyform').fadeToggle();
+        document.querySelectorAll('.readyreply').forEach((readyreply,i)=> {
+            const replyform = document.querySelectorAll('.replyform')
+            readyreply.addEventListener('click', ()=> {
+                replyform[i].style.display = 'block'
+            })
         })
     })
 </script>
@@ -105,10 +111,10 @@
                         <img src="{% static 'core/media/view_black.png' %}" alt="reads" width="20" height="20" >
                         <span class="stats">{{ article.viewCount }}</span>
                     </div>
-                    <a href="#commentnow" class="stat">
+                    <div id="commentnow" class="stat">
                         <img src="{% static 'core/media/comment_black.png' %}" alt="post comment" width="20" height="20" >
                         <span class="stats">{{ article.commentCount }}</span>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -125,7 +131,7 @@
     <div>
         <p class="entryend" id="sharenow">END OF ENTRY</p>
     </div>
-    <div class="aboutsec" id="commentnow">
+    <div class="aboutsec">
         <img src="{% static 'core/media/about.jpg' %}" alt="leroy" style="border-radius: 50%; border: 1px #c2c2c2b9 solid; max-width: 7em; padding: 0.3em;">
         <div>
             <p class="header">Join the Discussion</h2>
@@ -158,30 +164,32 @@
                     <br>
                     <p>{{ comment.content | safe }}</p>
                     <br>
-                    <div style="display: flex; flex-direction: row; gap: 17px; justify-content: flex-end;">
-                        <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
-                        {% if request.user == comment.user %}
-                        <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
-                        {% endif %}
-                        <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
-                    </div>
                     {% if user.is_authenticated %}
-                    <div class="replyform" style="display: none;">
-                        <form class="modal-container" method="POST" action=".">
-                            {% csrf_token %}
-                            <div class="modal-section">
-                                {{ form.content }}
-                                <input type="hidden" name="parent_id" value="{{ comment }}">
-                                <div style="display: flex; justify-content: right;">
-                                    <button class="modal-btn-alt" type="submit" name="submitcomment" style="padding: 4px 7px;">Reply</button>
-                                    <!-- <button class="modal-btn" class="closereply" type="button" style="padding: 2px 4px;">Cancel</button> -->
-                                </div>
-                            </div>
-                        </form>
+                    <div style="display: flex; flex-direction: row; gap: 17px;">
+                        <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
+                        <!-- {% if request.user == comment.user %}
+                            <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                        {% endif %}
+                        <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
                     </div>
                     {% endif %}
                 </div>
             </section>
+            {% if user.is_authenticated %}
+            <div class="replyform" style="display: none;">
+                <form class="modal-container" method="POST" action=".">
+                    {% csrf_token %}
+                    <div class="modal-section">
+                        {{ form.content }}
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <div style="display: flex; justify-content: right;">
+                            <button class="modal-btn-alt" type="submit" name="submitcomment" style="padding: 4px 7px;">Reply</button>
+                            <!-- <button class="modal-btn" class="closereply" type="button" style="padding: 2px 4px;">Cancel</button> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
             {% for reply in comment.replies.all %}
             <section class="replyBox">
                 <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;">
@@ -191,12 +199,12 @@
                         <br>
                         <p>{{ reply.content | safe }}</p>
                     </div>
-                    <div style="display: flex; flex-direction: row; gap: 17px;">
+                    <!-- <div style="display: flex; flex-direction: row; gap: 17px;">
                         {% if request.user == reply.user %}
                         <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
                         {% endif %}
-                        <!-- <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
-                    </div>
+                        <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;">
+                    </div> -->
                 </div>                
             </section>
             {% endfor %}
@@ -204,19 +212,7 @@
         {% endfor %}
     </div> 
     {% endif %}
-
 </div>
-
-{% if not user.is_authenticated %}
-<div class="replyform" class="modal" style="display: none;">
-    <div class="modal-content" style="max-width:600px">
-        <div style="padding: 0.01em;">
-            <p style="text-align: left; color: #000; font-size: large; font-weight: bold;">You must be logged in to reply!</p>
-            <span id="closereply" class="modal-close-btn" title="Close">&times;</span>
-        </div>
-    </div>
-</div>
-{% endif %}
 
 {% if user.is_authenticated %}
 <div id="newComment" class="modal">
