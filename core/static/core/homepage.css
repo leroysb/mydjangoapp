@@ -130,12 +130,6 @@ a, a:hover {
     top: 27%;
     width: 100%;
     display: flex;
-    place-items: center;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-.image > img {
-    max-width: 7em;
-    opacity: 0.7;
 }

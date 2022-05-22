@@ -51,7 +51,7 @@ nav {
 }
 .logoimg {
     width: auto;
-    height: 22px;
+    height: 17px;
 }
 .navmenu {
     position: absolute;
@@ -178,7 +178,7 @@ nav {
     font-family: Indie;
 }
 
-@media screen and (max-width: 534px) {
+@media screen and (max-width: 680px) {
     .navmenu {
         display: none;
     }
@@ -190,11 +190,6 @@ nav {
     }
     footer {
         margin-bottom: 48px;
-    }
-}
-@media screen and (max-width: 769px) {
-   .logoimg {
-        height: 18px;
     }
 }
 @media screen and (max-width: 342px) {

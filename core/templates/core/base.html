@@ -38,18 +38,15 @@
             }
         </script>
     </head>
-    
     <body class="pagebody">
         <nav>
             <a id="navlogo" href="{% url 'core:index' %}">
-                <img class="logoimg" src="{% static 'core/media/lbwhite.png' %}" alt="logo">
+                <img class="logoimg" src="{% static 'core/media/lbwhite.svg' %}" alt="logo" style="width: auto; height: 14px;">
             </a>
-            
             <div class="navmenu">    
                 {% block navmenu %}
                 {% endblock navmenu %}
             </div>
-            
             <div class="access">
                 {% if user.is_authenticated %}
                 <a class="accessbtn" href="{% url 'account:logout' %}">LOG OUT</a>

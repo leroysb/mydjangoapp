@@ -21,7 +21,6 @@
         p, ol, ul, a, th, td, h1, h2, h3, h4, h5, h6 {
             font-family: CrimsonPro;
         }
-
         body {
             background-color: #505cff;
             left:0;
@@ -30,10 +29,7 @@
             height:100%;
             overflow:auto;
         }
-
-
         /* Page Section */
-
         #page-container {
             position: absolute;
             top: 50%;
@@ -122,14 +118,13 @@
                 font-size: 12px;
             }
         }
-        
     </style>
     <body>
         <div style="height: 100%; width: 100%;">
             <div id="page-container">
                 <div style="display: flex; justify-content: center; margin-bottom: 30px;">
                     <a href="{% url 'core:index' %}">
-                        <img src="{% static 'core/media/lbblack.png' %}" alt="logo" style="width: auto; height: 50px;">
+                        <img src="{% static 'core/media/lbblack.svg' %}" alt="logo" style="width: auto; height: 20px;">
                     </a>
                 </div>
                 {% block pageheader %}

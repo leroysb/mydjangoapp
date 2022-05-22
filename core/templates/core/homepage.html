@@ -51,7 +51,10 @@
     <body>
         <div class="container">
             <div class="content">
-                <section>
+                <section>                    
+                    <div class="image">
+                        <img src="{% static 'core/media/lbwhite.svg' %}" alt="leroy" style="width: auto; height: 30px; opacity: 0.7;">
+                    </div>
                     <div id="links">
                         <a href="{% url 'core:events' %}">TICKETS</a>
                         <a href="{% url 'core:blog' %}">BLOG</a>
@@ -73,11 +76,6 @@
                         {% endif %}
                     </div>
                     {% endif %} -->
-                    
-                    <div class="image">
-                        <img src="{% static 'core/media/lbwhite.png' %}" alt="leroy">
-                    </div>
-                    
                 </section>
                 <video src="{% static 'core/media/intro.mp4' %}" autoplay muted loop></video>
             </div>
