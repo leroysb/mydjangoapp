@@ -118,7 +118,6 @@
                 </div>
             </div>
         </section>
-    
         <div class="articlecontent">
             {% if article.credit %}
             <p id="credit">{{ article.credit }}</p>
@@ -155,26 +154,22 @@
     <div class="commentsec">
         {% for comment in article.comments %}
         <div class="commentBox">
-            <section>
-                <div class="maincomment">
-                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                        <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.user.alias }}</p>
-                        <p style="color: #c2c2c2b9;">{{ comment.timestamp | timesince }} ago</p>
-                    </div>
-                    <br>
-                    <p>{{ comment.content | safe }}</p>
-                    <br>
-                    {% if user.is_authenticated %}
-                    <div style="display: flex; flex-direction: row; gap: 17px;">
-                        <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
-                        <!-- {% if request.user == comment.user %}
-                            <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
-                        {% endif %}
-                        <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
-                    </div>
-                    {% endif %}
+            <div class="maincomment">
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <p style="text-transform: capitalize; color: #c2c2c2b9; font-weight: bolder;">{{ comment.user.alias }}</p>
+                    <p style="color: #c2c2c2b9;">{{ comment.timestamp | timesince }} ago</p>
                 </div>
-            </section>
+                <br>
+                <p>{{ comment.content | safe }}</p>
+                <br>
+                <div style="display: flex; flex-direction: row; gap: 17px;">
+                    <img class="readyreply" src="{% static 'core/media/reply.svg' %}" alt="reply to {{ comment.user.alias }}:  {{ comment.content | safe }}" width="20" height="20" style="cursor: pointer;">
+                    <!-- {% if request.user == comment.user %}
+                        <img src="{% static 'core/media/delete.svg' %}" alt="delete comment" width="20" height="20" style="cursor: pointer;">
+                    {% endif %}
+                    <img src="{% static 'core/media/flag.svg' %}" alt="flag comment" width="20" height="20" style="cursor: pointer;"> -->
+                </div>
+            </div>
             {% if user.is_authenticated %}
             <div class="replyform" style="display: none;">
                 <form class="modal-container" method="POST" action=".">
@@ -188,6 +183,12 @@
                         </div>
                     </div>
                 </form>
+            </div>
+            {% else %}
+            <div class="replyform" style="display: none;">
+                <div class="replywarning">
+                    <p>You must log in to reply</p>
+                </div>
             </div>
             {% endif %}
             {% for reply in comment.replies.all %}

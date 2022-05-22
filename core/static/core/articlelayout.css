@@ -269,6 +269,19 @@ textarea {
     font-size: 14px;
     font-family: CrimsonPro;
 }
+.replywarning {
+    background: #000;
+    border: 2px red solid;
+    width: 100%;
+    margin: 7px 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.replywarning p {
+    font: CrimsonPro 14px bold;
+    padding: 7px 2px;
+}
 
 /* Tablet view */
 
