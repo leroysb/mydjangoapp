@@ -212,14 +212,14 @@
     font-size: 2rem;
     line-height: 3rem;
     /* color: #FFFFFF; */
-    color: #8d5f5b;
+    color: #b7df69;
 }
 .aboutsec p {
     font-family: CrimsonPro;
     font-size: 1rem;
     line-height: 1.2rem;
     /* color: #FFFFFF; */
-    color: #8d5f5b;
+    color: #b7df69;
 }
 .aboutsec button {
     font-family: CrimsonPro;
@@ -227,7 +227,7 @@
     font-weight: bold;
     color: #000000;
     /* background: #44bb44; */
-    background: #8d5f5b;
+    background: #b7df69;
     border: none;
     /* border: #b8b8b8 1px solid; */
     border-radius: 4px;
