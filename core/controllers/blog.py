@@ -85,6 +85,11 @@ def ArticleView(request, pk, slug):
             
             return redirect(reverse('core:article', kwargs={'pk':obj.pk, 'slug':obj.slug}))
 
+    if 'deletecomment' in request.POST:
+        instance = get_object_or_404(Comment, pk=id)
+        instance.delete()
+        return redirect(reverse('core:article', kwargs={'pk':obj.pk, 'slug':obj.slug}))
+
     # if 'submitfeedback' in request.POST:
     #     form = feedbackForm(request.POST)
     #     if form.is_valid():

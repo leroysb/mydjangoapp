@@ -45,6 +45,9 @@
             $('.readyreply').parent().parent().next().fadeOut()
             $(this).parent().parent().next().fadeToggle()
         })
+        $('.closereply').click(function(){
+            $(this).closest('.replyform').fadeOut()
+        })
     })
 </script>
 {% endblock head %}
@@ -176,9 +179,9 @@
                     <div class="modal-section">
                         {{ form.content }}
                         <input type="hidden" name="parent_id" value="{{ comment.id }}">
-                        <div style="display: flex; justify-content: right;">
+                        <div style="display: flex; justify-content: right; gap: 12px;">
                             <button class="modal-btn" type="submit" name="submitcomment" style="padding: 4px 7px;">Post Reply</button>
-                            <!-- <button class="modal-btn" class="closereply" type="button" style="padding: 2px 4px;">Cancel</button> -->
+                            <button class="closereply" type="button">Cancel</button>
                         </div>
                     </div>
                 </form>

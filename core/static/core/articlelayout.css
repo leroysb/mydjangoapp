@@ -269,6 +269,18 @@ textarea {
     font-size: 14px;
     font-family: CrimsonPro;
 }
+.closereply {
+    border: 1px #000000 solid;
+    border-radius: 4px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: medium;
+    font-weight: 400;
+    font-family: CrimsonPro;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 4px 7px;
+}
 .replywarning {
     background: #000;
     border: 2px red solid;
