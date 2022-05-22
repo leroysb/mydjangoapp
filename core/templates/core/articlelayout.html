@@ -38,13 +38,11 @@
 
         $('#commentnow').click(()=> {
             $(window).scrollTop($('.aboutsec').offset().top)
-        })        
-        
-        document.querySelectorAll('.readyreply').forEach((readyreply,i)=> {
-            const replyform = document.querySelectorAll('.replyform')
-            readyreply.addEventListener('click', ()=> {
-                replyform[i].style.display = 'block'
-            })
+        })
+
+        $('.readyreply').click(function(){
+            $('.readyreply').parent().parent().next().fadeOut()
+            $(this).parent().parent().next().fadeToggle()
         })
     })
 </script>
