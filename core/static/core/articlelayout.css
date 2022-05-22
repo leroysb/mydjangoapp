@@ -212,14 +212,14 @@
     font-size: 2rem;
     line-height: 3rem;
     /* color: #FFFFFF; */
-    color: #ffca52;
+    color: #ff9575;
 }
 .aboutsec p {
     font-family: CrimsonPro;
     font-size: 1rem;
     line-height: 1.2rem;
     /* color: #FFFFFF; */
-    color: #ffca52;
+    color: #ff9575;
 }
 .aboutsec button {
     font-family: CrimsonPro;
@@ -272,7 +272,7 @@ textarea {
 .closereply {
     border: 1px #000000 solid;
     border-radius: 4px;
-    background-color: #000000;
+    background-color: #073944;
     color: #ffffff;
     font-size: medium;
     font-weight: 400;
@@ -283,7 +283,7 @@ textarea {
 }
 .replywarning {
     background: #000;
-    border: 2px red solid;
+    border: 2px #f54748 solid;
     width: 100%;
     margin: 7px 0;
     display: flex;
