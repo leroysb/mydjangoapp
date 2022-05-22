@@ -34,13 +34,14 @@
             const randomNumber = Math.floor(Math.random()*2)
             const selection = choices[randomNumber]
             background.style.background = selection
+            var replystatus = 'closed'
         });
 
         $('#commentnow').click(()=> {
             $(window).scrollTop($('.aboutsec').offset().top)
         })
-
-        $('.readyreply').click(function(){
+        
+        $('.readyreply').click(function(event){
             $('.readyreply').parent().parent().next().fadeOut()
             $(this).parent().parent().next().fadeToggle()
         })
@@ -176,7 +177,7 @@
                         {{ form.content }}
                         <input type="hidden" name="parent_id" value="{{ comment.id }}">
                         <div style="display: flex; justify-content: right;">
-                            <button class="modal-btn-alt" type="submit" name="submitcomment" style="padding: 4px 7px;">Reply</button>
+                            <button class="modal-btn" type="submit" name="submitcomment" style="padding: 4px 7px;">Post Reply</button>
                             <!-- <button class="modal-btn" class="closereply" type="button" style="padding: 2px 4px;">Cancel</button> -->
                         </div>
                     </div>
