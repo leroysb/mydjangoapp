@@ -56,10 +56,9 @@
                         <img src="{% static 'core/media/lbwhite.svg' %}" alt="leroy" style="width: auto; height: 20px; opacity: 0.7;">
                     </div>
                     <div id="links">
-                        <a href="{% url 'core:events' %}">TICKETS</a>
                         <a href="{% url 'core:blog' %}">BLOG</a>
                         <a href="{% url 'core:podcast' %}">PODCAST</a>
-                        <a href="{% url 'store:catalogue' %}">SHOP</a>
+                        <a href="{% url 'store:catalogue' %}">STORE</a>
                         {% if user.is_authenticated %}
                         <a href="{% url 'account:logout' %}">LOG OUT</a>
                         {% endif %}

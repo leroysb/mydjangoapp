@@ -60,12 +60,12 @@
 {% endblock navmenu %}
 
 {% block mobilemenu %}
-<a href="{% url 'core:events' %}">
+<!-- <a href="{% url 'core:events' %}">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/tickets.svg' %}"></img>
         <span>Tickets</span>
     </div>
-</a>
+</a> -->
 <a href="{% url 'core:blog' %}">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/blog.svg' %}"></img>
@@ -81,7 +81,7 @@
 <a href="{% url 'store:catalogue' %}">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/shop.svg' %}"></img>
-        <span>Shop</span>
+        <span>Store</span>
     </div>
 </a>
 {% endblock mobilemenu %}

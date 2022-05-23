@@ -6,7 +6,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = "abc.def"
 SECRET_KEY = os.environ.get('pwakey')
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('IPlocal'),

@@ -68,26 +68,26 @@
         for(let i = 0; i < firstload; i++){
             articles[i].style.display = 'block'
         }
+        const articlediv = document.querySelectorAll('.articlediv')
+        var currentindex = 8
+    
+        document.querySelector('#loadnext').onclick = ()=> {
+            
+            const next = 8
+    
+            for(var i = 0 ; i < next; i++){
+                if(currentindex >= articlediv.length) {
+                    document.querySelector('#showbtn').style.display='none'
+                } else {
+                    articlediv[i+currentindex].style.display = 'block'
+                }
+            }
+    
+            currentindex += next
+        }
     })
 
 
-    const articlediv = document.querySelectorAll('.articlediv')
-    var currentindex = 8
-
-    document.querySelector('#loadnext').onclick = ()=> {
-        
-        const next = 8
-
-        for(var i = 0 ; i < next; i++){
-            if(currentindex >= articlediv.length) {
-                document.querySelector('#showbtn').style.display='none'
-            } else {
-                articlediv[i+currentindex].style.display = 'block'
-            }
-        }
-
-        currentindex += next
-    };
 </script>
 {% endblock head %}
 
@@ -98,12 +98,6 @@
 {% endblock navmenu %}
 
 {% block mobilemenu %}
-<a href="{% url 'core:events' %}">
-    <div class="mobile-menu-item">
-        <img src="{% static 'core/media/tickets.svg' %}"></img>
-        <span>Tickets</span>
-    </div>
-</a>
 <a href="#">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/blog.svg' %}"></img>
@@ -119,7 +113,7 @@
 <a href="{% url 'store:catalogue' %}">
     <div class="mobile-menu-item">
         <img src="{% static 'core/media/shop.svg' %}"></img>
-        <span>Shop</span>
+        <span>Store</span>
     </div>
 </a>
 {% endblock mobilemenu %}
