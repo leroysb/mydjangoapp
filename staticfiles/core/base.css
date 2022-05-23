@@ -192,11 +192,6 @@ nav {
         margin-bottom: 48px;
     }
 }
-@media screen and (max-width: 769px) {
-   .logoimg {
-        height: 8px;
-    }
-}
 @media screen and (max-width: 342px) {
     .accessbtn,
     .accessbtn:hover {
