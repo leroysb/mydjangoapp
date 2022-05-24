@@ -1,4 +1,4 @@
-This is the source code of my personal web app which is deployed on heroku. Click [here](https://fueledbyleroy.herokuapp.com) to view it.
+This repository has been moved but the web app remains deployed. Click [here](https://fueledbyleroy.herokuapp.com) to view it.
 
 ## Tech Stack
 ### Application and Data
