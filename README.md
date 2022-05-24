@@ -9,19 +9,3 @@ Google Analytics
 
 ### DevOps
 Git, GitHub Actions, Docker
-
-## Getting Started
-
-`$ cd path/to/your/dev/folder`
-
-`$ mkdir djangoapp`
-
-`$ git clone https://github.com/leroysb/mydjangoapp`
-
-`$ git remote remove origin`
-
-`$ virtualenv -p python3`
-
-`$ source venv/scripts/activate`
-
-`$ pip install -r requirements.txt`
